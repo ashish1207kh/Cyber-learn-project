@@ -49,14 +49,7 @@ export default function DefensiveDetail({ onBack, onNavigate }) {
     { name: 'Settings', icon: Settings }
   ];
 
-  // stats values matching screenshot
-  const stats = [
-    { count: '10', label: 'Domains', icon: Shield },
-    { count: '120+', label: 'Lessons', icon: Book },
-    { count: '45+', label: 'Labs', icon: Beaker },
-    { count: '25+', label: 'Tools', icon: Wrench },
-    { count: '5', label: 'Certifications', icon: Award }
-  ];
+
 
   // 10 topic cards matching the screenshot EXACTLY
   const topics = [
@@ -208,20 +201,7 @@ export default function DefensiveDetail({ onBack, onNavigate }) {
                 Defend systems, detect threats, and respond to incidents.<br/>
                 Master the skills of a Blue Team professional.
               </p>
-              <div className="hero-stats-row">
-                {stats.map((stat, idx) => {
-                  const StatIcon = stat.icon;
-                  return (
-                    <div key={idx} className="hero-stat-box">
-                      <div className="hero-stat-icon-wrapper-blue"><StatIcon size={18} /></div>
-                      <div className="hero-stat-text">
-                        <h3>{stat.count}</h3>
-                        <p>{stat.label}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+
             </div>
             <div className="hero-illustration-right">
               <div className="hacker-image-glowing-border-blue">

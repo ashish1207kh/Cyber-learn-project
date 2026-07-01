@@ -46,13 +46,7 @@ export default function OffensiveDetail({ onBack, onNavigate }) {
     { name: 'Settings', icon: Settings }
   ];
 
-  const stats = [
-    { count: '10', label: 'Topics', icon: Book },
-    { count: '120+', label: 'Lessons', icon: Laptop },
-    { count: '45+', label: 'Labs', icon: Beaker },
-    { count: '25+', label: 'Tools', icon: Wrench },
-    { count: '5', label: 'Certifications', icon: Award }
-  ];
+
 
   const topics = [
     { num: '01', title: 'Penetration Testing', desc: 'Learn the methodology to test networks, systems, and applications for vulnerabilities.', icon: Crosshair },
@@ -153,20 +147,7 @@ export default function OffensiveDetail({ onBack, onNavigate }) {
                 like a real-world hacker.<br/>
                 Learn. Practice. Exploit.
               </p>
-              <div className="hero-stats-row">
-                {stats.map((stat, idx) => {
-                  const StatIcon = stat.icon;
-                  return (
-                    <div key={idx} className="hero-stat-box">
-                      <div className="hero-stat-icon-wrapper"><StatIcon size={18} /></div>
-                      <div className="hero-stat-text">
-                        <h3>{stat.count}</h3>
-                        <p>{stat.label}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+
             </div>
             <div className="hero-illustration-right">
               <div className="hacker-image-glowing-border">
