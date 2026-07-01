@@ -3368,7 +3368,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  .landing-page { padding: 100px 12px 24px !important; }
+  .landing-page { padding: 110px 12px 24px !important; }
   .path-card-stats { grid-template-columns: repeat(2, 1fr); }
   .bottom-grid-wrapper { grid-template-columns: 1fr 1fr; }
   .hero-headline h1 { font-size: 20px; }
