@@ -16,58 +16,58 @@ const LEVELS = [
     handsOn: ['Create SIEM Dashboard', 'Write Detection Rules']
   },
   {
-    num: 2, title: 'Cyber Security Fundamentals', icon: Shield, difficulty: 'Easy', hours: 10, labs: 12, projects: 2,
-    badge: 'Cyber Defender',
-    topics: ['CIA Triad', 'Risk Management', 'Cyber Threat Landscape', 'Security Principles', 'Malware Types', 'Security Controls', 'Authentication', 'Virtual Machines'],
-    handsOn: ['Build Home Lab', 'Install Windows & Linux VM']
-  },
-  {
-    num: 3, title: 'Networking & Security Basics', icon: Network, difficulty: 'Easy', hours: 12, labs: 10, projects: 3,
-    badge: 'Network Defender',
-    topics: ['TCP/IP', 'OSI Model', 'Routing', 'Switching', 'Firewalls', 'VPN', 'IDS', 'IPS', 'DNS', 'DHCP'],
-    handsOn: ['Packet Analysis', 'Firewall Rules', 'Network Monitoring']
-  },
-  {
-    num: 4, title: 'Windows & Linux Administration', icon: Terminal, difficulty: 'Medium', hours: 16, labs: 14, projects: 3,
-    badge: 'System Guardian',
-    topics: ['Windows Administration', 'Linux Administration', 'PowerShell', 'Bash', 'Users & Groups', 'Permissions', 'Services', 'System Hardening', 'Active Directory Basics', 'Group Policies'],
-    handsOn: ['Secure Windows', 'Secure Linux']
-  },
-  {
-    num: 5, title: 'Security Monitoring', icon: MonitorCheck, difficulty: 'Medium', hours: 18, labs: 15, projects: 3,
-    badge: 'Security Monitor',
-    topics: ['Security Monitoring', 'Event Collection', 'Security Alerts', 'Endpoint Monitoring', 'Threat Hunting Basics', 'Telemetry', 'EDR', 'XDR', 'SOC Workflow', 'Monitoring Strategies'],
-    handsOn: ['Monitor Logs', 'Analyze Alerts']
-  },
-  {
-    num: 6, title: 'Threat Detection', icon: ScanSearch, difficulty: 'Hard', hours: 22, labs: 18, projects: 3,
-    badge: 'Threat Hunter',
-    topics: ['Threat Intelligence', 'MITRE ATT&CK', 'IOC', 'IOA', 'Threat Hunting', 'YARA', 'Sigma Rules', 'Detection Engineering', 'Behavior Analytics', 'Anomaly Detection'],
-    handsOn: ['Threat Hunting', 'IOC Analysis']
-  },
-  {
-    num: 7, title: 'Incident Response', icon: ShieldAlert, difficulty: 'Hard', hours: 25, labs: 20, projects: 4,
+    num: 2, title: 'Incident Response', icon: ShieldAlert, difficulty: 'Hard', hours: 25, labs: 20, projects: 4,
     badge: 'Incident Responder',
     topics: ['Preparation', 'Identification', 'Containment', 'Eradication', 'Recovery', 'Lessons Learned', 'Playbooks', 'Crisis Management', 'Communication', 'Reporting'],
     handsOn: ['Ransomware Response', 'SOC Simulation']
   },
   {
-    num: 8, title: 'Digital Forensics', icon: Eye, difficulty: 'Expert', hours: 30, labs: 24, projects: 3,
+    num: 3, title: 'Threat Intelligence', icon: ScanSearch, difficulty: 'Hard', hours: 22, labs: 18, projects: 3,
+    badge: 'Threat Hunter',
+    topics: ['Threat Intelligence', 'MITRE ATT&CK', 'IOC', 'IOA', 'Threat Hunting', 'YARA', 'Sigma Rules', 'Detection Engineering', 'Behavior Analytics', 'Anomaly Detection'],
+    handsOn: ['Threat Hunting', 'IOC Analysis']
+  },
+  {
+    num: 4, title: 'Digital Forensics', icon: Eye, difficulty: 'Expert', hours: 30, labs: 24, projects: 3,
     badge: 'Digital Investigator',
     topics: ['Memory Forensics', 'Disk Forensics', 'Network Forensics', 'Email Analysis', 'Malware Analysis', 'Evidence Collection', 'Chain of Custody', 'Timeline Analysis', 'Autopsy', 'Volatility'],
     handsOn: ['Investigate Security Incident', 'Memory Analysis']
   },
   {
-    num: 9, title: 'Blue Team Operations', icon: ShieldCheck, difficulty: 'Expert', hours: 35, labs: 25, projects: 4,
-    badge: 'Blue Team Operator',
-    topics: ['SOC Operations', 'Endpoint Security', 'Cloud Security', 'Identity Security', 'Email Security', 'Vulnerability Management', 'Patch Management', 'Security Awareness', 'Threat Intelligence', 'Zero Trust'],
-    handsOn: ['SOC Environment Setup', 'Blue Team Exercises']
+    num: 5, title: 'Network Security', icon: Network, difficulty: 'Medium', hours: 18, labs: 15, projects: 3,
+    badge: 'Network Defender',
+    topics: ['TCP/IP', 'OSI Model', 'Routing', 'Switching', 'Firewalls', 'VPN', 'IDS', 'IPS', 'DNS', 'DHCP'],
+    handsOn: ['Packet Analysis', 'Firewall Rules', 'Network Monitoring']
   },
   {
-    num: 10, title: 'Professional Certifications', icon: Award, difficulty: 'Expert', hours: 50, labs: 30, projects: 6,
-    badge: 'Blue Team Professional',
-    topics: ['CompTIA Security+', 'CompTIA CySA+', 'Blue Team Level 1 (BTL1)', 'SC-200', 'SC-300', 'Splunk Core Certified User', 'eCDFP', 'GCIA', 'GCFA'],
-    handsOn: ['SOC Resume Workshop', 'Portfolio Builder', 'Interview Preparation']
+    num: 6, title: 'Vulnerability Management', icon: ShieldCheck, difficulty: 'Medium', hours: 15, labs: 12, projects: 2,
+    badge: 'Vuln Analyst',
+    topics: ['Vulnerability Scanning', 'Nessus', 'Qualys', 'OpenVAS', 'CVSS', 'Patching Strategies', 'Risk Assessment', 'Reporting', 'Remediation', 'Compliance'],
+    handsOn: ['Run Vulnerability Scans', 'Analyze Reports']
+  },
+  {
+    num: 7, title: 'Endpoint Security', icon: Terminal, difficulty: 'Medium', hours: 16, labs: 14, projects: 3,
+    badge: 'Endpoint Guardian',
+    topics: ['Windows Administration', 'Linux Administration', 'EDR', 'XDR', 'Antivirus', 'System Hardening', 'Active Directory Basics', 'Group Policies', 'Permissions', 'Services'],
+    handsOn: ['Secure Windows', 'Secure Linux']
+  },
+  {
+    num: 8, title: 'Log Analysis', icon: MonitorCheck, difficulty: 'Medium', hours: 18, labs: 15, projects: 3,
+    badge: 'Log Analyst',
+    topics: ['Security Monitoring', 'Event Collection', 'Security Alerts', 'Endpoint Monitoring', 'Syslog', 'Windows Event Logs', 'Audit Logs', 'SOC Workflow', 'Monitoring Strategies'],
+    handsOn: ['Monitor Logs', 'Analyze Alerts']
+  },
+  {
+    num: 9, title: 'Patch Management', icon: Shield, difficulty: 'Easy', hours: 10, labs: 8, projects: 1,
+    badge: 'Patch Administrator',
+    topics: ['Patch Lifecycle', 'WSUS', 'SCCM', 'Linux Package Managers', 'Automated Patching', 'Testing Patches', 'Rollbacks', 'Downtime Management'],
+    handsOn: ['Deploy Patches', 'Manage Updates']
+  },
+  {
+    num: 10, title: 'User Awareness Training', icon: Award, difficulty: 'Easy', hours: 10, labs: 5, projects: 2,
+    badge: 'Security Educator',
+    topics: ['Phishing Simulations', 'Social Engineering Awareness', 'Password Policies', 'MFA', 'Data Privacy', 'Compliance Training', 'Insider Threats', 'Reporting Incidents'],
+    handsOn: ['Create Phishing Campaign', 'Analyze User Behavior']
   }
 ];
 

@@ -182,6 +182,46 @@ export const DEFENSIVE_TOPICS = {
   }
 };
 
+// Generate placeholders for 03 to 10 to avoid fallback to 01
+const placeholderNames = [
+  "Threat Intelligence", "Digital Forensics", "Network Security",
+  "Vulnerability Management", "Endpoint Security", "Log Analysis",
+  "Patch Management", "User Awareness Training"
+];
+
+for (let i = 3; i <= 10; i++) {
+  const num = i < 10 ? `0${i}` : `${i}`;
+  DEFENSIVE_TOPICS[num] = {
+    num: num,
+    title: placeholderNames[i - 3],
+    subtitle: 'Coming Soon',
+    description: 'This module is currently under construction. Please check back later when we add the full content.',
+    badges: ["Coming Soon"],
+    metrics: [],
+    conceptTitle: "Work in Progress",
+    conceptText: "Content for this section will be added soon.",
+    conceptFlow: [],
+    blueprintDesc: "",
+    blueprintCards: [],
+    phasesTitle: "",
+    phasesDesc: "",
+    phases: [],
+    toolsTitle: "",
+    toolsDesc: "",
+    tools: [],
+    certs: [],
+    learnList: [],
+    readyText: "",
+    stats: {
+      time: "TBD",
+      diff: "TBD",
+      prereq: "TBD",
+      next: "TBD",
+      nextNum: ""
+    }
+  };
+}
+
 export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
   const [activeRoadmapTopic, setActiveRoadmapTopic] = React.useState(topicId);
 
@@ -200,15 +240,15 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
 
   const roadmapTopics = [
     { num: '01', name: 'SIEM Monitoring' },
-    { num: '02', name: 'Cyber Security Fundamentals' },
-    { num: '03', name: 'Networking & Security Basics' },
-    { num: '04', name: 'Windows & Linux Administration' },
-    { num: '05', name: 'Security Monitoring' },
-    { num: '06', name: 'Threat Detection' },
-    { num: '07', name: 'Incident Response' },
-    { num: '08', name: 'Digital Forensics' },
-    { num: '09', name: 'Blue Team Operations' },
-    { num: '10', name: 'Professional Certifications' }
+    { num: '02', name: 'Incident Response' },
+    { num: '03', name: 'Threat Intelligence' },
+    { num: '04', name: 'Digital Forensics' },
+    { num: '05', name: 'Network Security' },
+    { num: '06', name: 'Vulnerability Management' },
+    { num: '07', name: 'Endpoint Security' },
+    { num: '08', name: 'Log Analysis' },
+    { num: '09', name: 'Patch Management' },
+    { num: '10', name: 'User Awareness Training' }
   ];
 
   return (
