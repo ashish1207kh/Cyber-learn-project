@@ -30,7 +30,7 @@ import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
 
 // Content data for each topic to keep the layout identical
-const TOPIC_DETAILS = {
+export const TOPIC_DETAILS = {
   '01': {
     num: '01',
     title: 'Penetration Testing',

@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
+import { TOPIC_DETAILS } from './OffensiveTopicDetail';
 
 export default function OffensiveDetail({ onBack, onNavigate }) {
   // Left Sidebar Paths - same icons as defensive
@@ -150,12 +151,11 @@ export default function OffensiveDetail({ onBack, onNavigate }) {
                     onMouseMove={(e) => applyTiltEffect(e.currentTarget, e)}
                     onMouseLeave={(e) => removeTiltEffect(e.currentTarget)}
                     onClick={() => {
-                      const activeTopicNums = ['01', '02', '03', '04', '05', '06'];
-                      if (activeTopicNums.includes(topic.num)) {
+                      if (TOPIC_DETAILS[topic.num]) {
                         onNavigate('offensive-topic-detail', topic.num);
                       }
                     }}
-                    style={{ cursor: ['01', '02', '03', '04', '05', '06'].includes(topic.num) ? 'pointer' : 'default' }}
+                    style={{ cursor: TOPIC_DETAILS[topic.num] ? 'pointer' : 'default' }}
                   >
                     <span className="topic-num">{topic.num}</span>
                     <div className="topic-card-icon-circle">
@@ -167,8 +167,7 @@ export default function OffensiveDetail({ onBack, onNavigate }) {
                     </div>
                     <button className="btn-topic-card" onClick={(e) => {
                       e.stopPropagation();
-                      const activeTopicNums = ['01', '02', '03', '04', '05', '06'];
-                      if (activeTopicNums.includes(topic.num)) {
+                      if (TOPIC_DETAILS[topic.num]) {
                         onNavigate('offensive-topic-detail', topic.num);
                       }
                     }}>
