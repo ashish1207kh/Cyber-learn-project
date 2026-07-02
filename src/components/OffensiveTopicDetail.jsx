@@ -284,6 +284,90 @@ const TOPIC_DETAILS = {
       next: "04. Exploitation Techniques",
       nextNum: "04"
     }
+  },
+  '04': {
+    num: '04',
+    title: 'Exploitation Techniques',
+    subtitle: 'Taking Control',
+    description: "This is the milestone where students learn how vulnerabilities are actually weaponized to breach systems. Exploitation is the definitive act of taking advantage of a software bug, design flaw, or configuration mistake to force a computer system to behave in an unintended way.",
+    badges: ["Intermediate to Advanced", "Core Skill", "High Impact"],
+    metrics: [
+      { val: "3", lbl: "Exploitation Mechanisms" },
+      { val: "3", lbl: "Pipeline Stages" },
+      { val: "15+", lbl: "Tools Covered" },
+      { val: "8", lbl: "Real-world Scenarios" },
+      { val: "2", lbl: "Certifications Recommended" }
+    ],
+    conceptTitle: "Crossing the Perimeter",
+    conceptText: "Exploitation is the definitive act of taking advantage of a software bug, design flaw, or configuration mistake to force a computer system to behave in an unintended way. Usually, the goal is Arbitrary Code Execution (ACE)—forcing the target machine to run commands or scripts provided by the hacker, effectively handing over control.",
+    conceptFlow: [
+      { title: "Vulnerability", sub: "(The Flaw)", icon: Target },
+      { title: "Exploit", sub: "(The Delivery)", icon: Laptop, active: true },
+      { title: "Payload", sub: "(The Cargo)", icon: Shield }
+    ],
+    blueprintDesc: "Exploitation requires deep technical mastery of architecture, networking protocols, and code.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Exploit Developer", "Vulnerability Researcher", "Red Team Infrastructure Engineer", "Penetration Tester"]
+      },
+      {
+        icon: TrendingUp,
+        title: "Average Entry Salary",
+        salary: "$95,000 - $130,000",
+        salarySub: "USD / year",
+        salaryRegion: "(varies by region)"
+      },
+      {
+        icon: FileText,
+        title: "What a Day Looks Like",
+        list: ["Analyzing software code via reverse engineering", "Studying zero-day patches", "Writing custom scripts in Python, C, or Assembly", "Building bypass mechanisms for security defenses"]
+      },
+      {
+        icon: Activity,
+        title: "Career Growth",
+        growthBadge: "High Demand & Growth",
+        desc: "Excellent Career Prospects"
+      }
+    ],
+    phasesTitle: "The Big Three Exploitation Mechanisms",
+    phasesDesc: "Provide your students with a granular look at how modern professionals categorize exploitation techniques:",
+    phases: [
+      { num: '01', title: 'Remote Code Execution (RCE)', desc: 'The holy grail of offensive security. Allows an attacker to execute arbitrary commands over a network connection on a remote machine without physical access or valid credentials.', label: 'Server Threat' },
+      { num: '02', title: 'Client-Side Exploitation', desc: 'When internal networks are heavily guarded, attackers target the users inside. Requires user interaction to trigger the exploit code.', label: 'Client Threat' },
+      { num: '03', title: 'Bind Shells', desc: 'The exploit opens a port on the target machine, and the attacker connects to it. (Easily blocked by modern firewalls).', label: 'Inbound Connection' },
+      { num: '04', title: 'Reverse Shells', desc: 'The exploit forces the target machine to connect outward to the attacker\'s machine. Highly effective against firewalls.', label: 'Outbound Connection' }
+    ],
+    toolsTitle: "Essential Testing Tools (Top 5)",
+    toolsDesc: "Master these essential tools used by professional exploit developers.",
+    tools: [
+      { name: 'Metasploit', cat: 'Exploitation Framework', desc: 'The world\'s most used penetration testing framework.' },
+      { name: 'GDB', cat: 'Debugger', desc: 'The GNU Project debugger, allows you to see what is going on inside another program.' },
+      { name: 'Ghidra', cat: 'Reverse Engineering', desc: 'A software reverse engineering (SRE) suite of tools developed by NSA.' },
+      { name: 'Python', cat: 'Scripting', desc: 'The most popular language for writing custom exploit scripts.' },
+      { name: 'Netcat', cat: 'Networking', desc: 'The Swiss Army knife of networking, used for catching reverse shells.' }
+    ],
+    certs: [
+      { name: 'OSCP', full: 'OffSec Certified Professional', desc: 'The gold standard hands-on certification that forces students to manually find, modify, and execute exploits.', diff: 'Advanced' },
+      { name: 'HTB / TryHackMe', full: 'Hack The Box & TryHackMe Labs', desc: 'Gamified laboratory platforms to build practical exploitation skills safely and legally.', diff: 'Intermediate' }
+    ],
+    learnList: [
+      "Understanding software vulnerabilities and memory corruption",
+      "The anatomy of an exploit and weaponization pipeline",
+      "Remote Code Execution (RCE) vectors and techniques",
+      "Client-side attacks and malicious payloads",
+      "Bind vs. Reverse shells and firewall evasion",
+      "Using frameworks like Metasploit for active exploitation"
+    ],
+    readyText: "Begin your Exploitation journey and learn how vulnerabilities are weaponized in the real world.",
+    stats: {
+      time: "30-40 Hours",
+      diff: "Intermediate to Advanced",
+      prereq: "Networking Basics, Linux Admin, Programming",
+      next: "05. Post-Exploitation Techniques",
+      nextNum: "05"
+    }
   }
 };
 
