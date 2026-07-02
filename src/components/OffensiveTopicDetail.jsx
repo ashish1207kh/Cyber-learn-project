@@ -1000,19 +1000,6 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                   ))}
                 </div>
               </section>
-              {/* Ready to Start? Bottom Banner */}
-              <section className="topic-section-block ready-start-banner-bottom">
-                <div className="ready-start-banner-content">
-                  <div className="ready-start-banner-text">
-                    <h3>Ready to Start?</h3>
-                    <p>{activeTopic.readyText}</p>
-                  </div>
-                  <button className="btn-ready-start">
-                    <span>Start Learning</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-              </section>
             </div>
           </div>
         </div>
