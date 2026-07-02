@@ -206,7 +206,10 @@ export default function DefensiveDetail({ onBack, onNavigate }) {
                       <h4 className="topic-card-title">{topic.title}</h4>
                       <p className="topic-card-desc">{topic.desc}</p>
                     </div>
-                    <button className="btn-topic-card-blue">
+                    <button 
+                      className="btn-topic-card-blue"
+                      onClick={() => onNavigate('defensive-topic-detail', topic.num)}
+                    >
                       <span>Open Domain</span>
                       <ArrowRight size={12} />
                     </button>
