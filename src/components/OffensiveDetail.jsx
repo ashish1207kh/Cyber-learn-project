@@ -150,11 +150,12 @@ export default function OffensiveDetail({ onBack, onNavigate }) {
                     onMouseMove={(e) => applyTiltEffect(e.currentTarget, e)}
                     onMouseLeave={(e) => removeTiltEffect(e.currentTarget)}
                     onClick={() => {
-                      if (topic.num === '01' || topic.num === '02') {
+                      const activeTopicNums = ['01', '02', '03', '04', '05', '06'];
+                      if (activeTopicNums.includes(topic.num)) {
                         onNavigate('offensive-topic-detail', topic.num);
                       }
                     }}
-                    style={{ cursor: (topic.num === '01' || topic.num === '02') ? 'pointer' : 'default' }}
+                    style={{ cursor: ['01', '02', '03', '04', '05', '06'].includes(topic.num) ? 'pointer' : 'default' }}
                   >
                     <span className="topic-num">{topic.num}</span>
                     <div className="topic-card-icon-circle">
@@ -166,7 +167,8 @@ export default function OffensiveDetail({ onBack, onNavigate }) {
                     </div>
                     <button className="btn-topic-card" onClick={(e) => {
                       e.stopPropagation();
-                      if (topic.num === '01' || topic.num === '02') {
+                      const activeTopicNums = ['01', '02', '03', '04', '05', '06'];
+                      if (activeTopicNums.includes(topic.num)) {
                         onNavigate('offensive-topic-detail', topic.num);
                       }
                     }}>
