@@ -4202,9 +4202,9 @@ body {
 
 /* Hero section */
 .topic-hero-banner {
-  background: radial-gradient(circle at 100% 50%, rgba(239, 68, 68, 0.08), transparent 60%),
-              rgba(15, 23, 42, 0.35);
-  border: 1px solid rgba(239, 68, 68, 0.15);
+  background: radial-gradient(circle at 100% 50%, rgba(239, 68, 68, 0.12), transparent 60%),
+              rgba(8, 12, 22, 0.95);
+  border: 1px solid rgba(239, 68, 68, 0.25);
   border-radius: 20px;
   padding: 30px;
   display: flex;
@@ -4212,6 +4212,7 @@ body {
   gap: 24px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .topic-hero-left {
@@ -4230,23 +4231,23 @@ body {
 .topic-badge-number {
   font-size: 20px;
   font-weight: 900;
-  color: #ef4444;
-  border: 2px solid #ef4444;
+  color: #ff5555;
+  border: 2px solid #ff5555;
   border-radius: 50%;
   width: 46px;
   height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
-  box-shadow: 0 0 10px rgba(239, 68, 68, 0.15);
+  text-shadow: 0 0 10px rgba(255, 85, 85, 0.6);
+  box-shadow: 0 0 10px rgba(255, 85, 85, 0.25);
   flex-shrink: 0;
 }
 
 .topic-main-title {
   font-size: 28px;
   font-weight: 900;
-  color: #fff;
+  color: #ffffff;
   line-height: 1.1;
   letter-spacing: 0.5px;
 }
@@ -4254,14 +4255,14 @@ body {
 .topic-sub-title {
   font-size: 14px;
   font-weight: 700;
-  color: #ef4444;
+  color: #ff5555;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .topic-hero-description {
   font-size: 14.5px;
-  color: #cbd5e1;
+  color: #f1f5f9;
   line-height: 1.6;
   max-width: 90%;
 }
@@ -4276,11 +4277,11 @@ body {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ff5555;
+  border: 1px solid rgba(255, 85, 85, 0.4);
   padding: 4px 10px;
   border-radius: 20px;
-  background: rgba(239, 68, 68, 0.05);
+  background: rgba(255, 85, 85, 0.08);
 }
 
 /* Stats metrics inside hero */
@@ -4289,7 +4290,7 @@ body {
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
   margin-top: 15px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 20px;
 }
 
@@ -4298,8 +4299,8 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
   padding: 8px;
 }
@@ -4307,12 +4308,12 @@ body {
 .metric-val {
   font-size: 16px;
   font-weight: 800;
-  color: #ef4444;
+  color: #ff5555;
 }
 
 .metric-lbl {
   font-size: 10px;
-  color: #94a3b8;
+  color: #cbd5e1;
   margin-top: 2px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -4330,8 +4331,8 @@ body {
 .hacker-hero-img-container {
   width: 100%;
   border-radius: 12px;
-  border: 2px solid rgba(239, 68, 68, 0.35);
-  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+  border: 2px solid rgba(255, 85, 85, 0.4);
+  box-shadow: 0 0 15px rgba(255, 85, 85, 0.3);
   overflow: hidden;
   aspect-ratio: 1;
 }
@@ -4344,31 +4345,32 @@ body {
 
 /* Sections layout */
 .topic-section-block {
-  background: rgba(15, 23, 42, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.02);
+  background: rgba(8, 12, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   padding: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .section-block-title {
   font-size: 20px;
   font-weight: 800;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
 .section-divider-red {
   width: 40px;
   height: 3px;
-  background: #ef4444;
-  box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+  background: #ff5555;
+  box-shadow: 0 0 8px rgba(255, 85, 85, 0.8);
   margin-bottom: 16px;
   border-radius: 2px;
 }
 
 .section-block-text {
   font-size: 14.5px;
-  color: #cbd5e1;
+  color: #f1f5f9;
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -4384,8 +4386,8 @@ body {
 
 .flow-step-card {
   flex: 1;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(2, 5, 12, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 16px;
   text-align: center;
@@ -4396,17 +4398,17 @@ body {
 }
 
 .flow-step-card.active {
-  border-color: rgba(239, 68, 68, 0.3);
-  background: rgba(239, 68, 68, 0.02);
-  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.03);
+  border-color: rgba(255, 85, 85, 0.4);
+  background: rgba(255, 85, 85, 0.04);
+  box-shadow: 0 4px 20px rgba(255, 85, 85, 0.08);
 }
 
 .flow-step-icon-outer {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4414,19 +4416,19 @@ body {
 
 .flow-step-card h4 {
   font-size: 13px;
-  color: #fff;
+  color: #ffffff;
   font-weight: 700;
 }
 
 .flow-step-card p {
-  font-size: 11px;
-  color: #94a3b8;
+  font-size: 11.5px;
+  color: #cbd5e1;
 }
 
 .flow-connector-line {
   height: 2px;
   flex: 0.5;
-  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.25), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 85, 85, 0.4), transparent);
 }
 
 /* Career path blueprint cards */
@@ -4438,8 +4440,8 @@ body {
 }
 
 .blueprint-card {
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(2, 5, 12, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -4457,7 +4459,7 @@ body {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #cbd5e1;
+  color: #f1f5f9;
   letter-spacing: 0.5px;
 }
 
@@ -4471,15 +4473,15 @@ body {
 }
 
 .blueprint-card li {
-  font-size: 12px;
-  color: #94a3b8;
+  font-size: 12.5px;
+  color: #cbd5e1;
   position: relative;
   padding-left: 10px;
 }
 
 .blueprint-card li::before {
   content: "•";
-  color: #ef4444;
+  color: #ff5555;
   position: absolute;
   left: 0;
 }
@@ -4492,13 +4494,14 @@ body {
 }
 
 .blueprint-salary-sub {
-  font-size: 12px;
-  color: #cbd5e1;
+  font-size: 12.5px;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .blueprint-salary-region {
-  font-size: 10px;
-  color: #64748b;
+  font-size: 10.5px;
+  color: #94a3b8;
   margin-top: 4px;
 }
 
@@ -4506,8 +4509,8 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4519,15 +4522,15 @@ body {
   font-weight: 700;
   color: #22c55e;
   background: rgba(34, 197, 94, 0.08);
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.25);
   padding: 2px 8px;
   border-radius: 4px;
   margin-bottom: 8px;
 }
 
 .blueprint-card p {
-  font-size: 11px;
-  color: #64748b;
+  font-size: 11.5px;
+  color: #94a3b8;
 }
 
 /* The 5 Core Phases layout */
@@ -4539,8 +4542,8 @@ body {
 }
 
 .phase-node-card {
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(2, 5, 12, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 16px 20px;
   display: flex;
@@ -4561,9 +4564,9 @@ body {
 .phase-node-num {
   font-size: 14px;
   font-weight: 800;
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.3);
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -4575,13 +4578,13 @@ body {
 .phase-node-header h4 {
   font-size: 13.5px;
   font-weight: 700;
-  color: #fff;
+  color: #ffffff;
 }
 
 .phase-node-desc {
   flex: 1;
-  font-size: 12.5px;
-  color: #94a3b8;
+  font-size: 13px;
+  color: #cbd5e1;
   line-height: 1.5;
 }
 
@@ -4589,9 +4592,9 @@ body {
   font-size: 10.5px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.15);
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.25);
   padding: 4px 10px;
   border-radius: 6px;
   text-align: center;
@@ -4608,8 +4611,8 @@ body {
 }
 
 .tool-card-v2 {
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(2, 5, 12, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 16px;
   display: flex;
@@ -4621,8 +4624,8 @@ body {
 }
 
 .tool-card-v2:hover {
-  border-color: rgba(239, 68, 68, 0.2);
-  background: rgba(239, 68, 68, 0.02);
+  border-color: rgba(255, 85, 85, 0.35);
+  background: rgba(255, 85, 85, 0.04);
   transform: translateY(-2px);
 }
 
@@ -4630,18 +4633,18 @@ body {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.15);
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
-  color: #ef4444;
+  color: #ff5555;
 }
 
 .tool-card-v2 h4 {
   font-size: 13.5px;
-  color: #fff;
+  color: #ffffff;
   font-weight: 700;
   margin-bottom: 4px;
 }
@@ -4650,14 +4653,14 @@ body {
   font-size: 9.5px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: #cbd5e1;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
 }
 
 .tool-card-desc-v2 {
-  font-size: 11.5px;
-  color: #64748b;
+  font-size: 12px;
+  color: #cbd5e1;
   line-height: 1.4;
   margin-bottom: 14px;
   flex: 1;
@@ -4665,8 +4668,8 @@ body {
 
 .tool-btn-learn {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
   padding: 4px 10px;
   border-radius: 6px;
   font-size: 11px;
@@ -4678,9 +4681,9 @@ body {
 }
 
 .tool-card-v2:hover .tool-btn-learn {
-  border-color: #ef4444;
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.05);
+  border-color: #ff5555;
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.08);
 }
 
 /* Recommended certifications style */
@@ -4692,8 +4695,8 @@ body {
 }
 
 .recommended-cert-card-v2 {
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(2, 5, 12, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -4704,14 +4707,14 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ef4444;
+  color: #ff5555;
   flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(239, 68, 68, 0.1);
+  box-shadow: 0 0 10px rgba(255, 85, 85, 0.15);
 }
 
 .recommended-cert-text {
@@ -4723,42 +4726,43 @@ body {
 .recommended-cert-text h4 {
   font-size: 15px;
   font-weight: 800;
-  color: #fff;
+  color: #ffffff;
 }
 
 .recommended-cert-fullname {
-  font-size: 10px;
-  color: #94a3b8;
+  font-size: 10.5px;
+  color: #cbd5e1;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .recommended-cert-text p {
-  font-size: 12px;
-  color: #64748b;
+  font-size: 12.5px;
+  color: #cbd5e1;
   line-height: 1.4;
   margin-top: 6px;
 }
 
 .recommended-cert-difficulty {
-  font-size: 11px;
-  color: #cbd5e1;
+  font-size: 11.5px;
+  color: #ffffff;
   margin-top: 10px;
 }
 
 .recommended-cert-difficulty strong {
-  color: #ef4444;
+  color: #ff5555;
 }
 
 /* Right panel widgets */
 .right-panel-card {
-  background: rgba(15, 23, 42, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: rgba(8, 12, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .right-panel-card h3 {
