@@ -4190,13 +4190,13 @@ body {
 .topic-left-column {
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 55px;
 }
 
 .topic-right-column {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 30px;
   flex-shrink: 0;
 }
 
@@ -4205,11 +4205,11 @@ body {
   background: radial-gradient(circle at 100% 50%, rgba(239, 68, 68, 0.12), transparent 60%),
               rgba(8, 12, 22, 0.95);
   border: 1px solid rgba(239, 68, 68, 0.25);
-  border-radius: 20px;
-  padding: 30px;
+  border-radius: 12px;
+  padding: 40px;
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 30px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -4219,7 +4219,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .topic-badge-header {
@@ -4245,7 +4245,7 @@ body {
 }
 
 .topic-main-title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 900;
   color: #ffffff;
   line-height: 1.1;
@@ -4253,7 +4253,7 @@ body {
 }
 
 .topic-sub-title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #ff5555;
   text-transform: uppercase;
@@ -4261,9 +4261,9 @@ body {
 }
 
 .topic-hero-description {
-  font-size: 14.5px;
+  font-size: 15.5px;
   color: #f1f5f9;
-  line-height: 1.6;
+  line-height: 1.75;
   max-width: 90%;
 }
 
@@ -4302,7 +4302,7 @@ body {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
-  padding: 8px;
+  padding: 10px;
 }
 
 .metric-val {
@@ -4347,16 +4347,17 @@ body {
 .topic-section-block {
   background: rgba(8, 12, 22, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 28px;
+  border-radius: 12px;
+  padding: 40px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .section-block-title {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
 .section-divider-red {
@@ -4364,15 +4365,15 @@ body {
   height: 3px;
   background: #ff5555;
   box-shadow: 0 0 8px rgba(255, 85, 85, 0.8);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   border-radius: 2px;
 }
 
 .section-block-text {
-  font-size: 14.5px;
+  font-size: 15.5px;
   color: #f1f5f9;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  line-height: 1.85;
+  margin-bottom: 28px;
 }
 
 /* Pentest flow row style */
