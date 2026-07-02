@@ -219,7 +219,13 @@ export default function DefensiveRoadmap({ onBack, onNavigate }) {
                             </div>
                           </div>
                           
-                          <button className="rm-btn-start rm-btn-start-blue">
+                          <button 
+                            className="rm-btn-start rm-btn-start-blue"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onNavigate('defensive-topic-detail', String(level.num).padStart(2, '0'));
+                            }}
+                          >
                             <span>Open Module</span>
                             <ArrowRight size={14} />
                           </button>
