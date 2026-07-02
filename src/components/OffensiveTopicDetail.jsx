@@ -11,6 +11,7 @@ import {
   Settings, 
   ArrowRight, 
   ArrowLeft, 
+  ArrowDown,
   Search, 
   Users, 
   Target, 
@@ -746,23 +747,90 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </p>
 
                 {/* Concept Process Flow */}
-                <div className="pentest-flow-row">
-                  {activeTopic.conceptFlow.map((step, i) => {
-                    const StepIcon = step.icon;
-                    return (
-                      <React.Fragment key={i}>
-                        {i > 0 && <div className="flow-connector-line"></div>}
-                        <div className={`flow-step-card ${step.active ? 'active' : ''}`}>
-                          <div className="flow-step-icon-outer">
-                            <StepIcon size={18} style={{ color: '#ff5555' }} />
+                {activeTopic.num === '03' ? (
+                  <div className="osint-data-flow-container">
+                    <div className="osint-node primary-node">
+                      <div className="osint-node-icon"><Search size={18} /></div>
+                      <h4>PUBLIC INTERNET</h4>
+                    </div>
+                    
+                    <div className="osint-branches">
+                      <div className="osint-branch-line"></div>
+                      <div className="osint-branch-item">
+                        <div className="osint-connector"></div>
+                        <div className="osint-leaf">
+                          <div className="osint-leaf-header">
+                            <Activity size={14} /> <span>Domain Records (DNS, WHOIS)</span>
                           </div>
-                          <h4>{step.title}</h4>
-                          <p>{step.sub}</p>
+                          <div className="osint-leaf-result">Reveals IP Ranges & Subdomains</div>
                         </div>
-                      </React.Fragment>
-                    );
-                  })}
-                </div>
+                      </div>
+                      <div className="osint-branch-item">
+                        <div className="osint-connector"></div>
+                        <div className="osint-leaf">
+                          <div className="osint-leaf-header">
+                            <Users size={14} /> <span>Social Media (LinkedIn/X)</span>
+                          </div>
+                          <div className="osint-leaf-result">Reveals Employee Roles & Email Formats</div>
+                        </div>
+                      </div>
+                      <div className="osint-branch-item">
+                        <div className="osint-connector"></div>
+                        <div className="osint-leaf">
+                          <div className="osint-leaf-header">
+                            <FolderGit2 size={14} /> <span>Code Repositories (GitHub/GitLab)</span>
+                          </div>
+                          <div className="osint-leaf-result">Reveals Leaked API Keys & Internal Code</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="osint-funnel">
+                       <div className="osint-vertical-line"></div>
+                       <ArrowDown size={16} className="osint-arrow" />
+                    </div>
+
+                    <div className="osint-node correlation-node">
+                      <div className="osint-node-icon"><Settings size={18} className="spin-slow" /></div>
+                      <h4>OSINT RECON CORRELATION</h4>
+                    </div>
+
+                    <div className="osint-funnel">
+                       <div className="osint-vertical-line"></div>
+                       <ArrowDown size={16} className="osint-arrow" />
+                    </div>
+
+                    <div className="osint-node attack-map-node">
+                      <div className="osint-node-header">
+                        <Target size={18} />
+                        <h4>ACTIONABLE ATTACK MAP</h4>
+                      </div>
+                      <ul className="osint-attack-list">
+                        <li><span className="osint-bullet">•</span> <strong>Target Subdomain:</strong> staging.company.com <span className="highlight-red">(Unpatched)</span></li>
+                        <li><span className="osint-bullet">•</span> <strong>Valid Corporate Email:</strong> j.doe@company.com</li>
+                        <li><span className="osint-bullet">•</span> <strong>Technology Stack:</strong> Leaked Apache version 2.4.49</li>
+                      </ul>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="pentest-flow-row">
+                    {activeTopic.conceptFlow.map((step, i) => {
+                      const StepIcon = step.icon;
+                      return (
+                        <React.Fragment key={i}>
+                          {i > 0 && <div className="flow-connector-line"></div>}
+                          <div className={`flow-step-card ${step.active ? 'active' : ''}`}>
+                            <div className="flow-step-icon-outer">
+                              <StepIcon size={18} style={{ color: '#ff5555' }} />
+                            </div>
+                            <h4>{step.title}</h4>
+                            <p>{step.sub}</p>
+                          </div>
+                        </React.Fragment>
+                      );
+                    })}
+                  </div>
+                )}
               </section>
 
               {/* Career Path & Blueprint */}

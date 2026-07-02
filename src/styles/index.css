@@ -5169,5 +5169,196 @@ body {
   }
 }
 
+/* OSINT Interactive Data Flow Diagram */
+.osint-data-flow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.osint-node {
+  background: rgba(20, 20, 25, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.osint-node h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.osint-node-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.1);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.osint-branches {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.osint-branch-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(255,85,85,0.5), rgba(255,85,85,0.1));
+}
+
+.osint-branch-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.osint-connector {
+  width: 2rem;
+  height: 2px;
+  background: rgba(255,85,85,0.3);
+  position: absolute;
+  left: -2rem;
+}
+
+.osint-leaf {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.osint-leaf:hover {
+  transform: translateX(5px);
+  border-color: rgba(255, 85, 85, 0.4);
+}
+
+.osint-leaf-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aaa;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.osint-leaf-result {
+  color: #fff;
+  font-size: 0.9rem;
+  padding-left: 22px;
+}
+
+.osint-funnel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40px;
+}
+
+.osint-vertical-line {
+  width: 2px;
+  height: 24px;
+  background: rgba(255,85,85,0.5);
+}
+
+.osint-arrow {
+  color: #ff5555;
+  margin-top: -2px;
+}
+
+.correlation-node {
+  border-color: rgba(255, 85, 85, 0.3);
+  box-shadow: 0 0 20px rgba(255, 85, 85, 0.1);
+}
+
+.spin-slow {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin { 
+  100% { transform: rotate(360deg); } 
+}
+
+.attack-map-node {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, rgba(30,20,20,0.9), rgba(20,15,15,0.95));
+  border: 1px solid rgba(255, 85, 85, 0.4);
+  width: 100%;
+  max-width: 500px;
+}
+
+.osint-node-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff5555;
+  margin-bottom: 1rem;
+}
+
+.osint-attack-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.osint-attack-list li {
+  font-size: 0.9rem;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.osint-bullet {
+  color: #ff5555;
+}
+
+.osint-attack-list strong {
+  color: #fff;
+  font-weight: 500;
+}
+
+.highlight-red {
+  color: #ff5555;
+  font-size: 0.8rem;
+  background: rgba(255, 85, 85, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
 
 
