@@ -4,7 +4,7 @@ import {
   Shield, Swords, Network, Terminal, Code2, Globe2, Crosshair,
   Target, Skull, Brain, Award, ArrowRight, ArrowLeft,
   Clock, Beaker, FolderGit2, ChevronDown, ChevronUp, Trophy,
-  ShieldAlert, ShieldCheck, Radar, ScanSearch, MonitorCheck, Eye
+  ShieldAlert, ShieldCheck, Radar, ScanSearch, MonitorCheck, Eye, BugOff
 } from 'lucide-react';
 import Header from './Header';
 
