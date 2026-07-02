@@ -698,8 +698,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
             <span className="breadcrumb-active">{activeTopic.num}</span>
           </nav>
 
-          {/* Grid Layout (Middle Content & Right Panel) */}
-          <div className="topic-content-grid">
+          {/* Grid Layout (Re-structured to single wide layout for readability) */}
+          <div className="topic-content-grid-single">
             {/* Middle Main Content */}
             <div className="topic-left-column">
               {/* Hero Section */}
@@ -736,6 +736,56 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     <img src={hackerImg} alt="Hacker Red Hoodie" />
                   </div>
                 </div>
+              </section>
+
+              {/* Quick Stats Horizontal Bar */}
+              <div className="quick-stats-horizontal-bar">
+                <div className="quick-stat-item-horizontal">
+                  <Clock size={16} />
+                  <div>
+                    <span>Estimated Time</span>
+                    <strong>{activeTopic.stats.time}</strong>
+                  </div>
+                </div>
+                <div className="quick-stat-item-horizontal">
+                  <TrendingUp size={16} />
+                  <div>
+                    <span>Difficulty Level</span>
+                    <strong>{activeTopic.stats.diff}</strong>
+                  </div>
+                </div>
+                <div className="quick-stat-item-horizontal">
+                  <Laptop size={16} />
+                  <div>
+                    <span>Prerequisites</span>
+                    <strong>{activeTopic.stats.prereq}</strong>
+                  </div>
+                </div>
+                <div className="quick-stat-item-horizontal" style={{ cursor: 'pointer' }} onClick={() => {
+                  if (TOPIC_DETAILS[activeTopic.stats.nextNum]) {
+                    setActiveRoadmapTopic(activeTopic.stats.nextNum);
+                  }
+                }}>
+                  <ArrowRight size={16} />
+                  <div>
+                    <span>Next Topic</span>
+                    <strong>{activeTopic.stats.next}</strong>
+                  </div>
+                </div>
+              </div>
+
+              {/* What You'll Learn (Now structured as a clean top-level section) */}
+              <section className="topic-section-block">
+                <h2 className="section-block-title">What You'll Learn</h2>
+                <div className="section-divider-red"></div>
+                <ul className="learn-checklist-grid">
+                  {activeTopic.learnList.map((item, idx) => (
+                    <li key={idx}>
+                      <CheckCircle size={16} className="check-icon" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </section>
 
               {/* What is Concept block */}
@@ -950,69 +1000,19 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                   ))}
                 </div>
               </section>
-            </div>
-
-            {/* Right Sidebar Panel */}
-            <div className="topic-right-column">
-              {/* What You'll Learn */}
-              <div className="right-panel-card">
-                <h3>What You'll Learn</h3>
-                <ul className="learn-checklist">
-                  {activeTopic.learnList.map((item, idx) => (
-                    <li key={idx}>
-                      <CheckCircle size={14} className="check-icon" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Ready to Start? */}
-              <div className="right-panel-card ready-start-card">
-                <h3>Ready to Start?</h3>
-                <p>{activeTopic.readyText}</p>
-                <button className="btn-ready-start">
-                  <span>Start Learning</span>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-
-              {/* Quick Stats */}
-              <div className="right-panel-card quick-stats-card">
-                <h3>Quick Stats</h3>
-                <div className="quick-stat-item">
-                  <Clock size={14} />
-                  <div>
-                    <span>Estimated Time</span>
-                    <strong>{activeTopic.stats.time}</strong>
+              {/* Ready to Start? Bottom Banner */}
+              <section className="topic-section-block ready-start-banner-bottom">
+                <div className="ready-start-banner-content">
+                  <div className="ready-start-banner-text">
+                    <h3>Ready to Start?</h3>
+                    <p>{activeTopic.readyText}</p>
                   </div>
+                  <button className="btn-ready-start">
+                    <span>Start Learning</span>
+                    <ArrowRight size={14} />
+                  </button>
                 </div>
-                <div className="quick-stat-item">
-                  <TrendingUp size={14} />
-                  <div>
-                    <span>Difficulty Level</span>
-                    <strong>{activeTopic.stats.diff}</strong>
-                  </div>
-                </div>
-                <div className="quick-stat-item">
-                  <Laptop size={14} />
-                  <div>
-                    <span>Prerequisites</span>
-                    <strong>{activeTopic.stats.prereq}</strong>
-                  </div>
-                </div>
-                <div className="quick-stat-item" style={{ cursor: 'pointer' }} onClick={() => {
-                  if (TOPIC_DETAILS[activeTopic.stats.nextNum]) {
-                    setActiveRoadmapTopic(activeTopic.stats.nextNum);
-                  }
-                }}>
-                  <ArrowRight size={14} />
-                  <div>
-                    <span>Next Topic</span>
-                    <strong>{activeTopic.stats.next}</strong>
-                  </div>
-                </div>
-              </div>
+              </section>
             </div>
           </div>
         </div>
