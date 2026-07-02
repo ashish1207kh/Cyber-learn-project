@@ -91,8 +91,93 @@ export const DEFENSIVE_TOPICS = {
       time: "20-30 Hours",
       diff: "Beginner to Intermediate",
       prereq: "Networking Basics, Linux Fundamentals",
-      next: "02. Cyber Security Fundamentals",
+      next: "02. Incident Response",
       nextNum: "02"
+    }
+  },
+  '02': {
+    num: '02',
+    title: 'Incident Response',
+    subtitle: 'The Elite SWAT Team of Cyber Security',
+    description: "If SIEM Monitoring is the security camera that spots a break-in, Incident Response (IR) is the elite SWAT team that rushes in to stop it. It is a structured process to manage the aftermath of a cyberattack, limit damage, and restore operations.",
+    badges: ["High Stakes", "Advanced Skill", "Elite Pay"],
+    metrics: [
+      { val: "6", lbl: "Phases (NIST)" },
+      { val: "24/7", lbl: "Operations" },
+      { val: "High", lbl: "Demand" },
+      { val: "4", lbl: "Certifications" },
+      { val: "5", lbl: "Job Roles" }
+    ],
+    conceptTitle: "What is Incident Response?",
+    conceptText: "Incident Response is a structured process that organizations use to handle and manage the aftermath of a cyberattack, data breach, or security incident. The main goal is to limit damage, contain the threat, erase the attacker's footprint, and restore normal business operations as quickly and securely as possible.",
+    conceptFlow: [
+      { title: "Identify", sub: "(Threat)", icon: ScanSearch },
+      { title: "Contain", sub: "(Isolate)", icon: Lock, active: true },
+      { title: "Eradicate", sub: "(Remove)", icon: ShieldAlert }
+    ],
+    blueprintDesc: "When a major ransomware attack or data breach hits a company, the Incident Response team takes full control. The scope spans a mix of technical panic-management and forensic deep-dives.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Incident Responder", "CSIRT Analyst", "Threat Hunter", "Incident Commander", "Cyber Forensic Investigator"]
+      },
+      {
+        icon: TrendingUp,
+        title: "Average Salary",
+        salary: "₹6.0 LPA - ₹10.0 LPA",
+        salarySub: "INR / year",
+        salaryRegion: "(Early Career)"
+      },
+      {
+        icon: Globe,
+        title: "Industries Hiring",
+        list: ["Large Enterprises", "Critical Infrastructure", "Government Agencies", "Defense Sectors", "IR Consulting Firms"]
+      },
+      {
+        icon: Activity,
+        title: "Is It Worth It?",
+        growthBadge: "Highly Worth It",
+        desc: "A high-stakes, fast-paced job. Working around the clock under intense pressure to save organizations from catastrophic failure."
+      }
+    ],
+    phasesTitle: "Step-by-Step Roadmap",
+    phasesDesc: "To transition into or start a career in Incident Response, focus on this path:",
+    phases: [
+      { num: '01', title: 'Deep Systems Architecture', desc: 'Learn Windows and Linux internals (processes, registry, file systems, and how malware hides in memory). Understand enterprise networking inside out.', label: 'Fundamentals' },
+      { num: '02', title: 'Learn Standard IR Frameworks', desc: 'Study the standard incident response lifecycles defined by NIST and SANS (Preparation, Identification, Containment, Eradication, Recovery, Lessons Learned).', label: 'Frameworks' },
+      { num: '03', title: 'Hands-on Containment', desc: 'Practice malware analysis basics. Learn how to use endpoint security and EDR tools like CrowdStrike Falcon, Carbon Black, or Wazuh.', label: 'Technical Skills' },
+      { num: '04', title: 'Certifications to Stand Out', desc: 'Acquire highly respected industry certifications like CySA+, GCIH, ECIH, or CHFI to validate your advanced skills.', label: 'Validation' }
+    ],
+    toolsTitle: "Essential IR Tools",
+    toolsDesc: "Master these essential tools used by professional Incident Response teams.",
+    tools: [
+      { name: 'CrowdStrike Falcon', cat: 'EDR', desc: 'Industry-leading endpoint detection and response platform used globally.' },
+      { name: 'Carbon Black', cat: 'EDR', desc: 'Cloud-native endpoint security for monitoring and mitigating threats.' },
+      { name: 'Wazuh', cat: 'Open Source', desc: 'Free, open-source security monitoring and incident response platform.' },
+      { name: 'Sysinternals', cat: 'System Analysis', desc: 'Suite of advanced Windows tools for hunting malware hiding in OS internals.' }
+    ],
+    certs: [
+      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst', desc: 'Validates skills in applying behavioral analytics to networks to combat threats.', diff: 'Mid-Level' },
+      { name: 'GCIH', full: 'GIAC Certified Incident Handler', desc: 'Highly respected in the industry, focusing on detecting, responding, and resolving incidents.', diff: 'Advanced' },
+      { name: 'ECIH', full: 'EC-Council Certified Incident Handler', desc: 'Comprehensive specialist-level program focusing on handling post-breach consequences.', diff: 'Advanced' },
+      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Detailed methodological approach to computer forensics and evidence analysis.', diff: 'Advanced' }
+    ],
+    learnList: [
+      "Windows and Linux internals (processes, registry, memory)",
+      "Enterprise networking models and protocols",
+      "NIST and SANS incident response lifecycles",
+      "Malware analysis basics (trojans, ransomware execution)",
+      "Using EDR tools like CrowdStrike Falcon, Carbon Black, Wazuh",
+      "Containing compromised networks and isolating servers"
+    ],
+    readyText: "Start building your foundation in operating system internals and network security.",
+    stats: {
+      time: "25-35 Hours",
+      diff: "Intermediate to Advanced",
+      prereq: "SIEM Monitoring, Linux/Windows Admin",
+      next: "03. Threat Intelligence",
+      nextNum: "03"
     }
   }
 };
