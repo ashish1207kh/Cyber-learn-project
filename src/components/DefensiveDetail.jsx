@@ -138,28 +138,6 @@ export default function DefensiveDetail({ onBack, onNavigate }) {
       <div className="defensive-dashboard">
         {/* 1. Left Sidebar */}
         <aside className="dashboard-sidebar">
-          <div className="sidebar-section">
-            <span className="sidebar-section-title">LEARNING PATHS</span>
-            <div className="sidebar-paths-list">
-              {sidebarPaths.map((path, idx) => {
-                const PathIcon = path.icon;
-                return (
-                  <div 
-                    key={idx} 
-                    className={`sidebar-path-item-blue ${path.active ? 'active' : ''}`} 
-                    onClick={() => {
-                      if (path.active) return;
-                      if (idx === 0) onNavigate('offensive-detail');
-                      else onNavigate('defensive-detail');
-                    }}
-                  >
-                    <PathIcon size={16} />
-                    <span>{path.name}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
 
           <div className="sidebar-menu-list">
             {sidebarMenu.map((item, idx) => {

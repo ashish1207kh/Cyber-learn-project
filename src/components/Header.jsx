@@ -22,8 +22,6 @@ export default function Header({ view = 'landing', onBack }) {
 
   const navItems = [
     { label: 'Home',      icon: Home,        href: '#home',      isBack: true },
-    { label: 'Courses',   icon: BookOpen,    href: '#courses' },
-    { label: 'Labs',      icon: FlaskConical,href: '#labs' },
     { label: 'Roadmaps',  icon: Map,         href: '#roadmaps' },
     { label: 'Tools',     icon: Wrench,      href: '#tools' },
     { label: 'Resources', icon: FileText,    href: '#resources' },
@@ -67,23 +65,7 @@ export default function Header({ view = 'landing', onBack }) {
 
       {/* Right Controls */}
       <div className="nav-controls">
-
-        {/* Search */}
-        <button className="nav-icon-btn" aria-label="Search"><Search size={16} /></button>
-
-
-
-        {/* Profile */}
-        <div className="profile-badge-card">
-          <div className="avatar-wrapper" style={{ borderColor: getThemeColor() }}>
-            <img src={avatarImg} alt="Avatar" className="profile-avatar-img" />
-          </div>
-          <div className="profile-text">
-            <span className="profile-name">Ashish N.</span>
-            <span className="profile-level">Level 12</span>
-          </div>
-          <ChevronDown size={14} style={{ marginLeft: '4px' }} />
-        </div>
+        {/* Search and Profile controls removed */}
       </div>
     </header>
   );
