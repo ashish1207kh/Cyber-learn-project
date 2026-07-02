@@ -57,6 +57,10 @@ function App() {
         transitionTo('offensive-detail');
       } else if (hash === '#defensive') {
         transitionTo('defensive-detail');
+      } else if (hash === '#offensive-roadmap') {
+        transitionTo('offensive-roadmap');
+      } else if (hash === '#defensive-roadmap') {
+        transitionTo('defensive-roadmap');
       } else if (hash.startsWith('#offensive-topic/')) {
         const topicId = hash.replace('#offensive-topic/', '');
         transitionTo('offensive-topic-detail', topicId);
@@ -80,6 +84,10 @@ function App() {
       window.location.hash = '#offensive';
     } else if (view === 'defensive-detail') {
       window.location.hash = '#defensive';
+    } else if (view === 'offensive-roadmap') {
+      window.location.hash = '#offensive-roadmap';
+    } else if (view === 'defensive-roadmap') {
+      window.location.hash = '#defensive-roadmap';
     } else if (view === 'offensive-topic-detail') {
       window.location.hash = `#offensive-topic/${topicId || selectedTopicId}`;
     }
