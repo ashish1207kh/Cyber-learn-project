@@ -200,6 +200,90 @@ const TOPIC_DETAILS = {
       next: "03. OSINT Reconnaissance",
       nextNum: "03"
     }
+  },
+  '03': {
+    num: '03',
+    title: 'OSINT Reconnaissance',
+    subtitle: 'Open Source Intelligence',
+    description: "In the real world, hackers and ethical pentesters spend up to 70% of their time here. You cannot attack a target effectively if you don't know what it owns, who works there, and what technologies they use.",
+    badges: ["Beginner to Intermediate", "Core Skill", "High Demand"],
+    metrics: [
+      { val: "70%", lbl: "Time Spent" },
+      { val: "4", lbl: "Quadrants" },
+      { val: "10+", lbl: "Tools Covered" },
+      { val: "5", lbl: "Real-world Scenarios" },
+      { val: "2", lbl: "Certifications Recommended" }
+    ],
+    conceptTitle: "What is OSINT Reconnaissance?",
+    conceptText: "Open Source Intelligence (OSINT) is the practice of legally collecting, analyzing, and correlating publicly available data to build a comprehensive blueprint of a target. This phase is completely passive, meaning the tester never interacts directly with the client's servers or systems.",
+    conceptFlow: [
+      { title: "Public Internet", sub: "(Data Discovery)", icon: Users },
+      { title: "OSINT Recon Correlation", sub: "(Analyze)", icon: Laptop, active: true },
+      { title: "Actionable Attack Map", sub: "(Weaponize)", icon: Shield }
+    ],
+    blueprintDesc: "OSINT is one of the fastest-growing sub-disciplines in cybersecurity, expanding far beyond just penetration testing.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Threat Intelligence Analyst", "OSINT Investigator", "Fraud Examiner", "Red Team Infrastructure Engineer"]
+      },
+      {
+        icon: TrendingUp,
+        title: "Average Entry Salary",
+        salary: "$75,000 - $110,000",
+        salarySub: "USD / year",
+        salaryRegion: "(varies by region)"
+      },
+      {
+        icon: FileText,
+        title: "What a Day Looks Like",
+        list: ["Tracking stolen corporate assets", "Identifying leaked source code", "Analyzing corporate data leaks", "Tracking malicious APT groups"]
+      },
+      {
+        icon: Activity,
+        title: "Career Growth",
+        growthBadge: "High Demand & Growth",
+        desc: "Excellent Career Prospects"
+      }
+    ],
+    phasesTitle: "The 4 Quadrants of Professional OSINT",
+    phasesDesc: "Break this topic down into four distinct technological vectors:",
+    phases: [
+      { num: '01', title: 'Advanced Google Dorking', desc: 'Pentesters use specialized syntax within public search engines to uncover hidden files, indexing errors, and sensitive data.', label: 'Search Operators' },
+      { num: '02', title: 'Infrastructure Mapping', desc: 'Finding out every server, subdomain, and IP address registered to a company using tools like Shodan.', label: 'Infrastructure' },
+      { num: '03', title: 'Corporate Profiling', desc: 'Gathering intelligence on human elements to feed directly into Social Engineering using LinkedIn and other tools.', label: 'Human Profiling' },
+      { num: '04', title: 'Metadata Analysis', desc: 'Analyzing hidden data in uploaded documents like author names, software versions, and internal file paths.', label: 'Hidden Clues' }
+    ],
+    toolsTitle: "Essential OSINT Tools (Top 5)",
+    toolsDesc: "Master these essential tools used for open source intelligence gathering.",
+    tools: [
+      { name: 'Google Dorks', cat: 'Search Engine', desc: 'Advanced search operators to uncover sensitive data.' },
+      { name: 'Shodan', cat: 'Device Search', desc: 'The search engine for internet-connected devices.' },
+      { name: 'Amass / Subfinder', cat: 'Infrastructure', desc: 'Tools for in-depth subdomain and infrastructure mapping.' },
+      { name: 'theHarvester', cat: 'Corporate Profiling', desc: 'Gathers emails, names, subdomains, IPs, and URLs.' },
+      { name: 'ExifTool', cat: 'Metadata Analysis', desc: 'Reads, writes, and edits meta information in files.' }
+    ],
+    certs: [
+      { name: 'OSINT-C', full: 'Certified OSINT Specialist', desc: 'A highly practical certification focusing entirely on modern intelligence-gathering techniques.', diff: 'Beginner' },
+      { name: 'SEC487', full: 'SANS Open-Source Intelligence', desc: 'The premier, gold-standard corporate training course for intelligence professionals.', diff: 'Advanced' }
+    ],
+    learnList: [
+      "Advanced search engine operators (Google Dorking)",
+      "Infrastructure mapping and subdomain enumeration",
+      "Corporate profiling and employee data gathering",
+      "Metadata analysis of public documents and images",
+      "Visualizing intelligence data flows",
+      "Converting raw data into actionable attack maps"
+    ],
+    readyText: "Begin your OSINT Reconnaissance journey and learn how to map out a target's entire digital footprint.",
+    stats: {
+      time: "20-25 Hours",
+      diff: "Beginner",
+      prereq: "Networking Basics, Research Skills",
+      next: "04. Exploitation Techniques",
+      nextNum: "04"
+    }
   }
 };
 
