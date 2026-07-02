@@ -5532,5 +5532,115 @@ body {
   }
 }
 
+/* Physical Security Timeline */
+.physical-timeline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.physical-timeline-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.physical-building-icon {
+  background: rgba(255, 85, 85, 0.15);
+  color: #ff5555;
+  padding: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 85, 85, 0.3);
+}
+
+.physical-timeline-header h4 {
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.physical-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px 0;
+}
+
+.physical-timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(255,85,85,0.6), rgba(255,255,255,0.1));
+}
+
+.physical-timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.physical-timeline-dot {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  background: #1e1e24;
+  border: 2px solid rgba(255,85,85,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff5555;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+}
+
+.physical-timeline-item.active .physical-timeline-dot,
+.physical-timeline-item:hover .physical-timeline-dot {
+  background: #ff5555;
+  color: #fff;
+  border-color: #ff5555;
+  box-shadow: 0 0 20px rgba(255,85,85,0.4);
+}
+
+.physical-timeline-content {
+  background: rgba(30, 30, 35, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  flex: 1;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.physical-timeline-item.active .physical-timeline-content,
+.physical-timeline-item:hover .physical-timeline-content {
+  border-color: rgba(255, 85, 85, 0.3);
+  transform: translateX(5px);
+}
+
+.physical-timeline-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.physical-timeline-desc {
+  color: #aaa;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
 
 

@@ -538,6 +538,86 @@ export const TOPIC_DETAILS = {
       next: "07. Physical Security Testing",
       nextNum: "07"
     }
+  },
+  '07': {
+    num: '07',
+    title: 'Physical Security Testing',
+    subtitle: 'Breaching the Perimeter',
+    description: "We step away from the keyboard and enter the real world. Many students forget that cybersecurity is entirely dependent on physical security. If an attacker can walk up to an internal server or plug a device into a wall outlet, all digital firewalls become irrelevant.",
+    badges: ["Specialized", "High Risk", "Real World"],
+    metrics: [
+      { val: "4", lbl: "Lifecycle Stages" },
+      { val: "3", lbl: "Bypass Tools" },
+      { val: "100%", lbl: "Physical Scope" },
+      { val: "3", lbl: "Infiltration Methods" },
+      { val: "1", lbl: "Core Certification" }
+    ],
+    conceptTitle: "Breaking the Physical Barrier",
+    conceptText: "Physical Security Testing is the authorized simulation of a real-world intruder attempting to breach an organization's physical facilities. The objective is to evaluate the strength of locks, access control systems, cameras, fences, and security guards.",
+    conceptFlow: [],
+    blueprintDesc: "Physical testing is a highly specialized skill set usually performed by senior Red Team members due to the high legal and safety risks involved.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Physical Security Consultant", "Corporate Risk Auditor", "Red Team Specialist", "Operations Security Officer"]
+      },
+      {
+        icon: TrendingUp,
+        title: "Risk & Impact",
+        salary: "Critical Level",
+        salarySub: "High Legal & Safety Risks",
+        salaryRegion: "(Requires 'Get Out of Jail Free' card)"
+      },
+      {
+        icon: FileText,
+        title: "What a Day Looks Like",
+        list: ["Scouting corporate buildings with binoculars", "Mapping camera angles", "Donning disguises (e.g., HVAC technician)", "Drafting emergency contact letters"]
+      },
+      {
+        icon: Activity,
+        title: "Career Growth",
+        growthBadge: "Niche & Elite",
+        desc: "Highly Specialized Field"
+      }
+    ],
+    phasesTitle: "The Physical Pentester's Toolkit",
+    phasesDesc: "Pentesters carry a specialized physical tactical bag filled with mechanical and electronic bypass tools:",
+    phases: [
+      { num: '01', title: 'RFID and Badge Cloners', desc: 'Standing close to an employee to wirelessly read badge frequencies, cloning them to blank cards to walk through the front door.', label: 'Electronic Bypass' },
+      { num: '02', title: 'Lock Picking', desc: 'Using tension wrenches and picks for opening traditional padlocks or file cabinets when digital systems can\'t be tricked.', label: 'Mechanical Bypass' },
+      { num: '03', title: 'Under-Door Tools (UDT)', desc: 'A long, flexible rod designed to slide under a door, reach up, and pull down the inside lever handle.', label: 'Door Bypass' },
+      { num: '04', title: 'Rogue Hardware (Drop Boxes)', desc: 'Plugging covert devices like a Hak5 Pineapple into internal network ports for permanent remote access.', label: 'Network Access' }
+    ],
+    toolsTitle: "Essential Physical Tools (Top 5)",
+    toolsDesc: "Master these specialized tools used for physical entry and network persistence.",
+    tools: [
+      { name: 'Flipper Zero / Proxmark3', cat: 'RFID Cloning', desc: 'Used for reading, writing, and emulating RFID/NFC proximity badges.' },
+      { name: 'Under-Door Tool (UDT)', cat: 'Mechanical Bypass', desc: 'Slips under doors to actuate the inner lever handle.' },
+      { name: 'Shims & Raking Tools', cat: 'Lock Bypass', desc: 'Designed to slide into latches to slip the locking mechanism open in seconds.' },
+      { name: 'Hak5 Pineapple', cat: 'Rogue Hardware', desc: 'A wireless auditing platform that can be deployed as a rogue access point.' },
+      { name: 'Raspberry Pi Drop Box', cat: 'Network Pivot', desc: 'A custom mini-computer left behind to establish a hidden cellular connection.' }
+    ],
+    certs: [
+      { name: 'PSP', full: 'Physical Security Professional', desc: 'A globally recognized corporate standard focusing on threat assessments and physical protection.', diff: 'Advanced' },
+      { name: 'TOOOL', full: 'Lockpickers Org', desc: 'Join local groups to learn the core mechanical principles of security safely and legally.', diff: 'Beginner' }
+    ],
+    learnList: [
+      "Conducting physical reconnaissance and mapping blind spots",
+      "Cloning RFID/NFC corporate badges wirelessly",
+      "Picking standard pin-tumbler locks and padlocks",
+      "Bypassing doors using Under-Door Tools (UDT) and shims",
+      "Deploying rogue network devices (drop boxes) for remote access",
+      "Social engineering guards and personnel via physical disguises"
+    ],
+    readyText: "Step away from the keyboard and learn how to evaluate and breach physical security perimeters.",
+    stats: {
+      time: "25-35 Hours",
+      diff: "Advanced",
+      prereq: "Red Teaming, Social Engineering",
+      next: "08. Web App Testing",
+      nextNum: "08"
+    }
   }
 };
 
@@ -568,7 +648,7 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
     { num: '04', name: 'Exploitation Techniques' },
     { num: '05', name: 'Post-Exploitation' },
     { num: '06', name: 'Red Teaming' },
-    { num: '07', name: 'Malware Development' },
+    { num: '07', name: 'Physical Security Testing' },
     { num: '08', name: 'Web App Testing' },
     { num: '09', name: 'Wireless Attacks' },
     { num: '10', name: 'Reporting & Documentation' }
@@ -860,6 +940,48 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         <li><span className="osint-bullet">•</span> <strong>Valid Corporate Email:</strong> j.doe@company.com</li>
                         <li><span className="osint-bullet">•</span> <strong>Technology Stack:</strong> Leaked Apache version 2.4.49</li>
                       </ul>
+                    </div>
+                  </div>
+                ) : activeTopic.num === '07' ? (
+                  <div className="physical-timeline-container">
+                    <div className="physical-timeline-header">
+                       <div className="physical-building-icon"><Target size={24} /></div>
+                       <h4>TARGET FACILITY</h4>
+                    </div>
+                    <div className="physical-timeline">
+                      <div className="physical-timeline-line"></div>
+                      
+                      <div className="physical-timeline-item">
+                        <div className="physical-timeline-dot"><Search size={14} /></div>
+                        <div className="physical-timeline-content">
+                          <div className="physical-timeline-title">1. Physical Reconnaissance</div>
+                          <div className="physical-timeline-desc">Mapping security guard schedules, cameras, and blind spots</div>
+                        </div>
+                      </div>
+                      
+                      <div className="physical-timeline-item">
+                        <div className="physical-timeline-dot"><Settings size={14} /></div>
+                        <div className="physical-timeline-content">
+                          <div className="physical-timeline-title">2. Bypass & Clone</div>
+                          <div className="physical-timeline-desc">Capturing badge frequencies or preparing lock-picking tools</div>
+                        </div>
+                      </div>
+
+                      <div className="physical-timeline-item active">
+                        <div className="physical-timeline-dot"><Users size={14} /></div>
+                        <div className="physical-timeline-content">
+                          <div className="physical-timeline-title">3. Infiltration (The Entry)</div>
+                          <div className="physical-timeline-desc">Tailgating an employee or bypassing a locked door</div>
+                        </div>
+                      </div>
+
+                      <div className="physical-timeline-item">
+                        <div className="physical-timeline-dot"><Activity size={14} /></div>
+                        <div className="physical-timeline-content">
+                          <div className="physical-timeline-title">4. Objective Execution</div>
+                          <div className="physical-timeline-desc">Dropping a rogue network device or finding sensitive papers</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ) : (
