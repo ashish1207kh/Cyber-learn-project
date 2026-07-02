@@ -14,6 +14,7 @@ import OffensiveTopicDetail from './components/OffensiveTopicDetail';
 function App() {
   const [currentView, setCurrentView] = useState('landing');
   const [hoveredSide, setHoveredSide] = useState('none');
+  const [selectedTopicId, setSelectedTopicId] = useState('01');
   const landingRef = useRef(null);
   const detailOffensiveRef = useRef(null);
   const detailDefensiveRef = useRef(null);
@@ -27,8 +28,11 @@ function App() {
     document.documentElement.setAttribute('data-theme', 'dark');
   }, []);
 
-  const handleNavigate = (view) => {
+  const handleNavigate = (view, topicId) => {
     setHoveredSide('none');
+    if (topicId) {
+      setSelectedTopicId(topicId);
+    }
     if (loaderRef.current) {
       // Trigger the door close transition, switch view at midpoint, and open doors
       loaderRef.current.triggerTransition(() => {
@@ -117,7 +121,7 @@ function App() {
       {/* ── OFFENSIVE TOPIC DETAIL ── */}
       {currentView === 'offensive-topic-detail' && (
         <div ref={detailTopicRef} className="dashboard-container">
-          <OffensiveTopicDetail onBack={() => handleNavigate('offensive-detail')} onNavigate={handleNavigate} />
+          <OffensiveTopicDetail topicId={selectedTopicId} onBack={() => handleNavigate('offensive-detail')} onNavigate={handleNavigate} />
         </div>
       )}
 
