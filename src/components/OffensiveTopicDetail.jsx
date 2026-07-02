@@ -24,7 +24,11 @@ import {
   TrendingUp,
   Terminal,
   Play,
-  Laptop
+  Laptop,
+  Globe,
+  Database,
+  Key,
+  Code
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -618,6 +622,83 @@ export const TOPIC_DETAILS = {
       next: "08. Web App Testing",
       nextNum: "08"
     }
+  },
+  '08': {
+    num: '08',
+    title: 'Web App Testing',
+    subtitle: 'Securing the Digital Storefront',
+    description: "We pivot back to digital infrastructure, focusing on the single most exposed attack surface any modern organization possesses: its web applications. Because websites are designed to be publicly accessible, they are targeted by attackers 24/7.",
+    badges: ["High Demand", "Bug Bounty", "Core Skill"],
+    metrics: [
+      { val: "Top 10", lbl: "OWASP Standard" },
+      { val: "3", lbl: "Critical Vectors" },
+      { val: "100%", lbl: "Public Exposure" },
+      { val: "2", lbl: "Key Frameworks" },
+      { val: "2", lbl: "Certifications" }
+    ],
+    conceptTitle: "Beyond the Network Perimeter",
+    conceptText: "While network pentesting looks at the servers and ports hosting an application, Web Application Testing focuses entirely on the code, logic, and data processing of the website itself. Even if a company has a multi-million dollar firewall, a simple programming flaw in a login form or a search bar can allow an attacker to bypass all network defenses and steal entire underlying databases.",
+    conceptFlow: [],
+    blueprintDesc: "Web application security is one of the most practical entry points into a high-paying cyber career, especially through crowdsourced security.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Application Security (AppSec) Engineer", "Web Penetration Tester", "Product Security Auditor", "Bug Bounty Hunter"]
+      },
+      {
+        icon: TrendingUp,
+        title: "The Bug Bounty Ecosystem",
+        salary: "Highly Lucrative",
+        salarySub: "Pay-per-Vulnerability",
+        salaryRegion: "(HackerOne, Bugcrowd)"
+      },
+      {
+        icon: FileText,
+        title: "What a Day Looks Like",
+        list: ["Reviewing application source code", "Mapping API endpoints", "Manually testing authentication workflows", "Implementing secure coding practices"]
+      },
+      {
+        icon: Activity,
+        title: "Career Growth",
+        growthBadge: "Uncapped Potential",
+        desc: "King of Bug Bounties"
+      }
+    ],
+    phasesTitle: "Deep Dive into the Top Vulnerabilities",
+    phasesDesc: "Break down how these common vulnerabilities operate under the hood:",
+    phases: [
+      { num: '01', title: 'SQL Injection (SQLi)', desc: 'Occurs when untrusted user input is directly concatenated into a backend database query instead of using parameterized inputs.', label: 'Database Flaw' },
+      { num: '02', title: 'Insecure Direct Object References (IDOR)', desc: 'A type of access control flaw where an application uses user-supplied input to access objects directly without verifying permissions.', label: 'Access Control' },
+      { num: '03', title: 'Cross-Site Scripting (XSS)', desc: 'The web application includes malicious, unvalidated JavaScript input within the web page delivered to a victim\'s browser.', label: 'Client-Side Flaw' }
+    ],
+    toolsTitle: "The Web Pentester's Toolkit",
+    toolsDesc: "A web pentester relies on a localized interception suite rather than network scanners:",
+    tools: [
+      { name: 'Burp Suite', cat: 'Interception Proxy', desc: 'The absolute standard. Sits between the tester\'s browser and the target web server to manipulate HTTP requests.' },
+      { name: 'OWASP ZAP', cat: 'Interception Proxy', desc: 'A free, open-source alternative to Burp Suite maintained by OWASP.' },
+      { name: 'Sqlmap', cat: 'Exploitation Tool', desc: 'Automates the process of detecting and exploiting SQL injection flaws and taking over database servers.' }
+    ],
+    certs: [
+      { name: 'OSWE', full: 'OffSec Wireless and Web Exploitation', desc: 'An elite, hands-on certification focusing on web application analysis and white-box code auditing.', diff: 'Advanced' },
+      { name: 'GWAPT', full: 'GIAC Web Application Penetration Tester', desc: 'A highly respected corporate certification validating a tester\'s ability to thoroughly audit web environments.', diff: 'Intermediate' }
+    ],
+    learnList: [
+      "Mastering the OWASP Top 10 web vulnerabilities",
+      "Intercepting and modifying HTTP traffic with Burp Suite",
+      "Exploiting SQL Injection (SQLi) to dump databases",
+      "Hunting for Insecure Direct Object References (IDOR)",
+      "Executing Stored and Reflected Cross-Site Scripting (XSS)",
+      "Participating in Bug Bounty programs (HackerOne, Bugcrowd)"
+    ],
+    readyText: "Pivot to the digital storefront and learn how to secure the most exposed attack surface.",
+    stats: {
+      time: "40-50 Hours",
+      diff: "Intermediate",
+      prereq: "Networking Basics, HTML/JS/SQL",
+      next: "09. Wireless Attacks",
+      nextNum: "09"
+    }
   }
 };
 
@@ -981,6 +1062,41 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                           <div className="physical-timeline-title">4. Objective Execution</div>
                           <div className="physical-timeline-desc">Dropping a rogue network device or finding sensitive papers</div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : activeTopic.num === '08' ? (
+                  <div className="webapp-exploit-tree">
+                    <div className="webapp-tree-root">
+                      <div className="webapp-root-icon"><Globe size={20} /></div>
+                      <h4>CRITICAL WEB EXPLOIT VECTORS</h4>
+                    </div>
+
+                    <div className="webapp-tree-branches">
+                      <div className="webapp-tree-stem"></div>
+                      <div className="webapp-tree-horizontal"></div>
+                      <div className="webapp-tree-drops">
+                        <div className="webapp-drop"></div>
+                        <div className="webapp-drop"></div>
+                        <div className="webapp-drop"></div>
+                      </div>
+                    </div>
+                    
+                    <div className="webapp-tree-leaves">
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Database size={18} /></div>
+                        <div className="webapp-leaf-title">Injection Flaws (SQLi)</div>
+                        <div className="webapp-leaf-desc">Tricking a database into dumping data via user input fields.</div>
+                      </div>
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Key size={18} /></div>
+                        <div className="webapp-leaf-title">Broken Access Control (IDOR)</div>
+                        <div className="webapp-leaf-desc">Accessing data or admin pages belonging to other users.</div>
+                      </div>
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Code size={18} /></div>
+                        <div className="webapp-leaf-title">Cross-Site Scripting (XSS)</div>
+                        <div className="webapp-leaf-desc">Injecting malicious scripts into trusted sites to target users.</div>
                       </div>
                     </div>
                   </div>
