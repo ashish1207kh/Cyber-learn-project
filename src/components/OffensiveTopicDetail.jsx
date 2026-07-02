@@ -28,7 +28,10 @@ import {
   Globe,
   Database,
   Key,
-  Code
+  Code,
+  Wifi,
+  Router,
+  Unlock
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -699,6 +702,82 @@ export const TOPIC_DETAILS = {
       next: "09. Wireless Attacks",
       nextNum: "09"
     }
+  },
+  '09': {
+    num: '09',
+    title: 'Wireless Attacks',
+    subtitle: 'Cracking the Airwaves',
+    description: "We look at how data travels without wires. Because wireless radio waves cannot be contained within the physical walls of a building, they represent a uniquely vulnerable target. Anyone sitting in a corporate parking lot with a high-gain antenna can attempt to intercept or manipulate the network.",
+    badges: ["Hardware", "RF Signals", "On-site"],
+    metrics: [
+      { val: "3", lbl: "Core Attack Vectors" },
+      { val: "100%", lbl: "Airwave Vulnerability" },
+      { val: "2", lbl: "Key Toolkits" },
+      { val: "1", lbl: "Specialized Hardware" },
+      { val: "1", lbl: "Core Certification" }
+    ],
+    conceptTitle: "Sneaking Over the Invisible Spectrum",
+    conceptText: "Wireless Testing and Attacks involve auditing, intercepting, and exploiting radio frequency (RF) communication protocols—most commonly Wi-Fi (802.11), Bluetooth, and cellular signals. The objective is to determine if an attacker can break wireless encryption, sniff unencrypted corporate traffic from a distance, or bypass network access control (NAC) policies.",
+    conceptFlow: [],
+    blueprintDesc: "Wireless security skills are critical for operations engineers, red teamers, and corporate auditors alike.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Wireless Security Auditor", "Telecommunications Consultant", "Red Team Physical Operator", "IoT Security Researcher"]
+      },
+      {
+        icon: TrendingUp,
+        title: "Risk & Impact",
+        salary: "Proximity Based",
+        salarySub: "High RF Exposure",
+        salaryRegion: "(Parking lot attacks)"
+      },
+      {
+        icon: FileText,
+        title: "What a Day Looks Like",
+        list: ["Conducting wireless site surveys", "Hunting for unauthorized rogue APs", "Testing Bluetooth Low Energy (BLE)", "Evaluating cellular security policies"]
+      },
+      {
+        icon: Activity,
+        title: "Career Growth",
+        growthBadge: "Highly Specialized",
+        desc: "Essential for Red Teams"
+      }
+    ],
+    phasesTitle: "Deep Dive into the Techniques",
+    phasesDesc: "Break down how these common vulnerabilities operate under the hood:",
+    phases: [
+      { num: '01', title: 'WPA2/WPA3 Handshake Capture', desc: 'Forcefully disconnecting an active user to capture the encrypted cryptographic handshake packets when they reconnect, then cracking it offline.', label: 'Brute-force' },
+      { num: '02', title: 'The Evil Twin Attack', desc: 'Broadcasting a fake network with the same name as the corporate guest network to perform Man-in-the-Middle (MitM) attacks.', label: 'MitM Attack' },
+      { num: '03', title: 'WPS (Wi-Fi Protected Setup) Exploitation', desc: 'Exploiting a structural flaw in the 8-digit WPS PIN protocol using automated brute-force tools to reveal the main password instantly.', label: 'Protocol Flaw' }
+    ],
+    toolsTitle: "The Wireless Pentester's Toolkit",
+    toolsDesc: "Wireless testing requires a mix of specialized software and hardware:",
+    tools: [
+      { name: 'Aircrack-ng Suite', cat: 'Software Suite', desc: 'The legendary command-line toolkit used for monitoring, injecting packets, and cracking keys.' },
+      { name: 'Hashcat', cat: 'Cracking Utility', desc: 'The world\'s fastest utility for cracking passwords, optimized to use GPU power.' },
+      { name: 'WiFi Pineapple', cat: 'Hardware Rogue AP', desc: 'A specialized dual-band hardware platform designed to automate Evil Twin setups.' }
+    ],
+    certs: [
+      { name: 'OSWP', full: 'OffSec Wireless Professional', desc: 'The premier practical wireless certification that forces students to conduct live attacks against WPA-protected networks.', diff: 'Intermediate' }
+    ],
+    learnList: [
+      "Auditing and exploiting 802.11 wireless protocols",
+      "Performing Deauthentication attacks to capture WPA handshakes",
+      "Using Hashcat to run dictionary attacks on captured handshakes",
+      "Deploying Evil Twin rogue access points for MitM attacks",
+      "Brute-forcing Wi-Fi Protected Setup (WPS) PINs",
+      "Hunting for rogue wireless devices inside corporate walls"
+    ],
+    readyText: "Grab your high-gain antenna and learn how to intercept and manipulate the invisible spectrum.",
+    stats: {
+      time: "20-30 Hours",
+      diff: "Intermediate",
+      prereq: "Networking Basics, Linux CLI",
+      next: "10. Malware Development",
+      nextNum: "10"
+    }
   }
 };
 
@@ -1097,6 +1176,41 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         <div className="webapp-leaf-icon"><Code size={18} /></div>
                         <div className="webapp-leaf-title">Cross-Site Scripting (XSS)</div>
                         <div className="webapp-leaf-desc">Injecting malicious scripts into trusted sites to target users.</div>
+                      </div>
+                    </div>
+                  </div>
+                ) : activeTopic.num === '09' ? (
+                  <div className="webapp-exploit-tree">
+                    <div className="webapp-tree-root">
+                      <div className="webapp-root-icon"><Wifi size={20} /></div>
+                      <h4>WIRELESS ATTACK VECTORS</h4>
+                    </div>
+
+                    <div className="webapp-tree-branches">
+                      <div className="webapp-tree-stem"></div>
+                      <div className="webapp-tree-horizontal"></div>
+                      <div className="webapp-tree-drops">
+                        <div className="webapp-drop"></div>
+                        <div className="webapp-drop"></div>
+                        <div className="webapp-drop"></div>
+                      </div>
+                    </div>
+                    
+                    <div className="webapp-tree-leaves">
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Unlock size={18} /></div>
+                        <div className="webapp-leaf-title">WPA Handshake Cracking</div>
+                        <div className="webapp-leaf-desc">Intercepting the key exchange packets to crack offline.</div>
+                      </div>
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Wifi size={18} /></div>
+                        <div className="webapp-leaf-title">Evil Twin / Rogue AP</div>
+                        <div className="webapp-leaf-desc">Broadcasting a fake network with the same name to trick users.</div>
+                      </div>
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Router size={18} /></div>
+                        <div className="webapp-leaf-title">Rogue Access Points</div>
+                        <div className="webapp-leaf-desc">Plugging unauthorized Wi-Fi routers directly into internal walls.</div>
                       </div>
                     </div>
                   </div>
