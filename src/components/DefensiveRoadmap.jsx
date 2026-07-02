@@ -10,34 +10,34 @@ import Header from './Header';
 
 const LEVELS = [
   {
-    num: 1, title: 'Cyber Security Fundamentals', icon: Shield, difficulty: 'Easy', hours: 10, labs: 12, projects: 2,
+    num: 1, title: 'SIEM Monitoring', icon: Radar, difficulty: 'Medium', hours: 20, labs: 16, projects: 4,
+    badge: 'SIEM Analyst',
+    topics: ['SIEM Concepts', 'Splunk', 'Microsoft Sentinel', 'ELK Stack', 'QRadar', 'Log Sources', 'Correlation Rules', 'Detection Rules', 'Dashboards', 'Alert Tuning'],
+    handsOn: ['Create SIEM Dashboard', 'Write Detection Rules']
+  },
+  {
+    num: 2, title: 'Cyber Security Fundamentals', icon: Shield, difficulty: 'Easy', hours: 10, labs: 12, projects: 2,
     badge: 'Cyber Defender',
     topics: ['CIA Triad', 'Risk Management', 'Cyber Threat Landscape', 'Security Principles', 'Malware Types', 'Security Controls', 'Authentication', 'Virtual Machines'],
     handsOn: ['Build Home Lab', 'Install Windows & Linux VM']
   },
   {
-    num: 2, title: 'Networking & Security Basics', icon: Network, difficulty: 'Easy', hours: 12, labs: 10, projects: 3,
+    num: 3, title: 'Networking & Security Basics', icon: Network, difficulty: 'Easy', hours: 12, labs: 10, projects: 3,
     badge: 'Network Defender',
     topics: ['TCP/IP', 'OSI Model', 'Routing', 'Switching', 'Firewalls', 'VPN', 'IDS', 'IPS', 'DNS', 'DHCP'],
     handsOn: ['Packet Analysis', 'Firewall Rules', 'Network Monitoring']
   },
   {
-    num: 3, title: 'Windows & Linux Administration', icon: Terminal, difficulty: 'Medium', hours: 16, labs: 14, projects: 3,
+    num: 4, title: 'Windows & Linux Administration', icon: Terminal, difficulty: 'Medium', hours: 16, labs: 14, projects: 3,
     badge: 'System Guardian',
     topics: ['Windows Administration', 'Linux Administration', 'PowerShell', 'Bash', 'Users & Groups', 'Permissions', 'Services', 'System Hardening', 'Active Directory Basics', 'Group Policies'],
     handsOn: ['Secure Windows', 'Secure Linux']
   },
   {
-    num: 4, title: 'Security Monitoring', icon: MonitorCheck, difficulty: 'Medium', hours: 18, labs: 15, projects: 3,
+    num: 5, title: 'Security Monitoring', icon: MonitorCheck, difficulty: 'Medium', hours: 18, labs: 15, projects: 3,
     badge: 'Security Monitor',
     topics: ['Security Monitoring', 'Event Collection', 'Security Alerts', 'Endpoint Monitoring', 'Threat Hunting Basics', 'Telemetry', 'EDR', 'XDR', 'SOC Workflow', 'Monitoring Strategies'],
     handsOn: ['Monitor Logs', 'Analyze Alerts']
-  },
-  {
-    num: 5, title: 'SIEM & Log Analysis', icon: Radar, difficulty: 'Medium', hours: 20, labs: 16, projects: 4,
-    badge: 'SIEM Analyst',
-    topics: ['SIEM Concepts', 'Splunk', 'Microsoft Sentinel', 'ELK Stack', 'QRadar', 'Log Sources', 'Correlation Rules', 'Detection Rules', 'Dashboards', 'Alert Tuning'],
-    handsOn: ['Create SIEM Dashboard', 'Write Detection Rules']
   },
   {
     num: 6, title: 'Threat Detection', icon: ScanSearch, difficulty: 'Hard', hours: 22, labs: 18, projects: 3,

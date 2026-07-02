@@ -27,8 +27,8 @@ import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
 
 const DEFENSIVE_TOPICS = {
-  '05': {
-    num: '05',
+  '01': {
+    num: '01',
     title: 'SIEM Monitoring',
     subtitle: 'Security Information and Event Management',
     description: "SIEM stands for Security Information and Event Management. Think of it as the central nervous system or the 24/7 security camera room of an organization's digital network.",
@@ -58,7 +58,7 @@ const DEFENSIVE_TOPICS = {
   }
 };
 
-export default function DefensiveTopicDetail({ topicId = '05', onBack, onNavigate }) {
+export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
   const [activeRoadmapTopic, setActiveRoadmapTopic] = React.useState(topicId);
 
   React.useEffect(() => {
@@ -75,11 +75,11 @@ export default function DefensiveTopicDetail({ topicId = '05', onBack, onNavigat
   ];
 
   const roadmapTopics = [
-    { num: '01', name: 'Cyber Security Fundamentals' },
-    { num: '02', name: 'Networking & Security Basics' },
-    { num: '03', name: 'Windows & Linux Administration' },
-    { num: '04', name: 'Security Monitoring' },
-    { num: '05', name: 'SIEM & Log Analysis' },
+    { num: '01', name: 'SIEM Monitoring' },
+    { num: '02', name: 'Cyber Security Fundamentals' },
+    { num: '03', name: 'Networking & Security Basics' },
+    { num: '04', name: 'Windows & Linux Administration' },
+    { num: '05', name: 'Security Monitoring' },
     { num: '06', name: 'Threat Detection' },
     { num: '07', name: 'Incident Response' },
     { num: '08', name: 'Digital Forensics' },
