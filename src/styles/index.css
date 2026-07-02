@@ -4436,31 +4436,39 @@ body {
 .blueprint-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 24px;
   margin-top: 24px;
 }
 
 .blueprint-card {
-  background: rgba(2, 5, 12, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(2, 5, 12, 0.95);
+  border: 1px solid rgba(255, 85, 85, 0.15);
   border-radius: 12px;
-  padding: 20px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.blueprint-card:hover {
+  border-color: rgba(255, 85, 85, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 85, 85, 0.08);
 }
 
 .blueprint-card-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .blueprint-card h4 {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 800;
   text-transform: uppercase;
-  color: #f1f5f9;
+  color: #ffffff;
   letter-spacing: 0.5px;
 }
 
@@ -4470,14 +4478,15 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .blueprint-card li {
-  font-size: 12.5px;
-  color: #cbd5e1;
+  font-size: 14.5px;
+  color: #f1f5f9;
   position: relative;
-  padding-left: 10px;
+  padding-left: 12px;
+  line-height: 1.5;
 }
 
 .blueprint-card li::before {
@@ -4488,22 +4497,23 @@ body {
 }
 
 .blueprint-salary-value {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 900;
-  color: #22c55e;
-  margin-top: 8px;
+  color: #4ade80;
+  margin-top: 12px;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.15);
 }
 
 .blueprint-salary-sub {
-  font-size: 12.5px;
+  font-size: 13.5px;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .blueprint-salary-region {
-  font-size: 10.5px;
-  color: #94a3b8;
-  margin-top: 4px;
+  font-size: 11px;
+  color: #cbd5e1;
+  margin-top: 6px;
 }
 
 .blueprint-growth-icon {
@@ -4515,43 +4525,53 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  color: #ff5555;
 }
 
 .growth-badge {
   font-size: 11px;
   font-weight: 700;
-  color: #22c55e;
-  background: rgba(34, 197, 94, 0.08);
-  border: 1px solid rgba(34, 197, 94, 0.25);
-  padding: 2px 8px;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  padding: 3px 10px;
   border-radius: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  display: inline-block;
+  align-self: flex-start;
 }
 
 .blueprint-card p {
-  font-size: 11.5px;
-  color: #94a3b8;
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.6;
 }
 
 /* The 5 Core Phases layout */
 .phases-flow-grid {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   margin-top: 24px;
 }
 
 .phase-node-card {
-  background: rgba(2, 5, 12, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(2, 5, 12, 0.95);
+  border: 1px solid rgba(255, 85, 85, 0.12);
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 24px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   position: relative;
+  transition: all 0.3s ease;
+}
+
+.phase-node-card:hover {
+  border-color: rgba(255, 85, 85, 0.35);
+  box-shadow: 0 4px 20px rgba(255, 85, 85, 0.05);
 }
 
 .phase-node-header {
@@ -4577,29 +4597,29 @@ body {
 }
 
 .phase-node-header h4 {
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
   color: #ffffff;
 }
 
 .phase-node-desc {
   flex: 1;
-  font-size: 13px;
-  color: #cbd5e1;
-  line-height: 1.5;
+  font-size: 15px;
+  color: #f1f5f9;
+  line-height: 1.7;
 }
 
 .phase-badge-tag {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   color: #ff5555;
-  background: rgba(255, 85, 85, 0.1);
+  background: rgba(255, 85, 85, 0.08);
   border: 1px solid rgba(255, 85, 85, 0.25);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
   text-align: center;
-  width: 140px;
+  width: 150px;
   flex-shrink: 0;
 }
 
@@ -4607,15 +4627,15 @@ body {
 .tools-grid-5 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  gap: 18px;
   margin-top: 24px;
 }
 
 .tool-card-v2 {
-  background: rgba(2, 5, 12, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(2, 5, 12, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 16px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4631,39 +4651,39 @@ body {
 }
 
 .tool-card-icon-v2 {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: rgba(255, 85, 85, 0.1);
   border: 1px solid rgba(255, 85, 85, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   color: #ff5555;
 }
 
 .tool-card-v2 h4 {
-  font-size: 13.5px;
+  font-size: 15px;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 4px;
 }
 
 .tool-card-cat {
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   color: #cbd5e1;
   letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .tool-card-desc-v2 {
-  font-size: 12px;
-  color: #cbd5e1;
-  line-height: 1.4;
-  margin-bottom: 14px;
+  font-size: 13.5px;
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-bottom: 16px;
   flex: 1;
 }
 
@@ -4691,17 +4711,23 @@ body {
 .recommended-certs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 20px;
   margin-top: 24px;
 }
 
 .recommended-cert-card-v2 {
-  background: rgba(2, 5, 12, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(2, 5, 12, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 20px;
+  padding: 26px;
   display: flex;
   gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.recommended-cert-card-v2:hover {
+  border-color: rgba(255, 85, 85, 0.25);
+  transform: translateY(-2px);
 }
 
 .cert-badge-icon-v2 {
@@ -4725,27 +4751,27 @@ body {
 }
 
 .recommended-cert-text h4 {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   color: #ffffff;
 }
 
 .recommended-cert-fullname {
-  font-size: 10.5px;
+  font-size: 11px;
   color: #cbd5e1;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .recommended-cert-text p {
-  font-size: 12.5px;
-  color: #cbd5e1;
-  line-height: 1.4;
-  margin-top: 6px;
+  font-size: 14px;
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-top: 8px;
 }
 
 .recommended-cert-difficulty {
-  font-size: 11.5px;
+  font-size: 12px;
   color: #ffffff;
   margin-top: 10px;
 }

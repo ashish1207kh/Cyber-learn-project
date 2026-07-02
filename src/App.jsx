@@ -28,18 +28,60 @@ function App() {
     document.documentElement.setAttribute('data-theme', 'dark');
   }, []);
 
+  useEffect(() => {
+    let isInitial = true;
+
+    const parseHash = () => {
+      const hash = window.location.hash;
+      setHoveredSide('none');
+      
+      const transitionTo = (view, topicId = '01') => {
+        if (topicId) {
+          setSelectedTopicId(topicId);
+        }
+        
+        if (isInitial) {
+          setCurrentView(view);
+        } else if (loaderRef.current) {
+          loaderRef.current.triggerTransition(() => {
+            setCurrentView(view);
+          });
+        } else {
+          setCurrentView(view);
+        }
+      };
+
+      if (!hash || hash === '#home') {
+        transitionTo('landing');
+      } else if (hash === '#offensive') {
+        transitionTo('offensive-detail');
+      } else if (hash === '#defensive') {
+        transitionTo('defensive-detail');
+      } else if (hash.startsWith('#offensive-topic/')) {
+        const topicId = hash.replace('#offensive-topic/', '');
+        transitionTo('offensive-topic-detail', topicId);
+      } else {
+        transitionTo('landing');
+      }
+      
+      isInitial = false;
+    };
+
+    parseHash();
+
+    window.addEventListener('hashchange', parseHash);
+    return () => window.removeEventListener('hashchange', parseHash);
+  }, []);
+
   const handleNavigate = (view, topicId) => {
-    setHoveredSide('none');
-    if (topicId) {
-      setSelectedTopicId(topicId);
-    }
-    if (loaderRef.current) {
-      // Trigger the door close transition, switch view at midpoint, and open doors
-      loaderRef.current.triggerTransition(() => {
-        setCurrentView(view);
-      });
-    } else {
-      setCurrentView(view);
+    if (view === 'landing') {
+      window.location.hash = '';
+    } else if (view === 'offensive-detail') {
+      window.location.hash = '#offensive';
+    } else if (view === 'defensive-detail') {
+      window.location.hash = '#defensive';
+    } else if (view === 'offensive-topic-detail') {
+      window.location.hash = `#offensive-topic/${topicId || selectedTopicId}`;
     }
   };
 
