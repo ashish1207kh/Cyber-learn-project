@@ -9,6 +9,7 @@ import DefensiveDetail from './components/DefensiveDetail';
 import OffensiveRoadmap from './components/OffensiveRoadmap';
 import DefensiveRoadmap from './components/DefensiveRoadmap';
 import LoaderCurtain from './components/LoaderCurtain';
+import OffensiveTopicDetail from './components/OffensiveTopicDetail';
 
 function App() {
   const [currentView, setCurrentView] = useState('landing');
@@ -18,6 +19,7 @@ function App() {
   const detailDefensiveRef = useRef(null);
   const detailRoadmapRef = useRef(null);
   const detailDefensiveRoadmapRef = useRef(null);
+  const detailTopicRef = useRef(null);
   const loaderRef = useRef(null);
 
   // Set default data-theme to dark globally
@@ -53,6 +55,8 @@ function App() {
       gsap.fromTo(detailRoadmapRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
     } else if (currentView === 'defensive-roadmap' && detailDefensiveRoadmapRef.current) {
       gsap.fromTo(detailDefensiveRoadmapRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    } else if (currentView === 'offensive-topic-detail' && detailTopicRef.current) {
+      gsap.fromTo(detailTopicRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
     }
   }, [currentView]);
 
@@ -107,6 +111,13 @@ function App() {
       {currentView === 'defensive-roadmap' && (
         <div ref={detailDefensiveRoadmapRef} className="dashboard-container">
           <DefensiveRoadmap onBack={() => handleNavigate('landing')} onNavigate={handleNavigate} />
+        </div>
+      )}
+
+      {/* ── OFFENSIVE TOPIC DETAIL ── */}
+      {currentView === 'offensive-topic-detail' && (
+        <div ref={detailTopicRef} className="dashboard-container">
+          <OffensiveTopicDetail onBack={() => handleNavigate('offensive-detail')} onNavigate={handleNavigate} />
         </div>
       )}
 

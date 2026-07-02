@@ -149,6 +149,10 @@ export default function OffensiveDetail({ onBack, onNavigate }) {
                   <div key={idx} className="topic-card"
                     onMouseMove={(e) => applyTiltEffect(e.currentTarget, e)}
                     onMouseLeave={(e) => removeTiltEffect(e.currentTarget)}
+                    onClick={() => {
+                      if (topic.num === '01') onNavigate('offensive-topic-detail');
+                    }}
+                    style={{ cursor: 'pointer' }}
                   >
                     <span className="topic-num">{topic.num}</span>
                     <div className="topic-card-icon-circle">
@@ -158,7 +162,10 @@ export default function OffensiveDetail({ onBack, onNavigate }) {
                       <h4 className="topic-card-title">{topic.title}</h4>
                       <p className="topic-card-desc">{topic.desc}</p>
                     </div>
-                    <button className="btn-topic-card">
+                    <button className="btn-topic-card" onClick={(e) => {
+                      e.stopPropagation();
+                      if (topic.num === '01') onNavigate('offensive-topic-detail');
+                    }}>
                       <span>Open Topic</span>
                       <ArrowRight size={12} />
                     </button>
