@@ -31,7 +31,10 @@ import {
   Code,
   Wifi,
   Router,
-  Unlock
+  Unlock,
+  Package,
+  Satellite,
+  TerminalSquare
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -778,6 +781,81 @@ export const TOPIC_DETAILS = {
       next: "10. Malware Development",
       nextNum: "10"
     }
+  },
+  '10': {
+    num: '10',
+    title: 'Malware Theory & Analysis',
+    subtitle: 'Understanding the Adversary',
+    description: "Concluding your website's offensive roadmap, Topic 10 introduces the theoretical mechanics of how malicious software operates. Studying these concepts is not about creating damage—it is about understanding the structural anatomy of code to help defensive engineers build better detection systems.",
+    badges: ["Reverse Engineering", "Advanced", "Theory"],
+    metrics: [
+      { val: "3", lbl: "Pipeline Stages" },
+      { val: "2", lbl: "Analysis Disciplines" },
+      { val: "100%", lbl: "Defensive Value" },
+      { val: "2", lbl: "Key Frameworks" },
+      { val: "1", lbl: "Architecture" }
+    ],
+    conceptTitle: "Defensive Through Understanding",
+    conceptText: "To effectively defend a network, security professionals must understand how malicious code interacts with an operating system's low-level architecture. Malware Analysis and Architecture Theory is the study of how software components execute uninvited actions, maintain persistence, and evade detection mechanisms within an environment.",
+    conceptFlow: [],
+    blueprintDesc: "Mastering the theory of software execution and binary reverse engineering opens up some of the most specialized and critical roles in the entire cybersecurity ecosystem.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Malware Analyst", "Reverse Engineer", "Threat Hunter", "Incident Response Handler"]
+      },
+      {
+        icon: TrendingUp,
+        title: "Risk & Impact",
+        salary: "Extremely High",
+        salarySub: "Global Threat Scope",
+        salaryRegion: "(APT Defense)"
+      },
+      {
+        icon: FileText,
+        title: "What a Day Looks Like",
+        list: ["Dissecting unknown software variants", "Writing YARA detection rules", "Documenting threat actor capabilities", "Reverse engineering binaries"]
+      },
+      {
+        icon: Activity,
+        title: "Career Growth",
+        growthBadge: "Elite Tier",
+        desc: "Signature Engineering"
+      }
+    ],
+    phasesTitle: "The Pillars of Malware Analysis",
+    phasesDesc: "When preparing students and professionals for careers in this advanced tier, the focus is typically split into two investigative disciplines:",
+    phases: [
+      { num: '01', title: 'Static Analysis', desc: 'Inspecting a file without actually executing it. Calculating hashes, extracting text strings, and analyzing file headers.', label: 'Code at Rest' },
+      { num: '02', title: 'Dynamic Analysis', desc: 'Executing the software inside a heavily isolated, monitored environment called a Sandbox. Monitoring live processes and registry changes.', label: 'Code in Motion' }
+    ],
+    toolsTitle: "Recommended Educational Focus",
+    toolsDesc: "Advise your students to study x86/x64 assembly and operating system internals.",
+    tools: [
+      { name: 'Assembly Language', cat: 'Architecture', desc: 'Study x86/x64 assembly to truly understand how software interacts directly with computer hardware.' },
+      { name: 'OS Internals', cat: 'System', desc: 'Understand the Windows API or Linux kernel structures for deep analysis.' },
+      { name: 'MITRE ATT&CK', cat: 'Framework', desc: 'Categorizes real-world adversary behaviors and techniques for mapping software patterns structurally.' }
+    ],
+    certs: [
+      { name: 'GREM', full: 'GIAC Reverse Engineering Malware', desc: 'The industry standard for malware analysis and reverse engineering.', diff: 'Expert' }
+    ],
+    learnList: [
+      "Calculating file hashes (MD5/SHA256) for static analysis",
+      "Extracting readable text strings hidden inside binaries",
+      "Analyzing file headers for target OS libraries",
+      "Executing software in isolated sandbox environments",
+      "Monitoring live process creation and registry modifications",
+      "Writing custom YARA signatures to detect threats"
+    ],
+    readyText: "Congratulations on completing the Offensive Roadmap! You now understand the adversary's playbook from the outside in.",
+    stats: {
+      time: "40-60 Hours",
+      diff: "Expert",
+      prereq: "Assembly, OS Internals, C/C++",
+      next: "Roadmap Complete",
+      nextNum: null
+    }
   }
 };
 
@@ -811,7 +889,7 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
     { num: '07', name: 'Physical Security Testing' },
     { num: '08', name: 'Web App Testing' },
     { num: '09', name: 'Wireless Attacks' },
-    { num: '10', name: 'Reporting & Documentation' }
+    { num: '10', name: 'Malware Theory & Analysis' }
   ];
 
   return (
@@ -1211,6 +1289,41 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         <div className="webapp-leaf-icon"><Router size={18} /></div>
                         <div className="webapp-leaf-title">Rogue Access Points</div>
                         <div className="webapp-leaf-desc">Plugging unauthorized Wi-Fi routers directly into internal walls.</div>
+                      </div>
+                    </div>
+                  </div>
+                ) : activeTopic.num === '10' ? (
+                  <div className="webapp-exploit-tree">
+                    <div className="webapp-tree-root">
+                      <div className="webapp-root-icon"><TerminalSquare size={20} /></div>
+                      <h4>THEORETICAL SOFTWARE PIPELINE</h4>
+                    </div>
+
+                    <div className="webapp-tree-branches">
+                      <div className="webapp-tree-stem"></div>
+                      <div className="webapp-tree-horizontal"></div>
+                      <div className="webapp-tree-drops">
+                        <div className="webapp-drop"></div>
+                        <div className="webapp-drop"></div>
+                        <div className="webapp-drop"></div>
+                      </div>
+                    </div>
+                    
+                    <div className="webapp-tree-leaves">
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Package size={18} /></div>
+                        <div className="webapp-leaf-title">Crypter / Packer</div>
+                        <div className="webapp-leaf-desc">Compresses or encrypts the main executable to mask the signature.</div>
+                      </div>
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Beaker size={18} /></div>
+                        <div className="webapp-leaf-title">Loader / Dropper</div>
+                        <div className="webapp-leaf-desc">Executes inside volatile memory (RAM) to set up the environment.</div>
+                      </div>
+                      <div className="webapp-leaf">
+                        <div className="webapp-leaf-icon"><Satellite size={18} /></div>
+                        <div className="webapp-leaf-title">Command & Control</div>
+                        <div className="webapp-leaf-desc">Establishes a hidden beacon to receive basic operational instructions.</div>
                       </div>
                     </div>
                   </div>
