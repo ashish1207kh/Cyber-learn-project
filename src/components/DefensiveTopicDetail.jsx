@@ -4,7 +4,7 @@ import {
   Settings, ArrowRight, ArrowLeft, ArrowDown, Search, Users, Target, 
   ChevronDown, ChevronUp, Clock, Beaker, FolderGit2, CheckCircle, 
   TrendingUp, Terminal, Play, Laptop, Globe, Database, Key, Code, 
-  Wifi, Router, Unlock, Package, Satellite, TerminalSquare, Server, Radar, ShieldCheck, MonitorCheck, Eye, ShieldAlert, Lock
+  Wifi, Router, Unlock, Package, Satellite, TerminalSquare, Server, Radar, ShieldCheck, MonitorCheck, Eye, ShieldAlert, Lock, ScanSearch
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
