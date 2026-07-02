@@ -131,81 +131,166 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
       <Header view="defensive" onBack={onBack} />
 
       <div className="offensive-dashboard">
-        <aside className="dashboard-sidebar">
+        <aside className="dashboard-sidebar topic-sidebar">
+          {/* Learning Paths */}
           <div className="sidebar-section">
             <span className="sidebar-section-title">LEARNING PATHS</span>
-            <div className="sidebar-paths-list">
-              {sidebarPaths.map(path => (
+            <div className="sidebar-paths-list flex-column-gap">
+              {sidebarPaths.map((path, idx) => {
+                const PathIcon = path.icon;
+                return (
+                  <div 
+                    key={idx} 
+                    className={`sidebar-path-item ${path.active ? 'active' : ''}`}
+                    onClick={() => {
+                      if (path.name === 'Defensive Security') onNavigate('defensive-detail');
+                      else if (path.name === 'Offensive Security') onNavigate('offensive-detail');
+                    }}
+                  >
+                    <PathIcon size={14} />
+                    <span>{path.name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Defensive Roadmap */}
+          <div className="sidebar-section" style={{ marginTop: '20px' }}>
+            <span className="sidebar-section-title">DEFENSIVE ROADMAP</span>
+            <div className="sidebar-menu-list">
+              {roadmapTopics.map((topic, idx) => (
                 <div 
-                  key={path.name} 
-                  className={`sidebar-path-item ${path.active ? 'active' : ''}`}
-                  onClick={() => path.id && onNavigate(path.id)}
-                  style={{ cursor: path.id ? 'pointer' : 'default' }}
+                  key={idx} 
+                  className={`sidebar-menu-item roadmap-item-btn ${activeRoadmapTopic === topic.num ? 'active' : ''}`}
+                  onClick={() => {
+                    if (DEFENSIVE_TOPICS[topic.num]) {
+                      setActiveRoadmapTopic(topic.num);
+                    }
+                  }}
                 >
-                  <path.icon size={16} /><span>{path.name}</span>
+                  <span className="roadmap-num-badge">{topic.num}</span>
+                  <span>{topic.name}</span>
                 </div>
               ))}
             </div>
           </div>
-
-          <div className="sidebar-section">
-            <span className="sidebar-section-title">ROADMAP MODULES</span>
-            <div className="sidebar-modules-list">
-              {roadmapTopics.map(topic => (
-                <div 
-                  key={topic.num} 
-                  className={`sidebar-module-item ${activeRoadmapTopic === topic.num ? 'active' : ''}`}
-                  onClick={() => onNavigate('defensive-topic-detail', topic.num)}
-                >
-                  <span className="module-num">{topic.num}</span>
-                  <span className="module-name">{topic.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </aside>
-
-        <div className="dashboard-main-wrapper">
-          <nav className="dashboard-breadcrumbs">
-            <span className="breadcrumb-link" onClick={() => onNavigate('defensive-detail')}>Defensive Security</span>
-            <span className="breadcrumb-separator">&gt;</span>
-            <span className="breadcrumb-link" onClick={() => onNavigate('defensive-roadmap')}>Learning Roadmap</span>
-            <span className="breadcrumb-separator">&gt;</span>
-            <span className="breadcrumb-active">{activeTopic.title}</span>
-          </nav>
-
-          <div className="topic-main-area">
-            <div className="topic-header-card">
-              <div className="topic-header-bg-image" style={{ backgroundImage: `url(${hackerImg})`, filter: 'hue-rotate(180deg)' }}></div>
-              <div className="topic-header-content">
-                <div className="topic-header-badge">Module {activeTopic.num}</div>
-                <h1>{activeTopic.title}</h1>
-                <h3>{activeTopic.subtitle}</h3>
-                <p>{activeTopic.description}</p>
-                <div className="topic-badges">
-                  {activeTopic.badges.map(b => (
-                    <span key={b} className="topic-pill"><ShieldCheck size={12}/> {b}</span>
-                  ))}
+          
+          <div className="sidebar-progress-card topic-sidebar-progress" style={{ marginTop: '20px' }}>
+            <span className="sidebar-section-title" style={{ paddingLeft: 0, marginBottom: '10px', display: 'block' }}>YOUR PROGRESS</span>
+            <div className="progress-dial-container">
+              <div className="progress-dial-outer">
+                <svg className="progress-dial-svg" viewBox="0 0 100 100">
+                  <circle className="progress-dial-bg" cx="50" cy="50" r="40" />
+                  <circle className="progress-dial-fill" cx="50" cy="50" r="40" style={{ strokeDashoffset: '220.96' }} />
+                </svg>
+                <div className="progress-dial-value">
+                  <span className="dial-percent">10%</span>
+                  <span className="dial-label">Overall Completion</span>
                 </div>
               </div>
             </div>
+            <div className="progress-stats-mini">
+              <div>Completed: <strong>1 / 10</strong></div>
+              <div>Current Topic: <strong>{activeTopic.title}</strong></div>
+            </div>
+            <button className="btn-sidebar-progress btn-continue-learning" style={{ width: '100%', marginTop: '14px' }}>
+              <span>Continue Learning</span>
+              <ArrowRight size={12} />
+            </button>
+          </div>
+        </aside>
 
-            <div className="topic-details-grid">
-              <section className="topic-section-block">
-                <div className="metrics-row">
-                  {activeTopic.metrics.map((m, idx) => (
-                    <div key={idx} className="metric-box">
-                      <span className="metric-val">{m.val}</span>
-                      <span className="metric-lbl">{m.lbl}</span>
+        {/* 2. Main Content Panel */}
+        <div className="dashboard-main-wrapper topic-main-layout">
+          {/* Breadcrumbs */}
+          <nav className="dashboard-breadcrumbs">
+            <span className="breadcrumb-link" onClick={() => onNavigate('landing')}>Roadmaps</span>
+            <span className="breadcrumb-separator">&gt;</span>
+            <span className="breadcrumb-link" onClick={() => onNavigate('defensive-detail')}>Defensive Security</span>
+            <span className="breadcrumb-separator">&gt;</span>
+            <span className="breadcrumb-active">{activeTopic.num}</span>
+          </nav>
+
+          <div className="topic-content-grid-single">
+            <div className="topic-left-column">
+              {/* Hero Section */}
+              <section className="topic-hero-banner">
+                <div className="topic-hero-left">
+                  <div className="topic-badge-header">
+                    <span className="topic-badge-number">{activeTopic.num}</span>
+                    <div>
+                      <h1 className="topic-main-title">{activeTopic.title}</h1>
+                      <h3 className="topic-sub-title">{activeTopic.subtitle}</h3>
                     </div>
-                  ))}
+                  </div>
+                  <p className="topic-hero-description">
+                    {activeTopic.description}
+                  </p>
+                  <div className="topic-badge-row">
+                    {activeTopic.badges.map((b, i) => (
+                      <span key={i} className="hero-pill-badge">{b}</span>
+                    ))}
+                  </div>
+
+                  {/* Core Metrics Row */}
+                  <div className="topic-metrics-grid">
+                    {activeTopic.metrics.map((m, i) => (
+                      <div key={i} className="metric-box">
+                        <span className="metric-val">{m.val}</span>
+                        <span className="metric-lbl">{m.lbl}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="topic-hero-right-img">
+                  <div className="hacker-hero-img-container" style={{ filter: 'hue-rotate(180deg)', boxShadow: '0 0 40px rgba(6, 182, 212, 0.4)' }}>
+                    <img src={hackerImg} alt="Blue Team Defender" />
+                  </div>
                 </div>
               </section>
 
+              {/* Quick Stats Horizontal Bar */}
+              <div className="quick-stats-horizontal-bar">
+                <div className="quick-stat-item-horizontal">
+                  <Clock size={16} />
+                  <div>
+                    <span>Estimated Time</span>
+                    <strong>{activeTopic.stats.time}</strong>
+                  </div>
+                </div>
+                <div className="quick-stat-item-horizontal">
+                  <TrendingUp size={16} />
+                  <div>
+                    <span>Difficulty Level</span>
+                    <strong>{activeTopic.stats.diff}</strong>
+                  </div>
+                </div>
+                <div className="quick-stat-item-horizontal">
+                  <Laptop size={16} />
+                  <div>
+                    <span>Prerequisites</span>
+                    <strong>{activeTopic.stats.prereq}</strong>
+                  </div>
+                </div>
+                <div className="quick-stat-item-horizontal" style={{ cursor: 'pointer' }} onClick={() => {
+                  if (DEFENSIVE_TOPICS[activeTopic.stats.nextNum]) {
+                    setActiveRoadmapTopic(activeTopic.stats.nextNum);
+                  }
+                }}>
+                  <ArrowRight size={16} />
+                  <div>
+                    <span>Next Topic</span>
+                    <strong>{activeTopic.stats.next}</strong>
+                  </div>
+                </div>
+              </div>
+
+              {/* What You'll Learn */}
               <section className="topic-section-block">
-                <h2 className="section-block-title">What You Will Learn</h2>
+                <h2 className="section-block-title">What You'll Learn</h2>
                 <div className="section-divider-red"></div>
-                <ul className="learning-checklist">
+                <ul className="learn-checklist-grid">
                   {activeTopic.learnList.map((item, idx) => (
                     <li key={idx}>
                       <CheckCircle size={16} className="check-icon" />
@@ -215,6 +300,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </ul>
               </section>
 
+              {/* What is Concept block */}
               <section className="topic-section-block">
                 <h2 className="section-block-title">{activeTopic.conceptTitle}</h2>
                 <div className="section-divider-red"></div>
@@ -230,7 +316,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         {i > 0 && <div className="flow-connector-line"></div>}
                         <div className={`flow-step-card ${step.active ? 'active' : ''}`}>
                           <div className="flow-step-icon-outer">
-                            <StepIcon size={18} />
+                            <StepIcon size={18} style={{ color: 'var(--theme-accent, #ff5555)' }} />
                           </div>
                           <h4>{step.title}</h4>
                           <p>{step.sub}</p>
@@ -241,6 +327,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </section>
 
+              {/* Career Path & Blueprint */}
               <section className="topic-section-block">
                 <h2 className="section-block-title">Career Path & Blueprint</h2>
                 <div className="section-divider-red"></div>
@@ -253,7 +340,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     return (
                       <div key={i} className={`blueprint-card ${card.salary ? '' : 'flex-center-column'}`}>
                         <div className="blueprint-card-header">
-                          <CardIcon size={16} />
+                          <CardIcon size={16} style={{ color: 'var(--theme-accent, #ff5555)' }} />
                           <h4>{card.title}</h4>
                         </div>
                         {card.list && (
@@ -273,7 +360,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         {card.growthBadge && (
                           <>
                             <div className="blueprint-growth-icon">
-                              <Activity size={24} />
+                              <Activity size={24} style={{ color: 'var(--theme-accent, #ff5555)' }} />
                             </div>
                             <div className="growth-badge">{card.growthBadge}</div>
                             <p>{card.desc}</p>
@@ -285,6 +372,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </section>
 
+              {/* The Core Phases / Vectors */}
               <section className="topic-section-block">
                 <h2 className="section-block-title">{activeTopic.phasesTitle}</h2>
                 <div className="section-divider-red"></div>
@@ -305,6 +393,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </section>
 
+              {/* Essential Testing Tools */}
               <section className="topic-section-block">
                 <h2 className="section-block-title">{activeTopic.toolsTitle}</h2>
                 <div className="section-divider-red"></div>
@@ -329,6 +418,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </section>
 
+              {/* Recommended Certifications */}
               <section className="topic-section-block">
                 <h2 className="section-block-title">Recommended Certifications</h2>
                 <div className="section-divider-red"></div>

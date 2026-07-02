@@ -5790,6 +5790,40 @@ body {
   color: var(--theme-accent);
 }
 
+.defensive-theme .topic-badge-number {
+  border-color: rgba(6, 182, 212, 0.4);
+  color: var(--theme-accent);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.defensive-theme .hero-pill-badge {
+  border-color: rgba(6, 182, 212, 0.4);
+  color: var(--theme-accent);
+  background: rgba(6, 182, 212, 0.05);
+}
+
+.defensive-theme .metric-val {
+  color: var(--theme-accent);
+}
+
+.defensive-theme .roadmap-num-badge {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--theme-accent);
+  border-color: rgba(6, 182, 212, 0.2);
+}
+
+.defensive-theme .roadmap-item-btn.active {
+  border-left-color: var(--theme-accent);
+  background: rgba(6, 182, 212, 0.05);
+}
+.defensive-theme .roadmap-item-btn.active .roadmap-num-badge {
+  background: var(--theme-accent);
+  color: #0f172a;
+}
+.defensive-theme .roadmap-item-btn:hover {
+  background: rgba(6, 182, 212, 0.02);
+}
+
 .defensive-theme .sidebar-section-title {
   color: var(--theme-accent);
   border-bottom-color: rgba(6, 182, 212, 0.2);
@@ -5801,29 +5835,6 @@ body {
 }
 
 .defensive-theme .sidebar-path-item.active svg {
-  color: var(--theme-accent);
-}
-
-.defensive-theme .sidebar-module-item.active {
-  border-left-color: var(--theme-accent);
-  background: rgba(6, 182, 212, 0.05);
-}
-
-.defensive-theme .sidebar-module-item.active .module-num {
-  color: var(--theme-accent);
-}
-
-.defensive-theme .topic-header-badge {
-  color: var(--theme-accent);
-  background: rgba(6, 182, 212, 0.1);
-  border-color: rgba(6, 182, 212, 0.2);
-}
-
-.defensive-theme .topic-pill svg {
-  color: var(--theme-accent);
-}
-
-.defensive-theme .metric-val {
   color: var(--theme-accent);
 }
 
