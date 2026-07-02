@@ -368,6 +368,90 @@ const TOPIC_DETAILS = {
       next: "05. Post-Exploitation Techniques",
       nextNum: "05"
     }
+  },
+  '05': {
+    num: '05',
+    title: 'Post-Exploitation Techniques',
+    subtitle: 'Deepening the Breach',
+    description: "This phase answers the ultimate question after an exploit succeeds: 'I have an initial foothold on a single low-level account... now what?' It is the transition from a single compromised machine to an entire compromised corporate infrastructure.",
+    badges: ["Advanced", "Core Skill", "High Impact"],
+    metrics: [
+      { val: "3", lbl: "Strategic Objectives" },
+      { val: "3", lbl: "Core Tactics" },
+      { val: "10+", lbl: "Tools Covered" },
+      { val: "5", lbl: "Real-world Scenarios" },
+      { val: "2", lbl: "Certifications Recommended" }
+    ],
+    conceptTitle: "The Art of Survival and Expansion",
+    conceptText: "Post-Exploitation is the phase where an authorized tester evaluates what assets can be controlled, what sensitive data can be accessed, and how well they can navigate the internal network without being caught.",
+    conceptFlow: [
+      { title: "Persistence", sub: "(Survive)", icon: Activity },
+      { title: "Privilege Escalation", sub: "(Elevate)", icon: Shield, active: true },
+      { title: "Lateral Movement", sub: "(Expand)", icon: Target }
+    ],
+    blueprintDesc: "Post-exploitation skills separate basic script-kiddies from high-tier enterprise security consultants.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Senior Penetration Tester", "Active Directory Security Expert", "Red Team Consultant", "Incident Responder"]
+      },
+      {
+        icon: TrendingUp,
+        title: "Average Entry Salary",
+        salary: "$100,000 - $140,000",
+        salarySub: "USD / year",
+        salaryRegion: "(varies by region)"
+      },
+      {
+        icon: FileText,
+        title: "What a Day Looks Like",
+        list: ["Analyzing Active Directory domain trusts", "Creating stealthy persistence mechanisms", "Bypassing EDR agents", "Simulating APT playbooks"]
+      },
+      {
+        icon: Activity,
+        title: "Career Growth",
+        growthBadge: "High Demand & Growth",
+        desc: "Excellent Career Prospects"
+      }
+    ],
+    phasesTitle: "Core Post-Exploitation Tactics",
+    phasesDesc: "Detail these exact technical maneuvers that professional pentesters practice daily:",
+    phases: [
+      { num: '01', title: 'Privilege Escalation', desc: 'Hunting for misconfigured services, vulnerable drivers, or weak permissions to elevate from a standard user to SYSTEM or root.', label: 'Vertical Movement' },
+      { num: '02', title: 'Pillaging (Data Gathering)', desc: 'Extracting database connection strings, passwords from memory (Mimikatz), and sensitive internal architecture documents.', label: 'Data Exfiltration' },
+      { num: '03', title: 'Lateral Movement', desc: 'Using the compromised machine as a proxy to scan and attack hidden internal networks (e.g., HR or financial networks).', label: 'Horizontal Movement' },
+      { num: '04', title: 'Active Directory (AD)', desc: '90% of corporate enterprises run on AD. Mastering Kerberos attacks and group policy manipulations is crucial.', label: 'Enterprise Target' }
+    ],
+    toolsTitle: "Essential Testing Tools (Top 5)",
+    toolsDesc: "Master these essential tools used for deep post-exploitation and AD attacks.",
+    tools: [
+      { name: 'Mimikatz', cat: 'Credential Extraction', desc: 'Extracts plaintexts passwords, hash, PIN code and kerberos tickets from memory.' },
+      { name: 'BloodHound', cat: 'AD Analysis', desc: 'Uses graph theory to reveal hidden relationships within Active Directory environments.' },
+      { name: 'Cobalt Strike', cat: 'C2 Framework', desc: 'Adversary simulation software used for long-term post-exploitation.' },
+      { name: 'Chisel', cat: 'Pivoting', desc: 'A fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Useful for lateral movement.' },
+      { name: 'PowerSploit', cat: 'PowerShell Modules', desc: 'Collection of Microsoft PowerShell modules for use during post-exploitation phases.' }
+    ],
+    certs: [
+      { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'Rigorous testing on internal domain post-exploitation environments and Cobalt Strike.', diff: 'Advanced' },
+      { name: 'OSCP', full: 'OffSec Certified Professional', desc: 'Provides rigorous testing on internal network compromise and privilege escalation.', diff: 'Advanced' }
+    ],
+    learnList: [
+      "Windows and Linux privilege escalation techniques",
+      "Credential dumping from memory (Mimikatz)",
+      "Lateral movement and internal network pivoting",
+      "Active Directory architecture and Kerberos attacks",
+      "Stealthy persistence mechanisms and backdoors",
+      "Bypassing Endpoint Detection & Response (EDR)"
+    ],
+    readyText: "Begin your Post-Exploitation journey and learn how to navigate and control enterprise networks.",
+    stats: {
+      time: "35-45 Hours",
+      diff: "Advanced",
+      prereq: "Exploitation Techniques, AD Basics",
+      next: "06. Red Teaming",
+      nextNum: "06"
+    }
   }
 };
 
