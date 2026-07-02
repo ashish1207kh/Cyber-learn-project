@@ -452,6 +452,91 @@ const TOPIC_DETAILS = {
       next: "06. Red Teaming",
       nextNum: "06"
     }
+  },
+  '06': {
+    num: '06',
+    title: 'Red Teaming',
+    subtitle: 'Adversary Simulation',
+    description: "We step into the highest tier of offensive security operations. While a standard penetration tester focuses on finding as many bugs as possible, a Red Teamer focuses on testing an organization's entire defensive posture—people, processes, and technology—stealthily.",
+    badges: ["Advanced to Expert", "Elite Skill", "High Impact"],
+    metrics: [
+      { val: "5", lbl: "Lifecycle Stages" },
+      { val: "100%", lbl: "Stealth" },
+      { val: "15+", lbl: "Tactics" },
+      { val: "5", lbl: "Real-world APTs" },
+      { val: "2", lbl: "Certifications Recommended" }
+    ],
+    conceptTitle: "Pentesting vs. Red Teaming",
+    conceptText: "It is incredibly common to confuse these two concepts. Penetration Testing focuses on identifying as many vulnerabilities as possible, usually announced and restricted in scope. Red Teaming, however, simulates a specific real-world threat actor to test detection and response. It is stealthy, unannounced, wide-open in scope, and success is measured by reaching a specific goal without being detected.",
+    conceptFlow: [
+      { title: "Target Intelligence", sub: "(OSINT)", icon: Search },
+      { title: "Initial Access", sub: "(Breach)", icon: Target, active: true },
+      { title: "Objective Completion", sub: "(Exfiltrate)", icon: Trophy }
+    ],
+    blueprintDesc: "This path is intended for advanced students and professionals who already have a baseline understanding of networking, systems administration, and basic exploitation.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Potential Job Roles",
+        list: ["Red Team Operator", "Adversary Emulation Engineer", "Purple Team Lead", "Threat Simulation Expert"]
+      },
+      {
+        icon: TrendingUp,
+        title: "Average Entry Salary",
+        salary: "$120,000 - $160,000",
+        salarySub: "USD / year",
+        salaryRegion: "(varies by region)"
+      },
+      {
+        icon: FileText,
+        title: "What a Day Looks Like",
+        list: ["Researching state-sponsored hacker playbooks (MITRE ATT&CK)", "Writing stealth tools", "Setting up C2 infrastructures", "Testing internal security teams"]
+      },
+      {
+        icon: Activity,
+        title: "Career Growth",
+        growthBadge: "Elite Tier",
+        desc: "Highest Demand & Prestige"
+      }
+    ],
+    phasesTitle: "The Red Team Lifecycle",
+    phasesDesc: "Red Team operations can last anywhere from weeks to months, simulating an Advanced Persistent Threat (APT):",
+    phases: [
+      { num: '01', title: 'Target Intelligence (OSINT)', desc: 'Building profiles without touching target infrastructure using public intelligence.', label: 'Reconnaissance' },
+      { num: '02', title: 'Weaponization & Infrastructure', desc: 'Buying fake domains, setting up C2 (Command & Control) servers and payloads.', label: 'Preparation' },
+      { num: '03', title: 'Initial Access (The Breach)', desc: 'Using custom phishing or physical tailgating to get inside the target perimeter.', label: 'Infiltration' },
+      { num: '04', title: 'Evasion & Stealth', desc: 'Bypassing EDR (Antivirus) and blending into normal corporate network traffic.', label: 'Survival' },
+      { num: '05', title: 'Objective Completion', desc: 'Exfiltrating mock sensitive data (like the CEO\'s inbox) to prove business impact.', label: 'Execution' }
+    ],
+    toolsTitle: "Essential Red Team Toolkits (Top 5)",
+    toolsDesc: "Introduce yourself to the specialized enterprise tools used by Red Team operators for stealth and control.",
+    tools: [
+      { name: 'Cobalt Strike', cat: 'C2 Framework', desc: 'The industry-standard commercial platform used by elite red teams globally.' },
+      { name: 'Sliver / Mythic', cat: 'C2 Frameworks', desc: 'Powerful, open-source alternative C2 frameworks that are highly customizable.' },
+      { name: 'CrowdStrike Evasion', cat: 'EDR Bypassing', desc: 'Process Injection and API Unhooking to stay invisible.' },
+      { name: 'MITRE ATT&CK', cat: 'Framework', desc: 'A globally-accessible knowledge base of adversary tactics and techniques.' },
+      { name: 'Phishing Frameworks', cat: 'Initial Access', desc: 'Custom tailored social engineering campaigns for payload delivery.' }
+    ],
+    certs: [
+      { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'An excellent, highly practical exam focusing on Cobalt Strike and Active Directory evasion.', diff: 'Advanced' },
+      { name: 'CRTE / PACES', full: 'Altered Security', desc: 'Elite multi-forest Active Directory testing certifications designed to test deep network persistence.', diff: 'Expert' }
+    ],
+    learnList: [
+      "Simulating Advanced Persistent Threats (APTs)",
+      "Setting up Command and Control (C2) infrastructure",
+      "Bypassing modern Antivirus and EDR solutions",
+      "Process Injection, API Unhooking, and memory obfuscation",
+      "Executing stealthy initial access campaigns",
+      "Testing an organization's physical, digital, and social defenses"
+    ],
+    readyText: "Begin your Red Teaming journey and learn how to emulate the world's most sophisticated threat actors.",
+    stats: {
+      time: "40-50 Hours",
+      diff: "Advanced to Expert",
+      prereq: "Post-Exploitation, Network Architecture",
+      next: "07. Physical Security Testing",
+      nextNum: "07"
+    }
   }
 };
 
