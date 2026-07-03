@@ -1,14 +1,45 @@
 import React from 'react';
 import { 
-  Swords, Shield, BookOpen, Trophy, Award, Bookmark, FileText, Activity, 
-  Settings, ArrowRight, ArrowLeft, ArrowDown, Search, Users, Target, 
-  ChevronDown, ChevronUp, Clock, Beaker, FolderGit2, CheckCircle, 
-  TrendingUp, Terminal, Play, Laptop, Globe, Database, Key, Code, 
-  Wifi, Router, Unlock, Package, Satellite, TerminalSquare, Server, Radar, ShieldCheck, MonitorCheck, Eye, ShieldAlert, Lock, ScanSearch
+  Swords, 
+  Shield, 
+  BookOpen, 
+  Trophy, 
+  Award, 
+  Bookmark, 
+  FileText, 
+  Activity, 
+  Settings, 
+  ArrowRight, 
+  ArrowLeft, 
+  ArrowDown,
+  Search, 
+  Users, 
+  Target, 
+  ChevronDown, 
+  ChevronUp, 
+  Clock, 
+  Beaker, 
+  FolderGit2,
+  CheckCircle,
+  TrendingUp,
+  Terminal,
+  Play,
+  Laptop,
+  Copy,
+  Check,
+  Server,
+  Database,
+  ShieldAlert,
+  ScanSearch,
+  Lock,
+  Globe
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
+import analystImg from '../assets/cyber-analyst-blue.jpg';
+import defensiveSocImg from '../assets/defensive-soc-dashboard.jpg';
 
+// Content data for each defensive topic to keep layout identical and interactive
 export const DEFENSIVE_TOPICS = {
   '01': {
     num: '01',
@@ -40,9 +71,9 @@ export const DEFENSIVE_TOPICS = {
       {
         icon: TrendingUp,
         title: "Average Entry Salary",
-        salary: "₹3.5 LPA - ₹6.5 LPA",
-        salarySub: "INR / year",
-        salaryRegion: "(Fresher / Trainee)"
+        salary: "$65,000 - $85,000",
+        salarySub: "USD / year",
+        salaryRegion: "(varies by region)"
       },
       {
         icon: Globe,
@@ -75,8 +106,7 @@ export const DEFENSIVE_TOPICS = {
     certs: [
       { name: 'Security+', full: 'CompTIA Security+', desc: 'Global certification that validates the baseline skills necessary to perform core security functions.', diff: 'Beginner' },
       { name: 'Splunk User', full: 'Splunk Core Certified Power User', desc: 'Validates foundational knowledge of Splunk search and reporting commands.', diff: 'Beginner' },
-      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst+', desc: 'Applies behavioral analytics to networks and devices to prevent, detect and combat cybersecurity threats.', diff: 'Intermediate' },
-      { name: 'SC-200', full: 'Microsoft Security Operations Analyst', desc: 'Validates skills in mitigating threats using Microsoft Sentinel, Microsoft 365 Defender, and Azure Defender.', diff: 'Intermediate' }
+      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst+', desc: 'Applies behavioral analytics to networks and devices to prevent, detect and combat threats.', diff: 'Intermediate' }
     ],
     learnList: [
       "Mastering basic Networking concepts (OSI Model, TCP/IP)",
@@ -93,7 +123,39 @@ export const DEFENSIVE_TOPICS = {
       prereq: "Networking Basics, Linux Fundamentals",
       next: "02. Incident Response",
       nextNum: "02"
-    }
+    },
+    questions: [
+      {
+        taskNum: 1,
+        question: "What does the abbreviation SIEM stand for in cyber security?",
+        correctAnswer: "Security Information and Event Management",
+        hint: "Look at the first paragraph under the Task 1 header."
+      },
+      {
+        taskNum: 2,
+        question: "What SOC role represents the baseline Tier 1 security monitoring operations entry level?",
+        correctAnswer: "SOC Analyst",
+        hint: "Check the potential job roles listed in Task 2."
+      },
+      {
+        taskNum: 3,
+        question: "What is the second phase focused on under the SIEM analyst roadmap?",
+        correctAnswer: "Log Analysis",
+        hint: "Look at the step 02 label under the roadmap grid."
+      },
+      {
+        taskNum: 4,
+        question: "Which industry-leading enterprise SIEM platform uses Search Processing Language (SPL) for querying logs?",
+        correctAnswer: "Splunk",
+        hint: "Read the description of Splunk in the tools table."
+      },
+      {
+        taskNum: 5,
+        question: "Which Microsoft certification validates Sentinel cloud SIEM operations analyst skills?",
+        correctAnswer: "SC-200",
+        hint: "Usually Microsoft Sentinel security analyst cert code is SC-200."
+      }
+    ]
   },
   '02': {
     num: '02',
@@ -125,8 +187,8 @@ export const DEFENSIVE_TOPICS = {
       {
         icon: TrendingUp,
         title: "Average Salary",
-        salary: "₹6.0 LPA - ₹10.0 LPA",
-        salarySub: "INR / year",
+        salary: "$80,000 - $115,000",
+        salarySub: "USD / year",
         salaryRegion: "(Early Career)"
       },
       {
@@ -149,754 +211,190 @@ export const DEFENSIVE_TOPICS = {
       { num: '03', title: 'Hands-on Containment', desc: 'Practice malware analysis basics. Learn how to use endpoint security and EDR tools like CrowdStrike Falcon, Carbon Black, or Wazuh.', label: 'Technical Skills' },
       { num: '04', title: 'Certifications to Stand Out', desc: 'Acquire highly respected industry certifications like CySA+, GCIH, ECIH, or CHFI to validate your advanced skills.', label: 'Validation' }
     ],
-    toolsTitle: "Essential IR Tools",
-    toolsDesc: "Master these essential tools used by professional Incident Response teams.",
+    toolsTitle: "Essential Incident Response Tools",
+    toolsDesc: "Master these key forensic and containment platforms used by response teams.",
     tools: [
-      { name: 'CrowdStrike Falcon', cat: 'EDR', desc: 'Industry-leading endpoint detection and response platform used globally.' },
-      { name: 'Carbon Black', cat: 'EDR', desc: 'Cloud-native endpoint security for monitoring and mitigating threats.' },
-      { name: 'Wazuh', cat: 'Open Source', desc: 'Free, open-source security monitoring and incident response platform.' },
-      { name: 'Sysinternals', cat: 'System Analysis', desc: 'Suite of advanced Windows tools for hunting malware hiding in OS internals.' }
+      { name: 'Volatility', cat: 'Memory Forensics', desc: 'An advanced open-source memory forensics framework used to analyze RAM images for malware.' },
+      { name: 'Autopsy', cat: 'Disk Analysis', desc: 'A digital forensics platform and graphical interface to analyze hard drives and smartphones.' },
+      { name: 'Wazuh', cat: 'EDR / HIDS', desc: 'Free open-source host security monitoring solution for endpoint detection.' },
+      { name: 'Wireshark', cat: 'Packet Analysis', desc: 'Intercepts and inspects live network packet captures to locate attacker lateral traffic.' }
     ],
     certs: [
-      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst', desc: 'Validates skills in applying behavioral analytics to networks to combat threats.', diff: 'Mid-Level' },
-      { name: 'GCIH', full: 'GIAC Certified Incident Handler', desc: 'Highly respected in the industry, focusing on detecting, responding, and resolving incidents.', diff: 'Advanced' },
-      { name: 'ECIH', full: 'EC-Council Certified Incident Handler', desc: 'Comprehensive specialist-level program focusing on handling post-breach consequences.', diff: 'Advanced' },
-      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Detailed methodological approach to computer forensics and evidence analysis.', diff: 'Advanced' }
+      { name: 'GCIH', full: 'GIAC Certified Incident Handler', desc: 'Validates a practitioner\'s ability to detect, respond, and resolve security incidents.', diff: 'Advanced' },
+      { name: 'ECIH', full: 'EC-Council Certified Incident Handler', desc: 'Covers structured systems security incident response and handling methodologies.', diff: 'Intermediate' },
+      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Focuses on digital forensic processes, evidence collection, and analysis.', diff: 'Advanced' }
     ],
     learnList: [
-      "Windows and Linux internals (processes, registry, memory)",
-      "Enterprise networking models and protocols",
-      "NIST and SANS incident response lifecycles",
-      "Malware analysis basics (trojans, ransomware execution)",
-      "Using EDR tools like CrowdStrike Falcon, Carbon Black, Wazuh",
-      "Containing compromised networks and isolating servers"
+      "Incident response methodologies (NIST and SANS standard phases)",
+      "Analyzing running system memory and hard drives for forensic evidence",
+      "Analyzing malware behaviors and tracking network footprints",
+      "Deploying and configuring EDR (Endpoint Detection) tools",
+      "Executing post-incident reviews and containment strategies"
     ],
-    readyText: "Start building your foundation in operating system internals and network security.",
-    stats: {
-      time: "25-35 Hours",
-      diff: "Intermediate to Advanced",
-      prereq: "SIEM Monitoring, Linux/Windows Admin",
-      next: "03. Threat Intelligence",
-      nextNum: "03"
-    }
-  },
-  '03': {
-    num: '03',
-    title: 'Threat Intelligence',
-    subtitle: 'The Spy Agency of Cyber Security',
-    description: "If SIEM tracks the cameras and Incident Response fights the intruder, Threat Intelligence (TI) is the spy agency that studies the enemy before they even strike. It is the practice of gathering, analyzing, and organizing data about cybercriminals, their motives, targets, and methods (TTPs).",
-    badges: ["Proactive Defense", "Analytical Skill", "Premium Pay"],
-    metrics: [
-      { val: "3", lbl: "Scope Layers" },
-      { val: "High", lbl: "Demand" },
-      { val: "OSINT", lbl: "Core Skill" },
-      { val: "3", lbl: "Certifications" },
-      { val: "4", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is Threat Intelligence?",
-    conceptText: "Threat Intelligence bridges the gap between technical data and high-level corporate strategy. Instead of waiting to be attacked, TI analysts look at global hacker trends to predict who will target their organization next, allowing security teams to upgrade their defenses proactively.",
-    conceptFlow: [
-      { title: "Tactical", sub: "(IOCs)", icon: Activity },
-      { title: "Strategic", sub: "(Trends)", icon: Globe, active: true },
-      { title: "Geopolitical", sub: "(Risk)", icon: Target }
-    ],
-    blueprintDesc: "As cyberattacks become more sophisticated and state-sponsored, organizations can no longer survive on reactive security alone. Proactive defense is the future, making Threat Intelligence professionals highly valuable.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Early Career (1–2 Yrs)",
-        salary: "₹5.5L - ₹9.5L",
-        role: "Junior CTI Analyst / Associate"
-      },
-      {
-        icon: TrendingUp,
-        title: "Mid-Level (2–5 Yrs)",
-        salary: "₹9.0L - ₹16.0L",
-        role: "Cyber Threat Intelligence Analyst",
-        highlight: true
-      },
-      {
-        icon: ShieldCheck,
-        title: "Senior (5+ Yrs)",
-        salary: "₹16.0L - ₹28.0L+",
-        role: "Senior CTI Consultant / Tier 3 Threat Hunter"
-      }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To break into a Threat Intelligence role, follow this structured path:",
-    phases: [
-      { num: '01', title: 'Understand Attacker Frameworks', desc: 'Master the MITRE ATT&CK Framework and study the Cyber Kill Chain to understand the exact lifecycle of an attack.', label: 'Frameworks' },
-      { num: '02', title: 'Intelligence Gathering & OSINT', desc: 'Learn Open Source Intelligence (OSINT) to track threat actors. Understand how to safely navigate dark web forums and threat feeds.', label: 'OSINT' },
-      { num: '03', title: 'TI Platforms & Standards', desc: 'Learn how threat data is shared using formats like STIX/TAXII. Practice using Threat Intelligence Platforms (TIPs) like MISP.', label: 'Platforms' },
-      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational (CySA+, CTIA) or advanced (GCTI) certifications to prove your TI expertise.', label: 'Validation' }
-    ],
-    toolsTitle: "Essential TI Platforms",
-    toolsDesc: "Master these platforms used to share and analyze threat data globally.",
-    tools: [
-      { name: 'MISP', cat: 'TIP Platform', desc: 'Malware Information Sharing Platform for gathering and sharing IOCs.' },
-      { name: 'AlienVault OTX', cat: 'Threat Feed', desc: 'Open Threat Exchange providing community-sourced threat data.' },
-      { name: 'VirusTotal', cat: 'Analysis', desc: 'Analyzes suspicious files, domains, IPs, and URLs to detect malware.' },
-      { name: 'STIX/TAXII', cat: 'Standards', desc: 'Standardized formats for exchanging cyber threat intelligence.' }
-    ],
-    certs: [
-      { name: 'CySA+', full: 'CompTIA CySA+', desc: 'Foundational certification applying behavioral analytics to networks.', diff: 'Intermediate' },
-      { name: 'CTIA', full: 'EC-Council CTIA', desc: 'Certified Threat Intelligence Analyst focusing on gathering and analyzing threat info.', diff: 'Intermediate' },
-      { name: 'GCTI', full: 'GIAC Cyber Threat Intelligence', desc: 'The gold standard for high-tier Threat Intelligence professionals.', diff: 'Advanced' }
-    ],
-    learnList: [
-      "Mastering the MITRE ATT&CK Framework",
-      "Studying the Cyber Kill Chain lifecycle",
-      "Performing Open Source Intelligence (OSINT)",
-      "Navigating dark web forums and paste sites safely",
-      "Using STIX/TAXII for threat data sharing",
-      "Practicing with MISP and AlienVault OTX"
-    ],
-    readyText: "If you love deep research, connecting dots across the dark web, and investigating attacker psychology, this is an incredibly rewarding specialization.",
-    stats: {
-      time: "20-30 Hours",
-      diff: "Intermediate",
-      prereq: "Networking, Security Fundamentals",
-      next: "04. Digital Forensics",
-      nextNum: "04"
-    }
-  },
-  '04': {
-    num: '04',
-    title: 'Digital Forensics',
-    subtitle: 'The CSI of the Digital World',
-    description: "When a cybercrime occurs—whether a data breach, ransomware attack, or internal data theft—digital forensics specialists step in to investigate. Using specialized tools, analysts scientifically collect, preserve, and analyze digital evidence to piece together exactly how the crime happened.",
-    badges: ["Deep Analytics", "Legal Operations", "High Prestige"],
-    metrics: [
-      { val: "Big 4", lbl: "Consulting Firms" },
-      { val: "High", lbl: "Precision" },
-      { val: "5", lbl: "Job Roles" },
-      { val: "4", lbl: "Certifications" },
-      { val: "Legal", lbl: "Admissibility" }
-    ],
-    conceptTitle: "What is Digital Forensics?",
-    conceptText: "Digital Forensics bridges the gap between deep computer science and the legal system. Its scope spans corporate internal investigations, corporate espionage, cybersecurity incident root-cause analysis, and law enforcement.",
-    conceptFlow: [
-      { title: "Collect", sub: "(Acquire)", icon: Server },
-      { title: "Examine", sub: "(Analyze)", icon: Eye, active: true },
-      { title: "Report", sub: "(Legal)", icon: FileText }
-    ],
-    blueprintDesc: "Since companies face massive liabilities during data breaches, they need certified experts to accurately prove what was stolen and what wasn't. The job requires meticulous attention to detail and patience.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Early Career (1–3 Yrs)",
-        salary: "₹5.5L - ₹8.5L",
-        role: "Junior Digital Forensics Analyst / Associate"
-      },
-      {
-        icon: TrendingUp,
-        title: "Mid-Level (3–5 Yrs)",
-        salary: "₹9.0L - ₹16.0L",
-        role: "Digital Forensics Specialist / DFIR Consultant",
-        highlight: true
-      },
-      {
-        icon: ShieldCheck,
-        title: "Senior (5+ Yrs)",
-        salary: "₹16.0L - ₹30.0L+",
-        role: "Lead Forensic Investigator / SME"
-      }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To become a skilled Digital Forensics professional, follow this pathway:",
-    phases: [
-      { num: '01', title: 'Learn Core System Internals', desc: 'Master file systems (NTFS, FAT32, ext4) and understand Windows/Linux registry structures, system artifacts, and memory management.', label: 'Internals' },
-      { num: '02', title: 'Understand the Chain of Custody', desc: 'Learn the strict legal rules for preserving evidence. If you compromise a file\'s integrity, it cannot be used in court.', label: 'Legal' },
-      { num: '03', title: 'Master Industry Tools', desc: 'Get hands-on experience with forensic suites like Autopsy, FTK Imager, EnCase, Volatility, and Cellebrite.', label: 'Tools' },
-      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational (CHFI, MCFE) or advanced (GCFA, GCFE) certifications.', label: 'Validation' }
-    ],
-    toolsTitle: "Essential Forensic Suites",
-    toolsDesc: "Master these industry-standard tools for digital investigation and analysis.",
-    tools: [
-      { name: 'Autopsy', cat: 'Open Source', desc: 'A digital forensics platform and graphical interface to The Sleuth Kit.' },
-      { name: 'FTK Imager', cat: 'Disk Imaging', desc: 'Data preview and imaging tool used to acquire data in a forensically sound manner.' },
-      { name: 'Volatility', cat: 'Memory Forensics', desc: 'An advanced memory forensics framework for extracting artifacts from RAM.' },
-      { name: 'Cellebrite', cat: 'Mobile Forensics', desc: 'The industry standard for mobile device forensics and data extraction.' }
-    ],
-    certs: [
-      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Validates skills in identifying an intruder\'s footprints and properly gathering evidence.', diff: 'Intermediate' },
-      { name: 'MCFE', full: 'Magnet Certified Forensic Examiner', desc: 'Certifies competency in using Magnet AXIOM for digital investigations.', diff: 'Intermediate' },
-      { name: 'GCFA', full: 'GIAC Certified Forensic Analyst', desc: 'The gold standard certification for advanced incident response and digital forensics.', diff: 'Advanced' }
-    ],
-    learnList: [
-      "Mastering file systems (NTFS, FAT32, ext4)",
-      "Understanding Windows and Linux registry structures",
-      "Learning strict legal rules for preserving evidence",
-      "Creating bit-stream disk images of compromised drives",
-      "Extracting artifacts from system memory (RAM)",
-      "Practicing with Autopsy, FTK Imager, and Volatility"
-    ],
-    readyText: "If you enjoy solving complex mysteries and technical deep-dives, it is an incredibly fulfilling career.",
+    readyText: "Start learning forensics tools and frameworks to secure corporate enterprises.",
     stats: {
       time: "30-40 Hours",
-      diff: "Advanced",
-      prereq: "System Administration, Incident Response",
-      next: "05. Network Security",
-      nextNum: "05"
-    }
-  },
-  '05': {
-    num: '05',
-    title: 'Network Security',
-    subtitle: 'The Digital Transport Shield',
-    description: "Network Security is the practice of protecting a company's entire digital transport system—its local networks, wireless connections, routers, switches, and cloud pipelines—from unauthorized access, misuse, or cyberattacks. It ensures that only authorized traffic can pass, while blocking malicious actors and data leaks.",
-    badges: ["Core Infrastructure", "High Stability", "Foundational"],
-    metrics: [
-      { val: "Perimeter", lbl: "Defense" },
-      { val: "Very High", lbl: "Demand" },
-      { val: "Zero Trust", lbl: "Architecture" },
-      { val: "4", lbl: "Certifications" },
-      { val: "5", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is Network Security?",
-    conceptText: "As organizations shift to hybrid work environments and massive cloud networks, the demand for robust network security has never been higher. The scope covers managing perimeter defenses, secure remote access, and secure data transit across both physical and cloud infrastructures.",
-    conceptFlow: [
-      { title: "Firewalls", sub: "(Block)", icon: ShieldAlert },
-      { title: "VPNs", sub: "(Tunnel)", icon: Router, active: true },
-      { title: "IDS/IPS", sub: "(Detect)", icon: Radar }
-    ],
-    blueprintDesc: "Network Security is a cornerstone of the cybersecurity ecosystem. Almost every organization requires a team to maintain and secure its physical or cloud network architecture. It provides an exceptionally stable career path.",
-    blueprintCards: [
+      diff: "Intermediate to Advanced",
+      prereq: "Networking, Linux/Windows Fundamentals",
+      next: "03. Threat Hunting",
+      nextNum: "03"
+    },
+    questions: [
       {
-        icon: TerminalSquare,
-        title: "Fresher (0–1 Yrs)",
-        salary: "₹3.5L - ₹6.0L",
-        role: "Network Security Associate"
+        taskNum: 1,
+        question: "What is the primary target objective during the Containment phase of incident response?",
+        correctAnswer: "Isolate",
+        hint: "Check the concept flow diagram in Task 1."
       },
       {
-        icon: Users,
-        title: "Early Career (1–3 Yrs)",
-        salary: "₹5.5L - ₹9.0L",
-        role: "Network Security Engineer"
+        taskNum: 2,
+        question: "What is the average starting salary range lower limit in USD for an Incident Responder?",
+        correctAnswer: "$80,000",
+        hint: "Check the Average Salary card under the Career Path section."
       },
       {
-        icon: TrendingUp,
-        title: "Mid-Level (3–5 Yrs)",
-        salary: "₹9.0L - ₹16.0L",
-        role: "Senior Network Security Engineer",
-        highlight: true
+        taskNum: 3,
+        question: "Which standards organization defines the preparation, containment, and recovery lifecycle framework?",
+        correctAnswer: "NIST",
+        hint: "Read the phase 02 description under Task 3."
       },
       {
-        icon: ShieldCheck,
-        title: "Senior (5+ Yrs)",
-        salary: "₹16.0L - ₹28.0L+",
-        role: "Network Security Architect / Lead"
+        taskNum: 4,
+        question: "Which open source tool is widely used for conducting RAM image memory forensics investigations?",
+        correctAnswer: "Volatility",
+        hint: "Look at the tools list under Task 4."
+      },
+      {
+        taskNum: 5,
+        question: "Which highly-regarded GIAC certification validates advanced threat incident handling skills?",
+        correctAnswer: "GCIH",
+        hint: "Look at the certs list under Task 5."
       }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To build a successful career in Network Security, follow this structured blueprint:",
-    phases: [
-      { num: '01', title: 'Master Networking Fundamentals', desc: 'Learn the OSI Model, TCP/IP protocols, subnetting, DNS, DHCP, and routing protocols (OSPF, BGP). Get comfortable with Wireshark.', label: 'Basics' },
-      { num: '02', title: 'Learn Enterprise Security Devices', desc: 'Understand how Next-Generation Firewalls (NGFWs), IDS/IPS, and Proxy servers operate. Learn to implement ACLs and network segmentation.', label: 'Devices' },
-      { num: '03', title: 'Dive into Cloud & Modern Concepts', desc: 'Study Cloud Networking (VPCs, Security Groups) on AWS or Azure. Understand Zero Trust Network Access (ZTNA) and SASE.', label: 'Cloud' },
-      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational (Security+, CCNA, PCNSA) or advanced (CCNP Security) certifications to prove your skills.', label: 'Validation' }
-    ],
-    toolsTitle: "Essential Networking Tools",
-    toolsDesc: "Master these industry-standard tools and platforms for securing enterprise networks.",
-    tools: [
-      { name: 'Wireshark', cat: 'Packet Analysis', desc: 'The world\'s foremost network protocol analyzer for intercepting live packets.' },
-      { name: 'Cisco Firewalls', cat: 'Hardware', desc: 'Enterprise-grade Next-Generation Firewalls (NGFW) and security appliances.' },
-      { name: 'Palo Alto', cat: 'NGFW', desc: 'Industry-leading Next-Generation Firewalls with advanced threat prevention.' },
-      { name: 'AWS/Azure VPC', cat: 'Cloud Networking', desc: 'Virtual Private Clouds and network security groups for cloud infrastructures.' }
-    ],
-    certs: [
-      { name: 'Security+', full: 'CompTIA Security+', desc: 'Global certification that validates baseline security skills and network defense concepts.', diff: 'Beginner' },
-      { name: 'CCNA', full: 'Cisco Certified Network Associate', desc: 'Validates ability to navigate the ever-changing landscape of IT networking basics.', diff: 'Beginner' },
-      { name: 'PCNSA', full: 'Palo Alto Networks Certified Network Security Administrator', desc: 'Proves you can operate Palo Alto Networks next-generation firewalls.', diff: 'Intermediate' },
-      { name: 'CCNP Security', full: 'Cisco Certified Network Professional Security', desc: 'Advanced certification for securing networks with Cisco solutions.', diff: 'Advanced' }
-    ],
-    learnList: [
-      "Mastering the OSI Model and TCP/IP protocols",
-      "Using Wireshark for live packet analysis",
-      "Configuring Next-Generation Firewalls (NGFWs)",
-      "Implementing Access Control Lists (ACLs) and segmentation",
-      "Setting up Virtual Private Networks (VPNs)",
-      "Applying Zero Trust Network Access (ZTNA) principles"
-    ],
-    readyText: "If you like configuring systems, understanding how data travels across the globe, and building secure infrastructures from scratch, this field is perfect for you.",
-    stats: {
-      time: "25-35 Hours",
-      diff: "Beginner to Intermediate",
-      prereq: "Basic IT Knowledge",
-      next: "06. Vulnerability Management",
-      nextNum: "06"
-    }
-  },
-  '06': {
-    num: '06',
-    title: 'Vulnerability Management',
-    subtitle: 'The Network Health Check-Up',
-    description: "Vulnerability Management is the practice of proactively finding, evaluating, and fixing security weaknesses in an organization's systems before attackers can exploit them. Professionals use automated scanning tools to continuously audit servers and applications, prioritizing weaknesses to patch them effectively.",
-    badges: ["Proactive Analysis", "Steady Hours", "High Demand"],
-    metrics: [
-      { val: "CVSS", lbl: "Scoring" },
-      { val: "Constant", lbl: "Scanning" },
-      { val: "Global", lbl: "Hiring" },
-      { val: "4", lbl: "Certifications" },
-      { val: "4", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is Vulnerability Management?",
-    conceptText: "As modern software ecosystems grow larger and more complex, thousands of new vulnerabilities are discovered globally every year. The scope of this field involves bridging defensive operations and offensive scanning, configuring enterprise-wide scans, and tracking patch remediation progress.",
-    conceptFlow: [
-      { title: "Scan", sub: "(Find)", icon: Radar },
-      { title: "Score", sub: "(Prioritize)", icon: Activity, active: true },
-      { title: "Patch", sub: "(Fix)", icon: CheckCircle }
-    ],
-    blueprintDesc: "Because software code is never perfect, fresh vulnerabilities will always exist. Unlike traditional SOC roles, it rarely requires graveyard shifts. If you like structured problem-solving and risk calculation, this domain is an excellent choice.",
-    blueprintCards: [
-      {
-        icon: TerminalSquare,
-        title: "Fresher (0–2 Yrs)",
-        salary: "₹4.0L - ₹6.5L",
-        role: "Junior Vulnerability Analyst"
-      },
-      {
-        icon: Users,
-        title: "Early Career (2–4 Yrs)",
-        salary: "₹6.0L - ₹11.0L",
-        role: "Threat & Vulnerability Analyst"
-      },
-      {
-        icon: TrendingUp,
-        title: "Mid-Level (4–7 Yrs)",
-        salary: "₹11.0L - ₹18.0L",
-        role: "Senior Vulnerability Engineer",
-        highlight: true
-      },
-      {
-        icon: ShieldCheck,
-        title: "Senior (7+ Yrs)",
-        salary: "₹18.0L - ₹32.0L+",
-        role: "Vulnerability Program Lead / Architect"
-      }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To kickstart a career in Vulnerability Management, map out this progression:",
-    phases: [
-      { num: '01', title: 'Understand Risk Frameworks', desc: 'Learn how vulnerabilities are tracked via the CVE database. Master the CVSS to understand severity scores.', label: 'Frameworks' },
-      { num: '02', title: 'Master Scanning Tools', desc: 'Learn to operate market-leading scanners like Tenable Nessus, Qualys Guard, or Rapid7 InsightVM safely.', label: 'Scanning' },
-      { num: '03', title: 'Learn Patching Pipelines', desc: 'Get comfortable with how software updates are rolled out in enterprise networks or cloud systems.', label: 'Remediation' },
-      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational certs like Security+, CySA+, or tool-specific vendor certifications.', label: 'Validation' }
-    ],
-    toolsTitle: "Essential Vulnerability Scanners",
-    toolsDesc: "Master these industry-leading platforms used to identify and manage security flaws.",
-    tools: [
-      { name: 'Tenable Nessus', cat: 'Scanner', desc: 'One of the most widely deployed vulnerability assessment tools in the cybersecurity industry.' },
-      { name: 'Qualys Guard', cat: 'Cloud Platform', desc: 'A cloud-based platform delivering continuous security and compliance solutions.' },
-      { name: 'Rapid7 InsightVM', cat: 'Vulnerability Mgmt', desc: 'Provides live vulnerability management and endpoint analytics.' },
-      { name: 'WSUS', cat: 'Patch Management', desc: 'Windows Server Update Services for managing the distribution of updates and hotfixes.' }
-    ],
-    certs: [
-      { name: 'CySA+', full: 'CompTIA CySA+', desc: 'Validates skills in leveraging threat intelligence and vulnerability management.', diff: 'Intermediate' },
-      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required for any cybersecurity role.', diff: 'Beginner' },
-      { name: 'Qualys Cert', full: 'Qualys Certified Specialist', desc: 'Proves expertise in deploying and operating the Qualys Cloud Platform.', diff: 'Intermediate' },
-      { name: 'Tenable Cert', full: 'Tenable Certified Network Auditor', desc: 'Validates knowledge in operating Nessus and Tenable products.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Tracking vulnerabilities via the CVE database",
-      "Calculating severity scores using CVSS",
-      "Operating scanners like Nessus, Qualys, or Rapid7",
-      "Scanning without disrupting live production environments",
-      "Filtering out false positives from scan results",
-      "Coordinating patch pipelines with IT teams"
-    ],
-    readyText: "If you like structured problem-solving, risk calculation, and working closely with different IT engineering teams, this domain is perfect for you.",
-    stats: {
-      time: "20-30 Hours",
-      diff: "Beginner to Intermediate",
-      prereq: "Basic Networking, OS Fundamentals",
-      next: "07. Endpoint Security",
-      nextNum: "07"
-    }
-  },
-  '07': {
-    num: '07',
-    title: 'Endpoint Security',
-    subtitle: 'The Device Defender',
-    description: "Endpoint Security is the practice of protecting individual devices that connect to an organization's network, such as employee laptops, smartphones, and servers. Since endpoints are the primary interface where employees interact with data, they are the number one target for hackers trying to drop malware or steal credentials.",
-    badges: ["Device Defense", "High Stability", "Core Skill"],
-    metrics: [
-      { val: "EDR", lbl: "Platform" },
-      { val: "High", lbl: "Demand" },
-      { val: "BYOD", lbl: "Focus" },
-      { val: "4", lbl: "Certifications" },
-      { val: "5", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is Endpoint Security?",
-    conceptText: "With the massive rise of remote work and Bring Your Own Device (BYOD) corporate policies, the corporate perimeter has shifted directly to the endpoint. Managing these decentralized devices has created a large, dedicated job market for deploying advanced software agents to block threats in real time.",
-    conceptFlow: [
-      { title: "Deploy", sub: "(Agents)", icon: Package },
-      { title: "Monitor", sub: "(EDR)", icon: Activity, active: true },
-      { title: "Isolate", sub: "(Block)", icon: Lock }
-    ],
-    blueprintDesc: "As long as employees use laptops and phones to do their jobs, companies will require endpoint protection experts. If you enjoy OS internals, system management, and practical, device-level defense, this is an excellent area to specialize in.",
-    blueprintCards: [
-      {
-        icon: TerminalSquare,
-        title: "Fresher (0–1 Yrs)",
-        salary: "₹3.5L - ₹6.0L",
-        role: "Associate Endpoint Engineer"
-      },
-      {
-        icon: Users,
-        title: "Early Career (1–3 Yrs)",
-        salary: "₹5.5L - ₹10.0L",
-        role: "Endpoint Security Engineer"
-      },
-      {
-        icon: TrendingUp,
-        title: "Mid-Level (3–5 Yrs)",
-        salary: "₹10.0L - ₹18.0L",
-        role: "Senior Endpoint / EDR Specialist",
-        highlight: true
-      },
-      {
-        icon: ShieldCheck,
-        title: "Senior (5+ Yrs)",
-        salary: "₹18.0L - ₹32.0L+",
-        role: "Lead Security Engineer"
-      }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To become a professional Endpoint Security Engineer, build your expertise through these phases:",
-    phases: [
-      { num: '01', title: 'Focus on OS Internals', desc: 'Gain a deep understanding of Windows, Linux, and macOS administration. Learn how system processes run and how registries operate.', label: 'Internals' },
-      { num: '02', title: 'Learn Modern EDR', desc: 'Learn how modern EDR platforms use behavioral analysis to spot threats using suites like CrowdStrike Falcon or Microsoft Defender.', label: 'EDR' },
-      { num: '03', title: 'Device Management', desc: 'Learn Mobile Device Management (MDM) and unified endpoint management tools like Microsoft Intune or VMware Workspace ONE.', label: 'MDM' },
-      { num: '04', title: 'Device Hardening', desc: 'Learn to implement benchmark configurations (like CIS Benchmarks) to lock down operating systems against exploit techniques.', label: 'Hardening' }
-    ],
-    toolsTitle: "Essential Endpoint Platforms",
-    toolsDesc: "Master these industry-leading platforms used for protecting and managing devices.",
-    tools: [
-      { name: 'CrowdStrike', cat: 'EDR', desc: 'Industry-leading cloud-native endpoint protection platform.' },
-      { name: 'Microsoft Defender', cat: 'XDR', desc: 'Comprehensive enterprise defense for endpoints, identities, and applications.' },
-      { name: 'Intune', cat: 'MDM', desc: 'Microsoft\'s cloud-based endpoint management solution for mobile and desktop.' },
-      { name: 'SentinelOne', cat: 'EDR', desc: 'Autonomous AI-powered endpoint security platform.' }
-    ],
-    certs: [
-      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required for any cybersecurity role.', diff: 'Beginner' },
-      { name: 'SC-900', full: 'Microsoft Security Fundamentals', desc: 'Validates basic knowledge of Microsoft security, compliance, and identity solutions.', diff: 'Beginner' },
-      { name: 'CrowdStrike', full: 'Certified Falcon Administrator', desc: 'Proves expertise in deploying and managing the CrowdStrike Falcon platform.', diff: 'Intermediate' },
-      { name: 'SC-200', full: 'Microsoft Security Operations Analyst', desc: 'Advanced certification for mitigating threats using Microsoft security solutions.', diff: 'Advanced' }
-    ],
-    learnList: [
-      "Mastering Windows, Linux, and macOS administration",
-      "Deploying and managing modern EDR agents",
-      "Applying behavioral analysis to spot advanced threats",
-      "Configuring Mobile Device Management (MDM) profiles",
-      "Implementing CIS Benchmarks for device hardening",
-      "Troubleshooting host-based firewall configurations"
-    ],
-    readyText: "If you enjoy OS internals, system management, and practical, device-level defense, this is an excellent area to specialize in.",
-    stats: {
-      time: "20-30 Hours",
-      diff: "Beginner to Intermediate",
-      prereq: "Operating Systems, IT Basics",
-      next: "08. Log Analysis",
-      nextNum: "08"
-    }
-  },
-  '08': {
-    num: '08',
-    title: 'Log Analysis',
-    subtitle: 'The Digital Evidence Trail',
-    description: "Log Analysis is the process of reviewing, interpreting, and making sense of the digital records generated by computer systems, networks, and applications. Every time a user logs in or a firewall blocks a connection, data is recorded. Log Analysis is the art of digging through millions of lines to spot anomalies and cyberattacks.",
-    badges: ["Mandatory Foundation", "Deep Analytics", "SOC Essential"],
-    metrics: [
-      { val: "SIEM", lbl: "Platform" },
-      { val: "Very High", lbl: "Demand" },
-      { val: "Regex", lbl: "Core Skill" },
-      { val: "3", lbl: "Certifications" },
-      { val: "4", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is Log Analysis?",
-    conceptText: "Log Analysis is a fundamental skill that underpins almost every single role in defensive security operations. It is the ultimate differentiator between an analyst who simply clicks buttons on a dashboard and a true security expert who understands how an exploit happened. If cybersecurity is a court trial, logs are the ultimate physical evidence.",
-    conceptFlow: [
-      { title: "Collect", sub: "(Logs)", icon: Database },
-      { title: "Parse", sub: "(Filter)", icon: Settings, active: true },
-      { title: "Analyze", sub: "(Detect)", icon: Target }
-    ],
-    blueprintDesc: "You cannot have a career in cybersecurity defense without mastering log analysis. Learning to read logs gives you deep, technical visibility into system architectures that makes you highly employable.",
-    blueprintCards: [
-      {
-        icon: TerminalSquare,
-        title: "Fresher (0–1 Yrs)",
-        salary: "₹3.5L - ₹6.5L",
-        role: "Junior Security Analyst / SOC L1"
-      },
-      {
-        icon: Users,
-        title: "Early Career (1–3 Yrs)",
-        salary: "₹5.5L - ₹8.5L",
-        role: "Cyber Security Analyst"
-      },
-      {
-        icon: TrendingUp,
-        title: "Mid-Level (3–5 Yrs)",
-        salary: "₹8.5L - ₹15.0L",
-        role: "SOC Senior Analyst / Detection Specialist",
-        highlight: true
-      },
-      {
-        icon: ShieldCheck,
-        title: "Senior (5+ Yrs)",
-        salary: "₹15.0L - ₹26.0L+",
-        role: "SOC L3 / Detection Engineer"
-      }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To become a master at reading and analyzing logs, focus on this technical path:",
-    phases: [
-      { num: '01', title: 'Learn Core Event Formats', desc: 'Study Windows Event Logs (security event IDs like 4624/4625) and Linux Logs (/var/log/auth.log, syslog, journalctl).', label: 'Formats' },
-      { num: '02', title: 'Master Basic Text Filters', desc: 'Learn Linux command-line tools (grep, awk, sed, cut) and Regular Expressions (Regex) to extract patterns like IP addresses.', label: 'Filtering' },
-      { num: '03', title: 'Dive into Query Languages', desc: 'Learn SPL (Search Processing Language) for Splunk and KQL (Kusto Query Language) used in Microsoft Sentinel.', label: 'Queries' },
-      { num: '04', title: 'Top Certifications & Training', desc: 'Acquire foundational certs like Security+, Blue Team Level 1 (BTL1), or tool-specific certs like Splunk Core Certified Power User.', label: 'Validation' }
-    ],
-    toolsTitle: "Essential Analysis Tools",
-    toolsDesc: "Master these industry-standard query languages and tools for parsing raw logs.",
-    tools: [
-      { name: 'Splunk (SPL)', cat: 'Query Language', desc: 'Search Processing Language used to search, filter, and modify data in Splunk.' },
-      { name: 'Sentinel (KQL)', cat: 'Query Language', desc: 'Kusto Query Language for querying massive datasets in Azure and Microsoft Sentinel.' },
-      { name: 'Linux CLI', cat: 'Parsing', desc: 'Command-line utilities like grep, awk, and sed for rapid text filtering.' },
-      { name: 'Regex', cat: 'Pattern Matching', desc: 'Regular Expressions for extracting specific formats (like IPs and emails) from raw text.' }
-    ],
-    certs: [
-      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required for any cybersecurity role.', diff: 'Beginner' },
-      { name: 'BTL1', full: 'Blue Team Level 1', desc: 'Practical certification focusing heavily on hands-on log analysis and SOC skills.', diff: 'Intermediate' },
-      { name: 'Splunk Power User', full: 'Splunk Core Certified Power User', desc: 'Validates foundational knowledge of Splunk search and reporting commands.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Studying Windows Event IDs (like 4624 and 4625)",
-      "Understanding Linux logs (syslog, auth.log, journalctl)",
-      "Filtering text rapidly using grep, awk, sed, and cut",
-      "Using Regular Expressions (Regex) to extract patterns",
-      "Writing queries in SPL (Search Processing Language)",
-      "Writing queries in KQL (Kusto Query Language)"
-    ],
-    readyText: "Looking at raw data text can feel dry at first, but mastering log analysis gives you deep visibility into system architectures. Check out this [Cybersecurity Monitoring Tool Overview](https://www.youtube.com/watch?v=VStekc4I0kg) for a practical, real-world walkthrough of the precise tools (like Splunk and ELK) used by modern security analysts.",
-    stats: {
-      time: "25-35 Hours",
-      diff: "Beginner to Intermediate",
-      prereq: "Operating Systems, Linux CLI",
-      next: "09. Patch Management",
-      nextNum: "09"
-    }
-  },
-  '09': {
-    num: '09',
-    title: 'Patch Management',
-    subtitle: 'The Digital Plumber',
-    description: "Patch Management is the process of distributing and applying updates to software, operating systems, and firmware across an organization's entire IT infrastructure. Over time, vulnerabilities (cracks) are discovered. Patch Management ensures these fixes are systematically tested, deployed, and verified without breaking existing systems.",
-    badges: ["Infrastructure Essential", "High Stability", "Automation"],
-    metrics: [
-      { val: "Enterprise", lbl: "Scale" },
-      { val: "Very High", lbl: "Demand" },
-      { val: "Automation", lbl: "Core Skill" },
-      { val: "2", lbl: "Certifications" },
-      { val: "5", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is Patch Management?",
-    conceptText: "Patch Management is a core operational arm of both enterprise IT administration and defensive cybersecurity. It involves massive scale, tracking thousands of endpoints to guarantee that no weak link is left unpatched. It requires scheduling automated cycles and testing updates in isolated environments.",
-    conceptFlow: [
-      { title: "Test", sub: "(Verify)", icon: Beaker },
-      { title: "Deploy", sub: "(Patch)", icon: Package, active: true },
-      { title: "Report", sub: "(Compliance)", icon: FileText }
-    ],
-    blueprintDesc: "Over 80% of successful corporate data breaches occur because a known patch was left uninstalled. Keeping software updated is a continuous cycle, offering incredible job stability for those who excel at systems automation and structured schedules.",
-    blueprintCards: [
-      {
-        icon: TerminalSquare,
-        title: "Fresher (0–2 Yrs)",
-        salary: "₹3.5L - ₹6.0L",
-        role: "Junior Systems / Patch Admin"
-      },
-      {
-        icon: Users,
-        title: "Early Career (2–4 Yrs)",
-        salary: "₹5.5L - ₹9.5L",
-        role: "Patch Management Specialist"
-      },
-      {
-        icon: TrendingUp,
-        title: "Mid-Level (4–7 Yrs)",
-        salary: "₹9.5L - ₹16.0L",
-        role: "Infrastructure & Automation Engineer",
-        highlight: true
-      },
-      {
-        icon: ShieldCheck,
-        title: "Senior (7+ Yrs)",
-        salary: "₹16.0L - ₹27.0L+",
-        role: "Patching Manager / Infrastructure Lead"
-      }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To become an elite Patch Management and Infrastructure professional, build your path across these areas:",
-    phases: [
-      { num: '01', title: 'Master OS Deployment', desc: 'Learn enterprise Windows Server features (Active Directory, GPOs) and how Linux distributions package and deploy software updates (apt, yum, dnf).', label: 'OS Admin' },
-      { num: '02', title: 'Learn Deployment Tools', desc: 'Master central software deployment tools like Microsoft SCCM / MECM, Intune, Ivanti, or ManageEngine Patch Manager Plus.', label: 'Platforms' },
-      { num: '03', title: 'Master Automation & Scripting', desc: 'Learn PowerShell (Windows) or Bash (Linux) to automate patch tracking and reboots. Explore tools like Ansible to push updates.', label: 'Automation' },
-      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational certs like Security+ or LFCS, and platform-specific certifications like Microsoft Endpoint Administrator (MD-102).', label: 'Validation' }
-    ],
-    toolsTitle: "Essential Patch Management Tools",
-    toolsDesc: "Master these industry-standard platforms and automation frameworks for enterprise patching.",
-    tools: [
-      { name: 'SCCM / MECM', cat: 'Windows Mgmt', desc: 'Microsoft Endpoint Configuration Manager for managing large groups of computers.' },
-      { name: 'ManageEngine', cat: 'Patch Management', desc: 'Patch Manager Plus for automated patch deployment across OS and third-party apps.' },
-      { name: 'Ansible', cat: 'Configuration Mgmt', desc: 'An open-source software provisioning, configuration management, and application-deployment tool.' },
-      { name: 'PowerShell / Bash', cat: 'Scripting', desc: 'Command-line shells and scripting languages for task automation and configuration management.' }
-    ],
-    certs: [
-      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required for any cybersecurity role.', diff: 'Beginner' },
-      { name: 'MD-102', full: 'Microsoft Endpoint Administrator Associate', desc: 'Validates skills in deploying, configuring, and managing devices and client applications.', diff: 'Intermediate' },
-      { name: 'LFCS', full: 'Linux Foundation Certified IT System Administrator', desc: 'Proves your capability to administer, manage, and troubleshoot Linux systems.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Managing Windows Server features (Active Directory, GPOs)",
-      "Deploying software via Microsoft SCCM / MECM",
-      "Automating patch tracking and reboots using PowerShell",
-      "Using package managers in Linux (apt, yum, dnf)",
-      "Pushing updates to multiple servers simultaneously using Ansible",
-      "Generating compliance verification reports"
-    ],
-    readyText: "Because keeping software updated is a continuous, never-ending cycle, this domain offers incredible job stability. It is perfect for individuals who excel at systems automation, structured schedules, and building flawless IT infrastructure pipelines.",
-    stats: {
-      time: "20-30 Hours",
-      diff: "Beginner to Intermediate",
-      prereq: "Operating Systems, Basic Scripting",
-      next: "10. User Awareness Training",
-      nextNum: "10"
-    }
-  },
-  '10': {
-    num: '10',
-    title: 'User Awareness Training',
-    subtitle: 'The Human Firewall',
-    description: "User Awareness Training is the process of educating employees and general users about cyber threats, security policies, and cyber hygiene practices. Because technological defenses cannot stop an employee from willingly handing over credentials, hackers frequently target human psychology through social engineering.",
-    badges: ["Human Defense", "Low Stress", "Psychology"],
-    metrics: [
-      { val: "Culture", lbl: "Focus" },
-      { val: "High", lbl: "Demand" },
-      { val: "Training", lbl: "Core Skill" },
-      { val: "3", lbl: "Certifications" },
-      { val: "4", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is User Awareness Training?",
-    conceptText: "As generative AI lowers the barrier for attackers to create hyper-personalized phishing emails and deepfakes, the human element has become a massive priority. Training uses interactive modules and simulated phishing campaigns to transform everyday employees from the weakest link into a strong, human firewall.",
-    conceptFlow: [
-      { title: "Simulate", sub: "(Phish)", icon: Target },
-      { title: "Educate", sub: "(Train)", icon: FileText, active: true },
-      { title: "Measure", sub: "(Track)", icon: Activity }
-    ],
-    blueprintDesc: "Over 80% of security incidents involve human error or social engineering. If you enjoy a mix of cybersecurity concepts, teaching, psychology, and strategic program planning, this is an excellent and low-stress career path.",
-    blueprintCards: [
-      {
-        icon: TerminalSquare,
-        title: "Fresher (0–2 Yrs)",
-        salary: "₹4.0L - ₹6.5L",
-        role: "Corporate Trainer"
-      },
-      {
-        icon: Users,
-        title: "Early Career (2–4 Yrs)",
-        salary: "₹6.0L - ₹10.5L",
-        role: "Security Awareness Analyst"
-      },
-      {
-        icon: TrendingUp,
-        title: "Mid-Level (4–7 Yrs)",
-        salary: "₹10.5L - ₹18.0L",
-        role: "Program Manager / Lead",
-        highlight: true
-      },
-      {
-        icon: ShieldCheck,
-        title: "Senior (7+ Yrs)",
-        salary: "₹18.0L - ₹32.0L+",
-        role: "GRC Manager / Director"
-      }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To build a career running enterprise-grade Security Awareness programs, follow this path:",
-    phases: [
-      { num: '01', title: 'Understand Social Engineering', desc: 'Study classic vectors: Phishing, Smishing, Vishing, Quishing, and deepfakes. Learn triggers like urgency, curiosity, or fear.', label: 'Psychology' },
-      { num: '02', title: 'Learn Platform Management', desc: 'Gain experience with automated enterprise training ecosystems like KnowBe4, PhishMe, or Microsoft Defender for Office 365.', label: 'Platforms' },
-      { num: '03', title: 'Analytics & Content Creation', desc: 'Develop storytelling skills to convert dry compliance into engaging lessons. Learn to analyze data to prove risk reduction.', label: 'Analytics' },
-      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational certs (Security+, CEH) and management track certs like SSAP, CISA, or CRISC.', label: 'Validation' }
-    ],
-    toolsTitle: "Essential Training Platforms",
-    toolsDesc: "Master these industry-leading platforms used to train employees and track security awareness.",
-    tools: [
-      { name: 'KnowBe4', cat: 'Training Platform', desc: 'The world\'s largest security awareness training and simulated phishing platform.' },
-      { name: 'PhishMe', cat: 'Simulation', desc: 'Cofense PhishMe provides realistic phishing simulations and behavioral conditioning.' },
-      { name: 'Defender for Office 365', cat: 'Ecosystem', desc: 'Microsoft\'s built-in tools for threat protection and attack simulation training.' },
-      { name: 'Infosec IQ', cat: 'Awareness', desc: 'Infosec Institute\'s platform for personalized security awareness and anti-phishing training.' }
-    ],
-    certs: [
-      { name: 'SSAP', full: 'SANS Security Awareness Professional', desc: 'Validates expertise in building and managing security awareness programs.', diff: 'Advanced' },
-      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required to understand core cyber threats.', diff: 'Beginner' },
-      { name: 'CEH', full: 'Certified Ethical Hacker', desc: 'Helps trainers fully understand attack methodologies to better educate users.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Studying social engineering vectors (Phishing, Vishing, Smishing)",
-      "Managing automated training ecosystems like KnowBe4",
-      "Launching fake phishing email campaigns to track click rates",
-      "Designing role-specific learning modules",
-      "Converting compliance text into short, engaging lessons",
-      "Tracking and analyzing behavioral change metrics"
-    ],
-    readyText: "If you enjoy a mix of cybersecurity concepts, teaching, psychology, and strategic program planning, this is an excellent and low-stress career path that offers steady business hours.",
-    stats: {
-      time: "15-25 Hours",
-      diff: "Beginner",
-      prereq: "Communication Skills, Basic IT",
-      next: "01. SIEM Monitoring",
-      nextNum: "01"
-    }
+    ]
   }
 };
 
+// Interactive Question Component for HTB/THM feel (Defensive cyan theme)
+function HTBQuestion({ questionText, correctAnswer, hint }) {
+  const [userInput, setUserInput] = React.useState('');
+  const [isCorrect, setIsCorrect] = React.useState(false);
+  const [showHint, setShowHint] = React.useState(false);
 
+  const handleSubmit = () => {
+    if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+      setIsCorrect(true);
+    } else {
+      alert("Incorrect answer! Try again.");
+    }
+  };
+
+  return (
+    <div className="htb-question-box">
+      <div className="htb-question-header">
+        <span className="htb-q-bullet">Q</span>
+        <span className="htb-q-text">{questionText}</span>
+      </div>
+      <div className="htb-question-input-row">
+        <input 
+          type="text" 
+          placeholder={isCorrect ? correctAnswer : "Answer..."} 
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          disabled={isCorrect}
+          className={`htb-input ${isCorrect ? 'correct' : ''}`}
+        />
+        {!isCorrect ? (
+          <button className="btn-htb-submit" onClick={handleSubmit}>Submit Answer</button>
+        ) : (
+          <span className="htb-correct-badge flex-center">
+            <CheckCircle size={14} style={{ marginRight: '4px' }} />
+            <span>Correct!</span>
+          </span>
+        )}
+      </div>
+      {hint && !isCorrect && (
+        <div className="htb-hint-row">
+          <span className="hint-toggle" onClick={() => setShowHint(!showHint)}>
+            {showHint ? "Hide Hint" : "Need Hint?"}
+          </span>
+          {showHint && <p className="hint-text">{hint}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Copy Terminal Command block
+function TerminalCommandBlock({ command }) {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(command);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="htb-terminal-box">
+      <div className="htb-terminal-header">
+        <div className="htb-terminal-dots">
+          <span className="dot dot-red"></span>
+          <span className="dot dot-yellow"></span>
+          <span className="dot dot-green"></span>
+        </div>
+        <span className="htb-terminal-title">Terminal Console</span>
+        <button className="btn-copy-command" onClick={handleCopy}>
+          {copied ? <Check size={12} style={{ color: '#4ade80' }} /> : <Copy size={12} />}
+          <span>{copied ? "Copied!" : "Copy"}</span>
+        </button>
+      </div>
+      <div className="htb-terminal-body">
+        <code>$ {command}</code>
+      </div>
+    </div>
+  );
+}
 
 export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
+  // Use active state internally but fallback to prop
   const [activeRoadmapTopic, setActiveRoadmapTopic] = React.useState(topicId);
 
+  // Sync state if prop changes
   React.useEffect(() => {
     setActiveRoadmapTopic(topicId);
   }, [topicId]);
 
   const activeTopic = DEFENSIVE_TOPICS[activeRoadmapTopic] || DEFENSIVE_TOPICS['01'];
 
+  // Left Sidebar Paths
   const sidebarPaths = [
-    { name: 'Offensive Security', icon: Swords, active: false, id: 'offensive-detail' },
-    { name: 'Defensive Security', icon: ShieldCheck, active: true, id: 'defensive-detail' },
+    { name: 'Offensive Security', icon: Swords, active: false },
+    { name: 'Defensive Security', icon: Shield, active: true },
     { name: 'GNC (Governance, Risk & Compliance)', icon: Shield, active: false },
     { name: 'Purple Team', icon: Target, active: false }
   ];
 
+  // Defensive Roadmap Topics (01 to 06 available)
   const roadmapTopics = [
     { num: '01', name: 'SIEM Monitoring' },
     { num: '02', name: 'Incident Response' },
-    { num: '03', name: 'Threat Intelligence' },
+    { num: '03', name: 'Threat Hunting' },
     { num: '04', name: 'Digital Forensics' },
-    { num: '05', name: 'Network Security' },
-    { num: '06', name: 'Vulnerability Management' },
-    { num: '07', name: 'Endpoint Security' },
-    { num: '08', name: 'Log Analysis' },
-    { num: '09', name: 'Patch Management' },
-    { num: '10', name: 'User Awareness Training' }
+    { num: '05', name: 'Vulnerability Management' },
+    { num: '06', name: 'Security Operations' }
   ];
 
+  // Map questions for active task num
+  const getQuestionForTask = (taskNum) => {
+    return activeTopic.questions?.find(q => q.taskNum === taskNum);
+  };
+
   return (
-    <div className="offensive-dashboard-wrapper select-none defensive-theme">
+    <div className="offensive-dashboard-wrapper defensive-theme select-none">
       <Header view="defensive" onBack={onBack} />
 
       <div className="offensive-dashboard">
+        {/* 1. Left Sidebar */}
         <aside className="dashboard-sidebar topic-sidebar">
           {/* Learning Paths */}
           <div className="sidebar-section">
@@ -941,29 +439,66 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
               ))}
             </div>
           </div>
-          
+
+          {/* Your Progress */}
           <div className="sidebar-progress-card topic-sidebar-progress" style={{ marginTop: '20px' }}>
             <span className="sidebar-section-title" style={{ paddingLeft: 0, marginBottom: '10px', display: 'block' }}>YOUR PROGRESS</span>
             <div className="progress-dial-container">
               <div className="progress-dial-outer">
                 <svg className="progress-dial-svg" viewBox="0 0 100 100">
                   <circle className="progress-dial-bg" cx="50" cy="50" r="40" />
-                  <circle className="progress-dial-fill" cx="50" cy="50" r="40" style={{ strokeDashoffset: '220.96' }} />
+                  <circle className="progress-dial-fill" cx="50" cy="50" r="40" style={{ strokeDashoffset: '201.06' }} />
                 </svg>
                 <div className="progress-dial-value">
-                  <span className="dial-percent">10%</span>
-                  <span className="dial-label">Overall Completion</span>
+                  <span className="dial-percent">20%</span>
+                  <span className="dial-label">Room Completion</span>
                 </div>
               </div>
             </div>
             <div className="progress-stats-mini">
-              <div>Completed: <strong>1 / 10</strong></div>
+              <div>Completed: <strong>1 / 6</strong></div>
               <div>Current Topic: <strong>{activeTopic.title}</strong></div>
             </div>
             <button className="btn-sidebar-progress btn-continue-learning" style={{ width: '100%', marginTop: '14px' }}>
               <span>Continue Learning</span>
               <ArrowRight size={12} />
             </button>
+          </div>
+
+          {/* Next Topic Preview */}
+          {activeRoadmapTopic === '01' ? (
+            <div className="next-topic-preview-card" style={{ marginTop: '16px' }} onClick={() => setActiveRoadmapTopic('02')}>
+              <div className="preview-label">NEXT TOPIC</div>
+              <h4>02. Incident Response</h4>
+              <p>Unlocks after completion</p>
+              <button className="btn-preview-view">
+                <span>View Preview</span>
+                <Play size={10} />
+              </button>
+            </div>
+          ) : (
+            <div className="next-topic-preview-card" style={{ marginTop: '16px' }}>
+              <div className="preview-label">NEXT TOPIC</div>
+              <h4>03. Threat Hunting</h4>
+              <p>Unlocks after completion</p>
+              <button className="btn-preview-view">
+                <span>View Preview</span>
+                <Play size={10} />
+              </button>
+            </div>
+          )}
+
+          {/* Quote Card */}
+          <div className="sidebar-quote-card" style={{ marginTop: '16px' }}>
+            <div className="quote-hacker-avatar" style={{ borderColor: 'rgba(6, 182, 212, 0.4)' }}>
+              <div className="quote-avatar-glow" style={{ background: 'rgba(6, 182, 212, 0.2)' }}></div>
+            </div>
+            <p className="quote-text">
+              {activeRoadmapTopic === '01' 
+                ? `"The best defense is a well-correlated offense of log events."`
+                : `"If you sweat in peace (preparing logs), you bleed less in war (breach)."`
+              }
+            </p>
           </div>
         </aside>
 
@@ -978,16 +513,17 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
             <span className="breadcrumb-active">{activeTopic.num}</span>
           </nav>
 
+          {/* Grid Layout (Re-structured to single wide layout for readability) */}
           <div className="topic-content-grid-single">
             <div className="topic-left-column">
               {/* Hero Section */}
-              <section className="topic-hero-banner">
+              <section className="topic-hero-banner" style={{ border: '1px solid rgba(6, 182, 212, 0.25)', background: 'radial-gradient(circle at 100% 50%, rgba(6, 182, 212, 0.12), transparent 60%), rgba(8, 12, 22, 0.95)' }}>
                 <div className="topic-hero-left">
                   <div className="topic-badge-header">
                     <span className="topic-badge-number">{activeTopic.num}</span>
                     <div>
                       <h1 className="topic-main-title">{activeTopic.title}</h1>
-                      <h3 className="topic-sub-title">{activeTopic.subtitle}</h3>
+                      <h3 className="topic-sub-title" style={{ color: '#06b6d4' }}>{activeTopic.subtitle}</h3>
                     </div>
                   </div>
                   <p className="topic-hero-description">
@@ -1010,8 +546,8 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                   </div>
                 </div>
                 <div className="topic-hero-right-img">
-                  <div className="hacker-hero-img-container" style={{ filter: 'hue-rotate(180deg)', boxShadow: '0 0 40px rgba(6, 182, 212, 0.4)' }}>
-                    <img src={hackerImg} alt="Blue Team Defender" />
+                  <div className="hacker-hero-img-container" style={{ borderColor: 'rgba(6, 182, 212, 0.4)', boxShadow: '0 0 15px rgba(6, 182, 212, 0.3)' }}>
+                    <img src={analystImg} alt="SOC Operations room" />
                   </div>
                 </div>
               </section>
@@ -1052,28 +588,27 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </div>
 
-              {/* What You'll Learn */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">What You'll Learn</h2>
+              {/* ── TASK 1: ESSENTIAL CONCEPT ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 1</span>
+                  <h2>{activeTopic.conceptTitle}</h2>
+                </div>
                 <div className="section-divider-red"></div>
-                <ul className="learn-checklist-grid">
-                  {activeTopic.learnList.map((item, idx) => (
-                    <li key={idx}>
-                      <CheckCircle size={16} className="check-icon" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-
-              {/* What is Concept block */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">{activeTopic.conceptTitle}</h2>
-                <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   {activeTopic.conceptText}
                 </p>
 
+                {/* SIEM Specific image */}
+                {activeRoadmapTopic === '01' && (
+                  <div className="htb-task-media-wrap">
+                    <img src={defensiveSocImg} alt="SOC Dashboard Graphic" className="htb-task-img" />
+                    <span className="htb-task-caption">Figure 1.1: Security Operations Center live SIEM dashboard correlation flow.</span>
+                  </div>
+                )}
+
+                {/* Concept Process Flow */}
                 <div className="pentest-flow-row">
                   {activeTopic.conceptFlow.map((step, i) => {
                     const StepIcon = step.icon;
@@ -1082,7 +617,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         {i > 0 && <div className="flow-connector-line"></div>}
                         <div className={`flow-step-card ${step.active ? 'active' : ''}`}>
                           <div className="flow-step-icon-outer">
-                            <StepIcon size={18} style={{ color: 'var(--theme-accent, #ff5555)' }} />
+                            <StepIcon size={18} style={{ color: '#06b6d4' }} />
                           </div>
                           <h4>{step.title}</h4>
                           <p>{step.sub}</p>
@@ -1091,22 +626,36 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     );
                   })}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(1) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(1).question}
+                    correctAnswer={getQuestionForTask(1).correctAnswer}
+                    hint={getQuestionForTask(1).hint}
+                  />
+                )}
               </section>
 
-              {/* Career Path & Blueprint */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">Career Path & Blueprint</h2>
+              {/* ── TASK 2: CAREER PATH & BLUEPRINT ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 2</span>
+                  <h2>Career Path & Blueprint</h2>
+                </div>
                 <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   {activeTopic.blueprintDesc}
                 </p>
+
                 <div className="blueprint-grid">
                   {activeTopic.blueprintCards.map((card, i) => {
                     const CardIcon = card.icon;
                     return (
-                      <div key={i} className={`blueprint-card ${card.salary ? '' : 'flex-center-column'}`}>
+                      <div key={i} className={`blueprint-card ${card.salary ? '' : 'flex-center-column'}`} style={{ borderColor: 'rgba(6, 182, 212, 0.15)' }}>
                         <div className="blueprint-card-header">
-                          <CardIcon size={16} style={{ color: 'var(--theme-accent, #ff5555)' }} />
+                          <CardIcon size={16} style={{ color: '#06b6d4' }} />
                           <h4>{card.title}</h4>
                         </div>
                         {card.list && (
@@ -1118,17 +667,17 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         )}
                         {card.salary && (
                           <>
-                            <div className="blueprint-salary-value">{card.salary}</div>
+                            <div className="blueprint-salary-value" style={{ color: '#4ade80' }}>{card.salary}</div>
                             <div className="blueprint-salary-sub">{card.salarySub}</div>
                             <div className="blueprint-salary-region">{card.salaryRegion}</div>
                           </>
                         )}
                         {card.growthBadge && (
                           <>
-                            <div className="blueprint-growth-icon">
-                              <Activity size={24} style={{ color: 'var(--theme-accent, #ff5555)' }} />
+                            <div className="blueprint-growth-icon" style={{ borderColor: 'rgba(6, 182, 212, 0.3)', background: 'rgba(6, 182, 212, 0.1)' }}>
+                              <Activity size={24} style={{ color: '#06b6d4' }} />
                             </div>
-                            <div className="growth-badge">{card.growthBadge}</div>
+                            <div className="growth-badge" style={{ color: '#4ade80', background: 'rgba(74, 222, 128, 0.08)', borderColor: 'rgba(74, 222, 128, 0.25)' }}>{card.growthBadge}</div>
                             <p>{card.desc}</p>
                           </>
                         )}
@@ -1136,65 +685,119 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     );
                   })}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(2) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(2).question}
+                    correctAnswer={getQuestionForTask(2).correctAnswer}
+                    hint={getQuestionForTask(2).hint}
+                  />
+                )}
               </section>
 
-              {/* The Core Phases / Vectors */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">{activeTopic.phasesTitle}</h2>
+              {/* ── TASK 3: ATTACK VECTORS & METHODOLOGIES ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 3</span>
+                  <h2>{activeTopic.phasesTitle}</h2>
+                </div>
                 <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   {activeTopic.phasesDesc}
                 </p>
+
                 <div className="phases-flow-grid">
                   {activeTopic.phases.map((phase, idx) => (
-                    <div key={idx} className="phase-node-card">
+                    <div key={idx} className="phase-node-card" style={{ borderColor: 'rgba(6, 182, 212, 0.15)' }}>
                       <div className="phase-node-header">
-                        <span className="phase-node-num">{phase.num}</span>
+                        <span className="phase-node-num" style={{ color: '#06b6d4', background: 'rgba(6, 182, 212, 0.1)', borderColor: 'rgba(6, 182, 212, 0.3)' }}>{phase.num}</span>
                         <h4>{phase.title}</h4>
                       </div>
                       <p className="phase-node-desc">{phase.desc}</p>
-                      <div className="phase-badge-tag">{phase.label}</div>
+                      <div className="phase-badge-tag" style={{ color: '#06b6d4', background: 'rgba(6, 182, 212, 0.08)', borderColor: 'rgba(6, 182, 212, 0.25)' }}>{phase.label}</div>
                     </div>
                   ))}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(3) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(3).question}
+                    correctAnswer={getQuestionForTask(3).correctAnswer}
+                    hint={getQuestionForTask(3).hint}
+                  />
+                )}
               </section>
 
-              {/* Essential Testing Tools */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">{activeTopic.toolsTitle}</h2>
+              {/* ── TASK 4: PRACTICE LAB TOOLSETS ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 4</span>
+                  <h2>{activeTopic.toolsTitle}</h2>
+                </div>
                 <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   {activeTopic.toolsDesc}
                 </p>
+
+                {/* Terminal Commands Guide Box */}
+                {activeRoadmapTopic === '01' ? (
+                  <div style={{ marginBottom: '28px' }}>
+                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Splunk Log Ingestion</h4>
+                    <TerminalCommandBlock command="sudo /opt/splunk/bin/splunk start --accept-license" />
+                  </div>
+                ) : (
+                  <div style={{ marginBottom: '28px' }}>
+                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Wazuh Agent Activation</h4>
+                    <TerminalCommandBlock command="sudo systemctl restart wazuh-agent" />
+                  </div>
+                )}
+
                 <div className="tools-grid-5">
                   {activeTopic.tools.map((tool, idx) => (
                     <div key={idx} className="tool-card-v2">
-                      <div className="tool-card-icon-v2">
+                      <div className="tool-card-icon-v2" style={{ color: '#06b6d4', borderColor: 'rgba(6, 182, 212, 0.25)' }}>
                         <Terminal size={18} />
                       </div>
                       <h4>{tool.name}</h4>
                       <span className="tool-card-cat">{tool.cat}</span>
                       <p className="tool-card-desc-v2">{tool.desc}</p>
-                      <button className="tool-btn-learn">
+                      <button className="tool-btn-learn" style={{ color: '#06b6d4', borderColor: 'rgba(6, 182, 212, 0.2)' }}>
                         <span>Learn More</span>
                         <ArrowRight size={10} />
                       </button>
                     </div>
                   ))}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(4) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(4).question}
+                    correctAnswer={getQuestionForTask(4).correctAnswer}
+                    hint={getQuestionForTask(4).hint}
+                  />
+                )}
               </section>
 
-              {/* Recommended Certifications */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">Recommended Certifications</h2>
+              {/* ── TASK 5: RECOMMENDED CERTIFICATIONS ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 5</span>
+                  <h2>Recommended Certifications</h2>
+                </div>
                 <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   Boost your career with industry-recognized certifications.
                 </p>
                 <div className="recommended-certs-grid">
                   {activeTopic.certs.map((cert, idx) => (
                     <div key={idx} className="recommended-cert-card-v2">
-                      <div className="cert-badge-icon-v2">
+                      <div className="cert-badge-icon-v2" style={{ color: '#06b6d4', borderColor: 'rgba(6, 182, 212, 0.3)' }}>
                         <Award size={18} />
                       </div>
                       <div className="recommended-cert-text">
@@ -1209,6 +812,15 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     </div>
                   ))}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(5) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(5).question}
+                    correctAnswer={getQuestionForTask(5).correctAnswer}
+                    hint={getQuestionForTask(5).hint}
+                  />
+                )}
               </section>
             </div>
           </div>
