@@ -772,48 +772,96 @@ export const DEFENSIVE_TOPICS = {
       next: "10. User Awareness Training",
       nextNum: "10"
     }
+  },
+  '10': {
+    num: '10',
+    title: 'User Awareness Training',
+    subtitle: 'The Human Firewall',
+    description: "User Awareness Training is the process of educating employees and general users about cyber threats, security policies, and cyber hygiene practices. Because technological defenses cannot stop an employee from willingly handing over credentials, hackers frequently target human psychology through social engineering.",
+    badges: ["Human Defense", "Low Stress", "Psychology"],
+    metrics: [
+      { val: "Culture", lbl: "Focus" },
+      { val: "High", lbl: "Demand" },
+      { val: "Training", lbl: "Core Skill" },
+      { val: "3", lbl: "Certifications" },
+      { val: "4", lbl: "Job Roles" }
+    ],
+    conceptTitle: "What is User Awareness Training?",
+    conceptText: "As generative AI lowers the barrier for attackers to create hyper-personalized phishing emails and deepfakes, the human element has become a massive priority. Training uses interactive modules and simulated phishing campaigns to transform everyday employees from the weakest link into a strong, human firewall.",
+    conceptFlow: [
+      { title: "Simulate", sub: "(Phish)", icon: Target },
+      { title: "Educate", sub: "(Train)", icon: FileText, active: true },
+      { title: "Measure", sub: "(Track)", icon: Activity }
+    ],
+    blueprintDesc: "Over 80% of security incidents involve human error or social engineering. If you enjoy a mix of cybersecurity concepts, teaching, psychology, and strategic program planning, this is an excellent and low-stress career path.",
+    blueprintCards: [
+      {
+        icon: TerminalSquare,
+        title: "Fresher (0–2 Yrs)",
+        salary: "₹4.0L - ₹6.5L",
+        role: "Corporate Trainer"
+      },
+      {
+        icon: Users,
+        title: "Early Career (2–4 Yrs)",
+        salary: "₹6.0L - ₹10.5L",
+        role: "Security Awareness Analyst"
+      },
+      {
+        icon: TrendingUp,
+        title: "Mid-Level (4–7 Yrs)",
+        salary: "₹10.5L - ₹18.0L",
+        role: "Program Manager / Lead",
+        highlight: true
+      },
+      {
+        icon: ShieldCheck,
+        title: "Senior (7+ Yrs)",
+        salary: "₹18.0L - ₹32.0L+",
+        role: "GRC Manager / Director"
+      }
+    ],
+    phasesTitle: "Step-by-Step Roadmap",
+    phasesDesc: "To build a career running enterprise-grade Security Awareness programs, follow this path:",
+    phases: [
+      { num: '01', title: 'Understand Social Engineering', desc: 'Study classic vectors: Phishing, Smishing, Vishing, Quishing, and deepfakes. Learn triggers like urgency, curiosity, or fear.', label: 'Psychology' },
+      { num: '02', title: 'Learn Platform Management', desc: 'Gain experience with automated enterprise training ecosystems like KnowBe4, PhishMe, or Microsoft Defender for Office 365.', label: 'Platforms' },
+      { num: '03', title: 'Analytics & Content Creation', desc: 'Develop storytelling skills to convert dry compliance into engaging lessons. Learn to analyze data to prove risk reduction.', label: 'Analytics' },
+      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational certs (Security+, CEH) and management track certs like SSAP, CISA, or CRISC.', label: 'Validation' }
+    ],
+    toolsTitle: "Essential Training Platforms",
+    toolsDesc: "Master these industry-leading platforms used to train employees and track security awareness.",
+    tools: [
+      { name: 'KnowBe4', cat: 'Training Platform', desc: 'The world\'s largest security awareness training and simulated phishing platform.' },
+      { name: 'PhishMe', cat: 'Simulation', desc: 'Cofense PhishMe provides realistic phishing simulations and behavioral conditioning.' },
+      { name: 'Defender for Office 365', cat: 'Ecosystem', desc: 'Microsoft\'s built-in tools for threat protection and attack simulation training.' },
+      { name: 'Infosec IQ', cat: 'Awareness', desc: 'Infosec Institute\'s platform for personalized security awareness and anti-phishing training.' }
+    ],
+    certs: [
+      { name: 'SSAP', full: 'SANS Security Awareness Professional', desc: 'Validates expertise in building and managing security awareness programs.', diff: 'Advanced' },
+      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required to understand core cyber threats.', diff: 'Beginner' },
+      { name: 'CEH', full: 'Certified Ethical Hacker', desc: 'Helps trainers fully understand attack methodologies to better educate users.', diff: 'Intermediate' }
+    ],
+    learnList: [
+      "Studying social engineering vectors (Phishing, Vishing, Smishing)",
+      "Managing automated training ecosystems like KnowBe4",
+      "Launching fake phishing email campaigns to track click rates",
+      "Designing role-specific learning modules",
+      "Converting compliance text into short, engaging lessons",
+      "Tracking and analyzing behavioral change metrics"
+    ],
+    readyText: "If you enjoy a mix of cybersecurity concepts, teaching, psychology, and strategic program planning, this is an excellent and low-stress career path that offers steady business hours.",
+    stats: {
+      time: "15-25 Hours",
+      diff: "Beginner",
+      prereq: "Communication Skills, Basic IT",
+      next: "01. SIEM Monitoring",
+      nextNum: "01"
+    }
   }
 };
 
-// Generate placeholders for 03 to 10 to avoid fallback to 01
-const placeholderNames = [
-  "Threat Intelligence", "Digital Forensics", "Network Security",
-  "Vulnerability Management", "Endpoint Security", "Log Analysis",
-  "Patch Management", "User Awareness Training"
-];
 
-for (let i = 10; i <= 10; i++) {
-  const num = i < 10 ? `0${i}` : `${i}`;
-  DEFENSIVE_TOPICS[num] = {
-    num: num,
-    title: placeholderNames[i - 3],
-    subtitle: 'Coming Soon',
-    description: 'This module is currently under construction. Please check back later when we add the full content.',
-    badges: ["Coming Soon"],
-    metrics: [],
-    conceptTitle: "Work in Progress",
-    conceptText: "Content for this section will be added soon.",
-    conceptFlow: [],
-    blueprintDesc: "",
-    blueprintCards: [],
-    phasesTitle: "",
-    phasesDesc: "",
-    phases: [],
-    toolsTitle: "",
-    toolsDesc: "",
-    tools: [],
-    certs: [],
-    learnList: [],
-    readyText: "",
-    stats: {
-      time: "TBD",
-      diff: "TBD",
-      prereq: "TBD",
-      next: "TBD",
-      nextNum: ""
-    }
-  };
-}
 
 export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
   const [activeRoadmapTopic, setActiveRoadmapTopic] = React.useState(topicId);
