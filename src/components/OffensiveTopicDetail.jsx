@@ -832,197 +832,61 @@ function TerminalCommandBlock({ command }) {
   );
 }
 
-// Helper Study Sub-Views
-function CheatsheetView() {
+// Interactive Terminology Popup card component
+function TerminologyCard({ term, definition, codeCommand, onPin }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
-    <div className="htb-cheatsheet-container">
-      <h3>Interactive Penetration Testing Cheat Sheet</h3>
-      <p className="section-block-text">Quick reference guide of common networking ports, security vulnerabilities, and scanning commands.</p>
+    <span className="term-interactive-wrap">
+      <button 
+        className={`term-trigger-btn ${isOpen ? 'active' : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+        title="Click to learn and pin this concept"
+      >
+        {term}
+      </button>
       
-      <div className="cheatsheet-split">
-        <div className="cheatsheet-block">
-          <h4>Common Network Ports & Attack Vectors</h4>
-          <table className="cheatsheet-table">
-            <thead>
-              <tr>
-                <th>Port</th>
-                <th>Service</th>
-                <th>Common Vulnerabilities / Exploitations</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>21</strong></td>
-                <td>FTP</td>
-                <td>Anonymous login, plaintext credentials sniffed, exploits like vsftpd.</td>
-              </tr>
-              <tr>
-                <td><strong>22</strong></td>
-                <td>SSH</td>
-                <td>Brute-forcing, weak encryption keys, leaked private keys.</td>
-              </tr>
-              <tr>
-                <td><strong>80 / 443</strong></td>
-                <td>HTTP / HTTPS</td>
-                <td>SQL Injection, XSS, broken authentication, file uploads.</td>
-              </tr>
-              <tr>
-                <td><strong>445</strong></td>
-                <td>SMB</td>
-                <td>EternalBlue exploit, anonymous share access, credential cracking.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="cheatsheet-block">
-          <h4>Essential Pentesting CLI Cheat Sheet</h4>
-          <div className="cheatsheet-commands-list">
-            <div className="command-ref-item">
-              <strong>Active Host Scan (Nmap):</strong>
-              <code>nmap -sC -sV -Pn 10.10.12.34</code>
-            </div>
-            <div className="command-ref-item">
-              <strong>Directory Brute-forcing (Gobuster):</strong>
-              <code>gobuster dir -u http://10.10.12.34 -w /usr/share/wordlists/dirb/common.txt</code>
-            </div>
-            <div className="command-ref-item">
-              <strong>Vulnerability Scanning (Nikto):</strong>
-              <code>nikto -h http://10.10.12.34</code>
-            </div>
+      {isOpen && (
+        <div className="term-popup-overlay">
+          <div className="term-popup-header">
+            <h4>{term}</h4>
+            <button className="btn-close-popup" onClick={() => setIsOpen(false)}>×</button>
+          </div>
+          <div className="term-popup-body">
+            <p>{definition}</p>
+            {codeCommand && (
+              <div className="term-code-block">
+                <code>{codeCommand}</code>
+              </div>
+            )}
+            <button 
+              className="btn-pin-note" 
+              onClick={() => {
+                onPin(term, definition);
+                setIsOpen(false);
+              }}
+            >
+              📌 Pin to Study Notebook
+            </button>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-function FlashcardsView() {
-  const cards = [
-    { id: 1, q: "What is the difference between a Bind Shell and a Reverse Shell?", a: "A Bind Shell opens a port on the victim machine which the attacker connects to. A Reverse Shell forces the victim machine to connect back to the attacker's listening port (which bypasses firewalls)." },
-    { id: 2, q: "What is Google Dorking / Google Hacking?", a: "Using advanced search engine operators (like 'filetype:sql' or 'intitle:index.of') to locate exposed databases, configuration files, and sensitive credentials." },
-    { id: 3, q: "What is the difference between Passive and Active Reconnaissance?", a: "Passive recon gathers data without interacting with the victim's servers (e.g. OSINT, WHOIS). Active recon directly interacts with target ports to scan for services (e.g. Nmap)." },
-    { id: 4, q: "What is privilege escalation?", a: "The process of exploiting system bugs, weak permissions, or design flaws to elevate a low-level account to SYSTEM or root administrator." }
-  ];
-
-  const [flippedId, setFlippedId] = React.useState(null);
-
-  return (
-    <div className="htb-flashcards-container">
-      <h3>Active Recall Flashcards</h3>
-      <p className="section-block-text">Click on any card to flip and verify your understanding of core concepts!</p>
-      <div className="flashcards-grid">
-        {cards.map(c => (
-          <div 
-            key={c.id} 
-            className={`flashcard-item ${flippedId === c.id ? 'flipped' : ''}`}
-            onClick={() => setFlippedId(flippedId === c.id ? null : c.id)}
-          >
-            <div className="card-face card-front">
-              <span className="card-lbl">Question</span>
-              <h4>{c.q}</h4>
-              <span className="card-hint-click">Click to reveal answer</span>
-            </div>
-            <div className="card-face card-back">
-              <span className="card-lbl card-lbl-ans">Answer Description</span>
-              <p>{c.a}</p>
-              <span className="card-hint-click">Click to flip back</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ScenarioSimulatorView() {
-  const steps = [
-    {
-      id: 1,
-      title: "Step 1: Passive OSINT",
-      desc: "You are hired to audit secure-bank.com. You start by searching public databases. You locate a leaked employee email directory on GitHub containing: 'admin@secure-bank.com' and find out the staging server IP address: 10.10.224.18.",
-      task: "What is the target staging server IP address?",
-      correct: "10.10.224.18"
-    },
-    {
-      id: 2,
-      title: "Step 2: Scanning & Enumeration",
-      desc: "You run a version scan against 10.10.224.18. Nmap reveals that Port 80 is open running a very old web service: 'Apache 2.4.49' which has a critical vulnerability (CVE-2021-41773).",
-      task: "What service version is running on Port 80?",
-      correct: "Apache 2.4.49"
-    },
-    {
-      id: 3,
-      title: "Step 3: Exploitation (Gaining Access)",
-      desc: "You execute a Path Traversal exploit against the vulnerable Apache version. The server responds and returns a reverse terminal shell, granting you a low-level local account: 'www-data'.",
-      task: "What is the username of the initial shell account you gained?",
-      correct: "www-data"
-    },
-    {
-      id: 4,
-      title: "Step 4: Privilege Escalation",
-      desc: "You search the server for misconfigured settings. You find a backup script running with administrator root permissions that has world-writable permissions. You inject your shell payload and gain root shell access!",
-      task: "What is the final high-privilege account name gained?",
-      correct: "root"
-    }
-  ];
-
-  const [currentStep, setCurrentStep] = React.useState(0);
-  const activeStep = steps[currentStep];
-
-  return (
-    <div className="htb-scenario-simulator">
-      <h3>Interactive Hack-the-Server Walkthrough Scenario</h3>
-      <p className="section-block-text">Follow the stages to simulate a real ethical hack on a corporate bank server!</p>
-      
-      <div className="scenario-card">
-        <div className="scenario-step-indicator">
-          {steps.map((s, idx) => (
-            <div key={s.id} className={`step-dot ${idx <= currentStep ? 'active' : ''}`}>
-              {s.id}
-            </div>
-          ))}
-        </div>
-
-        <div className="scenario-step-content">
-          <h4>{activeStep.title}</h4>
-          <p>{activeStep.desc}</p>
-
-          <div className="scenario-task-box">
-            <span className="task-lbl">Interactive Mission:</span>
-            <HTBQuestion 
-              questionText={activeStep.task} 
-              correctAnswer={activeStep.correct} 
-              hint="Read the scenario description text carefully." 
-            />
-          </div>
-        </div>
-
-        <div className="scenario-nav-row">
-          <button 
-            className="btn-scenario-nav" 
-            disabled={currentStep === 0} 
-            onClick={() => setCurrentStep(currentStep - 1)}
-          >
-            &lt; Previous Step
-          </button>
-          <button 
-            className="btn-scenario-nav btn-scenario-next" 
-            disabled={currentStep === steps.length - 1} 
-            onClick={() => setCurrentStep(currentStep + 1)}
-          >
-            Next Step &gt;
-          </button>
-        </div>
-      </div>
-    </div>
+      )}
+    </span>
   );
 }
 
 export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
   // Use active state internally but fallback to prop
   const [activeRoadmapTopic, setActiveRoadmapTopic] = React.useState(topicId);
-  const [studyTab, setStudyTab] = React.useState('theory'); // 'theory', 'cheatsheet', 'flashcards', 'scenario'
+  const [pinnedNotes, setPinnedNotes] = React.useState([]);
+  const [customUserNote, setCustomUserNote] = React.useState('');
+  
+  const handlePinNote = (term, definition) => {
+    const formatted = `${term}: ${definition}`;
+    if (!pinnedNotes.includes(formatted)) {
+      setPinnedNotes([...pinnedNotes, formatted]);
+    }
+  };
 
   // Sync state if prop changes
   React.useEffect(() => {
@@ -1257,396 +1121,242 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </div>
 
-              {/* Study Materials Tab Selection Bar */}
-              <div className="study-materials-tabs-bar">
-                <button 
-                  className={`tab-btn ${studyTab === 'theory' ? 'active' : ''}`}
-                  onClick={() => setStudyTab('theory')}
-                >
-                  📖 Theory Lessons
-                </button>
-                <button 
-                  className={`tab-btn ${studyTab === 'cheatsheet' ? 'active' : ''}`}
-                  onClick={() => setStudyTab('cheatsheet')}
-                >
-                  ⚡ Command Cheat Sheet
-                </button>
-                <button 
-                  className={`tab-btn ${studyTab === 'flashcards' ? 'active' : ''}`}
-                  onClick={() => setStudyTab('flashcards')}
-                >
-                  📇 Active Recall Flashcards
-                </button>
-                <button 
-                  className={`tab-btn ${studyTab === 'scenario' ? 'active' : ''}`}
-                  onClick={() => setStudyTab('scenario')}
-                >
-                  🎮 Attack Scenario Simulator
-                </button>
+              {/* ── INTERACTIVE KNOWLEDGE MIND-MAP ── */}
+              <div className="htb-cheatsheet-container mindmap-section-block">
+                <h3>📌 Syllabus Concept Mind-Map</h3>
+                <p className="section-block-text" style={{ marginBottom: '24px' }}>
+                  Click on any stage of the pentesting lifecycle below to jump directly to its case-study section and learn its concepts!
+                </p>
+                <div className="mindmap-nodes-row">
+                  <a href="#stage-recon" className="mindmap-node-link">
+                    <div className="mindmap-circle">1</div>
+                    <span>Passive Recon</span>
+                  </a>
+                  <div className="mindmap-arrow">➔</div>
+                  <a href="#stage-scan" className="mindmap-node-link">
+                    <div className="mindmap-circle">2</div>
+                    <span>Active Scan</span>
+                  </a>
+                  <div className="mindmap-arrow">➔</div>
+                  <a href="#stage-exploit" className="mindmap-node-link">
+                    <div className="mindmap-circle">3</div>
+                    <span>Exploitation</span>
+                  </a>
+                  <div className="mindmap-arrow">➔</div>
+                  <a href="#stage-priv" className="mindmap-node-link">
+                    <div className="mindmap-circle">4</div>
+                    <span>Privilege Esc</span>
+                  </a>
+                  <div className="mindmap-arrow">➔</div>
+                  <a href="#stage-report" className="mindmap-node-link">
+                    <div className="mindmap-circle">5</div>
+                    <span>Reporting</span>
+                  </a>
+                </div>
               </div>
 
-              {/* Conditional View Rendering */}
-              {studyTab === 'theory' && (
-                <>
-                  {/* ── TASK 1: ESSENTIAL CONCEPT ── */}
-                  <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 1</span>
-                  <h2>{activeTopic.conceptTitle}</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  {activeTopic.conceptText}
-                </p>
-
-                {/* Social Engineering specific image */}
-                {activeRoadmapTopic === '02' && (
-                  <div className="htb-task-media-wrap">
-                    <img src={socialEngineeringImg} alt="Human Exploitation Graphic" className="htb-task-img" />
-                    <span className="htb-task-caption">Figure 1.1: Cognitive vectors of human vulnerability exploitation.</span>
+              {/* ── MAIN CONTENT LAYOUT WITH NOTEBOOK SIDEBAR ── */}
+              <div className="study-hub-two-column">
+                <div className="study-hub-main-content">
+                  {/* Case Study Section */}
+                  <div className="case-study-log-header">
+                    <span className="case-log-badge">INCIDENT REPORT FILE: #BANK-AUDIT-024</span>
+                    <h2>Case Study: Operation Secure-Bank Audit</h2>
+                    <p className="section-block-text">
+                      We follow a professional audit of Secure-Bank to learn penetration testing concepts. As you read, <strong>click on the highlighted terms</strong> to reveal their details and pin them to your personal notebook!
+                    </p>
                   </div>
-                )}
 
-                {/* Concept Process Flow */}
-                {activeRoadmapTopic === '03' ? (
-                  <div className="osint-data-flow-container">
-                    <div className="osint-node primary-node">
-                      <div className="osint-node-icon"><Search size={18} /></div>
-                      <h4>PUBLIC INTERNET</h4>
+                  {/* Stage 1 */}
+                  <section id="stage-recon" className="topic-section-block htb-task-container">
+                    <div className="htb-task-header">
+                      <span className="htb-task-badge">Stage 1</span>
+                      <h2>Intelligence Gathering & Recon</h2>
+                    </div>
+                    <div className="section-divider-red"></div>
+                    <p className="section-block-text">
+                      The penetration tester begins by gathering public records. This is called{' '}
+                      <TerminologyCard 
+                        term="OSINT" 
+                        definition="Open Source Intelligence. Gathers public records, subdomains, and employee directories without interacting directly with victim servers."
+                        codeCommand="subfinder -d secure-bank.com"
+                        onPin={handlePinNote}
+                      />
+                      . In this phase, we map out the target's footprint. We discover the bank's active staging server IP address: <code>10.10.224.18</code>.
+                    </p>
+                    
+                    <div className="htb-concept-callout">
+                      <span className="callout-icon">💡</span>
+                      <p><strong>Note:</strong> OSINT is completely passive. It is legally safe because you are only looking at data that the target has publicly exposed to the internet.</p>
+                    </div>
+                  </section>
+
+                  {/* Stage 2 */}
+                  <section id="stage-scan" className="topic-section-block htb-task-container">
+                    <div className="htb-task-header">
+                      <span className="htb-task-badge">Stage 2</span>
+                      <h2>Active Scanning & Port Enumeration</h2>
+                    </div>
+                    <div className="section-divider-red"></div>
+                    <p className="section-block-text">
+                      Once we have the target IP, we run an active host port scanner named{' '}
+                      <TerminologyCard 
+                        term="Nmap" 
+                        definition="Network Mapper. A command-line utility used to discover active hosts, open ports, and running service versions."
+                        codeCommand="nmap -sV -sC 10.10.224.18"
+                        onPin={handlePinNote}
+                      />
+                      . The scan reports that Port 80 is open and running a web server service: <code>Apache 2.4.49</code>.
+                    </p>
+
+                    <div style={{ margin: '20px 0' }}>
+                      <TerminalCommandBlock command="nmap -sV -sC -Pn 10.10.224.18" />
+                    </div>
+
+                    <div className="htb-command-expl-wrapper">
+                      <h4>Command Flag Meanings:</h4>
+                      <div className="command-expl-grid">
+                        <div className="command-expl-row">
+                          <span className="command-flag-badge">-sV</span>
+                          <span className="command-flag-desc">Probe open ports to determine service and version info.</span>
+                        </div>
+                        <div className="command-expl-row">
+                          <span className="command-flag-badge">-sC</span>
+                          <span className="command-flag-desc">Run default Nmap scripts to check for vulnerabilities.</span>
+                        </div>
+                        <div className="command-expl-row">
+                          <span className="command-flag-badge">-Pn</span>
+                          <span className="command-flag-desc">Treat target as online, skipping ping discovery to avoid firewalls.</span>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  {/* Stage 3 */}
+                  <section id="stage-exploit" className="topic-section-block htb-task-container">
+                    <div className="htb-task-header">
+                      <span className="htb-task-badge">Stage 3</span>
+                      <h2>Crossing the Perimeter (Exploitation)</h2>
+                    </div>
+                    <div className="section-divider-red"></div>
+                    <p className="section-block-text">
+                      Searching vulnerability databases reveals that Apache 2.4.49 has a critical vulnerability that allows Path Traversal. We write a Python script or launch{' '}
+                      <TerminologyCard 
+                        term="Metasploit" 
+                        definition="A powerful penetration testing exploitation framework containing thousands of pre-written exploits and payloads."
+                        codeCommand="msfconsole"
+                        onPin={handlePinNote}
+                      />
+                      {' '}to exploit it. The exploit triggers successfully and returns a{' '}
+                      <TerminologyCard 
+                        term="Reverse Shell" 
+                        definition="A type of shell connection where the compromised victim machine connects outward to the attacker's listening console, bypassing firewalls."
+                        codeCommand="nc -lvnp 4444"
+                        onPin={handlePinNote}
+                      />
+                      , granting us a low-level local console account named <code>www-data</code>.
+                    </p>
+
+                    <div className="htb-task-media-wrap">
+                      <img src={offensiveScannerImg} alt="Vulnerability Scan Node Grid" className="htb-task-img" />
+                      <span className="htb-task-caption">Figure 3.1: Cyber attack graph showing access compromise node.</span>
+                    </div>
+                  </section>
+
+                  {/* Stage 4 */}
+                  <section id="stage-priv" className="topic-section-block htb-task-container">
+                    <div className="htb-task-header">
+                      <span className="htb-task-badge">Stage 4</span>
+                      <h2>Elevating Access (Privilege Escalation)</h2>
+                    </div>
+                    <div className="section-divider-red"></div>
+                    <p className="section-block-text">
+                      A low-level account like www-data has restricted access. To show maximum impact, the tester performs{' '}
+                      <TerminologyCard 
+                        term="Privilege Escalation" 
+                        definition="The act of exploiting operating system configuration errors, SUID files, or kernel vulnerabilities to elevate standard user privileges to administrator/root permissions."
+                        codeCommand="find / -perm -u=s -type f 2>/dev/null"
+                        onPin={handlePinNote}
+                      />
+                      . We locate a backup shell script owned by the administrator that we can write to. We modify it to grant us a high-privilege <code>root</code> administrator shell.
+                    </p>
+                  </section>
+
+                  {/* Stage 5 */}
+                  <section id="stage-report" className="topic-section-block htb-task-container">
+                    <div className="htb-task-header">
+                      <span className="htb-task-badge">Stage 5</span>
+                      <h2>Analysis & Professional Reporting</h2>
+                    </div>
+                    <div className="section-divider-red"></div>
+                    <p className="section-block-text">
+                      An ethical hacker's value is in their report. We compile our findings, rank them by severity (Low, Medium, High, Critical), and explain the exact steps the bank should take to patch Apache and restrict file permissions.
+                    </p>
+
+                    <div className="recommended-certs-grid">
+                      <div className="recommended-cert-card-v2">
+                        <div className="cert-badge-icon-v2">
+                          <Award size={18} />
+                        </div>
+                        <div className="recommended-cert-text">
+                          <h4>{activeTopic.certs[0].name}</h4>
+                          <span className="recommended-cert-fullname">{activeTopic.certs[0].full}</span>
+                          <p>{activeTopic.certs[0].desc}</p>
+                          <div className="recommended-cert-difficulty">
+                            <span>Difficulty: </span>
+                            <strong>{activeTopic.certs[0].diff}</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+
+                {/* ── FLOATING STUDY NOTEBOOK SIDEBAR ── */}
+                <div className="study-hub-notebook-sidebar">
+                  <div className="notebook-card">
+                    <div className="notebook-header">
+                      <span>📝 Pinned Study Notes</span>
+                      <button className="btn-clear-notes" onClick={() => setPinnedNotes([])}>Clear</button>
                     </div>
                     
-                    <div className="osint-branches">
-                      <div className="osint-branch-line"></div>
-                      <div className="osint-branch-item">
-                        <div className="osint-connector"></div>
-                        <div className="osint-leaf">
-                          <div className="osint-leaf-header">
-                            <Activity size={14} /> <span>Domain Records (DNS, WHOIS)</span>
+                    {pinnedNotes.length === 0 ? (
+                      <p className="empty-notes-text">No notes pinned yet. Click highlighted terms in the case study to add them here!</p>
+                    ) : (
+                      <div className="pinned-notes-list">
+                        {pinnedNotes.map((note, idx) => (
+                          <div key={idx} className="pinned-note-item">
+                            <span className="note-bullet">•</span>
+                            <p>{note}</p>
                           </div>
-                          <div className="osint-leaf-result">Reveals IP Ranges & Subdomains</div>
-                        </div>
+                        ))}
                       </div>
-                      <div className="osint-branch-item">
-                        <div className="osint-connector"></div>
-                        <div className="osint-leaf">
-                          <div className="osint-leaf-header">
-                            <Users size={14} /> <span>Social Media (LinkedIn/X)</span>
-                          </div>
-                          <div className="osint-leaf-result">Reveals Employee Roles & Email Formats</div>
-                        </div>
-                      </div>
-                      <div className="osint-branch-item">
-                        <div className="osint-connector"></div>
-                        <div className="osint-leaf">
-                          <div className="osint-leaf-header">
-                            <FolderGit2 size={14} /> <span>Code Repositories (GitHub/GitLab)</span>
-                          </div>
-                          <div className="osint-leaf-result">Reveals Leaked API Keys & Internal Code</div>
-                        </div>
-                      </div>
-                    </div>
+                    )}
 
-                    <div className="osint-funnel">
-                       <div className="osint-vertical-line"></div>
-                       <ArrowDown size={16} className="osint-arrow" />
-                    </div>
-
-                    <div className="osint-node correlation-node">
-                       <div className="osint-node-icon"><Settings size={18} className="spin-slow" /></div>
-                       <h4>OSINT RECON CORRELATION</h4>
-                    </div>
-
-                    <div className="osint-funnel">
-                       <div className="osint-vertical-line"></div>
-                       <ArrowDown size={16} className="osint-arrow" />
-                    </div>
-
-                    <div className="osint-node attack-map-node">
-                      <div className="osint-node-header">
-                        <Target size={18} />
-                        <h4>ACTIONABLE ATTACK MAP</h4>
-                      </div>
-                      <ul className="osint-attack-list">
-                        <li><span className="osint-bullet">•</span> <strong>Target Subdomain:</strong> staging.company.com <span className="highlight-red">(Unpatched)</span></li>
-                        <li><span className="osint-bullet">•</span> <strong>Valid Corporate Email:</strong> j.doe@company.com</li>
-                        <li><span className="osint-bullet">•</span> <strong>Technology Stack:</strong> Leaked Apache version 2.4.49</li>
-                      </ul>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="pentest-flow-row">
-                    {activeTopic.conceptFlow.map((step, i) => {
-                      const StepIcon = step.icon;
-                      return (
-                        <React.Fragment key={i}>
-                          {i > 0 && <div className="flow-connector-line"></div>}
-                          <div className={`flow-step-card ${step.active ? 'active' : ''}`}>
-                            <div className="flow-step-icon-outer">
-                              <StepIcon size={18} style={{ color: '#ff5555' }} />
-                            </div>
-                            <h4>{step.title}</h4>
-                            <p>{step.sub}</p>
-                          </div>
-                        </React.Fragment>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* Concept Callout Box */}
-                {activeTopic.conceptCallout && (
-                  <div className="htb-concept-callout">
-                    <span className="callout-icon">💡</span>
-                    <p>{activeTopic.conceptCallout}</p>
-                  </div>
-                )}
-
-                {/* Concept Objectives Checklist */}
-                {activeTopic.conceptObjectives && (
-                  <div className="htb-concept-objectives">
-                    <h4>Learning Objectives:</h4>
-                    <ul>
-                      {activeTopic.conceptObjectives.map((obj, i) => (
-                        <li key={i}>
-                          <span className="obj-dot">✓</span>
-                          <span>{obj}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* HTB Question Check */}
-                {getQuestionForTask(1) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(1).question}
-                    correctAnswer={getQuestionForTask(1).correctAnswer}
-                    hint={getQuestionForTask(1).hint}
-                  />
-                )}
-              </section>
-
-              {/* ── TASK 2: CAREER PATH & BLUEPRINT ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 2</span>
-                  <h2>Career Path & Blueprint</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  {activeTopic.blueprintDesc}
-                </p>
-
-                <div className="blueprint-grid">
-                  {activeTopic.blueprintCards.map((card, i) => {
-                    const CardIcon = card.icon;
-                    return (
-                      <div key={i} className={`blueprint-card ${card.salary ? '' : 'flex-center-column'}`}>
-                        <div className="blueprint-card-header">
-                          <CardIcon size={16} style={{ color: '#ff5555' }} />
-                          <h4>{card.title}</h4>
-                        </div>
-                        {card.list && (
-                          <ul>
-                            {card.list.map((item, j) => (
-                              <li key={j}>{item}</li>
-                            ))}
-                          </ul>
-                        )}
-                        {card.salary && (
-                          <>
-                            <div className="blueprint-salary-value">{card.salary}</div>
-                            <div className="blueprint-salary-sub">{card.salarySub}</div>
-                            <div className="blueprint-salary-region">{card.salaryRegion}</div>
-                          </>
-                        )}
-                        {card.growthBadge && (
-                          <>
-                            <div className="blueprint-growth-icon">
-                              <Activity size={24} style={{ color: '#ff5555' }} />
-                            </div>
-                            <div className="growth-badge">{card.growthBadge}</div>
-                            <p>{card.desc}</p>
-                          </>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* HTB Question Check */}
-                {getQuestionForTask(2) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(2).question}
-                    correctAnswer={getQuestionForTask(2).correctAnswer}
-                    hint={getQuestionForTask(2).hint}
-                  />
-                )}
-              </section>
-
-              {/* ── TASK 3: ATTACK VECTORS & METHODOLOGIES ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 3</span>
-                  <h2>{activeTopic.phasesTitle}</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  {activeTopic.phasesDesc}
-                </p>
-
-                {/* Penetration Testing specific network image */}
-                {activeRoadmapTopic === '01' && (
-                  <div className="htb-task-media-wrap">
-                    <img src={offensiveScannerImg} alt="Vulnerability Scan Node Grid" className="htb-task-img" />
-                    <span className="htb-task-caption">Figure 3.1: Live vulnerability scanner node mapping visualization.</span>
-                  </div>
-                )}
-
-                <div className="phases-flow-grid">
-                  {activeTopic.phases.map((phase, idx) => (
-                    <div key={idx} className="phase-node-card">
-                      <div className="phase-node-header">
-                        <span className="phase-node-num">{phase.num}</span>
-                        <h4>{phase.title}</h4>
-                      </div>
-                      <p className="phase-node-desc">{phase.desc}</p>
-                      <div className="phase-badge-tag">{phase.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* HTB Question Check */}
-                {getQuestionForTask(3) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(3).question}
-                    correctAnswer={getQuestionForTask(3).correctAnswer}
-                    hint={getQuestionForTask(3).hint}
-                  />
-                )}
-              </section>
-
-              {/* ── TASK 4: PRACTICE LAB TOOLSETS ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 4</span>
-                  <h2>{activeTopic.toolsTitle}</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  {activeTopic.toolsDesc}
-                </p>
-
-                {/* Terminal Commands Guide Box */}
-                {activeRoadmapTopic === '01' ? (
-                  <div style={{ marginBottom: '28px' }}>
-                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Scanning with Nmap</h4>
-                    <TerminalCommandBlock command="nmap -sV -sC -Pn -oN scan_results.txt 10.10.12.34" />
-                  </div>
-                ) : activeRoadmapTopic === '02' ? (
-                  <div style={{ marginBottom: '28px' }}>
-                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Launching SET Phishing</h4>
-                    <TerminalCommandBlock command="sudo setoolkit" />
-                  </div>
-                ) : (
-                  <div style={{ marginBottom: '28px' }}>
-                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Gathering DNS Records</h4>
-                    <TerminalCommandBlock command="subfinder -d target.com -o subdomains.txt" />
-                  </div>
-                )}
-
-                {/* Command Flags Explanations */}
-                {activeTopic.commandExpl && (
-                  <div className="htb-command-expl-wrapper">
-                    <h4>Command Parameter Breakdown:</h4>
-                    <div className="command-expl-grid">
-                      {activeTopic.commandExpl.map((item, i) => (
-                        <div key={i} className="command-expl-row">
-                          <span className="command-flag-badge">{item.flag}</span>
-                          <span className="command-flag-desc">{item.desc}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div className="tools-grid-5">
-                  {activeTopic.tools.map((tool, idx) => (
-                    <div key={idx} className="tool-card-v2">
-                      <div className="tool-card-icon-v2">
-                        <Terminal size={18} />
-                      </div>
-                      <h4>{tool.name}</h4>
-                      <span className="tool-card-cat">{tool.cat}</span>
-                      <p className="tool-card-desc-v2">{tool.desc}</p>
-                      <button className="tool-btn-learn">
-                        <span>Learn More</span>
-                        <ArrowRight size={10} />
+                    <div className="notebook-user-input-section">
+                      <label htmlFor="user-custom-notes">Add custom observations:</label>
+                      <textarea 
+                        id="user-custom-notes"
+                        placeholder="Type your summary observations here..."
+                        value={customUserNote}
+                        onChange={(e) => setCustomUserNote(e.target.value)}
+                        className="notebook-textarea"
+                      />
+                      <button 
+                        className="btn-copy-all-notes"
+                        onClick={() => {
+                          const allText = `PINS:\n${pinnedNotes.join('\n')}\n\nMY NOTES:\n${customUserNote}`;
+                          navigator.clipboard.writeText(allText);
+                          alert("All study notes copied to clipboard!");
+                        }}
+                      >
+                        Copy All Notes
                       </button>
                     </div>
-                  ))}
+                  </div>
                 </div>
-
-                {/* HTB Question Check */}
-                {getQuestionForTask(4) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(4).question}
-                    correctAnswer={getQuestionForTask(4).correctAnswer}
-                    hint={getQuestionForTask(4).hint}
-                  />
-                )}
-              </section>
-
-              {/* ── TASK 5: RECOMMENDED CERTIFICATIONS ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 5</span>
-                  <h2>Recommended Certifications</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  Boost your career with industry-recognized certifications.
-                </p>
-                <div className="recommended-certs-grid">
-                  {activeTopic.certs.map((cert, idx) => (
-                    <div key={idx} className="recommended-cert-card-v2">
-                      <div className="cert-badge-icon-v2">
-                        <Award size={18} />
-                      </div>
-                      <div className="recommended-cert-text">
-                        <h4>{cert.name}</h4>
-                        <span className="recommended-cert-fullname">{cert.full}</span>
-                        <p>{cert.desc}</p>
-                        <div className="recommended-cert-difficulty">
-                          <span>Difficulty: </span>
-                          <strong>{cert.diff}</strong>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* HTB Question Check */}
-                {getQuestionForTask(5) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(5).question}
-                    correctAnswer={getQuestionForTask(5).correctAnswer}
-                    hint={getQuestionForTask(5).hint}
-                  />
-                )}
-              </section>
-            </>
-          )}
-
-          {studyTab === 'cheatsheet' && <CheatsheetView />}
-          {studyTab === 'flashcards' && <FlashcardsView />}
-          {studyTab === 'scenario' && <ScenarioSimulatorView />}
-        </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

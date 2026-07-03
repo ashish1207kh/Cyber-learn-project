@@ -6748,6 +6748,347 @@ body {
   }
 }
 
+/* =========================================
+   INTERACTIVE CYBER STUDY HUB STYLES
+   ========================================= */
+
+/* 1. Mind-Map Section */
+.mindmap-section-block {
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.mindmap-nodes-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 16px 0;
+}
+
+.mindmap-node-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #cbd5e1;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.mindmap-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.8);
+  border: 2px solid rgba(255, 85, 85, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ff5555;
+  transition: all 0.3s ease;
+}
+
+.mindmap-node-link:hover .mindmap-circle {
+  background: #ff5555;
+  color: #ffffff;
+  border-color: #ff5555;
+  box-shadow: 0 0 15px rgba(255, 85, 85, 0.5);
+  transform: translateY(-2px);
+}
+
+.mindmap-node-link span {
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.mindmap-arrow {
+  color: #ff5555;
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+/* 2. Interactive Terminology Popups */
+.term-interactive-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.term-trigger-btn {
+  background: rgba(255, 85, 85, 0.08);
+  color: #ff5555;
+  border: none;
+  border-bottom: 2px dotted #ff5555;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.term-trigger-btn:hover,
+.term-trigger-btn.active {
+  background: #ff5555;
+  color: #ffffff;
+  border-bottom-style: solid;
+}
+
+.term-popup-overlay {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  background: rgba(10, 16, 30, 0.98);
+  border: 1px solid rgba(255, 85, 85, 0.4);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.term-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 6px;
+}
+
+.term-popup-header h4 {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.btn-close-popup {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.term-popup-body p {
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+
+.term-code-block {
+  background: #04080f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+
+.term-code-block code {
+  color: #50fa7b;
+  font-family: monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.btn-pin-note {
+  width: 100%;
+  background: rgba(255, 85, 85, 0.15);
+  color: #ff5555;
+  border: 1px solid rgba(255, 85, 85, 0.3);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-pin-note:hover {
+  background: #ff5555;
+  color: #ffffff;
+}
+
+/* 3. Two Column Layout & Notebook Sidebar */
+.study-hub-two-column {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 30px;
+  align-items: start;
+}
+
+.study-hub-notebook-sidebar {
+  position: sticky;
+  top: 90px;
+}
+
+.notebook-card {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 85, 85, 0.25);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.notebook-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.notebook-header span {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.btn-clear-notes {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.empty-notes-text {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.5;
+  margin: 20px 0;
+  text-align: center;
+  font-style: italic;
+}
+
+.pinned-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 6px;
+}
+
+.pinned-note-item {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+.pinned-note-item .note-bullet {
+  color: #ff5555;
+  font-weight: 900;
+}
+
+.pinned-note-item p {
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.notebook-user-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notebook-user-input-section label {
+  font-size: 12.5px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.notebook-textarea {
+  background: rgba(8, 12, 22, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 13px;
+  height: 80px;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.notebook-textarea:focus {
+  border-color: #ff5555;
+}
+
+.btn-copy-all-notes {
+  background: #ff5555;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 85, 85, 0.2);
+}
+
+.btn-copy-all-notes:hover {
+  background: #ff3333;
+}
+
+/* Case Study details styling */
+.case-study-log-header {
+  background: rgba(255, 85, 85, 0.05);
+  border: 1px solid rgba(255, 85, 85, 0.15);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 30px;
+}
+
+.case-log-badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.1);
+  border: 1px solid rgba(255, 85, 85, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.case-study-log-header h2 {
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+@media (max-width: 1100px) {
+  .study-hub-two-column {
+    grid-template-columns: 1fr;
+  }
+  .study-hub-notebook-sidebar {
+    position: static;
+  }
+}
+
+
 
 
 
