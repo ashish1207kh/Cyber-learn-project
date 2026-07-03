@@ -176,6 +176,39 @@ export const TOPIC_DETAILS = {
   }
 };
 
+const placeholderNamesOffensive = [
+  "OSINT Reconnaissance", "Exploitation Techniques", "Post-Exploitation",
+  "Red Teaming", "Web App Hacking", "Wireless Hacking",
+  "Cloud Security Testing", "Hardware Hacking", "Malware Analysis",
+  "Exploit Development", "IoT Security", "Physical Security Breach",
+  "Bug Bounty Hunting"
+];
+
+for (let i = 3; i <= 15; i++) {
+  const num = i < 10 ? `0${i}` : `${i}`;
+  TOPIC_DETAILS[num] = {
+    num: num,
+    title: placeholderNamesOffensive[i - 3],
+    subtitle: 'Coming Soon',
+    description: `The complete learning path and curriculum for ${placeholderNamesOffensive[i - 3]} is currently under development. Please check back later when we add the full content and interactive diagrams.`,
+    badges: ["In Development", "Coming Soon"],
+    stats: { time: "TBD", diff: "TBD", prereq: "TBD" },
+    sections: [
+      {
+        id: "sec-coming-soon",
+        title: "Content Under Construction",
+        content: `We are currently building the comprehensive training module for ${placeholderNamesOffensive[i - 3]}. This section will feature step-by-step methodologies, interactive architecture diagrams, command snippets, and deep technical breakdowns.`,
+        bulletPoints: [
+          "Detailed methodology and frameworks",
+          "Interactive terminal commands",
+          "Advanced technical diagrams and use-cases"
+        ]
+      }
+    ],
+    certs: []
+  };
+}
+
 // Reconnaissance flow diagram component
 function ReconFlowDiagram() {
   return (
@@ -312,7 +345,16 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
     { num: '03', name: 'OSINT Reconnaissance' },
     { num: '04', name: 'Exploitation Techniques' },
     { num: '05', name: 'Post-Exploitation' },
-    { num: '06', name: 'Red Teaming' }
+    { num: '06', name: 'Red Teaming' },
+    { num: '07', name: 'Web App Hacking' },
+    { num: '08', name: 'Wireless Hacking' },
+    { num: '09', name: 'Cloud Security Testing' },
+    { num: '10', name: 'Hardware Hacking' },
+    { num: '11', name: 'Malware Analysis' },
+    { num: '12', name: 'Exploit Development' },
+    { num: '13', name: 'IoT Security' },
+    { num: '14', name: 'Physical Security Breach' },
+    { num: '15', name: 'Bug Bounty Hunting' }
   ];
 
   return (

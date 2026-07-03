@@ -148,6 +148,37 @@ export const DEFENSIVE_TOPICS = {
   }
 };
 
+const placeholderNames = [
+  "Threat Intelligence", "Digital Forensics", "Network Security",
+  "Vulnerability Management", "Endpoint Security", "Log Analysis",
+  "Patch Management", "User Awareness Training"
+];
+
+for (let i = 3; i <= 10; i++) {
+  const num = i < 10 ? `0${i}` : `${i}`;
+  DEFENSIVE_TOPICS[num] = {
+    num: num,
+    title: placeholderNames[i - 3],
+    subtitle: 'Coming Soon',
+    description: `The complete learning path and curriculum for ${placeholderNames[i - 3]} is currently under development. Please check back later when we add the full content and interactive diagrams.`,
+    badges: ["In Development", "Coming Soon"],
+    stats: { time: "TBD", diff: "TBD", prereq: "TBD" },
+    sections: [
+      {
+        id: "sec-coming-soon",
+        title: "Content Under Construction",
+        content: `We are currently building the comprehensive training module for ${placeholderNames[i - 3]}. This section will feature step-by-step methodologies, interactive architecture diagrams, command snippets, and deep technical breakdowns.`,
+        bulletPoints: [
+          "Detailed methodology and frameworks",
+          "Interactive terminal commands",
+          "Advanced technical diagrams and use-cases"
+        ]
+      }
+    ],
+    certs: []
+  };
+}
+
 // Log aggregation flow diagram component
 function LogFlowDiagram() {
   return (
@@ -281,10 +312,14 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
   const roadmapTopics = [
     { num: '01', name: 'SIEM Monitoring' },
     { num: '02', name: 'Incident Response' },
-    { num: '03', name: 'Threat Hunting' },
+    { num: '03', name: 'Threat Intelligence' },
     { num: '04', name: 'Digital Forensics' },
-    { num: '05', name: 'Vulnerability Management' },
-    { num: '06', name: 'Security Operations' }
+    { num: '05', name: 'Network Security' },
+    { num: '06', name: 'Vulnerability Management' },
+    { num: '07', name: 'Endpoint Security' },
+    { num: '08', name: 'Log Analysis' },
+    { num: '09', name: 'Patch Management' },
+    { num: '10', name: 'User Awareness Training' }
   ];
 
   return (
