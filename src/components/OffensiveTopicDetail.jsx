@@ -832,9 +832,197 @@ function TerminalCommandBlock({ command }) {
   );
 }
 
+// Helper Study Sub-Views
+function CheatsheetView() {
+  return (
+    <div className="htb-cheatsheet-container">
+      <h3>Interactive Penetration Testing Cheat Sheet</h3>
+      <p className="section-block-text">Quick reference guide of common networking ports, security vulnerabilities, and scanning commands.</p>
+      
+      <div className="cheatsheet-split">
+        <div className="cheatsheet-block">
+          <h4>Common Network Ports & Attack Vectors</h4>
+          <table className="cheatsheet-table">
+            <thead>
+              <tr>
+                <th>Port</th>
+                <th>Service</th>
+                <th>Common Vulnerabilities / Exploitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>21</strong></td>
+                <td>FTP</td>
+                <td>Anonymous login, plaintext credentials sniffed, exploits like vsftpd.</td>
+              </tr>
+              <tr>
+                <td><strong>22</strong></td>
+                <td>SSH</td>
+                <td>Brute-forcing, weak encryption keys, leaked private keys.</td>
+              </tr>
+              <tr>
+                <td><strong>80 / 443</strong></td>
+                <td>HTTP / HTTPS</td>
+                <td>SQL Injection, XSS, broken authentication, file uploads.</td>
+              </tr>
+              <tr>
+                <td><strong>445</strong></td>
+                <td>SMB</td>
+                <td>EternalBlue exploit, anonymous share access, credential cracking.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="cheatsheet-block">
+          <h4>Essential Pentesting CLI Cheat Sheet</h4>
+          <div className="cheatsheet-commands-list">
+            <div className="command-ref-item">
+              <strong>Active Host Scan (Nmap):</strong>
+              <code>nmap -sC -sV -Pn 10.10.12.34</code>
+            </div>
+            <div className="command-ref-item">
+              <strong>Directory Brute-forcing (Gobuster):</strong>
+              <code>gobuster dir -u http://10.10.12.34 -w /usr/share/wordlists/dirb/common.txt</code>
+            </div>
+            <div className="command-ref-item">
+              <strong>Vulnerability Scanning (Nikto):</strong>
+              <code>nikto -h http://10.10.12.34</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FlashcardsView() {
+  const cards = [
+    { id: 1, q: "What is the difference between a Bind Shell and a Reverse Shell?", a: "A Bind Shell opens a port on the victim machine which the attacker connects to. A Reverse Shell forces the victim machine to connect back to the attacker's listening port (which bypasses firewalls)." },
+    { id: 2, q: "What is Google Dorking / Google Hacking?", a: "Using advanced search engine operators (like 'filetype:sql' or 'intitle:index.of') to locate exposed databases, configuration files, and sensitive credentials." },
+    { id: 3, q: "What is the difference between Passive and Active Reconnaissance?", a: "Passive recon gathers data without interacting with the victim's servers (e.g. OSINT, WHOIS). Active recon directly interacts with target ports to scan for services (e.g. Nmap)." },
+    { id: 4, q: "What is privilege escalation?", a: "The process of exploiting system bugs, weak permissions, or design flaws to elevate a low-level account to SYSTEM or root administrator." }
+  ];
+
+  const [flippedId, setFlippedId] = React.useState(null);
+
+  return (
+    <div className="htb-flashcards-container">
+      <h3>Active Recall Flashcards</h3>
+      <p className="section-block-text">Click on any card to flip and verify your understanding of core concepts!</p>
+      <div className="flashcards-grid">
+        {cards.map(c => (
+          <div 
+            key={c.id} 
+            className={`flashcard-item ${flippedId === c.id ? 'flipped' : ''}`}
+            onClick={() => setFlippedId(flippedId === c.id ? null : c.id)}
+          >
+            <div className="card-face card-front">
+              <span className="card-lbl">Question</span>
+              <h4>{c.q}</h4>
+              <span className="card-hint-click">Click to reveal answer</span>
+            </div>
+            <div className="card-face card-back">
+              <span className="card-lbl card-lbl-ans">Answer Description</span>
+              <p>{c.a}</p>
+              <span className="card-hint-click">Click to flip back</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ScenarioSimulatorView() {
+  const steps = [
+    {
+      id: 1,
+      title: "Step 1: Passive OSINT",
+      desc: "You are hired to audit secure-bank.com. You start by searching public databases. You locate a leaked employee email directory on GitHub containing: 'admin@secure-bank.com' and find out the staging server IP address: 10.10.224.18.",
+      task: "What is the target staging server IP address?",
+      correct: "10.10.224.18"
+    },
+    {
+      id: 2,
+      title: "Step 2: Scanning & Enumeration",
+      desc: "You run a version scan against 10.10.224.18. Nmap reveals that Port 80 is open running a very old web service: 'Apache 2.4.49' which has a critical vulnerability (CVE-2021-41773).",
+      task: "What service version is running on Port 80?",
+      correct: "Apache 2.4.49"
+    },
+    {
+      id: 3,
+      title: "Step 3: Exploitation (Gaining Access)",
+      desc: "You execute a Path Traversal exploit against the vulnerable Apache version. The server responds and returns a reverse terminal shell, granting you a low-level local account: 'www-data'.",
+      task: "What is the username of the initial shell account you gained?",
+      correct: "www-data"
+    },
+    {
+      id: 4,
+      title: "Step 4: Privilege Escalation",
+      desc: "You search the server for misconfigured settings. You find a backup script running with administrator root permissions that has world-writable permissions. You inject your shell payload and gain root shell access!",
+      task: "What is the final high-privilege account name gained?",
+      correct: "root"
+    }
+  ];
+
+  const [currentStep, setCurrentStep] = React.useState(0);
+  const activeStep = steps[currentStep];
+
+  return (
+    <div className="htb-scenario-simulator">
+      <h3>Interactive Hack-the-Server Walkthrough Scenario</h3>
+      <p className="section-block-text">Follow the stages to simulate a real ethical hack on a corporate bank server!</p>
+      
+      <div className="scenario-card">
+        <div className="scenario-step-indicator">
+          {steps.map((s, idx) => (
+            <div key={s.id} className={`step-dot ${idx <= currentStep ? 'active' : ''}`}>
+              {s.id}
+            </div>
+          ))}
+        </div>
+
+        <div className="scenario-step-content">
+          <h4>{activeStep.title}</h4>
+          <p>{activeStep.desc}</p>
+
+          <div className="scenario-task-box">
+            <span className="task-lbl">Interactive Mission:</span>
+            <HTBQuestion 
+              questionText={activeStep.task} 
+              correctAnswer={activeStep.correct} 
+              hint="Read the scenario description text carefully." 
+            />
+          </div>
+        </div>
+
+        <div className="scenario-nav-row">
+          <button 
+            className="btn-scenario-nav" 
+            disabled={currentStep === 0} 
+            onClick={() => setCurrentStep(currentStep - 1)}
+          >
+            &lt; Previous Step
+          </button>
+          <button 
+            className="btn-scenario-nav btn-scenario-next" 
+            disabled={currentStep === steps.length - 1} 
+            onClick={() => setCurrentStep(currentStep + 1)}
+          >
+            Next Step &gt;
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
   // Use active state internally but fallback to prop
   const [activeRoadmapTopic, setActiveRoadmapTopic] = React.useState(topicId);
+  const [studyTab, setStudyTab] = React.useState('theory'); // 'theory', 'cheatsheet', 'flashcards', 'scenario'
 
   // Sync state if prop changes
   React.useEffect(() => {
@@ -1069,8 +1257,39 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </div>
 
-              {/* ── TASK 1: ESSENTIAL CONCEPT ── */}
-              <section className="topic-section-block htb-task-container">
+              {/* Study Materials Tab Selection Bar */}
+              <div className="study-materials-tabs-bar">
+                <button 
+                  className={`tab-btn ${studyTab === 'theory' ? 'active' : ''}`}
+                  onClick={() => setStudyTab('theory')}
+                >
+                  📖 Theory Lessons
+                </button>
+                <button 
+                  className={`tab-btn ${studyTab === 'cheatsheet' ? 'active' : ''}`}
+                  onClick={() => setStudyTab('cheatsheet')}
+                >
+                  ⚡ Command Cheat Sheet
+                </button>
+                <button 
+                  className={`tab-btn ${studyTab === 'flashcards' ? 'active' : ''}`}
+                  onClick={() => setStudyTab('flashcards')}
+                >
+                  📇 Active Recall Flashcards
+                </button>
+                <button 
+                  className={`tab-btn ${studyTab === 'scenario' ? 'active' : ''}`}
+                  onClick={() => setStudyTab('scenario')}
+                >
+                  🎮 Attack Scenario Simulator
+                </button>
+              </div>
+
+              {/* Conditional View Rendering */}
+              {studyTab === 'theory' && (
+                <>
+                  {/* ── TASK 1: ESSENTIAL CONCEPT ── */}
+                  <section className="topic-section-block htb-task-container">
                 <div className="htb-task-header">
                   <span className="htb-task-badge">Task 1</span>
                   <h2>{activeTopic.conceptTitle}</h2>
@@ -1421,7 +1640,13 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                   />
                 )}
               </section>
-            </div>
+            </>
+          )}
+
+          {studyTab === 'cheatsheet' && <CheatsheetView />}
+          {studyTab === 'flashcards' && <FlashcardsView />}
+          {studyTab === 'scenario' && <ScenarioSimulatorView />}
+        </div>
           </div>
         </div>
       </div>

@@ -6360,6 +6360,395 @@ body {
   line-height: 1.4;
 }
 
+/* =========================================
+   STUDY MATERIALS TAB SELECTOR & SUB-VIEWS
+   ========================================= */
+
+.study-materials-tabs-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  background: rgba(8, 12, 22, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 8px;
+  overflow-x: auto;
+}
+
+.study-materials-tabs-bar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.study-materials-tabs-bar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.study-materials-tabs-bar .tab-btn {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.study-materials-tabs-bar .tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Active states for tabs */
+.offensive-theme .study-materials-tabs-bar .tab-btn.active {
+  color: #ffffff;
+  background: rgba(255, 85, 85, 0.12);
+  border: 1px solid rgba(255, 85, 85, 0.3);
+  box-shadow: 0 0 10px rgba(255, 85, 85, 0.15);
+}
+
+.defensive-theme .study-materials-tabs-bar .tab-btn.active {
+  color: #ffffff;
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+}
+
+/* 1. Cheat Sheet Styling */
+.htb-cheatsheet-container,
+.htb-flashcards-container,
+.htb-scenario-simulator {
+  background: rgba(8, 12, 22, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.htb-cheatsheet-container h3,
+.htb-flashcards-container h3,
+.htb-scenario-simulator h3 {
+  font-size: 22px;
+  font-weight: 850;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.cheatsheet-split {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.cheatsheet-block h4 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cheatsheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.cheatsheet-table th,
+.cheatsheet-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 14px;
+}
+
+.cheatsheet-table th {
+  background: rgba(255, 255, 255, 0.02);
+  color: #94a3b8;
+  font-weight: 700;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.cheatsheet-table td strong {
+  color: #ff5555;
+}
+
+.defensive-theme .cheatsheet-table td strong {
+  color: #06b6d4;
+}
+
+.cheatsheet-commands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.command-ref-item {
+  background: #04080f;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.command-ref-item strong {
+  font-size: 13.5px;
+  color: #ffffff;
+}
+
+.command-ref-item code {
+  color: #50fa7b;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13.5px;
+}
+
+/* 2. Flashcards Styling (3D Rotate Flip) */
+.flashcards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+  perspective: 1000px;
+}
+
+.flashcard-item {
+  height: 200px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flashcard-item.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.card-front {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 85, 85, 0.25);
+}
+
+.defensive-theme .card-front {
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+.card-back {
+  background: rgba(8, 12, 22, 0.98);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  transform: rotateY(180deg);
+}
+
+.card-lbl {
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #94a3b8;
+}
+
+.card-lbl-ans {
+  color: #4ade80;
+}
+
+.card-front h4 {
+  font-size: 15px;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.card-back p {
+  font-size: 13.5px;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.card-hint-click {
+  font-size: 11px;
+  color: #475569;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* 3. Scenario Simulator Styling */
+.scenario-card {
+  background: rgba(4, 8, 16, 0.8);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 24px;
+  margin-top: 25px;
+}
+
+.scenario-step-indicator {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+.scenario-step-indicator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 2px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #64748b;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.offensive-theme .step-dot.active {
+  background: #ff5555;
+  border-color: #ff5555;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 85, 85, 0.4);
+}
+
+.defensive-theme .step-dot.active {
+  background: #06b6d4;
+  border-color: #06b6d4;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+}
+
+.scenario-step-content h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.scenario-step-content p {
+  font-size: 14.5px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.scenario-task-box {
+  margin-top: 24px;
+}
+
+.task-lbl {
+  font-size: 12px;
+  font-weight: 850;
+  color: #ff5555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: -15px;
+}
+
+.defensive-theme .task-lbl {
+  color: #06b6d4;
+}
+
+.scenario-nav-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 20px;
+}
+
+.btn-scenario-nav {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #cbd5e1;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-scenario-nav:hover:not(:disabled) {
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+}
+
+.btn-scenario-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.offensive-theme .btn-scenario-next {
+  background: #ff5555;
+  border-color: #ff5555;
+  color: #ffffff;
+}
+
+.defensive-theme .btn-scenario-next {
+  background: #06b6d4;
+  border-color: #06b6d4;
+  color: #ffffff;
+}
+
+.offensive-theme .btn-scenario-next:hover:not(:disabled) {
+  background: #ff3333;
+}
+
+.defensive-theme .btn-scenario-next:hover:not(:disabled) {
+  background: #0891b2;
+}
+
+@media (max-width: 768px) {
+  .flashcards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 
 
