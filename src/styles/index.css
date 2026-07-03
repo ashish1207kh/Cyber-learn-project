@@ -7088,6 +7088,136 @@ body {
   }
 }
 
+/* =========================================
+   GITBOOK STYLE ACADEMY READER LAYOUT
+   ========================================= */
+
+.gitbook-content-split {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.gitbook-outline-sidebar {
+  position: sticky;
+  top: 90px;
+}
+
+.outline-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.outline-card h4 {
+  font-size: 12.5px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #94a3b8;
+  margin-top: 0;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 8px;
+}
+
+.outline-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.outline-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  padding: 4px 0;
+}
+
+.outline-link:hover {
+  color: #ff5555;
+  transform: translateX(4px);
+}
+
+.defensive-theme .outline-link:hover {
+  color: #06b6d4;
+}
+
+.gitbook-main-document {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  background: rgba(8, 12, 22, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.gitbook-section-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.gitbook-section-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: #cbd5e1;
+  margin: 0 0 16px 0;
+}
+
+.gitbook-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gitbook-bullet-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.gitbook-bullet-icon {
+  color: #ff5555;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.defensive-theme .gitbook-bullet-icon {
+  color: #06b6d4;
+}
+
+@media (max-width: 900px) {
+  .gitbook-content-split {
+    grid-template-columns: 1fr;
+  }
+  .gitbook-outline-sidebar {
+    position: static;
+  }
+}
+
+
 
 
 

@@ -3,805 +3,137 @@ import {
   Swords, 
   Shield, 
   BookOpen, 
-  Trophy, 
   Award, 
-  Bookmark, 
   FileText, 
-  Activity, 
-  Settings, 
   ArrowRight, 
-  ArrowLeft, 
-  ArrowDown,
-  Search, 
-  Users, 
-  Target, 
-  ChevronDown, 
-  ChevronUp, 
   Clock, 
-  Beaker, 
-  FolderGit2,
-  CheckCircle,
   TrendingUp,
   Terminal,
-  Play,
   Laptop,
   Copy,
-  Check
+  Check,
+  Cpu,
+  Globe,
+  Settings,
+  Layers,
+  ChevronRight
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
 import offensiveScannerImg from '../assets/offensive-scanner-graph.jpg';
-import socialEngineeringImg from '../assets/social-engineering-vector.jpg';
 
-// Content data for each topic to keep the layout identical
+// Content data for each topic - deep syllabus & no task tags
 export const TOPIC_DETAILS = {
   '01': {
     num: '01',
     title: 'Penetration Testing',
-    subtitle: 'Ethical Hacking',
-    description: "Learn how professional ethical hackers think and perform authorized attacks to discover vulnerabilities before malicious hackers can exploit them. Master the art of penetration testing and secure real-world systems.",
-    badges: ["Beginner to Intermediate", "Core Skill", "High Demand"],
-    metrics: [
-      { val: "10", lbl: "Sub Topics" },
-      { val: "12+", lbl: "Hands-on Labs" },
-      { val: "25+", lbl: "Tools Covered" },
-      { val: "7", lbl: "Real-world Scenarios" },
-      { val: "3", lbl: "Certifications Recommended" }
-    ],
-    conceptTitle: "What is Penetration Testing?",
-    conceptText: "Penetration testing—or pentesting—is an authorized, simulated cyberattack against an organization's IT infrastructure (networks, applications, and systems) to discover security vulnerabilities before malicious hackers can exploit them. Think of it as hiring a security expert to audit your home's security by attempting a controlled break-in.",
-    conceptCallout: "⚠️ CRITICAL RULE: Unauthorized penetration testing is illegal under international cyber law. Always secure a signed written permission (a 'Get Out of Jail Free' card) before scanning any target network.",
-    conceptObjectives: [
-      "Understand the mindset and attack strategies of malicious threat actors.",
-      "Safely identify vulnerability entry points in enterprise software systems.",
-      "Document security risks with standard severity ratings (Low to Critical).",
-      "Provide actionable mitigation guidelines to software developers."
-    ],
-    conceptFlow: [
-      { title: "Attacker", sub: "(Think)", icon: Terminal },
-      { title: "Penetration Testing", sub: "(Simulate)", icon: Laptop, active: true },
-      { title: "Stronger Defense", sub: "(Secure)", icon: Shield }
-    ],
-    blueprintDesc: "Build a successful career in cybersecurity by mastering penetration testing. High demand, great opportunities, and rewarding salaries await you.",
-    blueprintCards: [
+    subtitle: 'Ethical Hacking & Vulnerability Assessment',
+    description: "A comprehensive curriculum to master the mindset, tactics, and legal methodologies of professional ethical hacking. Learn to find, exploit, and remediate critical security flaws in target networks and infrastructures.",
+    badges: ["Core Skill", "High Demand", "Hands-on Focus"],
+    stats: { time: "30 Hours", diff: "Intermediate", prereq: "Networking Basics, Linux CLI" },
+    sections: [
       {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Junior Penetration Tester", "Ethical Hacker", "Security Consultant", "Vulnerability Analyst"]
+        id: "sec-recon",
+        title: "1. Reconnaissance & OSINT Methodology",
+        content: "Reconnaissance is the foundational phase of any security audit. It is divided into passive gathering (gathering data without interacting directly with the target) and active profiling.",
+        bulletPoints: [
+          "Passive OSINT: Harvesting public domain records, DNS servers, WHOIS databases, and corporate subdomains.",
+          "Employee Profiling: Locating email naming conventions, leaked passwords, and employee profiles on public professional portals.",
+          "Target Asset Mapping: Correlating external cloud buckets, unmapped subdomains, and staging environments to build a comprehensive target blueprint."
+        ],
+        callout: "💡 SECURITY INSIGHT: Pentesters spend up to 70% of their assessment time in this stage. A thorough reconnaissance phase significantly increases the success rate of subsequent phases."
       },
       {
-        icon: TrendingUp,
-        title: "Average Entry Salary",
-        salary: "$75,000 - $105,000",
-        salarySub: "USD / year",
-        salaryRegion: "(varies by region)"
+        id: "sec-scanning",
+        title: "2. Port Discovery & Service Enumeration",
+        content: "Active scanning involves interacting directly with the target's open ports to determine what operating systems and services are listening. Port states are classified as Open, Closed, or Filtered.",
+        bulletPoints: [
+          "TCP Connect Scanning (-sT): Performs a full 3-way handshake to verify if a port is open. Loud but accurate.",
+          "SYN Stealth Scanning (-sS): Sends only the initial SYN packet. Faster and less likely to trigger firewall alerts.",
+          "UDP Scanning (-sU): Identifies stateless UDP services (e.g., DNS, SNMP) which require custom packet replies."
+        ],
+        command: "nmap -sV -sC -Pn -oN scan_results.txt 10.10.224.18",
+        commandExpl: [
+          { flag: "-sV", desc: "Service and Version detection: Probes open ports to identify application names." },
+          { flag: "-sC", desc: "Script Scan: Runs default Lua scripts to test ports for common vulnerabilities." },
+          { flag: "-Pn", desc: "No Ping: Skip ICMP ping checks, assuming target is online to bypass firewalls." }
+        ]
       },
       {
-        icon: FileText,
-        title: "Core Skills Required",
-        list: ["Networking (TCP/IP)", "Linux / Windows Admin", "Scripting (Python, Bash)", "Problem Solving", "Analytical Thinking"]
+        id: "sec-exploit",
+        title: "3. Exploitation & Gaining Access",
+        content: "Exploitation is the weaponization phase. Testers identify design flaws, unpatched software, or misconfigurations to execute code on the target system.",
+        bulletPoints: [
+          "Arbitrary Code Execution (ACE): Forcing the target computer to run unauthorized hacker-controlled commands.",
+          "Staged Payloads: A tiny loader is sent first, which downloads the larger exploit payload. Useful when buffer space is small.",
+          "Non-Staged Payloads: The entire exploit code and shell payload are sent in a single network packet.",
+          "Shell Connections: Bind Shells open a port on the victim (easily blocked); Reverse Shells force the victim to connect back out."
+        ]
       },
       {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "High Demand & Growth",
-        desc: "Excellent Career Prospects"
+        id: "sec-priv",
+        title: "4. Privilege Escalation Techniques",
+        content: "Initial footholds usually grant restricted system privileges (like 'www-data' or 'apache'). Privilege Escalation is the process of elevating access to root/administrator level.",
+        bulletPoints: [
+          "Linux SUID Exploitation: Running system binaries with owner privileges that allow shell spawning (e.g., misconfigured find or vim).",
+          "Windows Service Hijacking: Replacing service executables or modifying registry paths to execute admin code.",
+          "Kernel Exploits: Triggering memory corruption flaws within the OS kernel to obtain kernel-level system permissions."
+        ],
+        callout: "⚠️ WARNING: Elevating privileges changes the target system's security context. Document SUID settings and service paths before attempting modifications."
+      },
+      {
+        id: "sec-reporting",
+        title: "5. Reporting, Risk Scoring & Remediation",
+        content: "A successful pentest must provide actionable remediation guides for software developers to fix security flaws.",
+        bulletPoints: [
+          "Risk Prioritization: Using Common Vulnerability Scoring System (CVSS v3.0) to rank vulnerabilities from Low to Critical.",
+          "Evidence Compilation: Providing proof-of-concept scripts and screenshot logs for verification.",
+          "Remediation Steps: Recommending software patches, port closures, and secure host configurations."
+        ]
       }
-    ],
-    phasesTitle: "The 5 Core Phases of a Pentest",
-    phasesDesc: "A professional penetration test follows a structured methodology to ensure maximum effectiveness.",
-    phases: [
-      { num: '01', title: 'Planning & Reconnaissance', desc: 'Define scope, gather information, and collect intelligence using OSINT.', label: 'Foundation' },
-      { num: '02', title: 'Scanning & Enumeration', desc: 'Actively scan target systems to identify open ports, services, and vulnerabilities.', label: 'Information Gathering' },
-      { num: '03', title: 'Gaining Access (Exploitation)', desc: 'Exploit vulnerabilities to gain initial access and execute code.', label: 'Exploitation' },
-      { num: '04', title: 'Maintaining Access (Persistence)', desc: 'Maintain access, escalate privileges, and move laterally within the network.', label: 'Post-Exploitation' },
-      { num: '05', title: 'Analysis & Reporting', desc: 'Analyze findings, clean up footprints, and deliver detailed security report.', label: 'Reporting' }
-    ],
-    toolsTitle: "Essential Testing Tools (Top 5)",
-    toolsDesc: "Master these essential tools used by professional penetration testers.",
-    tools: [
-      { name: 'Nmap', cat: 'Network Scanning', desc: 'Discovers hosts, services, and vulnerabilities on network systems.' },
-      { name: 'Burp Suite', cat: 'Web Application', desc: 'Intercepts and analyzes web traffic to find web application vulnerabilities.' },
-      { name: 'Metasploit', cat: 'Exploitation Framework', desc: 'Develop, test, and execute exploits against target systems.' },
-      { name: 'Wireshark', cat: 'Network Analysis', desc: 'Analyzes network packets and protocols in real-time for insights.' },
-      { name: 'John the Ripper', cat: 'Password Cracking', desc: 'Cracks passwords and hashes using various attack methods.' }
-    ],
-    commandExpl: [
-      { flag: "-sV", desc: "Attempts to probe open ports to determine service name and version info." },
-      { flag: "-sC", desc: "Runs default Nmap scripts to test for common vulnerabilities on the active ports." },
-      { flag: "-Pn", desc: "Skip ping discovery. Treats all hosts as online, avoiding firewall blocks." },
-      { flag: "-oN", desc: "Saves the output scan results directly into a local text file." }
     ],
     certs: [
-      { name: 'eJPT', full: 'ElearnSecurity Junior Penetration Tester', desc: 'Perfect start for beginners with hands-on approach.', diff: 'Beginner' },
-      { name: 'CEH', full: 'Certified Ethical Hacker', desc: 'Industry recognized certification for ethical hacking professionals.', diff: 'Beginner' },
-      { name: 'PenTest+', full: 'CompTIA PenTest+', desc: 'Covers penetration testing techniques and security management.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Penetration testing methodologies and best practices",
-      "Information gathering and reconnaissance techniques",
-      "Vulnerability scanning and enumeration",
-      "Exploitation techniques and tools usage",
-      "Post-exploitation and privilege escalation",
-      "Professional reporting and remediation",
-      "Real-world scenarios and hands-on labs"
-    ],
-    readyText: "Begin your penetration testing journey and become an ethical hacking professional.",
-    stats: {
-      time: "25-30 Hours",
-      diff: "Beginner to Intermediate",
-      prereq: "Networking Basics, Linux Fundamentals",
-      next: "02. Social Engineering",
-      nextNum: "02"
-    },
-    // TryHackMe style tasks questions mapping
-    questions: [
-      {
-        taskNum: 1,
-        question: "What is the primary goal of an authorized, simulated cyberattack (pentesting)?",
-        correctAnswer: "Discover vulnerabilities",
-        hint: "Look at the first paragraph under the Essential Concept section."
-      },
-      {
-        taskNum: 2,
-        question: "What is the average entry salary range upper limit in USD for a Junior Penetration Tester?",
-        correctAnswer: "$105,000",
-        hint: "Check the Average Entry Salary card under the Career Path & Blueprint section."
-      },
-      {
-        taskNum: 3,
-        question: "Which phase of a pentest is focused on defining scope and gathering information using OSINT?",
-        correctAnswer: "Planning & Reconnaissance",
-        hint: "Read the phase num 01 description."
-      },
-      {
-        taskNum: 4,
-        question: "What is the command-line flag in Nmap used to enable service and version detection?",
-        correctAnswer: "-sV",
-        hint: "We usually run 'nmap -sV target.com' to get versions."
-      },
-      {
-        taskNum: 5,
-        question: "Which certification is widely recommended as the best hands-on starting point for beginners?",
-        correctAnswer: "eJPT",
-        hint: "Look at the eJPT description under Recommended Certifications."
-      }
+      { name: 'eJPT', full: 'ElearnSecurity Junior Penetration Tester', desc: 'Validates baseline practical hands-on ethical hacking skills.', diff: 'Beginner' },
+      { name: 'OSCP', full: 'OffSec Certified Professional', desc: 'The industry-standard hands-on exploit and privilege escalation exam.', diff: 'Advanced' }
     ]
   },
   '02': {
     num: '02',
     title: 'Social Engineering',
     subtitle: 'The Human Hacking Element',
-    description: "No matter how advanced an organization’s firewall or encryption is, security always fails if a human is tricked into opening the front door. Social Engineering is the art of manipulating, influencing, or deceiving people into giving up confidential information.",
-    badges: ["Beginner to Intermediate", "Core Skill", "High Demand"],
-    metrics: [
-      { val: "4", lbl: "Attack Vectors" },
-      { val: "6", lbl: "Cognitive Triggers" },
-      { val: "15+", lbl: "Scenario Labs" },
-      { val: "5", lbl: "Real-world Cases" },
-      { val: "2", lbl: "Certifications Recommended" }
-    ],
-    conceptTitle: "What is Social Engineering?",
-    conceptText: "No matter how advanced an organization’s firewall or encryption is, security always fails if a human is tricked into opening the front door. Social Engineering is the art of manipulating, influencing, or deceiving people into giving up confidential information, bypassing physical security controls, or executing malicious software.",
-    conceptFlow: [
-      { title: "Psychology", sub: "(Trigger)", icon: Users },
-      { title: "Social Engineering", sub: "(Manipulate)", icon: Laptop, active: true },
-      { title: "Bypassed Access", sub: "(Exploit)", icon: Shield }
-    ],
-    blueprintDesc: "Build a successful career in cybersecurity by mastering behavioral psychology and pretexting attacks. Excellent prospects await in adversary simulation.",
-    blueprintCards: [
+    description: "Study how psychological triggers, pretexts, and social manipulation are utilized by attackers to bypass technical security controls through human elements.",
+    badges: ["Core Skill", "Human Risk", "Psychology Focus"],
+    stats: { time: "20 Hours", diff: "Beginner to Intermediate", prereq: "OSINT Basics, Pretexting" },
+    sections: [
       {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Social Engineering Consultant", "Red Team Operator", "Human Risk Analyst", "Security Awareness Training Director"]
+        id: "sec-concept",
+        title: "1. Core Cognitive Triggers",
+        content: "Social engineers exploit human psychology triggers rather than software flaws. Master the 6 core cognitive triggers:",
+        bulletPoints: [
+          "Authority: Spoofing executives, IT admins, or police officials to force immediate obedience.",
+          "Urgency: Creating false deadlines (e.g., account suspension warnings) to bypass logical thinking.",
+          "Scarcity: Offering limited-time access or resources to manipulate target actions.",
+          "Social Proof: Creating peer-pressure scenarios where target complies because 'others did too'."
+        ]
       },
       {
-        icon: TrendingUp,
-        title: "Average Entry Salary",
-        salary: "$80,000 - $110,000",
-        salarySub: "USD / year",
-        salaryRegion: "(varies by region)"
-      },
-      {
-        icon: FileText,
-        title: "Core Skills Required",
-        list: ["Behavioral Psychology", "OSINT Target Profiling", "Pretexting & Communication", "Scripting (Phishing)", "Physical Security Concepts"]
-      },
-      {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "High Demand & Growth",
-        desc: "Excellent Career Prospects"
+        id: "sec-vectors",
+        title: "2. Threat Attack Vectors",
+        content: "Study the tactical delivery mechanisms of professional social engineering campaigns:",
+        bulletPoints: [
+          "Phishing (Email): Sending customized fraudulent emails containing malicious links or macro documents.",
+          "Vishing (Voice): Phone support scams spoofing corporate helpdesks to verbally extract passwords.",
+          "Tailgating (Physical): Exploiting social courtesy to follow authorized workers into secure office doors."
+        ]
       }
-    ],
-    phasesTitle: "The 4 Most Common Attack Vectors",
-    phasesDesc: "To help your students understand real-world roles, break down the tactical methods used in professional social engineering assessments:",
-    phases: [
-      { num: '01', title: 'Phishing (Email)', desc: 'Pentesters craft fake emails (fraudulent IT warnings or HR payroll updates) to test if employees click malicious links or input credentials.', label: 'Email Threat' },
-      { num: '02', title: 'Vishing (Voice Phishing)', desc: 'Attackers spoof caller ID to look like IT support or bank executives to extract sensitive MFA codes verbally over the phone.', label: 'Phone Threat' },
-      { num: '03', title: 'Smishing (SMS Phishing)', desc: 'Targeting corporate mobile devices using panic-inducing alerts (e.g., account suspended) to steal session tokens.', label: 'Mobile Threat' },
-      { num: '04', title: 'Tailgating & Piggybacking', desc: 'An attacker closely follows an authorized employee through secure badge-access doors, exploiting natural politeness.', label: 'Physical Threat' }
-    ],
-    toolsTitle: "Essential Simulation Tools (Top 5)",
-    toolsDesc: "Master these essential tools and frameworks used to execute social engineering assessments.",
-    tools: [
-      { name: 'GoPhish', cat: 'Phishing Framework', desc: 'Simulates enterprise phishing campaigns and monitors click-through rates.' },
-      { name: 'SET', cat: 'Attack Toolkit', desc: 'The Social-Engineer Toolkit. Launches spear phishing and credential harvesting attacks.' },
-      { name: 'Evilginx', cat: 'MFA Bypass Proxy', desc: 'Man-in-the-middle proxy framework used to capture credentials and 2FA session cookies.' },
-      { name: 'Social Mapper', cat: 'OSINT Profiler', desc: 'Uses facial recognition to profile targets across multiple social networks.' },
-      { name: 'Maltego', cat: 'Footprinting mapping', desc: 'Maps and visualizes relation charts of target organizations and employees.' }
     ],
     certs: [
-      { name: 'CAPS', full: 'Certified Anti-Phishing Specialist', desc: 'Focused on designing and analyzing organizational phishing metrics.', diff: 'Beginner' },
-      { name: 'SEPP', full: 'Certified Social Engineering Pentester', desc: 'Focuses on advanced manipulation, OSINT, and physical facility breaches.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Human psychology exploitation vectors & pretexting",
-      "Phishing simulation frameworks & metrics analysis",
-      "Voice pretexting & spoofing caller ID (Vishing)",
-      "Physical facility entry, lock picking & tailgating",
-      "OSINT target profiling & relation mapping",
-      "Defensive awareness security training models"
-    ],
-    readyText: "Begin your Social Engineering journey and learn how to secure the human element in cyber security.",
-    stats: {
-      time: "20-25 Hours",
-      diff: "Beginner to Intermediate",
-      prereq: "OSINT Basics, Technical Pretexting",
-      next: "03. OSINT Reconnaissance",
-      nextNum: "03"
-    },
-    questions: [
-      {
-        taskNum: 1,
-        question: "What is the weak link in the security chain that social engineering exploits?",
-        correctAnswer: "Human",
-        hint: "Security always fails if a ____ is tricked into opening the door."
-      },
-      {
-        taskNum: 2,
-        question: "What is the average entry salary lower limit in USD for a Social Engineer?",
-        correctAnswer: "$80,000",
-        hint: "Check the Average Entry Salary card under the Career Path section."
-      },
-      {
-        taskNum: 3,
-        question: "What is the physical attack vector where an attacker follows an authorized employee through secure turnstiles?",
-        correctAnswer: "Tailgating",
-        hint: "Read the attack vector 04 description."
-      },
-      {
-        taskNum: 4,
-        question: "Which proxy framework is commonly used by red teamers to bypass multi-factor authentication (MFA)?",
-        correctAnswer: "Evilginx",
-        hint: "Look at the tools list in Task 4."
-      },
-      {
-        taskNum: 5,
-        question: "Which certification is focused primarily on designing and analyzing corporate phishing metrics?",
-        correctAnswer: "CAPS",
-        hint: "Look at the CAPS certification details in Task 5."
-      }
-    ]
-  },
-  '03': {
-    num: '03',
-    title: 'OSINT Reconnaissance',
-    subtitle: 'Open Source Intelligence',
-    description: "In the real world, hackers and ethical pentesters spend up to 70% of their time here. You cannot attack a target effectively if you don't know what it owns, who works there, and what technologies they use.",
-    badges: ["Beginner to Intermediate", "Core Skill", "High Demand"],
-    metrics: [
-      { val: "70%", lbl: "Time Spent" },
-      { val: "4", lbl: "Quadrants" },
-      { val: "10+", lbl: "Tools Covered" },
-      { val: "5", lbl: "Real-world Scenarios" },
-      { val: "2", lbl: "Certifications Recommended" }
-    ],
-    conceptTitle: "What is OSINT Reconnaissance?",
-    conceptText: "Open Source Intelligence (OSINT) is the practice of legally collecting, analyzing, and correlating publicly available data to build a comprehensive blueprint of a target. This phase is completely passive, meaning the tester never interacts directly with the client's servers or systems.",
-    conceptFlow: [
-      { title: "Public Internet", sub: "(Data Discovery)", icon: Users },
-      { title: "OSINT Recon Correlation", sub: "(Analyze)", icon: Laptop, active: true },
-      { title: "Actionable Attack Map", sub: "(Weaponize)", icon: Shield }
-    ],
-    blueprintDesc: "OSINT is one of the fastest-growing sub-disciplines in cybersecurity, expanding far beyond just penetration testing.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Threat Intelligence Analyst", "OSINT Investigator", "Fraud Examiner", "Red Team Infrastructure Engineer"]
-      },
-      {
-        icon: TrendingUp,
-        title: "Average Entry Salary",
-        salary: "$75,000 - $110,000",
-        salarySub: "USD / year",
-        salaryRegion: "(varies by region)"
-      },
-      {
-        icon: FileText,
-        title: "What a Day Looks Like",
-        list: ["Tracking stolen corporate assets", "Identifying leaked source code", "Analyzing corporate data leaks", "Tracking malicious APT groups"]
-      },
-      {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "High Demand & Growth",
-        desc: "Excellent Career Prospects"
-      }
-    ],
-    phasesTitle: "The 4 Quadrants of Professional OSINT",
-    phasesDesc: "Break this topic down into four distinct technological vectors:",
-    phases: [
-      { num: '01', title: 'Advanced Google Dorking', desc: 'Pentesters use specialized syntax within public search engines to uncover hidden files, indexing errors, and sensitive data.', label: 'Search Operators' },
-      { num: '02', title: 'Infrastructure Mapping', desc: 'Finding out every server, subdomain, and IP address registered to a company using tools like Shodan.', label: 'Infrastructure' },
-      { num: '03', title: 'Corporate Profiling', desc: 'Gathering intelligence on human elements to feed directly into Social Engineering using LinkedIn and other tools.', label: 'Human Profiling' },
-      { num: '04', title: 'Metadata Analysis', desc: 'Analyzing hidden data in uploaded documents like author names, software versions, and internal file paths.', label: 'Hidden Clues' }
-    ],
-    toolsTitle: "Essential OSINT Tools (Top 5)",
-    toolsDesc: "Master these essential tools used for open source intelligence gathering.",
-    tools: [
-      { name: 'Google Dorks', cat: 'Search Engine', desc: 'Advanced search operators to uncover sensitive data.' },
-      { name: 'Shodan', cat: 'Device Search', desc: 'The search engine for internet-connected devices.' },
-      { name: 'Amass / Subfinder', cat: 'Infrastructure', desc: 'Tools for in-depth subdomain and infrastructure mapping.' },
-      { name: 'theHarvester', cat: 'Corporate Profiling', desc: 'Gathers emails, names, subdomains, IPs, and URLs.' },
-      { name: 'ExifTool', cat: 'Metadata Analysis', desc: 'Reads, writes, and edits meta information in files.' }
-    ],
-    certs: [
-      { name: 'OSINT-C', full: 'Certified OSINT Specialist', desc: 'A highly practical certification focusing entirely on modern intelligence-gathering techniques.', diff: 'Beginner' },
-      { name: 'SEC487', full: 'SANS Open-Source Intelligence', desc: 'The premier, gold-standard corporate training course for intelligence professionals.', diff: 'Advanced' }
-    ],
-    learnList: [
-      "Advanced search engine operators (Google Dorking)",
-      "Infrastructure mapping and subdomain enumeration",
-      "Corporate profiling and employee data gathering",
-      "Metadata analysis of public documents and images",
-      "Visualizing intelligence data flows",
-      "Converting raw data into actionable attack maps"
-    ],
-    readyText: "Begin your OSINT Reconnaissance journey and learn how to map out a target's entire digital footprint.",
-    stats: {
-      time: "20-25 Hours",
-      diff: "Beginner",
-      prereq: "Networking Basics, Research Skills",
-      next: "04. Exploitation Techniques",
-      nextNum: "04"
-    },
-    questions: [
-      {
-        taskNum: 1,
-        question: "Ethical hackers spend up to what percentage of their total time in the OSINT reconnaissance phase?",
-        correctAnswer: "70%",
-        hint: "Look at the description under the header."
-      },
-      {
-        taskNum: 2,
-        question: "Name one of the key job roles focused entirely on investigating fraudulent data leaks?",
-        correctAnswer: "Fraud Examiner",
-        hint: "Check the potential job roles in Task 2."
-      },
-      {
-        taskNum: 3,
-        question: "Which OSINT vector involves searching for device hardware open ports using Shodan?",
-        correctAnswer: "Infrastructure Mapping",
-        hint: "Read the phase num 02 details."
-      },
-      {
-        taskNum: 4,
-        question: "Which search engine is specialized for locating open webcams, industrial control systems, and routers?",
-        correctAnswer: "Shodan",
-        hint: "Look at the description for tools in Task 4."
-      },
-      {
-        taskNum: 5,
-        question: "What is the acronym of the advanced Google search operators technique used to query public files?",
-        correctAnswer: "Google Dorks",
-        hint: "Look at the certification details."
-      }
-    ]
-  },
-  '04': {
-    num: '04',
-    title: 'Exploitation Techniques',
-    subtitle: 'Taking Control',
-    description: "This is the milestone where students learn how vulnerabilities are actually weaponized to breach systems. Exploitation is the definitive act of taking advantage of a software bug, design flaw, or configuration mistake to force a computer system to behave in an unintended way.",
-    badges: ["Intermediate to Advanced", "Core Skill", "High Impact"],
-    metrics: [
-      { val: "3", lbl: "Exploitation Mechanisms" },
-      { val: "3", lbl: "Pipeline Stages" },
-      { val: "15+", lbl: "Tools Covered" },
-      { val: "8", lbl: "Real-world Scenarios" },
-      { val: "2", lbl: "Certifications Recommended" }
-    ],
-    conceptTitle: "Crossing the Perimeter",
-    conceptText: "Exploitation is the definitive act of taking advantage of a software bug, design flaw, or configuration mistake to force a computer system to behave in an unintended way. Usually, the goal is Arbitrary Code Execution (ACE)—forcing the target machine to run commands or scripts provided by the hacker, effectively handing over control.",
-    conceptFlow: [
-      { title: "Vulnerability", sub: "(The Flaw)", icon: Target },
-      { title: "Exploit", sub: "(The Delivery)", icon: Laptop, active: true },
-      { title: "Payload", sub: "(The Cargo)", icon: Shield }
-    ],
-    blueprintDesc: "Exploitation requires deep technical mastery of architecture, networking protocols, and code.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Exploit Developer", "Vulnerability Researcher", "Red Team Infrastructure Engineer", "Penetration Tester"]
-      },
-      {
-        icon: TrendingUp,
-        title: "Average Entry Salary",
-        salary: "$95,000 - $130,000",
-        salarySub: "USD / year",
-        salaryRegion: "(varies by region)"
-      },
-      {
-        icon: FileText,
-        title: "What a Day Looks Like",
-        list: ["Analyzing software code via reverse engineering", "Studying zero-day patches", "Writing custom scripts in Python, C, or Assembly", "Building bypass mechanisms for security defenses"]
-      },
-      {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "High Demand & Growth",
-        desc: "Excellent Career Prospects"
-      }
-    ],
-    phasesTitle: "The Big Three Exploitation Mechanisms",
-    phasesDesc: "Provide your students with a granular look at how modern professionals categorize exploitation techniques:",
-    phases: [
-      { num: '01', title: 'Remote Code Execution (RCE)', desc: 'Allows an attacker to execute arbitrary commands over a network connection on a remote machine without physical access or valid credentials.', label: 'Server Threat' },
-      { num: '02', title: 'Client-Side Exploitation', desc: 'When internal networks are heavily guarded, attackers target the users inside. Requires user interaction to trigger the exploit code.', label: 'Client Threat' },
-      { num: '03', title: 'Bind Shells', desc: 'The exploit opens a port on the target machine, and the attacker connects to it. (Easily blocked by modern firewalls).', label: 'Inbound Connection' },
-      { num: '04', title: 'Reverse Shells', desc: 'The exploit forces the target machine to connect outward to the attacker\'s machine. Highly effective against firewalls.', label: 'Outbound Connection' }
-    ],
-    toolsTitle: "Essential Testing Tools (Top 5)",
-    toolsDesc: "Master these essential tools used by professional exploit developers.",
-    tools: [
-      { name: 'Metasploit', cat: 'Exploitation Framework', desc: 'The world\'s most used penetration testing framework.' },
-      { name: 'GDB', cat: 'Debugger', desc: 'The GNU Project debugger, allows you to see what is going on inside another program.' },
-      { name: 'Ghidra', cat: 'Reverse Engineering', desc: 'A software reverse engineering (SRE) suite of tools developed by NSA.' },
-      { name: 'Python', cat: 'Scripting', desc: 'The most popular language for writing custom exploit scripts.' },
-      { name: 'Netcat', cat: 'Networking', desc: 'The Swiss Army knife of networking, used for catching reverse shells.' }
-    ],
-    certs: [
-      { name: 'OSCP', full: 'OffSec Certified Professional', desc: 'The gold standard hands-on certification that forces students to manually find, modify, and execute exploits.', diff: 'Advanced' },
-      { name: 'HTB / TryHackMe', full: 'Hack The Box & TryHackMe Labs', desc: 'Gamified laboratory platforms to build practical exploitation skills safely and legally.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Understanding software vulnerabilities and memory corruption",
-      "The anatomy of an exploit and weaponization pipeline",
-      "Remote Code Execution (RCE) vectors and techniques",
-      "Client-side attacks and malicious payloads",
-      "Bind vs. Reverse shells and firewall evasion",
-      "Using frameworks like Metasploit for active exploitation"
-    ],
-    readyText: "Begin your Exploitation journey and learn how vulnerabilities are weaponized in the real world.",
-    stats: {
-      time: "30-40 Hours",
-      diff: "Intermediate to Advanced",
-      prereq: "Networking Basics, Linux Admin, Programming",
-      next: "05. Post-Exploitation Techniques",
-      nextNum: "05"
-    },
-    questions: [
-      {
-        taskNum: 1,
-        question: "What does the abbreviation ACE stand for in the context of computer system security exploitation?",
-        correctAnswer: "Arbitrary Code Execution",
-        hint: "Check Task 1 under Essential Concept description."
-      },
-      {
-        taskNum: 2,
-        question: "What is the average starting salary range lower limit in USD for an Exploit Developer?",
-        correctAnswer: "$95,000",
-        hint: "Check the Average Entry Salary card under the Career Path section."
-      },
-      {
-        taskNum: 3,
-        question: "What shell type forces the compromised server to make an outbound connection back to the attacker?",
-        correctAnswer: "Reverse Shells",
-        hint: "Read the mechanism 04 description."
-      },
-      {
-        taskNum: 4,
-        question: "What is the name of the software reverse engineering suite developed and released by the NSA?",
-        correctAnswer: "Ghidra",
-        hint: "Look at the tools list in Task 4."
-      },
-      {
-        taskNum: 5,
-        question: "What hands-on certification is considered the gold-standard validation of basic exploitation skills?",
-        correctAnswer: "OSCP",
-        hint: "Check the certifications listed in Task 5."
-      }
-    ]
-  },
-  '05': {
-    num: '05',
-    title: 'Post-Exploitation Techniques',
-    subtitle: 'Deepening the Breach',
-    description: "This phase answers the ultimate question after an exploit succeeds: 'I have an initial foothold on a single low-level account... now what?' It is the transition from a single compromised machine to an entire compromised corporate infrastructure.",
-    badges: ["Advanced", "Core Skill", "High Impact"],
-    metrics: [
-      { val: "3", lbl: "Strategic Objectives" },
-      { val: "3", lbl: "Core Tactics" },
-      { val: "10+", lbl: "Tools Covered" },
-      { val: "5", lbl: "Real-world Scenarios" },
-      { val: "2", lbl: "Certifications Recommended" }
-    ],
-    conceptTitle: "The Art of Survival and Expansion",
-    conceptText: "Post-Exploitation is the phase where an authorized tester evaluates what assets can be controlled, what sensitive data can be accessed, and how well they can navigate the internal network without being caught.",
-    conceptFlow: [
-      { title: "Persistence", sub: "(Survive)", icon: Activity },
-      { title: "Privilege Escalation", sub: "(Elevate)", icon: Shield, active: true },
-      { title: "Lateral Movement", sub: "(Expand)", icon: Target }
-    ],
-    blueprintDesc: "Post-exploitation skills separate basic script-kiddies from high-tier enterprise security consultants.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Senior Penetration Tester", "Active Directory Security Expert", "Red Team Consultant", "Incident Responder"]
-      },
-      {
-        icon: TrendingUp,
-        title: "Average Entry Salary",
-        salary: "$100,000 - $140,000",
-        salarySub: "USD / year",
-        salaryRegion: "(varies by region)"
-      },
-      {
-        icon: FileText,
-        title: "What a Day Looks Like",
-        list: ["Analyzing Active Directory domain trusts", "Creating stealthy persistence mechanisms", "Bypassing EDR agents", "Simulating APT playbooks"]
-      },
-      {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "High Demand & Growth",
-        desc: "Excellent Career Prospects"
-      }
-    ],
-    phasesTitle: "Core Post-Exploitation Tactics",
-    phasesDesc: "Detail these exact technical maneuvers that professional pentesters practice daily:",
-    phases: [
-      { num: '01', title: 'Privilege Escalation', desc: 'Hunting for misconfigured services, vulnerable drivers, or weak permissions to elevate from a standard user to SYSTEM or root.', label: 'Vertical Movement' },
-      { num: '02', title: 'Pillaging (Data Gathering)', desc: 'Extracting database connection strings, passwords from memory (Mimikatz), and sensitive internal architecture documents.', label: 'Data Exfiltration' },
-      { num: '03', title: 'Lateral Movement', desc: 'Using the compromised machine as a proxy to scan and attack hidden internal networks (e.g., HR or financial networks).', label: 'Horizontal Movement' },
-      { num: '04', title: 'Active Directory (AD)', desc: '90% of corporate enterprises run on AD. Mastering Kerberos attacks and group policy manipulations is crucial.', label: 'Enterprise Target' }
-    ],
-    toolsTitle: "Essential Testing Tools (Top 5)",
-    toolsDesc: "Master these essential tools used for deep post-exploitation and AD attacks.",
-    tools: [
-      { name: 'Mimikatz', cat: 'Credential Extraction', desc: 'Extracts plaintexts passwords, hash, PIN code and kerberos tickets from memory.' },
-      { name: 'BloodHound', cat: 'AD Analysis', desc: 'Uses graph theory to reveal hidden relationships within Active Directory environments.' },
-      { name: 'Cobalt Strike', cat: 'C2 Framework', desc: 'Adversary simulation software used for long-term post-exploitation.' },
-      { name: 'Chisel', cat: 'Pivoting', desc: 'A fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Useful for lateral movement.' },
-      { name: 'PowerSploit', cat: 'PowerShell Modules', desc: 'Collection of Microsoft PowerShell modules for use during post-exploitation phases.' }
-    ],
-    certs: [
-      { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'Rigorous testing on internal domain post-exploitation environments and Cobalt Strike.', diff: 'Advanced' },
-      { name: 'OSCP', full: 'OffSec Certified Professional', desc: 'Provides rigorous testing on internal network compromise and privilege escalation.', diff: 'Advanced' }
-    ],
-    learnList: [
-      "Windows and Linux privilege escalation techniques",
-      "Credential dumping from memory (Mimikatz)",
-      "Lateral movement and internal network pivoting",
-      "Active Directory architecture and Kerberos attacks",
-      "Stealthy persistence mechanisms and backdoors",
-      "Bypassing Endpoint Detection & Response (EDR)"
-    ],
-    readyText: "Begin your Post-Exploitation journey and learn how to navigate and control enterprise networks.",
-    stats: {
-      time: "35-45 Hours",
-      diff: "Advanced",
-      prereq: "Exploitation Techniques, AD Basics",
-      next: "06. Red Teaming",
-      nextNum: "06"
-    },
-    questions: [
-      {
-        taskNum: 1,
-        question: "What is the term used to describe moving from one compromised computer to another inside the same network?",
-        correctAnswer: "Lateral Movement",
-        hint: "Look at the concept flow diagram in Task 1."
-      },
-      {
-        taskNum: 2,
-        question: "What is the average starting salary range upper limit in USD for a Senior Post-Exploitation Engineer?",
-        correctAnswer: "$140,000",
-        hint: "Check the Average Entry Salary card under the Career Path section."
-      },
-      {
-        taskNum: 3,
-        question: "What is the Microsoft Directory Service used for identity management that is targeted in 90% of corporate hacks?",
-        correctAnswer: "Active Directory",
-        hint: "Read the core tactic 04 description."
-      },
-      {
-        taskNum: 4,
-        question: "Which graph-theory security tool is used to visualize active directory paths and trust relationships?",
-        correctAnswer: "BloodHound",
-        hint: "Look at the tools list in Task 4."
-      },
-      {
-        taskNum: 5,
-        question: "What C2-focused certification validates a student's ability to operate Cobalt Strike in AD environments?",
-        correctAnswer: "CRTO",
-        hint: "Check the certifications listed in Task 5."
-      }
-    ]
-  },
-  '06': {
-    num: '06',
-    title: 'Red Teaming',
-    subtitle: 'Adversary Simulation',
-    description: "We step into the highest tier of offensive security operations. While a standard penetration tester focuses on finding as many bugs as possible, a Red Teamer focuses on testing an organization's entire defensive posture—people, processes, and technology—stealthily.",
-    badges: ["Advanced to Expert", "Elite Skill", "High Impact"],
-    metrics: [
-      { val: "5", lbl: "Lifecycle Stages" },
-      { val: "100%", lbl: "Stealth" },
-      { val: "15+", lbl: "Tactics" },
-      { val: "5", lbl: "Real-world APTs" },
-      { val: "2", lbl: "Certifications Recommended" }
-    ],
-    conceptTitle: "Pentesting vs. Red Teaming",
-    conceptText: "It is incredibly common to confuse these two concepts. Penetration Testing focuses on identifying as many vulnerabilities as possible, usually announced and restricted in scope. Red Teaming, however, simulates a specific real-world threat actor to test detection and response. It is stealthy, unannounced, wide-open in scope, and success is measured by reaching a specific goal without being detected.",
-    conceptFlow: [
-      { title: "Target Intelligence", sub: "(OSINT)", icon: Search },
-      { title: "Initial Access", sub: "(Breach)", icon: Target, active: true },
-      { title: "Objective Completion", sub: "(Exfiltrate)", icon: Trophy }
-    ],
-    blueprintDesc: "This path is intended for advanced students and professionals who already have a baseline understanding of networking, systems administration, and basic exploitation.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Red Team Operator", "Adversary Simulation Consultant", "Purple Team Lead", "Security Researcher"]
-      },
-      {
-        icon: TrendingUp,
-        title: "Average Entry Salary",
-        salary: "$120,000 - $160,000",
-        salarySub: "USD / year",
-        salaryRegion: "(varies by region)"
-      },
-      {
-        icon: FileText,
-        title: "What a Day Looks Like",
-        list: ["Developing custom malware and payload bypasses", "Conducting spear-phishing campaigns", "Designing command-and-control (C2) servers", "Attempting physical security breaches of office facilities"]
-      },
-      {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "Elite Level Demand",
-        desc: "Highest growth potential in cyber security consulting."
-      }
-    ],
-    phasesTitle: "The 5 Stages of the Red Team Lifecycle",
-    phasesDesc: "Red team operations mimic real-world cybercriminals and APT groups using structured steps:",
-    phases: [
-      { num: '01', title: 'Target Reconnaissance (OSINT)', desc: 'Harvesting employee details from LinkedIn, scanning public servers, finding corporate credentials leaked on GitHub.', label: 'Recon' },
-      { num: '02', title: 'Stealth Entry & Access', desc: 'Breaching corporate defenses using highly customized spear-phishing or physical badge cloning.', label: 'Breach' },
-      { num: '03', title: 'Establish Command & Control (C2)', desc: 'Connecting the breached machines back to the red team\'s external server framework for continuous remote control.', label: 'C2 Setup' },
-      { num: '04', title: 'Lateral Expansion & Objective Reach', desc: 'Escalating domains, finding financial records, or capturing industrial controller access keys without making noise.', label: 'Action on Target' },
-      { num: '05', title: 'Adversary Simulation Debrief', desc: 'Documenting the exact timeline of actions so the Blue Team (defenders) can build detections for the gaps discovered.', label: 'Debriefing' }
-    ],
-    toolsTitle: "Essential Adversary Tools (Top 5)",
-    toolsDesc: "Master these elite tools and frameworks used by Red Team operators globally.",
-    tools: [
-      { name: 'Cobalt Strike', cat: 'C2 Framework', desc: 'The gold-standard threat emulation software for post-exploitation.' },
-      { name: 'Mythic C2', cat: 'Command & Control', desc: 'A multi-platform, highly collaborative agent framework.' },
-      { name: 'Proxmark3', cat: 'RFID Cloning', desc: 'The diagnostic tool for RFID and badge cloning attacks.' },
-      { name: 'Flipper Zero', cat: 'Hardware Hacking', desc: 'Multi-tool device for researching wireless protocols and sub-GHz frequencies.' },
-      { name: 'Havoc C2', cat: 'Command & Control', desc: 'A modern, open-source adversary emulation framework.' }
-    ],
-    certs: [
-      { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'In-depth simulation testing on enterprise Active Directory infrastructures.', diff: 'Advanced' },
-      { name: 'CRTE', full: 'Certified Red Team Expert', desc: 'Rigorous expert-level AD exploitation and evasion labs.', diff: 'Expert' }
-    ],
-    learnList: [
-      "Adversary simulation frameworks and threat intelligence",
-      "Stealth privilege escalation and domain takeovers",
-      "Designing and hiding Command & Control (C2) traffic",
-      "Physical facility entry tactics and hardware cloning",
-      "Evading modern EDR and SIEM detection systems",
-      "Designing collaborative Purple Team exercises"
-    ],
-    readyText: "Begin your Red Teaming journey and learn how to emulate the world's most sophisticated threat actors.",
-    stats: {
-      time: "40-50 Hours",
-      diff: "Advanced to Expert",
-      prereq: "Post-Exploitation, Network Defense, AD Security",
-      next: "07. Malware Development",
-      nextNum: "07"
-    },
-    questions: [
-      {
-        taskNum: 1,
-        question: "Unlike standard pentesting, Red Teaming is characterized by what primary operating constraint?",
-        correctAnswer: "Stealth",
-        hint: "A red team operation must remain unannounced and hidden from detection."
-      },
-      {
-        taskNum: 2,
-        question: "What is the average starting salary range upper limit in USD for a Red Team Operator?",
-        correctAnswer: "$160,000",
-        hint: "Check the Average Entry Salary card under the Career Path section."
-      },
-      {
-        taskNum: 3,
-        question: "Which stage of the lifecycle involves setting up active connections back to remote control nodes?",
-        correctAnswer: "Establish Command & Control",
-        hint: "Read the stage num 03 description."
-      },
-      {
-        taskNum: 4,
-        question: "Which RFID hardware cloning tool is standard for physical facility breach assessments?",
-        correctAnswer: "Proxmark3",
-        hint: "Look at the tools list in Task 4."
-      },
-      {
-        taskNum: 5,
-        question: "What certification represents the expert tier (CRTE) of adversary simulation?",
-        correctAnswer: "Certified Red Team Expert",
-        hint: "Check the certs list under Task 5."
-      }
+      { name: 'SEPP', full: 'Certified Social Engineering Pentester', desc: 'Focuses on advanced manipulation, OSINT, and facility breach.', diff: 'Intermediate' }
     ]
   }
 };
 
-// Interactive Question Component for HTB/THM feel
-function HTBQuestion({ questionText, correctAnswer, hint }) {
-  const [userInput, setUserInput] = React.useState('');
-  const [isCorrect, setIsCorrect] = React.useState(false);
-  const [showHint, setShowHint] = React.useState(false);
-
-  const handleSubmit = () => {
-    if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
-      setIsCorrect(true);
-    } else {
-      alert("Incorrect answer! Try again.");
-    }
-  };
-
-  return (
-    <div className="htb-question-box">
-      <div className="htb-question-header">
-        <span className="htb-q-bullet">Q</span>
-        <span className="htb-q-text">{questionText}</span>
-      </div>
-      <div className="htb-question-input-row">
-        <input 
-          type="text" 
-          placeholder={isCorrect ? correctAnswer : "Answer..."} 
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          disabled={isCorrect}
-          className={`htb-input ${isCorrect ? 'correct' : ''}`}
-        />
-        {!isCorrect ? (
-          <button className="btn-htb-submit" onClick={handleSubmit}>Submit Answer</button>
-        ) : (
-          <span className="htb-correct-badge flex-center">
-            <CheckCircle size={14} style={{ marginRight: '4px' }} />
-            <span>Correct!</span>
-          </span>
-        )}
-      </div>
-      {hint && !isCorrect && (
-        <div className="htb-hint-row">
-          <span className="hint-toggle" onClick={() => setShowHint(!showHint)}>
-            {showHint ? "Hide Hint" : "Need Hint?"}
-          </span>
-          {showHint && <p className="hint-text">{hint}</p>}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Copy Terminal Command block
+// Copy Terminal Command block helper
 function TerminalCommandBlock({ command }) {
   const [copied, setCopied] = React.useState(false);
 
@@ -832,63 +164,9 @@ function TerminalCommandBlock({ command }) {
   );
 }
 
-// Interactive Terminology Popup card component
-function TerminologyCard({ term, definition, codeCommand, onPin }) {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  return (
-    <span className="term-interactive-wrap">
-      <button 
-        className={`term-trigger-btn ${isOpen ? 'active' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
-        title="Click to learn and pin this concept"
-      >
-        {term}
-      </button>
-      
-      {isOpen && (
-        <div className="term-popup-overlay">
-          <div className="term-popup-header">
-            <h4>{term}</h4>
-            <button className="btn-close-popup" onClick={() => setIsOpen(false)}>×</button>
-          </div>
-          <div className="term-popup-body">
-            <p>{definition}</p>
-            {codeCommand && (
-              <div className="term-code-block">
-                <code>{codeCommand}</code>
-              </div>
-            )}
-            <button 
-              className="btn-pin-note" 
-              onClick={() => {
-                onPin(term, definition);
-                setIsOpen(false);
-              }}
-            >
-              📌 Pin to Study Notebook
-            </button>
-          </div>
-        </div>
-      )}
-    </span>
-  );
-}
-
 export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
-  // Use active state internally but fallback to prop
   const [activeRoadmapTopic, setActiveRoadmapTopic] = React.useState(topicId);
-  const [pinnedNotes, setPinnedNotes] = React.useState([]);
-  const [customUserNote, setCustomUserNote] = React.useState('');
-  
-  const handlePinNote = (term, definition) => {
-    const formatted = `${term}: ${definition}`;
-    if (!pinnedNotes.includes(formatted)) {
-      setPinnedNotes([...pinnedNotes, formatted]);
-    }
-  };
 
-  // Sync state if prop changes
   React.useEffect(() => {
     setActiveRoadmapTopic(topicId);
   }, [topicId]);
@@ -899,28 +177,18 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
   const sidebarPaths = [
     { name: 'Offensive Security', icon: Swords, active: true },
     { name: 'Defensive Security', icon: Shield, active: false },
-    { name: 'GNC (Governance, Risk & Compliance)', icon: Shield, active: false },
-    { name: 'Purple Team', icon: Target, active: false }
+    { name: 'GNC (Governance, Risk & Compliance)', icon: BookOpen, active: false }
   ];
 
-  // Offensive Roadmap Topics (01 to 10)
+  // Offensive Roadmap Topics
   const roadmapTopics = [
     { num: '01', name: 'Penetration Testing' },
     { num: '02', name: 'Social Engineering' },
     { num: '03', name: 'OSINT Reconnaissance' },
     { num: '04', name: 'Exploitation Techniques' },
     { num: '05', name: 'Post-Exploitation' },
-    { num: '06', name: 'Red Teaming' },
-    { num: '07', name: 'Malware Development' },
-    { num: '08', name: 'Web App Testing' },
-    { num: '09', name: 'Wireless Attacks' },
-    { num: '10', name: 'Reporting & Documentation' }
+    { num: '06', name: 'Red Teaming' }
   ];
-
-  // Map questions for active task num
-  const getQuestionForTask = (taskNum) => {
-    return activeTopic.questions?.find(q => q.taskNum === taskNum);
-  };
 
   return (
     <div className="offensive-dashboard-wrapper select-none">
@@ -929,7 +197,6 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
       <div className="offensive-dashboard">
         {/* 1. Left Sidebar */}
         <aside className="dashboard-sidebar topic-sidebar">
-          {/* Learning Paths */}
           <div className="sidebar-section">
             <span className="sidebar-section-title">LEARNING PATHS</span>
             <div className="sidebar-paths-list flex-column-gap">
@@ -952,7 +219,6 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
             </div>
           </div>
 
-          {/* Offensive Roadmap */}
           <div className="sidebar-section" style={{ marginTop: '20px' }}>
             <span className="sidebar-section-title">OFFENSIVE ROADMAP</span>
             <div className="sidebar-menu-list">
@@ -972,67 +238,6 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
               ))}
             </div>
           </div>
-
-          {/* Your Progress */}
-          <div className="sidebar-progress-card topic-sidebar-progress" style={{ marginTop: '20px' }}>
-            <span className="sidebar-section-title" style={{ paddingLeft: 0, marginBottom: '10px', display: 'block' }}>YOUR PROGRESS</span>
-            <div className="progress-dial-container">
-              <div className="progress-dial-outer">
-                <svg className="progress-dial-svg" viewBox="0 0 100 100">
-                  <circle className="progress-dial-bg" cx="50" cy="50" r="40" />
-                  <circle className="progress-dial-fill" cx="50" cy="50" r="40" style={{ strokeDashoffset: '180.96' }} />
-                </svg>
-                <div className="progress-dial-value">
-                  <span className="dial-percent">38%</span>
-                  <span className="dial-label">Room Completion</span>
-                </div>
-              </div>
-            </div>
-            <div className="progress-stats-mini">
-              <div>Completed: <strong>3 / 10</strong></div>
-              <div>Current Topic: <strong>{activeTopic.title}</strong></div>
-            </div>
-            <button className="btn-sidebar-progress btn-continue-learning" style={{ width: '100%', marginTop: '14px' }}>
-              <span>Continue Learning</span>
-              <ArrowRight size={12} />
-            </button>
-          </div>
-
-          {/* Next Topic Preview */}
-          {activeRoadmapTopic === '01' ? (
-            <div className="next-topic-preview-card" style={{ marginTop: '16px' }} onClick={() => setActiveRoadmapTopic('02')}>
-              <div className="preview-label">NEXT TOPIC</div>
-              <h4>02. Social Engineering</h4>
-              <p>Unlocks after completion</p>
-              <button className="btn-preview-view">
-                <span>View Preview</span>
-                <Play size={10} />
-              </button>
-            </div>
-          ) : (
-            <div className="next-topic-preview-card" style={{ marginTop: '16px' }}>
-              <div className="preview-label">NEXT TOPIC</div>
-              <h4>03. OSINT Reconnaissance</h4>
-              <p>Unlocks after completion</p>
-              <button className="btn-preview-view">
-                <span>View Preview</span>
-                <Play size={10} />
-              </button>
-            </div>
-          )}
-
-          {/* Quote Card */}
-          <div className="sidebar-quote-card" style={{ marginTop: '16px' }}>
-            <div className="quote-hacker-avatar">
-              <div className="quote-avatar-glow"></div>
-            </div>
-            <p className="quote-text">
-              {activeRoadmapTopic === '01' 
-                ? `"Ethical hacking is not about breaking systems, it's about strengthening them."`
-                : `"The weakest link in the security chain is the human element."`
-              }
-            </p>
-          </div>
         </aside>
 
         {/* 2. Main Content Panel */}
@@ -1046,10 +251,10 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
             <span className="breadcrumb-active">{activeTopic.num}</span>
           </nav>
 
-          {/* Grid Layout (Re-structured to single wide layout for readability) */}
+          {/* GitBook Style Layout */}
           <div className="topic-content-grid-single">
             <div className="topic-left-column">
-              {/* Hero Section */}
+              {/* Hero Banner */}
               <section className="topic-hero-banner">
                 <div className="topic-hero-left">
                   <div className="topic-badge-header">
@@ -1067,259 +272,107 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       <span key={i} className="hero-pill-badge">{b}</span>
                     ))}
                   </div>
-
-                  {/* Core Metrics Row */}
-                  <div className="topic-metrics-grid">
-                    {activeTopic.metrics.map((m, i) => (
-                      <div key={i} className="metric-box">
-                        <span className="metric-val">{m.val}</span>
-                        <span className="metric-lbl">{m.lbl}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
                 <div className="topic-hero-right-img">
                   <div className="hacker-hero-img-container">
-                    <img src={hackerImg} alt="Hacker Red Hoodie" />
+                    <img src={hackerImg} alt="Hacker Hero illustration" />
                   </div>
                 </div>
               </section>
 
-              {/* ── INTERACTIVE KNOWLEDGE MIND-MAP ── */}
-              <div className="htb-cheatsheet-container mindmap-section-block">
-                <h3>📌 Syllabus Concept Mind-Map</h3>
-                <p className="section-block-text" style={{ marginBottom: '24px' }}>
-                  Click on any stage of the pentesting lifecycle below to jump directly to its case-study section and learn its concepts!
-                </p>
-                <div className="mindmap-nodes-row">
-                  <a href="#stage-recon" className="mindmap-node-link">
-                    <div className="mindmap-circle">1</div>
-                    <span>Passive Recon</span>
-                  </a>
-                  <div className="mindmap-arrow">➔</div>
-                  <a href="#stage-scan" className="mindmap-node-link">
-                    <div className="mindmap-circle">2</div>
-                    <span>Active Scan</span>
-                  </a>
-                  <div className="mindmap-arrow">➔</div>
-                  <a href="#stage-exploit" className="mindmap-node-link">
-                    <div className="mindmap-circle">3</div>
-                    <span>Exploitation</span>
-                  </a>
-                  <div className="mindmap-arrow">➔</div>
-                  <a href="#stage-priv" className="mindmap-node-link">
-                    <div className="mindmap-circle">4</div>
-                    <span>Privilege Esc</span>
-                  </a>
-                  <div className="mindmap-arrow">➔</div>
-                  <a href="#stage-report" className="mindmap-node-link">
-                    <div className="mindmap-circle">5</div>
-                    <span>Reporting</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* ── MAIN CONTENT LAYOUT WITH NOTEBOOK SIDEBAR ── */}
-              <div className="study-hub-two-column">
-                <div className="study-hub-main-content">
-                  {/* Case Study Section */}
-                  <div className="case-study-log-header">
-                    <span className="case-log-badge">INCIDENT REPORT FILE: #BANK-AUDIT-024</span>
-                    <h2>Case Study: Operation Secure-Bank Audit</h2>
-                    <p className="section-block-text">
-                      We follow a professional audit of Secure-Bank to learn penetration testing concepts. As you read, <strong>click on the highlighted terms</strong> to reveal their details and pin them to your personal notebook!
-                    </p>
+              {/* Study syllabus section blocks */}
+              <div className="gitbook-content-split">
+                
+                {/* ── STICKY SYLLABUS OUTLINE (Left Column) ── */}
+                <div className="gitbook-outline-sidebar">
+                  <div className="outline-card">
+                    <h4>Syllabus Index</h4>
+                    <ul>
+                      {activeTopic.sections.map((sec, idx) => (
+                        <li key={idx}>
+                          <a href={`#${sec.id}`} className="outline-link">
+                            <ChevronRight size={12} />
+                            <span>{sec.title}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
+                </div>
 
-                  {/* Stage 1 */}
-                  <section id="stage-recon" className="topic-section-block htb-task-container">
-                    <div className="htb-task-header">
-                      <span className="htb-task-badge">Stage 1</span>
-                      <h2>Intelligence Gathering & Recon</h2>
-                    </div>
-                    <div className="section-divider-red"></div>
-                    <p className="section-block-text">
-                      The penetration tester begins by gathering public records. This is called{' '}
-                      <TerminologyCard 
-                        term="OSINT" 
-                        definition="Open Source Intelligence. Gathers public records, subdomains, and employee directories without interacting directly with victim servers."
-                        codeCommand="subfinder -d secure-bank.com"
-                        onPin={handlePinNote}
-                      />
-                      . In this phase, we map out the target's footprint. We discover the bank's active staging server IP address: <code>10.10.224.18</code>.
-                    </p>
-                    
-                    <div className="htb-concept-callout">
-                      <span className="callout-icon">💡</span>
-                      <p><strong>Note:</strong> OSINT is completely passive. It is legally safe because you are only looking at data that the target has publicly exposed to the internet.</p>
-                    </div>
-                  </section>
+                {/* ── SYLLABUS CORE CONTENT (Right Column) ── */}
+                <div className="gitbook-main-document">
+                  {activeTopic.sections.map((sec, idx) => (
+                    <section key={idx} id={sec.id} className="gitbook-section-card">
+                      <h2>{sec.title}</h2>
+                      <p className="gitbook-section-text">{sec.content}</p>
+                      
+                      {sec.bulletPoints && (
+                        <ul className="gitbook-bullet-list">
+                          {sec.bulletPoints.map((bp, i) => (
+                            <li key={i}>
+                              <span className="gitbook-bullet-icon">•</span>
+                              <span>{bp}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
-                  {/* Stage 2 */}
-                  <section id="stage-scan" className="topic-section-block htb-task-container">
-                    <div className="htb-task-header">
-                      <span className="htb-task-badge">Stage 2</span>
-                      <h2>Active Scanning & Port Enumeration</h2>
-                    </div>
-                    <div className="section-divider-red"></div>
-                    <p className="section-block-text">
-                      Once we have the target IP, we run an active host port scanner named{' '}
-                      <TerminologyCard 
-                        term="Nmap" 
-                        definition="Network Mapper. A command-line utility used to discover active hosts, open ports, and running service versions."
-                        codeCommand="nmap -sV -sC 10.10.224.18"
-                        onPin={handlePinNote}
-                      />
-                      . The scan reports that Port 80 is open and running a web server service: <code>Apache 2.4.49</code>.
-                    </p>
-
-                    <div style={{ margin: '20px 0' }}>
-                      <TerminalCommandBlock command="nmap -sV -sC -Pn 10.10.224.18" />
-                    </div>
-
-                    <div className="htb-command-expl-wrapper">
-                      <h4>Command Flag Meanings:</h4>
-                      <div className="command-expl-grid">
-                        <div className="command-expl-row">
-                          <span className="command-flag-badge">-sV</span>
-                          <span className="command-flag-desc">Probe open ports to determine service and version info.</span>
+                      {sec.command && (
+                        <div style={{ margin: '24px 0' }}>
+                          <TerminalCommandBlock command={sec.command} />
                         </div>
-                        <div className="command-expl-row">
-                          <span className="command-flag-badge">-sC</span>
-                          <span className="command-flag-desc">Run default Nmap scripts to check for vulnerabilities.</span>
+                      )}
+
+                      {sec.commandExpl && (
+                        <div className="htb-command-expl-wrapper">
+                          <h4>Command Parameter Breakdown</h4>
+                          <div className="command-expl-grid">
+                            {sec.commandExpl.map((expl, i) => (
+                              <div key={i} className="command-expl-row">
+                                <span className="command-flag-badge">{expl.flag}</span>
+                                <span className="command-flag-desc">{expl.desc}</span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                        <div className="command-expl-row">
-                          <span className="command-flag-badge">-Pn</span>
-                          <span className="command-flag-desc">Treat target as online, skipping ping discovery to avoid firewalls.</span>
+                      )}
+
+                      {sec.callout && (
+                        <div className="htb-concept-callout" style={{ margin: '20px 0' }}>
+                          <span className="callout-icon">💡</span>
+                          <p>{sec.callout}</p>
                         </div>
-                      </div>
-                    </div>
-                  </section>
+                      )}
+                    </section>
+                  ))}
 
-                  {/* Stage 3 */}
-                  <section id="stage-exploit" className="topic-section-block htb-task-container">
-                    <div className="htb-task-header">
-                      <span className="htb-task-badge">Stage 3</span>
-                      <h2>Crossing the Perimeter (Exploitation)</h2>
-                    </div>
-                    <div className="section-divider-red"></div>
-                    <p className="section-block-text">
-                      Searching vulnerability databases reveals that Apache 2.4.49 has a critical vulnerability that allows Path Traversal. We write a Python script or launch{' '}
-                      <TerminologyCard 
-                        term="Metasploit" 
-                        definition="A powerful penetration testing exploitation framework containing thousands of pre-written exploits and payloads."
-                        codeCommand="msfconsole"
-                        onPin={handlePinNote}
-                      />
-                      {' '}to exploit it. The exploit triggers successfully and returns a{' '}
-                      <TerminologyCard 
-                        term="Reverse Shell" 
-                        definition="A type of shell connection where the compromised victim machine connects outward to the attacker's listening console, bypassing firewalls."
-                        codeCommand="nc -lvnp 4444"
-                        onPin={handlePinNote}
-                      />
-                      , granting us a low-level local console account named <code>www-data</code>.
-                    </p>
-
-                    <div className="htb-task-media-wrap">
-                      <img src={offensiveScannerImg} alt="Vulnerability Scan Node Grid" className="htb-task-img" />
-                      <span className="htb-task-caption">Figure 3.1: Cyber attack graph showing access compromise node.</span>
-                    </div>
-                  </section>
-
-                  {/* Stage 4 */}
-                  <section id="stage-priv" className="topic-section-block htb-task-container">
-                    <div className="htb-task-header">
-                      <span className="htb-task-badge">Stage 4</span>
-                      <h2>Elevating Access (Privilege Escalation)</h2>
-                    </div>
-                    <div className="section-divider-red"></div>
-                    <p className="section-block-text">
-                      A low-level account like www-data has restricted access. To show maximum impact, the tester performs{' '}
-                      <TerminologyCard 
-                        term="Privilege Escalation" 
-                        definition="The act of exploiting operating system configuration errors, SUID files, or kernel vulnerabilities to elevate standard user privileges to administrator/root permissions."
-                        codeCommand="find / -perm -u=s -type f 2>/dev/null"
-                        onPin={handlePinNote}
-                      />
-                      . We locate a backup shell script owned by the administrator that we can write to. We modify it to grant us a high-privilege <code>root</code> administrator shell.
-                    </p>
-                  </section>
-
-                  {/* Stage 5 */}
-                  <section id="stage-report" className="topic-section-block htb-task-container">
-                    <div className="htb-task-header">
-                      <span className="htb-task-badge">Stage 5</span>
-                      <h2>Analysis & Professional Reporting</h2>
-                    </div>
-                    <div className="section-divider-red"></div>
-                    <p className="section-block-text">
-                      An ethical hacker's value is in their report. We compile our findings, rank them by severity (Low, Medium, High, Critical), and explain the exact steps the bank should take to patch Apache and restrict file permissions.
-                    </p>
-
+                  {/* Certifications Block */}
+                  <section className="gitbook-section-card" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '30px' }}>
+                    <h2>6. Recommended Professional Certifications</h2>
+                    <p className="gitbook-section-text">Recommended pathways for validating your ethical hacking skills in the industry:</p>
                     <div className="recommended-certs-grid">
-                      <div className="recommended-cert-card-v2">
-                        <div className="cert-badge-icon-v2">
-                          <Award size={18} />
-                        </div>
-                        <div className="recommended-cert-text">
-                          <h4>{activeTopic.certs[0].name}</h4>
-                          <span className="recommended-cert-fullname">{activeTopic.certs[0].full}</span>
-                          <p>{activeTopic.certs[0].desc}</p>
-                          <div className="recommended-cert-difficulty">
-                            <span>Difficulty: </span>
-                            <strong>{activeTopic.certs[0].diff}</strong>
+                      {activeTopic.certs.map((cert, idx) => (
+                        <div key={idx} className="recommended-cert-card-v2">
+                          <div className="cert-badge-icon-v2">
+                            <Award size={18} />
+                          </div>
+                          <div className="recommended-cert-text">
+                            <h4>{cert.name}</h4>
+                            <span className="recommended-cert-fullname">{cert.full}</span>
+                            <p>{cert.desc}</p>
+                            <div className="recommended-cert-difficulty">
+                              <span>Difficulty: </span>
+                              <strong>{cert.diff}</strong>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
                   </section>
                 </div>
-
-                {/* ── FLOATING STUDY NOTEBOOK SIDEBAR ── */}
-                <div className="study-hub-notebook-sidebar">
-                  <div className="notebook-card">
-                    <div className="notebook-header">
-                      <span>📝 Pinned Study Notes</span>
-                      <button className="btn-clear-notes" onClick={() => setPinnedNotes([])}>Clear</button>
-                    </div>
-                    
-                    {pinnedNotes.length === 0 ? (
-                      <p className="empty-notes-text">No notes pinned yet. Click highlighted terms in the case study to add them here!</p>
-                    ) : (
-                      <div className="pinned-notes-list">
-                        {pinnedNotes.map((note, idx) => (
-                          <div key={idx} className="pinned-note-item">
-                            <span className="note-bullet">•</span>
-                            <p>{note}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="notebook-user-input-section">
-                      <label htmlFor="user-custom-notes">Add custom observations:</label>
-                      <textarea 
-                        id="user-custom-notes"
-                        placeholder="Type your summary observations here..."
-                        value={customUserNote}
-                        onChange={(e) => setCustomUserNote(e.target.value)}
-                        className="notebook-textarea"
-                      />
-                      <button 
-                        className="btn-copy-all-notes"
-                        onClick={() => {
-                          const allText = `PINS:\n${pinnedNotes.join('\n')}\n\nMY NOTES:\n${customUserNote}`;
-                          navigator.clipboard.writeText(allText);
-                          alert("All study notes copied to clipboard!");
-                        }}
-                      >
-                        Copy All Notes
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </div>
+
             </div>
           </div>
         </div>
