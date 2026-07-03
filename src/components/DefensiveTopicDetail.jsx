@@ -174,7 +174,6 @@ export const DEFENSIVE_TOPICS = {
       { name: 'CTIA', full: 'EC-Council Certified Threat Intelligence Analyst', desc: 'Focuses on the entire threat intelligence lifecycle and analysis process.', diff: 'Advanced' },
       { name: 'GCTI', full: 'GIAC Cyber Threat Intelligence', desc: 'The gold standard for high-tier threat intelligence professionals.', diff: 'Advanced' }
     ]
-    ]
   },
   '04': {
     num: '04',
@@ -190,25 +189,35 @@ export const DEFENSIVE_TOPICS = {
         content: "Digital Forensics bridges the gap between deep computer science and the legal system. Its scope spans corporate internal investigations, corporate espionage, cybersecurity incident root-cause analysis, and law enforcement.",
         bulletPoints: [
           "Core Responsibilities: Creating bit-stream disk images of compromised drives, recovering deleted files, examining registry keys, and constructing clear timelines of hacker activity.",
-          "Industries Hiring: Big 4 consulting firms, private cybersecurity companies, banks, and law enforcement labs.",
-          "Roles Available: Digital Forensics Analyst, Computer Forensic Investigator, Mobile Forensics Specialist, DFIR Engineer."
+          "Industries Hiring: Big 4 consulting firms (Deloitte, EY, PwC, KPMG), private cybersecurity consulting companies, corporate internal investigation units, banks, and law enforcement labs.",
+          "Roles Available: Digital Forensics Analyst, Computer Forensic Investigator, Mobile Forensics Specialist, Forensic Consultant, and DFIR Engineer."
         ],
         callout: "EXTREMELY WORTH IT: Companies face massive liabilities during breaches and need certified experts to accurately prove what was stolen. If you love deep analytical work, this is highly prestigious."
       },
       {
+        id: "sec-salary",
+        title: "2. Expected Salary (2026 Trends)",
+        content: "Digital Forensics requires a steep learning curve and precise procedural knowledge, leading to excellent salary potential:",
+        bulletPoints: [
+          "Early Career (1–3 Years): Junior Digital Forensics Analyst / Associate | ₹5.5 LPA – ₹8.5 LPA",
+          "Mid-Level (3–5 Years): Digital Forensics Specialist / DFIR Consultant | ₹9.0 LPA – ₹16.0 LPA",
+          "Senior (5+ Years): Lead Forensic Investigator / Subject Matter Expert | ₹16.0 LPA – ₹30.0+ LPA"
+        ]
+      },
+      {
         id: "sec-roadmap",
-        title: "2. Digital Forensics Roadmap",
+        title: "3. Step-by-Step Roadmap",
         content: "To become a skilled Digital Forensics professional, follow this pathway:",
         bulletPoints: [
-          "Step 1: Learn Core System Internals. Master file systems (NTFS, FAT32, ext4) and understand registry structures and memory management.",
-          "Step 2: Understand the Chain of Custody. Learn strict legal rules for preserving evidence. Compromised integrity means it cannot be used in court.",
-          "Step 3: Master Industry Tools. Get hands-on with Autopsy, FTK Imager, EnCase, Volatility, and Cellebrite."
+          "Step 1: Learn Core System Internals. Master file systems (NTFS, FAT32, ext4) and how they store data on a hard drive. Understand Windows and Linux registry structures, system artifacts, and memory management.",
+          "Step 2: Understand the Chain of Custody. Learn the strict legal rules for preserving evidence. If you compromise a file's integrity during collection, it cannot be used in court.",
+          "Step 3: Master Industry Tools. Get hands-on experience with popular open-source and commercial forensic suites like Autopsy, FTK Imager, EnCase, Volatility (for memory forensics), and Cellebrite (for mobile forensics)."
         ]
       }
     ],
     certs: [
-      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Validates digital forensic processes and evidence gathering.', diff: 'Intermediate' },
-      { name: 'GCFA', full: 'GIAC Certified Forensic Analyst', desc: 'Gold standard for advanced digital forensics and incident response.', diff: 'Advanced' }
+      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Foundational certification to understand attack methodologies.', diff: 'Intermediate' },
+      { name: 'GCFA', full: 'GIAC Certified Forensic Analyst', desc: 'Advanced Gold Standard for digital forensics.', diff: 'Advanced' }
     ]
   },
   '05': {
