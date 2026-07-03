@@ -7603,3 +7603,19 @@ body {
     display: none;
   }
 }
+
+@media (max-width: 900px) {
+  .offensive-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .dashboard-sidebar.topic-sidebar {
+    width: 100% !important;
+    position: static !important;
+    margin-bottom: 20px;
+  }
+  .offensive-dashboard-wrapper, .defensive-dashboard-wrapper {
+    padding: 10px 15px !important;
+  }
+}
