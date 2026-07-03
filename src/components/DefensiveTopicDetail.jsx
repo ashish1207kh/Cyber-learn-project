@@ -179,6 +179,86 @@ export const DEFENSIVE_TOPICS = {
       next: "03. Threat Intelligence",
       nextNum: "03"
     }
+  },
+  '03': {
+    num: '03',
+    title: 'Threat Intelligence',
+    subtitle: 'The Spy Agency of Cyber Security',
+    description: "If SIEM tracks the cameras and Incident Response fights the intruder, Threat Intelligence (TI) is the spy agency that studies the enemy before they even strike. It is the practice of gathering, analyzing, and organizing data about cybercriminals, their motives, targets, and methods (TTPs).",
+    badges: ["Proactive Defense", "Analytical Skill", "Premium Pay"],
+    metrics: [
+      { val: "3", lbl: "Scope Layers" },
+      { val: "High", lbl: "Demand" },
+      { val: "OSINT", lbl: "Core Skill" },
+      { val: "3", lbl: "Certifications" },
+      { val: "4", lbl: "Job Roles" }
+    ],
+    conceptTitle: "What is Threat Intelligence?",
+    conceptText: "Threat Intelligence bridges the gap between technical data and high-level corporate strategy. Instead of waiting to be attacked, TI analysts look at global hacker trends to predict who will target their organization next, allowing security teams to upgrade their defenses proactively.",
+    conceptFlow: [
+      { title: "Tactical", sub: "(IOCs)", icon: Activity },
+      { title: "Strategic", sub: "(Trends)", icon: Globe, active: true },
+      { title: "Geopolitical", sub: "(Risk)", icon: Target }
+    ],
+    blueprintDesc: "As cyberattacks become more sophisticated and state-sponsored, organizations can no longer survive on reactive security alone. Proactive defense is the future, making Threat Intelligence professionals highly valuable.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Early Career (1–2 Yrs)",
+        salary: "₹5.5L - ₹9.5L",
+        role: "Junior CTI Analyst / Associate"
+      },
+      {
+        icon: TrendingUp,
+        title: "Mid-Level (2–5 Yrs)",
+        salary: "₹9.0L - ₹16.0L",
+        role: "Cyber Threat Intelligence Analyst",
+        highlight: true
+      },
+      {
+        icon: ShieldCheck,
+        title: "Senior (5+ Yrs)",
+        salary: "₹16.0L - ₹28.0L+",
+        role: "Senior CTI Consultant / Tier 3 Threat Hunter"
+      }
+    ],
+    phasesTitle: "Step-by-Step Roadmap",
+    phasesDesc: "To break into a Threat Intelligence role, follow this structured path:",
+    phases: [
+      { num: '01', title: 'Understand Attacker Frameworks', desc: 'Master the MITRE ATT&CK Framework and study the Cyber Kill Chain to understand the exact lifecycle of an attack.', label: 'Frameworks' },
+      { num: '02', title: 'Intelligence Gathering & OSINT', desc: 'Learn Open Source Intelligence (OSINT) to track threat actors. Understand how to safely navigate dark web forums and threat feeds.', label: 'OSINT' },
+      { num: '03', title: 'TI Platforms & Standards', desc: 'Learn how threat data is shared using formats like STIX/TAXII. Practice using Threat Intelligence Platforms (TIPs) like MISP.', label: 'Platforms' },
+      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational (CySA+, CTIA) or advanced (GCTI) certifications to prove your TI expertise.', label: 'Validation' }
+    ],
+    toolsTitle: "Essential TI Platforms",
+    toolsDesc: "Master these platforms used to share and analyze threat data globally.",
+    tools: [
+      { name: 'MISP', cat: 'TIP Platform', desc: 'Malware Information Sharing Platform for gathering and sharing IOCs.' },
+      { name: 'AlienVault OTX', cat: 'Threat Feed', desc: 'Open Threat Exchange providing community-sourced threat data.' },
+      { name: 'VirusTotal', cat: 'Analysis', desc: 'Analyzes suspicious files, domains, IPs, and URLs to detect malware.' },
+      { name: 'STIX/TAXII', cat: 'Standards', desc: 'Standardized formats for exchanging cyber threat intelligence.' }
+    ],
+    certs: [
+      { name: 'CySA+', full: 'CompTIA CySA+', desc: 'Foundational certification applying behavioral analytics to networks.', diff: 'Intermediate' },
+      { name: 'CTIA', full: 'EC-Council CTIA', desc: 'Certified Threat Intelligence Analyst focusing on gathering and analyzing threat info.', diff: 'Intermediate' },
+      { name: 'GCTI', full: 'GIAC Cyber Threat Intelligence', desc: 'The gold standard for high-tier Threat Intelligence professionals.', diff: 'Advanced' }
+    ],
+    learnList: [
+      "Mastering the MITRE ATT&CK Framework",
+      "Studying the Cyber Kill Chain lifecycle",
+      "Performing Open Source Intelligence (OSINT)",
+      "Navigating dark web forums and paste sites safely",
+      "Using STIX/TAXII for threat data sharing",
+      "Practicing with MISP and AlienVault OTX"
+    ],
+    readyText: "If you love deep research, connecting dots across the dark web, and investigating attacker psychology, this is an incredibly rewarding specialization.",
+    stats: {
+      time: "20-30 Hours",
+      diff: "Intermediate",
+      prereq: "Networking, Security Fundamentals",
+      next: "04. Digital Forensics",
+      nextNum: "04"
+    }
   }
 };
 
@@ -189,7 +269,7 @@ const placeholderNames = [
   "Patch Management", "User Awareness Training"
 ];
 
-for (let i = 3; i <= 10; i++) {
+for (let i = 4; i <= 10; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   DEFENSIVE_TOPICS[num] = {
     num: num,
