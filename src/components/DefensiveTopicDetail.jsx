@@ -5,23 +5,10 @@ import {
   Shield, 
   BookOpen, 
   Award, 
-  FileText, 
   ArrowRight, 
-  Clock, 
-  TrendingUp,
-  Terminal,
-  Laptop,
   Copy,
   Check,
-  Cpu,
-  Globe,
-  Settings,
-  Layers,
-  ChevronRight,
-  Database,
-  Server,
-  Activity,
-  Play
+  ChevronRight
 } from 'lucide-react';
 import Header from './Header';
 import analystImg from '../assets/cyber-analyst-blue.jpg';

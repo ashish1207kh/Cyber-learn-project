@@ -5,18 +5,9 @@ import {
   Shield, 
   BookOpen, 
   Award, 
-  FileText, 
   ArrowRight, 
-  Clock, 
-  TrendingUp,
-  Terminal,
-  Laptop,
   Copy,
   Check,
-  Cpu,
-  Globe,
-  Settings,
-  Layers,
   ChevronRight
 } from 'lucide-react';
 import Header from './Header';
