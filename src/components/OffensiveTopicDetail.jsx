@@ -50,6 +50,13 @@ export const TOPIC_DETAILS = {
     ],
     conceptTitle: "What is Penetration Testing?",
     conceptText: "Penetration testing—or pentesting—is an authorized, simulated cyberattack against an organization's IT infrastructure (networks, applications, and systems) to discover security vulnerabilities before malicious hackers can exploit them. Think of it as hiring a security expert to audit your home's security by attempting a controlled break-in.",
+    conceptCallout: "⚠️ CRITICAL RULE: Unauthorized penetration testing is illegal under international cyber law. Always secure a signed written permission (a 'Get Out of Jail Free' card) before scanning any target network.",
+    conceptObjectives: [
+      "Understand the mindset and attack strategies of malicious threat actors.",
+      "Safely identify vulnerability entry points in enterprise software systems.",
+      "Document security risks with standard severity ratings (Low to Critical).",
+      "Provide actionable mitigation guidelines to software developers."
+    ],
     conceptFlow: [
       { title: "Attacker", sub: "(Think)", icon: Terminal },
       { title: "Penetration Testing", sub: "(Simulate)", icon: Laptop, active: true },
@@ -98,6 +105,12 @@ export const TOPIC_DETAILS = {
       { name: 'Metasploit', cat: 'Exploitation Framework', desc: 'Develop, test, and execute exploits against target systems.' },
       { name: 'Wireshark', cat: 'Network Analysis', desc: 'Analyzes network packets and protocols in real-time for insights.' },
       { name: 'John the Ripper', cat: 'Password Cracking', desc: 'Cracks passwords and hashes using various attack methods.' }
+    ],
+    commandExpl: [
+      { flag: "-sV", desc: "Attempts to probe open ports to determine service name and version info." },
+      { flag: "-sC", desc: "Runs default Nmap scripts to test for common vulnerabilities on the active ports." },
+      { flag: "-Pn", desc: "Skip ping discovery. Treats all hosts as online, avoiding firewall blocks." },
+      { flag: "-oN", desc: "Saves the output scan results directly into a local text file." }
     ],
     certs: [
       { name: 'eJPT', full: 'ElearnSecurity Junior Penetration Tester', desc: 'Perfect start for beginners with hands-on approach.', diff: 'Beginner' },
@@ -1162,6 +1175,29 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                   </div>
                 )}
 
+                {/* Concept Callout Box */}
+                {activeTopic.conceptCallout && (
+                  <div className="htb-concept-callout">
+                    <span className="callout-icon">💡</span>
+                    <p>{activeTopic.conceptCallout}</p>
+                  </div>
+                )}
+
+                {/* Concept Objectives Checklist */}
+                {activeTopic.conceptObjectives && (
+                  <div className="htb-concept-objectives">
+                    <h4>Learning Objectives:</h4>
+                    <ul>
+                      {activeTopic.conceptObjectives.map((obj, i) => (
+                        <li key={i}>
+                          <span className="obj-dot">✓</span>
+                          <span>{obj}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 {/* HTB Question Check */}
                 {getQuestionForTask(1) && (
                   <HTBQuestion 
@@ -1301,6 +1337,21 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                   <div style={{ marginBottom: '28px' }}>
                     <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Gathering DNS Records</h4>
                     <TerminalCommandBlock command="subfinder -d target.com -o subdomains.txt" />
+                  </div>
+                )}
+
+                {/* Command Flags Explanations */}
+                {activeTopic.commandExpl && (
+                  <div className="htb-command-expl-wrapper">
+                    <h4>Command Parameter Breakdown:</h4>
+                    <div className="command-expl-grid">
+                      {activeTopic.commandExpl.map((item, i) => (
+                        <div key={i} className="command-expl-row">
+                          <span className="command-flag-badge">{item.flag}</span>
+                          <span className="command-flag-desc">{item.desc}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
 
