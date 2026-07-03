@@ -686,6 +686,92 @@ export const DEFENSIVE_TOPICS = {
       next: "09. Patch Management",
       nextNum: "09"
     }
+  },
+  '09': {
+    num: '09',
+    title: 'Patch Management',
+    subtitle: 'The Digital Plumber',
+    description: "Patch Management is the process of distributing and applying updates to software, operating systems, and firmware across an organization's entire IT infrastructure. Over time, vulnerabilities (cracks) are discovered. Patch Management ensures these fixes are systematically tested, deployed, and verified without breaking existing systems.",
+    badges: ["Infrastructure Essential", "High Stability", "Automation"],
+    metrics: [
+      { val: "Enterprise", lbl: "Scale" },
+      { val: "Very High", lbl: "Demand" },
+      { val: "Automation", lbl: "Core Skill" },
+      { val: "2", lbl: "Certifications" },
+      { val: "5", lbl: "Job Roles" }
+    ],
+    conceptTitle: "What is Patch Management?",
+    conceptText: "Patch Management is a core operational arm of both enterprise IT administration and defensive cybersecurity. It involves massive scale, tracking thousands of endpoints to guarantee that no weak link is left unpatched. It requires scheduling automated cycles and testing updates in isolated environments.",
+    conceptFlow: [
+      { title: "Test", sub: "(Verify)", icon: Beaker },
+      { title: "Deploy", sub: "(Patch)", icon: Package, active: true },
+      { title: "Report", sub: "(Compliance)", icon: FileText }
+    ],
+    blueprintDesc: "Over 80% of successful corporate data breaches occur because a known patch was left uninstalled. Keeping software updated is a continuous cycle, offering incredible job stability for those who excel at systems automation and structured schedules.",
+    blueprintCards: [
+      {
+        icon: TerminalSquare,
+        title: "Fresher (0–2 Yrs)",
+        salary: "₹3.5L - ₹6.0L",
+        role: "Junior Systems / Patch Admin"
+      },
+      {
+        icon: Users,
+        title: "Early Career (2–4 Yrs)",
+        salary: "₹5.5L - ₹9.5L",
+        role: "Patch Management Specialist"
+      },
+      {
+        icon: TrendingUp,
+        title: "Mid-Level (4–7 Yrs)",
+        salary: "₹9.5L - ₹16.0L",
+        role: "Infrastructure & Automation Engineer",
+        highlight: true
+      },
+      {
+        icon: ShieldCheck,
+        title: "Senior (7+ Yrs)",
+        salary: "₹16.0L - ₹27.0L+",
+        role: "Patching Manager / Infrastructure Lead"
+      }
+    ],
+    phasesTitle: "Step-by-Step Roadmap",
+    phasesDesc: "To become an elite Patch Management and Infrastructure professional, build your path across these areas:",
+    phases: [
+      { num: '01', title: 'Master OS Deployment', desc: 'Learn enterprise Windows Server features (Active Directory, GPOs) and how Linux distributions package and deploy software updates (apt, yum, dnf).', label: 'OS Admin' },
+      { num: '02', title: 'Learn Deployment Tools', desc: 'Master central software deployment tools like Microsoft SCCM / MECM, Intune, Ivanti, or ManageEngine Patch Manager Plus.', label: 'Platforms' },
+      { num: '03', title: 'Master Automation & Scripting', desc: 'Learn PowerShell (Windows) or Bash (Linux) to automate patch tracking and reboots. Explore tools like Ansible to push updates.', label: 'Automation' },
+      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational certs like Security+ or LFCS, and platform-specific certifications like Microsoft Endpoint Administrator (MD-102).', label: 'Validation' }
+    ],
+    toolsTitle: "Essential Patch Management Tools",
+    toolsDesc: "Master these industry-standard platforms and automation frameworks for enterprise patching.",
+    tools: [
+      { name: 'SCCM / MECM', cat: 'Windows Mgmt', desc: 'Microsoft Endpoint Configuration Manager for managing large groups of computers.' },
+      { name: 'ManageEngine', cat: 'Patch Management', desc: 'Patch Manager Plus for automated patch deployment across OS and third-party apps.' },
+      { name: 'Ansible', cat: 'Configuration Mgmt', desc: 'An open-source software provisioning, configuration management, and application-deployment tool.' },
+      { name: 'PowerShell / Bash', cat: 'Scripting', desc: 'Command-line shells and scripting languages for task automation and configuration management.' }
+    ],
+    certs: [
+      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required for any cybersecurity role.', diff: 'Beginner' },
+      { name: 'MD-102', full: 'Microsoft Endpoint Administrator Associate', desc: 'Validates skills in deploying, configuring, and managing devices and client applications.', diff: 'Intermediate' },
+      { name: 'LFCS', full: 'Linux Foundation Certified IT System Administrator', desc: 'Proves your capability to administer, manage, and troubleshoot Linux systems.', diff: 'Intermediate' }
+    ],
+    learnList: [
+      "Managing Windows Server features (Active Directory, GPOs)",
+      "Deploying software via Microsoft SCCM / MECM",
+      "Automating patch tracking and reboots using PowerShell",
+      "Using package managers in Linux (apt, yum, dnf)",
+      "Pushing updates to multiple servers simultaneously using Ansible",
+      "Generating compliance verification reports"
+    ],
+    readyText: "Because keeping software updated is a continuous, never-ending cycle, this domain offers incredible job stability. It is perfect for individuals who excel at systems automation, structured schedules, and building flawless IT infrastructure pipelines.",
+    stats: {
+      time: "20-30 Hours",
+      diff: "Beginner to Intermediate",
+      prereq: "Operating Systems, Basic Scripting",
+      next: "10. User Awareness Training",
+      nextNum: "10"
+    }
   }
 };
 
@@ -696,7 +782,7 @@ const placeholderNames = [
   "Patch Management", "User Awareness Training"
 ];
 
-for (let i = 9; i <= 10; i++) {
+for (let i = 10; i <= 10; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   DEFENSIVE_TOPICS[num] = {
     num: num,
