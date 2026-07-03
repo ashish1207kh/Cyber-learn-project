@@ -193,7 +193,7 @@ export const DEFENSIVE_TOPICS = {
     num: '04',
     title: 'Digital Forensics',
     subtitle: 'The CSI of the Digital World',
-    description: "When a cybercrime occurs, digital forensics specialists step in to investigate. Using highly specialized tools, analysts collect, preserve, and analyze digital evidence to legally prove what happened.",
+    description: "Digital Forensics is the CSI of the digital world. When a cybercrime occurs, digital forensics specialists step in to investigate. Using highly specialized tools, analysts collect, preserve, and analyze digital evidence to legally prove what happened.",
     badges: ["Analytical", "Incident Root-Cause", "Investigation"],
     stats: { time: "30 Hours", diff: "Intermediate", prereq: "System Internals, Networking" },
     sections: [
