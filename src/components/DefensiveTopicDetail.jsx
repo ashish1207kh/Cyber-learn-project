@@ -339,6 +339,93 @@ export const DEFENSIVE_TOPICS = {
       next: "05. Network Security",
       nextNum: "05"
     }
+  },
+  '05': {
+    num: '05',
+    title: 'Network Security',
+    subtitle: 'The Digital Transport Shield',
+    description: "Network Security is the practice of protecting a company's entire digital transport system—its local networks, wireless connections, routers, switches, and cloud pipelines—from unauthorized access, misuse, or cyberattacks. It ensures that only authorized traffic can pass, while blocking malicious actors and data leaks.",
+    badges: ["Core Infrastructure", "High Stability", "Foundational"],
+    metrics: [
+      { val: "Perimeter", lbl: "Defense" },
+      { val: "Very High", lbl: "Demand" },
+      { val: "Zero Trust", lbl: "Architecture" },
+      { val: "4", lbl: "Certifications" },
+      { val: "5", lbl: "Job Roles" }
+    ],
+    conceptTitle: "What is Network Security?",
+    conceptText: "As organizations shift to hybrid work environments and massive cloud networks, the demand for robust network security has never been higher. The scope covers managing perimeter defenses, secure remote access, and secure data transit across both physical and cloud infrastructures.",
+    conceptFlow: [
+      { title: "Firewalls", sub: "(Block)", icon: ShieldAlert },
+      { title: "VPNs", sub: "(Tunnel)", icon: Router, active: true },
+      { title: "IDS/IPS", sub: "(Detect)", icon: Radar }
+    ],
+    blueprintDesc: "Network Security is a cornerstone of the cybersecurity ecosystem. Almost every organization requires a team to maintain and secure its physical or cloud network architecture. It provides an exceptionally stable career path.",
+    blueprintCards: [
+      {
+        icon: TerminalSquare,
+        title: "Fresher (0–1 Yrs)",
+        salary: "₹3.5L - ₹6.0L",
+        role: "Network Security Associate"
+      },
+      {
+        icon: Users,
+        title: "Early Career (1–3 Yrs)",
+        salary: "₹5.5L - ₹9.0L",
+        role: "Network Security Engineer"
+      },
+      {
+        icon: TrendingUp,
+        title: "Mid-Level (3–5 Yrs)",
+        salary: "₹9.0L - ₹16.0L",
+        role: "Senior Network Security Engineer",
+        highlight: true
+      },
+      {
+        icon: ShieldCheck,
+        title: "Senior (5+ Yrs)",
+        salary: "₹16.0L - ₹28.0L+",
+        role: "Network Security Architect / Lead"
+      }
+    ],
+    phasesTitle: "Step-by-Step Roadmap",
+    phasesDesc: "To build a successful career in Network Security, follow this structured blueprint:",
+    phases: [
+      { num: '01', title: 'Master Networking Fundamentals', desc: 'Learn the OSI Model, TCP/IP protocols, subnetting, DNS, DHCP, and routing protocols (OSPF, BGP). Get comfortable with Wireshark.', label: 'Basics' },
+      { num: '02', title: 'Learn Enterprise Security Devices', desc: 'Understand how Next-Generation Firewalls (NGFWs), IDS/IPS, and Proxy servers operate. Learn to implement ACLs and network segmentation.', label: 'Devices' },
+      { num: '03', title: 'Dive into Cloud & Modern Concepts', desc: 'Study Cloud Networking (VPCs, Security Groups) on AWS or Azure. Understand Zero Trust Network Access (ZTNA) and SASE.', label: 'Cloud' },
+      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational (Security+, CCNA, PCNSA) or advanced (CCNP Security) certifications to prove your skills.', label: 'Validation' }
+    ],
+    toolsTitle: "Essential Networking Tools",
+    toolsDesc: "Master these industry-standard tools and platforms for securing enterprise networks.",
+    tools: [
+      { name: 'Wireshark', cat: 'Packet Analysis', desc: 'The world\'s foremost network protocol analyzer for intercepting live packets.' },
+      { name: 'Cisco Firewalls', cat: 'Hardware', desc: 'Enterprise-grade Next-Generation Firewalls (NGFW) and security appliances.' },
+      { name: 'Palo Alto', cat: 'NGFW', desc: 'Industry-leading Next-Generation Firewalls with advanced threat prevention.' },
+      { name: 'AWS/Azure VPC', cat: 'Cloud Networking', desc: 'Virtual Private Clouds and network security groups for cloud infrastructures.' }
+    ],
+    certs: [
+      { name: 'Security+', full: 'CompTIA Security+', desc: 'Global certification that validates baseline security skills and network defense concepts.', diff: 'Beginner' },
+      { name: 'CCNA', full: 'Cisco Certified Network Associate', desc: 'Validates ability to navigate the ever-changing landscape of IT networking basics.', diff: 'Beginner' },
+      { name: 'PCNSA', full: 'Palo Alto Networks Certified Network Security Administrator', desc: 'Proves you can operate Palo Alto Networks next-generation firewalls.', diff: 'Intermediate' },
+      { name: 'CCNP Security', full: 'Cisco Certified Network Professional Security', desc: 'Advanced certification for securing networks with Cisco solutions.', diff: 'Advanced' }
+    ],
+    learnList: [
+      "Mastering the OSI Model and TCP/IP protocols",
+      "Using Wireshark for live packet analysis",
+      "Configuring Next-Generation Firewalls (NGFWs)",
+      "Implementing Access Control Lists (ACLs) and segmentation",
+      "Setting up Virtual Private Networks (VPNs)",
+      "Applying Zero Trust Network Access (ZTNA) principles"
+    ],
+    readyText: "If you like configuring systems, understanding how data travels across the globe, and building secure infrastructures from scratch, this field is perfect for you.",
+    stats: {
+      time: "25-35 Hours",
+      diff: "Beginner to Intermediate",
+      prereq: "Basic IT Knowledge",
+      next: "06. Vulnerability Management",
+      nextNum: "06"
+    }
   }
 };
 
@@ -349,7 +436,7 @@ const placeholderNames = [
   "Patch Management", "User Awareness Training"
 ];
 
-for (let i = 5; i <= 10; i++) {
+for (let i = 6; i <= 10; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   DEFENSIVE_TOPICS[num] = {
     num: num,
