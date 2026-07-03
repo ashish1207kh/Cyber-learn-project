@@ -186,39 +186,248 @@ export const DEFENSIVE_TOPICS = {
       { name: 'CTIA', full: 'EC-Council Certified Threat Intelligence Analyst', desc: 'Focuses on the entire threat intelligence lifecycle and analysis process.', diff: 'Advanced' },
       { name: 'GCTI', full: 'GIAC Cyber Threat Intelligence', desc: 'The gold standard for high-tier threat intelligence professionals.', diff: 'Advanced' }
     ]
-  }
-};
-
-const placeholderNames = [
-  "Threat Intelligence", "Digital Forensics", "Network Security",
-  "Vulnerability Management", "Endpoint Security", "Log Analysis",
-  "Patch Management", "User Awareness Training"
-];
-
-for (let i = 4; i <= 10; i++) {
-  const num = i < 10 ? `0${i}` : `${i}`;
-  DEFENSIVE_TOPICS[num] = {
-    num: num,
-    title: placeholderNames[i - 3],
-    subtitle: 'Coming Soon',
-    description: `The complete learning path and curriculum for ${placeholderNames[i - 3]} is currently under development. Please check back later when we add the full content and interactive diagrams.`,
-    badges: ["In Development", "Coming Soon"],
-    stats: { time: "TBD", diff: "TBD", prereq: "TBD" },
+    ]
+  },
+  '04': {
+    num: '04',
+    title: 'Digital Forensics',
+    subtitle: 'The CSI of the Digital World',
+    description: "When a cybercrime occurs, digital forensics specialists step in to investigate. Using highly specialized tools, analysts collect, preserve, and analyze digital evidence to legally prove what happened.",
+    badges: ["Analytical", "Incident Root-Cause", "Investigation"],
+    stats: { time: "30 Hours", diff: "Intermediate", prereq: "System Internals, Networking" },
     sections: [
       {
-        id: "sec-coming-soon",
-        title: "Content Under Construction",
-        content: `We are currently building the comprehensive training module for ${placeholderNames[i - 3]}. This section will feature step-by-step methodologies, interactive architecture diagrams, command snippets, and deep technical breakdowns.`,
+        id: "sec-scope",
+        title: "1. The Scope of Digital Forensics",
+        content: "Digital Forensics bridges the gap between deep computer science and the legal system. Its scope spans corporate internal investigations, corporate espionage, cybersecurity incident root-cause analysis, and law enforcement.",
         bulletPoints: [
-          "Detailed methodology and frameworks",
-          "Interactive terminal commands",
-          "Advanced technical diagrams and use-cases"
+          "Core Responsibilities: Creating bit-stream disk images of compromised drives, recovering deleted files, examining registry keys, and constructing clear timelines of hacker activity.",
+          "Industries Hiring: Big 4 consulting firms, private cybersecurity companies, banks, and law enforcement labs.",
+          "Roles Available: Digital Forensics Analyst, Computer Forensic Investigator, Mobile Forensics Specialist, DFIR Engineer."
+        ],
+        callout: "🔥 EXTREMELY WORTH IT: Companies face massive liabilities during breaches and need certified experts to accurately prove what was stolen. If you love deep analytical work, this is highly prestigious."
+      },
+      {
+        id: "sec-roadmap",
+        title: "2. Digital Forensics Roadmap",
+        content: "To become a skilled Digital Forensics professional, follow this pathway:",
+        bulletPoints: [
+          "Step 1: Learn Core System Internals. Master file systems (NTFS, FAT32, ext4) and understand registry structures and memory management.",
+          "Step 2: Understand the Chain of Custody. Learn strict legal rules for preserving evidence. Compromised integrity means it cannot be used in court.",
+          "Step 3: Master Industry Tools. Get hands-on with Autopsy, FTK Imager, EnCase, Volatility, and Cellebrite."
         ]
       }
     ],
-    certs: []
-  };
-}
+    certs: [
+      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Validates digital forensic processes and evidence gathering.', diff: 'Intermediate' },
+      { name: 'GCFA', full: 'GIAC Certified Forensic Analyst', desc: 'Gold standard for advanced digital forensics and incident response.', diff: 'Advanced' }
+    ]
+  },
+  '05': {
+    num: '05',
+    title: 'Network Security',
+    subtitle: 'The Enterprise Defense Shield',
+    description: "Network Security is the practice of protecting a company's entire digital transport system—local networks, routers, switches, and cloud pipelines—from unauthorized access.",
+    badges: ["Core Infrastructure", "Stable Career", "Architecture"],
+    stats: { time: "25 Hours", diff: "Beginner to Intermediate", prereq: "TCP/IP, Routing" },
+    sections: [
+      {
+        id: "sec-scope",
+        title: "1. The Scope of Network Security",
+        content: "As organizations shift to hybrid work environments and massive cloud networks, the demand for robust network security has never been higher. It covers managing perimeter defenses, secure remote access, and secure data transit.",
+        bulletPoints: [
+          "Core Responsibilities: Designing secure network zones, managing Enterprise Firewalls, setting up VPNs, implementing Zero Trust architectures, and monitoring traffic.",
+          "Industries Hiring: Telecoms, ISPs, financial institutions, and cloud providers (AWS, Azure, GCP).",
+          "Roles Available: Network Security Engineer, Network Security Administrator, Infrastructure Security Engineer."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "2. Network Security Roadmap",
+        content: "Build a successful career by following this structured blueprint:",
+        bulletPoints: [
+          "Step 1: Master Networking Fundamentals. Learn OSI, TCP/IP, subnetting, DNS, and use Wireshark to intercept packets.",
+          "Step 2: Learn Enterprise Devices. Understand Next-Gen Firewalls (NGFWs), IDS/IPS, Proxy servers, and ACLs.",
+          "Step 3: Dive into Cloud & Modern Concepts. Study Cloud Networking (VPCs) and Zero Trust Network Access (ZTNA)."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'CCNA', full: 'Cisco Certified Network Associate', desc: 'Foundational networking knowledge.', diff: 'Beginner' },
+      { name: 'PCNSA', full: 'Palo Alto Networks Certified Network Security Administrator', desc: 'Validates firewall administration skills.', diff: 'Intermediate' }
+    ]
+  },
+  '06': {
+    num: '06',
+    title: 'Vulnerability Management',
+    subtitle: 'Proactive System Audits',
+    description: "Vulnerability Management is the practice of proactively finding, evaluating, and fixing security weaknesses in an organization's systems before attackers can exploit them.",
+    badges: ["Risk Assessment", "Automation", "Steady Hours"],
+    stats: { time: "20 Hours", diff: "Intermediate", prereq: "System Administration" },
+    sections: [
+      {
+        id: "sec-scope",
+        title: "1. The Scope of Vulnerability Management",
+        content: "Think of it like a healthcare check-up for a corporate network. Use automated scanning tools to continuously audit servers and applications.",
+        bulletPoints: [
+          "Core Responsibilities: Configuring security scans, filtering false positives, scoring risks using CVSS, and tracking patch progress.",
+          "Industries Hiring: Global Tech Hubs, Banking, Healthcare, and Major IT Consultancies.",
+          "Roles Available: Vulnerability Management Analyst, Threat & Vulnerability Engineer, Vulnerability Program Lead."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "2. Vulnerability Management Roadmap",
+        content: "To kickstart a career, map out this progression:",
+        bulletPoints: [
+          "Step 1: Understand Risk Frameworks. Master CVE naming and the CVSS scoring system.",
+          "Step 2: Master Scanning Tools. Operate Nessus, Qualys, or Rapid7 InsightVM safely in production.",
+          "Step 3: Learn Remediation Pipelines. Understand how patches are rolled out in enterprise networks."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst', desc: 'Validates vulnerability scanning and analysis skills.', diff: 'Intermediate' },
+      { name: 'TCNA', full: 'Tenable Certified Network Auditor', desc: 'Vendor-specific mastery of Nessus vulnerability scanning.', diff: 'Intermediate' }
+    ]
+  },
+  '07': {
+    num: '07',
+    title: 'Endpoint Security',
+    subtitle: 'Defending the Perimeter',
+    description: "Endpoint Security protects individual devices (laptops, phones, servers) that connect to an organization's network, detecting and blocking threats in real time.",
+    badges: ["EDR Mastery", "System Internals", "Highly Valued"],
+    stats: { time: "25 Hours", diff: "Intermediate", prereq: "OS Administration" },
+    sections: [
+      {
+        id: "sec-scope",
+        title: "1. The Scope of Endpoint Security",
+        content: "With remote work and BYOD policies, the corporate perimeter has shifted directly to the endpoint.",
+        bulletPoints: [
+          "Core Responsibilities: Deploying EDR agents, managing MDM profiles, application whitelisting, and host-based firewalls.",
+          "Industries Hiring: Global enterprises, remote-first companies, and MSSPs.",
+          "Roles Available: Endpoint Security Engineer, EDR Specialist, System Security Administrator."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "2. Endpoint Security Roadmap",
+        content: "Build your expertise through these phases:",
+        bulletPoints: [
+          "Step 1: Focus on OS Internals. Understand Windows/Linux/macOS processes, registries, and local access controls.",
+          "Step 2: Learn Modern Tooling. Move past basic AV. Learn behavioral EDR platforms (CrowdStrike, SentinelOne) and MDM tools (Intune).",
+          "Step 3: Master Device Hardening. Implement CIS Benchmarks to lock down operating systems."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'SC-200', full: 'Microsoft Security Operations Analyst', desc: 'Validates Defender for Endpoint configuration.', diff: 'Intermediate' },
+      { name: 'CCFA', full: 'CrowdStrike Certified Falcon Administrator', desc: 'Vendor-specific mastery of Falcon EDR platform.', diff: 'Advanced' }
+    ]
+  },
+  '08': {
+    num: '08',
+    title: 'Log Analysis',
+    subtitle: 'Decoding Digital Evidence',
+    description: "Log Analysis is the process of reviewing, interpreting, and making sense of the digital records generated by computer systems and security devices.",
+    badges: ["Mandatory Foundation", "Data Parsing", "Detection"],
+    stats: { time: "20 Hours", diff: "Beginner", prereq: "Linux CLI basics" },
+    sections: [
+      {
+        id: "sec-scope",
+        title: "1. The Scope of Log Analysis",
+        content: "Log Analysis is a fundamental skill that underpins almost every single role in defensive security operations.",
+        bulletPoints: [
+          "Core Responsibilities: Parsing unstructured text, building custom search queries, and writing rules to trigger alerts on suspicious patterns.",
+          "Industries Hiring: MSSPs, tech conglomerates, and corporate IT operations teams.",
+          "Roles Available: SOC Analyst (L1/L2), Threat Hunter, Security Automation Engineer."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "2. Log Analysis Roadmap",
+        content: "To become a master at reading logs, focus on this path:",
+        bulletPoints: [
+          "Step 1: Learn Core Formats. Study Windows Event Logs (IDs 4624, 4625) and Linux Logs (syslog, auth.log).",
+          "Step 2: Master Text Filters. Use Linux CLI tools like grep, awk, and sed, alongside Regular Expressions (Regex).",
+          "Step 3: Dive into Query Languages. Learn SPL (Splunk) or KQL (Microsoft Sentinel)."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'BTL1', full: 'Blue Team Level 1', desc: 'Hands-on practical log analysis and defense.', diff: 'Beginner' },
+      { name: 'Splunk Power User', full: 'Splunk Core Certified Power User', desc: 'Validates SPL querying skills.', diff: 'Intermediate' }
+    ]
+  },
+  '09': {
+    num: '09',
+    title: 'Patch Management',
+    subtitle: 'Sealing the Cracks',
+    description: "Patch Management ensures software fixes are systematically tested, deployed, and verified on hundreds or thousands of corporate devices without breaking production.",
+    badges: ["High Stability", "Automation", "Compliance"],
+    stats: { time: "20 Hours", diff: "Beginner to Intermediate", prereq: "System Administration" },
+    sections: [
+      {
+        id: "sec-scope",
+        title: "1. The Scope of Patch Management",
+        content: "Over 80% of successful corporate data breaches occur because a known patch was left uninstalled. This domain offers incredible job stability.",
+        bulletPoints: [
+          "Core Responsibilities: Scheduling automated patch cycles, testing updates, handling failed installations, and generating compliance reports.",
+          "Industries Hiring: MSPs, large IT service providers (Wipro, TCS), and financial institutions.",
+          "Roles Available: Patch Management Specialist, Systems Administrator, Infrastructure Engineer."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "2. Patch Management Roadmap",
+        content: "Build your path across these areas:",
+        bulletPoints: [
+          "Step 1: Master OS Deployment. Learn Active Directory, GPOs, and Linux package managers (apt, yum).",
+          "Step 2: Learn Enterprise Tools. Master SCCM / MECM, Microsoft Intune, or Ivanti.",
+          "Step 3: Master Automation. Learn PowerShell or Bash scripting, and Ansible for configuration management."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'MD-102', full: 'Microsoft Endpoint Administrator', desc: 'Validates device and update management via Intune.', diff: 'Intermediate' },
+      { name: 'LFCS', full: 'Linux Foundation Certified System Administrator', desc: 'Validates Linux system and package administration.', diff: 'Intermediate' }
+    ]
+  },
+  '10': {
+    num: '10',
+    title: 'User Awareness Training',
+    subtitle: 'Building the Human Firewall',
+    description: "Educating employees about cyber threats, organizational security policies, and standard cyber hygiene to prevent social engineering attacks.",
+    badges: ["Low Stress", "Psychology", "Program Management"],
+    stats: { time: "15 Hours", diff: "Beginner", prereq: "Communication Skills, Basic Cyber Concepts" },
+    sections: [
+      {
+        id: "sec-scope",
+        title: "1. The Scope of User Awareness",
+        content: "Over 80% of security incidents involve human error. User Awareness Training uses interactive modules and simulated phishing to strengthen the human perimeter.",
+        bulletPoints: [
+          "Core Responsibilities: Launching fake phishing simulations, designing role-specific modules, and tracking behavioral change metrics.",
+          "Industries Hiring: MNCs, global consultancies, banks, and dedicated training platforms (KnowBe4).",
+          "Roles Available: Security Awareness Program Manager, GRC Analyst, Cyber Security Culture Specialist."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "2. User Awareness Roadmap",
+        content: "Build a career running enterprise-grade training programs:",
+        bulletPoints: [
+          "Step 1: Understand Social Engineering. Study Phishing, Smishing, Vishing, Quishing, and psychological triggers (urgency, fear).",
+          "Step 2: Learn Platform Management. Gain experience with KnowBe4, PhishMe, or Defender for Office 365.",
+          "Step 3: Analytics & Content Creation. Convert dry compliance text into engaging lessons and analyze risk metrics."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'SSAP', full: 'SANS Security Awareness Professional', desc: 'The leading certification for building awareness programs.', diff: 'Advanced' },
+      { name: 'CEH', full: 'Certified Ethical Hacker', desc: 'Understand attacker methodologies to teach defense.', diff: 'Intermediate' }
+    ]
+  }
+};
 
 // Log aggregation flow diagram component
 function LogFlowDiagram() {
