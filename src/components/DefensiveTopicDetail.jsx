@@ -259,6 +259,86 @@ export const DEFENSIVE_TOPICS = {
       next: "04. Digital Forensics",
       nextNum: "04"
     }
+  },
+  '04': {
+    num: '04',
+    title: 'Digital Forensics',
+    subtitle: 'The CSI of the Digital World',
+    description: "When a cybercrime occurs—whether a data breach, ransomware attack, or internal data theft—digital forensics specialists step in to investigate. Using specialized tools, analysts scientifically collect, preserve, and analyze digital evidence to piece together exactly how the crime happened.",
+    badges: ["Deep Analytics", "Legal Operations", "High Prestige"],
+    metrics: [
+      { val: "Big 4", lbl: "Consulting Firms" },
+      { val: "High", lbl: "Precision" },
+      { val: "5", lbl: "Job Roles" },
+      { val: "4", lbl: "Certifications" },
+      { val: "Legal", lbl: "Admissibility" }
+    ],
+    conceptTitle: "What is Digital Forensics?",
+    conceptText: "Digital Forensics bridges the gap between deep computer science and the legal system. Its scope spans corporate internal investigations, corporate espionage, cybersecurity incident root-cause analysis, and law enforcement.",
+    conceptFlow: [
+      { title: "Collect", sub: "(Acquire)", icon: Server },
+      { title: "Examine", sub: "(Analyze)", icon: Eye, active: true },
+      { title: "Report", sub: "(Legal)", icon: FileText }
+    ],
+    blueprintDesc: "Since companies face massive liabilities during data breaches, they need certified experts to accurately prove what was stolen and what wasn't. The job requires meticulous attention to detail and patience.",
+    blueprintCards: [
+      {
+        icon: Users,
+        title: "Early Career (1–3 Yrs)",
+        salary: "₹5.5L - ₹8.5L",
+        role: "Junior Digital Forensics Analyst / Associate"
+      },
+      {
+        icon: TrendingUp,
+        title: "Mid-Level (3–5 Yrs)",
+        salary: "₹9.0L - ₹16.0L",
+        role: "Digital Forensics Specialist / DFIR Consultant",
+        highlight: true
+      },
+      {
+        icon: ShieldCheck,
+        title: "Senior (5+ Yrs)",
+        salary: "₹16.0L - ₹30.0L+",
+        role: "Lead Forensic Investigator / SME"
+      }
+    ],
+    phasesTitle: "Step-by-Step Roadmap",
+    phasesDesc: "To become a skilled Digital Forensics professional, follow this pathway:",
+    phases: [
+      { num: '01', title: 'Learn Core System Internals', desc: 'Master file systems (NTFS, FAT32, ext4) and understand Windows/Linux registry structures, system artifacts, and memory management.', label: 'Internals' },
+      { num: '02', title: 'Understand the Chain of Custody', desc: 'Learn the strict legal rules for preserving evidence. If you compromise a file\'s integrity, it cannot be used in court.', label: 'Legal' },
+      { num: '03', title: 'Master Industry Tools', desc: 'Get hands-on experience with forensic suites like Autopsy, FTK Imager, EnCase, Volatility, and Cellebrite.', label: 'Tools' },
+      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational (CHFI, MCFE) or advanced (GCFA, GCFE) certifications.', label: 'Validation' }
+    ],
+    toolsTitle: "Essential Forensic Suites",
+    toolsDesc: "Master these industry-standard tools for digital investigation and analysis.",
+    tools: [
+      { name: 'Autopsy', cat: 'Open Source', desc: 'A digital forensics platform and graphical interface to The Sleuth Kit.' },
+      { name: 'FTK Imager', cat: 'Disk Imaging', desc: 'Data preview and imaging tool used to acquire data in a forensically sound manner.' },
+      { name: 'Volatility', cat: 'Memory Forensics', desc: 'An advanced memory forensics framework for extracting artifacts from RAM.' },
+      { name: 'Cellebrite', cat: 'Mobile Forensics', desc: 'The industry standard for mobile device forensics and data extraction.' }
+    ],
+    certs: [
+      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Validates skills in identifying an intruder\'s footprints and properly gathering evidence.', diff: 'Intermediate' },
+      { name: 'MCFE', full: 'Magnet Certified Forensic Examiner', desc: 'Certifies competency in using Magnet AXIOM for digital investigations.', diff: 'Intermediate' },
+      { name: 'GCFA', full: 'GIAC Certified Forensic Analyst', desc: 'The gold standard certification for advanced incident response and digital forensics.', diff: 'Advanced' }
+    ],
+    learnList: [
+      "Mastering file systems (NTFS, FAT32, ext4)",
+      "Understanding Windows and Linux registry structures",
+      "Learning strict legal rules for preserving evidence",
+      "Creating bit-stream disk images of compromised drives",
+      "Extracting artifacts from system memory (RAM)",
+      "Practicing with Autopsy, FTK Imager, and Volatility"
+    ],
+    readyText: "If you enjoy solving complex mysteries and technical deep-dives, it is an incredibly fulfilling career.",
+    stats: {
+      time: "30-40 Hours",
+      diff: "Advanced",
+      prereq: "System Administration, Incident Response",
+      next: "05. Network Security",
+      nextNum: "05"
+    }
   }
 };
 
@@ -269,7 +349,7 @@ const placeholderNames = [
   "Patch Management", "User Awareness Training"
 ];
 
-for (let i = 4; i <= 10; i++) {
+for (let i = 5; i <= 10; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   DEFENSIVE_TOPICS[num] = {
     num: num,
