@@ -145,6 +145,47 @@ export const DEFENSIVE_TOPICS = {
       { name: 'GCIH', full: 'GIAC Certified Incident Handler', desc: 'Validates incident handling, threat detection, and exploit analysis skills.', diff: 'Advanced' },
       { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Focuses on digital forensic processes, evidence gathering, and analysis.', diff: 'Advanced' }
     ]
+  },
+  '03': {
+    num: '03',
+    title: 'Threat Intelligence',
+    subtitle: 'The Cyber Spy Agency',
+    description: "Threat Intelligence is the practice of gathering, analyzing, and organizing data about cybercriminals, their motives, targets, and methods (TTPs). Predict who will target your organization next and upgrade defenses proactively.",
+    badges: ["Core Skill", "Analytical", "Proactive Defense"],
+    stats: { time: "25 Hours", diff: "Intermediate to Advanced", prereq: "Cyber Landscape, Networking" },
+    sections: [
+      {
+        id: "sec-scope",
+        title: "1. The Scope of Threat Intelligence",
+        content: "Threat Intelligence bridges the gap between technical data and high-level corporate strategy. Its scope is divided into distinct layers that cater to different audiences within an organization.",
+        bulletPoints: [
+          "Tactical/Operational: Tracking specific malware hashes, bad IP addresses, and domain names (Indicators of Compromise - IoCs) to block them automatically.",
+          "Strategic: Analyzing high-level cyber threat trends, geopolitical events, and hacker group motives for company executives (CISO/CEO) to guide security budgets.",
+          "Roles Available: Threat Intelligence Analyst, Cyber Threat Intelligence (CTI) Specialist, Threat Hunter, and Geopolitical Risk Analyst."
+        ],
+        callout: "💡 PROACTIVE SECURITY: As cyberattacks become more sophisticated and state-sponsored, organizations can no longer survive on reactive security alone. TI enables organizations to predict and prepare.",
+        example: "A Strategic TI analyst notices a rise in ransomware groups targeting the healthcare sector using a new phishing technique. They prepare a briefing for the hospital board to increase the budget for email security and staff training."
+      },
+      {
+        id: "sec-roadmap",
+        title: "2. Threat Intelligence Roadmap",
+        content: "To break into a Threat Intelligence role, follow this structured learning path to build your analytical and technical skills.",
+        bulletPoints: [
+          "Step 1: Understand Attacker Frameworks. Master the MITRE ATT&CK Framework and the Cyber Kill Chain.",
+          "Step 2: Learn Intelligence Gathering & OSINT. Perform Open Source Intelligence (OSINT) to track threat actors safely on dark web forums and threat feeds.",
+          "Step 3: Get Familiar with TI Platforms. Learn how threat data is shared using STIX/TAXII formats and practice with platforms like MISP, AlienVault OTX, or VirusTotal."
+        ],
+        subModules: [
+          { id: "mitre-attack", name: "MITRE ATT&CK Framework Mapping" },
+          { id: "stix-taxii", name: "Threat Sharing with STIX/TAXII" }
+        ]
+      }
+    ],
+    certs: [
+      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst', desc: 'Provides foundational skills in behavioral analytics and threat intelligence.', diff: 'Intermediate' },
+      { name: 'CTIA', full: 'EC-Council Certified Threat Intelligence Analyst', desc: 'Focuses on the entire threat intelligence lifecycle and analysis process.', diff: 'Advanced' },
+      { name: 'GCTI', full: 'GIAC Cyber Threat Intelligence', desc: 'The gold standard for high-tier threat intelligence professionals.', diff: 'Advanced' }
+    ]
   }
 };
 
@@ -154,7 +195,7 @@ const placeholderNames = [
   "Patch Management", "User Awareness Training"
 ];
 
-for (let i = 3; i <= 10; i++) {
+for (let i = 4; i <= 10; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   DEFENSIVE_TOPICS[num] = {
     num: num,
