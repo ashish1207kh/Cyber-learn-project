@@ -1085,42 +1085,6 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </section>
 
-              {/* Quick Stats Horizontal Bar */}
-              <div className="quick-stats-horizontal-bar">
-                <div className="quick-stat-item-horizontal">
-                  <Clock size={16} />
-                  <div>
-                    <span>Estimated Time</span>
-                    <strong>{activeTopic.stats.time}</strong>
-                  </div>
-                </div>
-                <div className="quick-stat-item-horizontal">
-                  <TrendingUp size={16} />
-                  <div>
-                    <span>Difficulty Level</span>
-                    <strong>{activeTopic.stats.diff}</strong>
-                  </div>
-                </div>
-                <div className="quick-stat-item-horizontal">
-                  <Laptop size={16} />
-                  <div>
-                    <span>Prerequisites</span>
-                    <strong>{activeTopic.stats.prereq}</strong>
-                  </div>
-                </div>
-                <div className="quick-stat-item-horizontal" style={{ cursor: 'pointer' }} onClick={() => {
-                  if (TOPIC_DETAILS[activeTopic.stats.nextNum]) {
-                    setActiveRoadmapTopic(activeTopic.stats.nextNum);
-                  }
-                }}>
-                  <ArrowRight size={16} />
-                  <div>
-                    <span>Next Topic</span>
-                    <strong>{activeTopic.stats.next}</strong>
-                  </div>
-                </div>
-              </div>
-
               {/* ── INTERACTIVE KNOWLEDGE MIND-MAP ── */}
               <div className="htb-cheatsheet-container mindmap-section-block">
                 <h3>📌 Syllabus Concept Mind-Map</h3>
