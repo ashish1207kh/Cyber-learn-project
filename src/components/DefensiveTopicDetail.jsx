@@ -206,7 +206,7 @@ export const DEFENSIVE_TOPICS = {
           "Industries Hiring: Big 4 consulting firms, private cybersecurity companies, banks, and law enforcement labs.",
           "Roles Available: Digital Forensics Analyst, Computer Forensic Investigator, Mobile Forensics Specialist, DFIR Engineer."
         ],
-        callout: "🔥 EXTREMELY WORTH IT: Companies face massive liabilities during breaches and need certified experts to accurately prove what was stolen. If you love deep analytical work, this is highly prestigious."
+        callout: "EXTREMELY WORTH IT: Companies face massive liabilities during breaches and need certified experts to accurately prove what was stolen. If you love deep analytical work, this is highly prestigious."
       },
       {
         id: "sec-roadmap",
@@ -228,7 +228,7 @@ export const DEFENSIVE_TOPICS = {
     num: '05',
     title: 'Network Security',
     subtitle: 'The Enterprise Defense Shield',
-    description: "Network Security is the practice of protecting a company's entire digital transport system—local networks, routers, switches, and cloud pipelines—from unauthorized access.",
+    description: "Network Security is the practice of protecting a company's entire digital transport system - local networks, routers, switches, and cloud pipelines - from unauthorized access.",
     badges: ["Core Infrastructure", "Stable Career", "Architecture"],
     stats: { time: "25 Hours", diff: "Beginner to Intermediate", prereq: "TCP/IP, Routing" },
     sections: [
