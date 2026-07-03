@@ -426,6 +426,93 @@ export const DEFENSIVE_TOPICS = {
       next: "06. Vulnerability Management",
       nextNum: "06"
     }
+  },
+  '06': {
+    num: '06',
+    title: 'Vulnerability Management',
+    subtitle: 'The Network Health Check-Up',
+    description: "Vulnerability Management is the practice of proactively finding, evaluating, and fixing security weaknesses in an organization's systems before attackers can exploit them. Professionals use automated scanning tools to continuously audit servers and applications, prioritizing weaknesses to patch them effectively.",
+    badges: ["Proactive Analysis", "Steady Hours", "High Demand"],
+    metrics: [
+      { val: "CVSS", lbl: "Scoring" },
+      { val: "Constant", lbl: "Scanning" },
+      { val: "Global", lbl: "Hiring" },
+      { val: "4", lbl: "Certifications" },
+      { val: "4", lbl: "Job Roles" }
+    ],
+    conceptTitle: "What is Vulnerability Management?",
+    conceptText: "As modern software ecosystems grow larger and more complex, thousands of new vulnerabilities are discovered globally every year. The scope of this field involves bridging defensive operations and offensive scanning, configuring enterprise-wide scans, and tracking patch remediation progress.",
+    conceptFlow: [
+      { title: "Scan", sub: "(Find)", icon: Radar },
+      { title: "Score", sub: "(Prioritize)", icon: Activity, active: true },
+      { title: "Patch", sub: "(Fix)", icon: CheckCircle }
+    ],
+    blueprintDesc: "Because software code is never perfect, fresh vulnerabilities will always exist. Unlike traditional SOC roles, it rarely requires graveyard shifts. If you like structured problem-solving and risk calculation, this domain is an excellent choice.",
+    blueprintCards: [
+      {
+        icon: TerminalSquare,
+        title: "Fresher (0–2 Yrs)",
+        salary: "₹4.0L - ₹6.5L",
+        role: "Junior Vulnerability Analyst"
+      },
+      {
+        icon: Users,
+        title: "Early Career (2–4 Yrs)",
+        salary: "₹6.0L - ₹11.0L",
+        role: "Threat & Vulnerability Analyst"
+      },
+      {
+        icon: TrendingUp,
+        title: "Mid-Level (4–7 Yrs)",
+        salary: "₹11.0L - ₹18.0L",
+        role: "Senior Vulnerability Engineer",
+        highlight: true
+      },
+      {
+        icon: ShieldCheck,
+        title: "Senior (7+ Yrs)",
+        salary: "₹18.0L - ₹32.0L+",
+        role: "Vulnerability Program Lead / Architect"
+      }
+    ],
+    phasesTitle: "Step-by-Step Roadmap",
+    phasesDesc: "To kickstart a career in Vulnerability Management, map out this progression:",
+    phases: [
+      { num: '01', title: 'Understand Risk Frameworks', desc: 'Learn how vulnerabilities are tracked via the CVE database. Master the CVSS to understand severity scores.', label: 'Frameworks' },
+      { num: '02', title: 'Master Scanning Tools', desc: 'Learn to operate market-leading scanners like Tenable Nessus, Qualys Guard, or Rapid7 InsightVM safely.', label: 'Scanning' },
+      { num: '03', title: 'Learn Patching Pipelines', desc: 'Get comfortable with how software updates are rolled out in enterprise networks or cloud systems.', label: 'Remediation' },
+      { num: '04', title: 'Top Certifications', desc: 'Acquire foundational certs like Security+, CySA+, or tool-specific vendor certifications.', label: 'Validation' }
+    ],
+    toolsTitle: "Essential Vulnerability Scanners",
+    toolsDesc: "Master these industry-leading platforms used to identify and manage security flaws.",
+    tools: [
+      { name: 'Tenable Nessus', cat: 'Scanner', desc: 'One of the most widely deployed vulnerability assessment tools in the cybersecurity industry.' },
+      { name: 'Qualys Guard', cat: 'Cloud Platform', desc: 'A cloud-based platform delivering continuous security and compliance solutions.' },
+      { name: 'Rapid7 InsightVM', cat: 'Vulnerability Mgmt', desc: 'Provides live vulnerability management and endpoint analytics.' },
+      { name: 'WSUS', cat: 'Patch Management', desc: 'Windows Server Update Services for managing the distribution of updates and hotfixes.' }
+    ],
+    certs: [
+      { name: 'CySA+', full: 'CompTIA CySA+', desc: 'Validates skills in leveraging threat intelligence and vulnerability management.', diff: 'Intermediate' },
+      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required for any cybersecurity role.', diff: 'Beginner' },
+      { name: 'Qualys Cert', full: 'Qualys Certified Specialist', desc: 'Proves expertise in deploying and operating the Qualys Cloud Platform.', diff: 'Intermediate' },
+      { name: 'Tenable Cert', full: 'Tenable Certified Network Auditor', desc: 'Validates knowledge in operating Nessus and Tenable products.', diff: 'Intermediate' }
+    ],
+    learnList: [
+      "Tracking vulnerabilities via the CVE database",
+      "Calculating severity scores using CVSS",
+      "Operating scanners like Nessus, Qualys, or Rapid7",
+      "Scanning without disrupting live production environments",
+      "Filtering out false positives from scan results",
+      "Coordinating patch pipelines with IT teams"
+    ],
+    readyText: "If you like structured problem-solving, risk calculation, and working closely with different IT engineering teams, this domain is perfect for you.",
+    stats: {
+      time: "20-30 Hours",
+      diff: "Beginner to Intermediate",
+      prereq: "Basic Networking, OS Fundamentals",
+      next: "07. Endpoint Security",
+      nextNum: "07"
+    }
   }
 };
 
@@ -436,7 +523,7 @@ const placeholderNames = [
   "Patch Management", "User Awareness Training"
 ];
 
-for (let i = 6; i <= 10; i++) {
+for (let i = 7; i <= 10; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   DEFENSIVE_TOPICS[num] = {
     num: num,
