@@ -22,7 +22,7 @@ import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
 import offensiveScannerImg from '../assets/offensive-scanner-graph.jpg';
 
-// Content data for each topic - deep syllabus & no task tags
+// Content data for each topic - deep syllabus & clickable sub-modules redirects
 export const TOPIC_DETAILS = {
   '01': {
     num: '01',
@@ -41,7 +41,12 @@ export const TOPIC_DETAILS = {
           "Employee Profiling: Locating email naming conventions, leaked passwords, and employee profiles on public professional portals.",
           "Target Asset Mapping: Correlating external cloud buckets, unmapped subdomains, and staging environments to build a comprehensive target blueprint."
         ],
-        callout: "💡 SECURITY INSIGHT: Pentesters spend up to 70% of their assessment time in this stage. A thorough reconnaissance phase significantly increases the success rate of subsequent phases."
+        callout: "💡 SECURITY INSIGHT: Pentesters spend up to 70% of their assessment time in this stage. A thorough reconnaissance phase significantly increases the success rate of subsequent phases.",
+        subModules: [
+          { id: "dns-recon", name: "DNS Reconnaissance & Whois Enumeration" },
+          { id: "subdomain-discovery", name: "Subdomain Discovery & Virtual Host Hunting" },
+          { id: "google-dorking", name: "Advanced Google Dorking Database (GHDB)" }
+        ]
       },
       {
         id: "sec-scanning",
@@ -57,6 +62,11 @@ export const TOPIC_DETAILS = {
           { flag: "-sV", desc: "Service and Version detection: Probes open ports to identify application names." },
           { flag: "-sC", desc: "Script Scan: Runs default Lua scripts to test ports for common vulnerabilities." },
           { flag: "-Pn", desc: "No Ping: Skip ICMP ping checks, assuming target is online to bypass firewalls." }
+        ],
+        subModules: [
+          { id: "nmap-nse", name: "Nmap Advanced Script Engine (NSE) Usage" },
+          { id: "banner-grabbing", name: "SMTP & SMB Banner Grabbing Techniques" },
+          { id: "udp-scanning", name: "UDP Protocol Port Scanning Mechanics" }
         ]
       },
       {
@@ -68,6 +78,11 @@ export const TOPIC_DETAILS = {
           "Staged Payloads: A tiny loader is sent first, which downloads the larger exploit payload. Useful when buffer space is small.",
           "Non-Staged Payloads: The entire exploit code and shell payload are sent in a single network packet.",
           "Shell Connections: Bind Shells open a port on the victim (easily blocked); Reverse Shells force the victim to connect back out."
+        ],
+        subModules: [
+          { id: "buffer-overflow", name: "Buffer Overflow Vulnerability Exploits" },
+          { id: "metasploit-handlers", name: "Metasploit Exploit Multi-Handlers Config" },
+          { id: "exploit-payloads", name: "Manually Modifying Exploit Payloads" }
         ]
       },
       {
@@ -79,7 +94,12 @@ export const TOPIC_DETAILS = {
           "Windows Service Hijacking: Replacing service executables or modifying registry paths to execute admin code.",
           "Kernel Exploits: Triggering memory corruption flaws within the OS kernel to obtain kernel-level system permissions."
         ],
-        callout: "⚠️ WARNING: Elevating privileges changes the target system's security context. Document SUID settings and service paths before attempting modifications."
+        callout: "⚠️ WARNING: Elevating privileges changes the target system's security context. Document SUID settings and service paths before attempting modifications.",
+        subModules: [
+          { id: "suid-escalation", name: "Abusing SUID Executable Permissions" },
+          { id: "unquoted-service-paths", name: "Windows Unquoted Service Paths Attacks" },
+          { id: "kernel-exploitation", name: "Kernel Exploitation & Kernel Auditing" }
+        ]
       },
       {
         id: "sec-reporting",
@@ -89,6 +109,10 @@ export const TOPIC_DETAILS = {
           "Risk Prioritization: Using Common Vulnerability Scoring System (CVSS v3.0) to rank vulnerabilities from Low to Critical.",
           "Evidence Compilation: Providing proof-of-concept scripts and screenshot logs for verification.",
           "Remediation Steps: Recommending software patches, port closures, and secure host configurations."
+        ],
+        subModules: [
+          { id: "audit-reporting", name: "Writing Executive Summaries for Audits" },
+          { id: "cvss-scoring", name: "CVSS Vector Calculation and Scoring" }
         ]
       }
     ],
@@ -342,6 +366,27 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         <div className="htb-concept-callout" style={{ margin: '20px 0' }}>
                           <span className="callout-icon">💡</span>
                           <p>{sec.callout}</p>
+                        </div>
+                      )}
+
+                      {/* Klik panna vera page ku redirect aagura Deep Sub-modules */}
+                      {sec.subModules && (
+                        <div className="subtopic-redirect-wrapper" style={{ marginTop: '24px' }}>
+                          <h4 style={{ color: '#ffffff', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px' }}>
+                            🔗 Click to explore deep-dive modules:
+                          </h4>
+                          <div className="subtopic-links-grid">
+                            {sec.subModules.map((sub, sIdx) => (
+                              <button 
+                                key={sIdx}
+                                className="subtopic-redirect-card-btn"
+                                onClick={() => onNavigate('offensive-subtopic-detail', sub.id)}
+                              >
+                                <span>{sub.name}</span>
+                                <ArrowRight size={12} className="card-btn-arrow" />
+                              </button>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </section>

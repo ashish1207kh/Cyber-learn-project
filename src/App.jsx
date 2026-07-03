@@ -65,6 +65,9 @@ function App() {
       } else if (hash.startsWith('#offensive-topic/')) {
         const topicId = hash.replace('#offensive-topic/', '');
         transitionTo('offensive-topic-detail', topicId);
+      } else if (hash.startsWith('#offensive-subtopic/')) {
+        const subtopicId = hash.replace('#offensive-subtopic/', '');
+        transitionTo('offensive-subtopic-detail', subtopicId);
       } else if (hash.startsWith('#defensive-topic/')) {
         const topicId = hash.replace('#defensive-topic/', '');
         transitionTo('defensive-topic-detail', topicId);
@@ -94,6 +97,8 @@ function App() {
       window.location.hash = '#defensive-roadmap';
     } else if (view === 'offensive-topic-detail') {
       window.location.hash = `#offensive-topic/${topicId || selectedTopicId}`;
+    } else if (view === 'offensive-subtopic-detail') {
+      window.location.hash = `#offensive-subtopic/${topicId}`;
     } else if (view === 'defensive-topic-detail') {
       window.location.hash = `#defensive-topic/${topicId || selectedTopicId}`;
     }
@@ -180,6 +185,33 @@ function App() {
       {currentView === 'offensive-topic-detail' && (
         <div ref={detailTopicRef} className="dashboard-container">
           <OffensiveTopicDetail topicId={selectedTopicId} onBack={() => handleNavigate('offensive-detail')} onNavigate={handleNavigate} />
+        </div>
+      )}
+
+      {/* ── OFFENSIVE SUB-TOPIC DETAIL ── */}
+      {currentView === 'offensive-subtopic-detail' && (
+        <div ref={detailTopicRef} className="dashboard-container">
+          <div className="gitbook-main-document" style={{ margin: '60px auto', maxWidth: '800px' }}>
+            <button 
+              className="btn-scenario-nav" 
+              onClick={() => handleNavigate('offensive-topic-detail', '01')}
+              style={{ marginBottom: '30px' }}
+            >
+              &lt; Back to Penetration Testing Syllabus
+            </button>
+            <h2 style={{ textTransform: 'uppercase', color: '#ff5555', letterSpacing: '0.5px' }}>
+              Sub-Topic: {selectedTopicId.replace(/-/g, ' ')}
+            </h2>
+            <p className="gitbook-section-text" style={{ marginTop: '16px' }}>
+              This is a deep-dive syllabus module dedicated exclusively to <strong>{selectedTopicId.replace(/-/g, ' ')}</strong>.
+            </p>
+            <div className="htb-concept-callout" style={{ margin: '30px 0' }}>
+              <span className="callout-icon">🚧</span>
+              <p>
+                <strong>Collaborator Note:</strong> Content for this sub-topic will be added here later. Navigated hash route: <code>#offensive-subtopic/{selectedTopicId}</code>
+              </p>
+            </div>
+          </div>
         </div>
       )}
 
