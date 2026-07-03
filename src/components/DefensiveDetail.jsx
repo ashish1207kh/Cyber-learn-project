@@ -197,6 +197,8 @@ export default function DefensiveDetail({ onBack, onNavigate }) {
                   <div key={idx} className="topic-card topic-card-blue"
                     onMouseMove={(e) => applyTiltEffect(e.currentTarget, e)}
                     onMouseLeave={(e) => removeTiltEffect(e.currentTarget)}
+                    onClick={() => onNavigate('defensive-topic-detail', topic.num)}
+                    style={{ cursor: 'pointer' }}
                   >
                     <span className="topic-num-blue">{topic.num}</span>
                     <div className="topic-card-icon-circle-blue">

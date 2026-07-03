@@ -25,19 +25,13 @@ import {
   Terminal,
   Play,
   Laptop,
-  Globe,
-  Database,
-  Key,
-  Code,
-  Wifi,
-  Router,
-  Unlock,
-  Package,
-  Satellite,
-  TerminalSquare
+  Copy,
+  Check
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
+import offensiveScannerImg from '../assets/offensive-scanner-graph.jpg';
+import socialEngineeringImg from '../assets/social-engineering-vector.jpg';
 
 // Content data for each topic to keep the layout identical
 export const TOPIC_DETAILS = {
@@ -126,7 +120,40 @@ export const TOPIC_DETAILS = {
       prereq: "Networking Basics, Linux Fundamentals",
       next: "02. Social Engineering",
       nextNum: "02"
-    }
+    },
+    // TryHackMe style tasks questions mapping
+    questions: [
+      {
+        taskNum: 1,
+        question: "What is the primary goal of an authorized, simulated cyberattack (pentesting)?",
+        correctAnswer: "Discover vulnerabilities",
+        hint: "Look at the first paragraph under the Essential Concept section."
+      },
+      {
+        taskNum: 2,
+        question: "What is the average entry salary range upper limit in USD for a Junior Penetration Tester?",
+        correctAnswer: "$105,000",
+        hint: "Check the Average Entry Salary card under the Career Path & Blueprint section."
+      },
+      {
+        taskNum: 3,
+        question: "Which phase of a pentest is focused on defining scope and gathering information using OSINT?",
+        correctAnswer: "Planning & Reconnaissance",
+        hint: "Read the phase num 01 description."
+      },
+      {
+        taskNum: 4,
+        question: "What is the command-line flag in Nmap used to enable service and version detection?",
+        correctAnswer: "-sV",
+        hint: "We usually run 'nmap -sV target.com' to get versions."
+      },
+      {
+        taskNum: 5,
+        question: "Which certification is widely recommended as the best hands-on starting point for beginners?",
+        correctAnswer: "eJPT",
+        hint: "Look at the eJPT description under Recommended Certifications."
+      }
+    ]
   },
   '02': {
     num: '02',
@@ -210,7 +237,39 @@ export const TOPIC_DETAILS = {
       prereq: "OSINT Basics, Technical Pretexting",
       next: "03. OSINT Reconnaissance",
       nextNum: "03"
-    }
+    },
+    questions: [
+      {
+        taskNum: 1,
+        question: "What is the weak link in the security chain that social engineering exploits?",
+        correctAnswer: "Human",
+        hint: "Security always fails if a ____ is tricked into opening the door."
+      },
+      {
+        taskNum: 2,
+        question: "What is the average entry salary lower limit in USD for a Social Engineer?",
+        correctAnswer: "$80,000",
+        hint: "Check the Average Entry Salary card under the Career Path section."
+      },
+      {
+        taskNum: 3,
+        question: "What is the physical attack vector where an attacker follows an authorized employee through secure turnstiles?",
+        correctAnswer: "Tailgating",
+        hint: "Read the attack vector 04 description."
+      },
+      {
+        taskNum: 4,
+        question: "Which proxy framework is commonly used by red teamers to bypass multi-factor authentication (MFA)?",
+        correctAnswer: "Evilginx",
+        hint: "Look at the tools list in Task 4."
+      },
+      {
+        taskNum: 5,
+        question: "Which certification is focused primarily on designing and analyzing corporate phishing metrics?",
+        correctAnswer: "CAPS",
+        hint: "Look at the CAPS certification details in Task 5."
+      }
+    ]
   },
   '03': {
     num: '03',
@@ -294,7 +353,39 @@ export const TOPIC_DETAILS = {
       prereq: "Networking Basics, Research Skills",
       next: "04. Exploitation Techniques",
       nextNum: "04"
-    }
+    },
+    questions: [
+      {
+        taskNum: 1,
+        question: "Ethical hackers spend up to what percentage of their total time in the OSINT reconnaissance phase?",
+        correctAnswer: "70%",
+        hint: "Look at the description under the header."
+      },
+      {
+        taskNum: 2,
+        question: "Name one of the key job roles focused entirely on investigating fraudulent data leaks?",
+        correctAnswer: "Fraud Examiner",
+        hint: "Check the potential job roles in Task 2."
+      },
+      {
+        taskNum: 3,
+        question: "Which OSINT vector involves searching for device hardware open ports using Shodan?",
+        correctAnswer: "Infrastructure Mapping",
+        hint: "Read the phase num 02 details."
+      },
+      {
+        taskNum: 4,
+        question: "Which search engine is specialized for locating open webcams, industrial control systems, and routers?",
+        correctAnswer: "Shodan",
+        hint: "Look at the description for tools in Task 4."
+      },
+      {
+        taskNum: 5,
+        question: "What is the acronym of the advanced Google search operators technique used to query public files?",
+        correctAnswer: "Google Dorks",
+        hint: "Look at the certification details."
+      }
+    ]
   },
   '04': {
     num: '04',
@@ -345,7 +436,7 @@ export const TOPIC_DETAILS = {
     phasesTitle: "The Big Three Exploitation Mechanisms",
     phasesDesc: "Provide your students with a granular look at how modern professionals categorize exploitation techniques:",
     phases: [
-      { num: '01', title: 'Remote Code Execution (RCE)', desc: 'The holy grail of offensive security. Allows an attacker to execute arbitrary commands over a network connection on a remote machine without physical access or valid credentials.', label: 'Server Threat' },
+      { num: '01', title: 'Remote Code Execution (RCE)', desc: 'Allows an attacker to execute arbitrary commands over a network connection on a remote machine without physical access or valid credentials.', label: 'Server Threat' },
       { num: '02', title: 'Client-Side Exploitation', desc: 'When internal networks are heavily guarded, attackers target the users inside. Requires user interaction to trigger the exploit code.', label: 'Client Threat' },
       { num: '03', title: 'Bind Shells', desc: 'The exploit opens a port on the target machine, and the attacker connects to it. (Easily blocked by modern firewalls).', label: 'Inbound Connection' },
       { num: '04', title: 'Reverse Shells', desc: 'The exploit forces the target machine to connect outward to the attacker\'s machine. Highly effective against firewalls.', label: 'Outbound Connection' }
@@ -378,7 +469,39 @@ export const TOPIC_DETAILS = {
       prereq: "Networking Basics, Linux Admin, Programming",
       next: "05. Post-Exploitation Techniques",
       nextNum: "05"
-    }
+    },
+    questions: [
+      {
+        taskNum: 1,
+        question: "What does the abbreviation ACE stand for in the context of computer system security exploitation?",
+        correctAnswer: "Arbitrary Code Execution",
+        hint: "Check Task 1 under Essential Concept description."
+      },
+      {
+        taskNum: 2,
+        question: "What is the average starting salary range lower limit in USD for an Exploit Developer?",
+        correctAnswer: "$95,000",
+        hint: "Check the Average Entry Salary card under the Career Path section."
+      },
+      {
+        taskNum: 3,
+        question: "What shell type forces the compromised server to make an outbound connection back to the attacker?",
+        correctAnswer: "Reverse Shells",
+        hint: "Read the mechanism 04 description."
+      },
+      {
+        taskNum: 4,
+        question: "What is the name of the software reverse engineering suite developed and released by the NSA?",
+        correctAnswer: "Ghidra",
+        hint: "Look at the tools list in Task 4."
+      },
+      {
+        taskNum: 5,
+        question: "What hands-on certification is considered the gold-standard validation of basic exploitation skills?",
+        correctAnswer: "OSCP",
+        hint: "Check the certifications listed in Task 5."
+      }
+    ]
   },
   '05': {
     num: '05',
@@ -462,7 +585,39 @@ export const TOPIC_DETAILS = {
       prereq: "Exploitation Techniques, AD Basics",
       next: "06. Red Teaming",
       nextNum: "06"
-    }
+    },
+    questions: [
+      {
+        taskNum: 1,
+        question: "What is the term used to describe moving from one compromised computer to another inside the same network?",
+        correctAnswer: "Lateral Movement",
+        hint: "Look at the concept flow diagram in Task 1."
+      },
+      {
+        taskNum: 2,
+        question: "What is the average starting salary range upper limit in USD for a Senior Post-Exploitation Engineer?",
+        correctAnswer: "$140,000",
+        hint: "Check the Average Entry Salary card under the Career Path section."
+      },
+      {
+        taskNum: 3,
+        question: "What is the Microsoft Directory Service used for identity management that is targeted in 90% of corporate hacks?",
+        correctAnswer: "Active Directory",
+        hint: "Read the core tactic 04 description."
+      },
+      {
+        taskNum: 4,
+        question: "Which graph-theory security tool is used to visualize active directory paths and trust relationships?",
+        correctAnswer: "BloodHound",
+        hint: "Look at the tools list in Task 4."
+      },
+      {
+        taskNum: 5,
+        question: "What C2-focused certification validates a student's ability to operate Cobalt Strike in AD environments?",
+        correctAnswer: "CRTO",
+        hint: "Check the certifications listed in Task 5."
+      }
+    ]
   },
   '06': {
     num: '06',
@@ -489,7 +644,7 @@ export const TOPIC_DETAILS = {
       {
         icon: Users,
         title: "Potential Job Roles",
-        list: ["Red Team Operator", "Adversary Emulation Engineer", "Purple Team Lead", "Threat Simulation Expert"]
+        list: ["Red Team Operator", "Adversary Simulation Consultant", "Purple Team Lead", "Security Researcher"]
       },
       {
         icon: TrendingUp,
@@ -501,363 +656,168 @@ export const TOPIC_DETAILS = {
       {
         icon: FileText,
         title: "What a Day Looks Like",
-        list: ["Researching state-sponsored hacker playbooks (MITRE ATT&CK)", "Writing stealth tools", "Setting up C2 infrastructures", "Testing internal security teams"]
+        list: ["Developing custom malware and payload bypasses", "Conducting spear-phishing campaigns", "Designing command-and-control (C2) servers", "Attempting physical security breaches of office facilities"]
       },
       {
         icon: Activity,
         title: "Career Growth",
-        growthBadge: "Elite Tier",
-        desc: "Highest Demand & Prestige"
+        growthBadge: "Elite Level Demand",
+        desc: "Highest growth potential in cyber security consulting."
       }
     ],
-    phasesTitle: "The Red Team Lifecycle",
-    phasesDesc: "Red Team operations can last anywhere from weeks to months, simulating an Advanced Persistent Threat (APT):",
+    phasesTitle: "The 5 Stages of the Red Team Lifecycle",
+    phasesDesc: "Red team operations mimic real-world cybercriminals and APT groups using structured steps:",
     phases: [
-      { num: '01', title: 'Target Intelligence (OSINT)', desc: 'Building profiles without touching target infrastructure using public intelligence.', label: 'Reconnaissance' },
-      { num: '02', title: 'Weaponization & Infrastructure', desc: 'Buying fake domains, setting up C2 (Command & Control) servers and payloads.', label: 'Preparation' },
-      { num: '03', title: 'Initial Access (The Breach)', desc: 'Using custom phishing or physical tailgating to get inside the target perimeter.', label: 'Infiltration' },
-      { num: '04', title: 'Evasion & Stealth', desc: 'Bypassing EDR (Antivirus) and blending into normal corporate network traffic.', label: 'Survival' },
-      { num: '05', title: 'Objective Completion', desc: 'Exfiltrating mock sensitive data (like the CEO\'s inbox) to prove business impact.', label: 'Execution' }
+      { num: '01', title: 'Target Reconnaissance (OSINT)', desc: 'Harvesting employee details from LinkedIn, scanning public servers, finding corporate credentials leaked on GitHub.', label: 'Recon' },
+      { num: '02', title: 'Stealth Entry & Access', desc: 'Breaching corporate defenses using highly customized spear-phishing or physical badge cloning.', label: 'Breach' },
+      { num: '03', title: 'Establish Command & Control (C2)', desc: 'Connecting the breached machines back to the red team\'s external server framework for continuous remote control.', label: 'C2 Setup' },
+      { num: '04', title: 'Lateral Expansion & Objective Reach', desc: 'Escalating domains, finding financial records, or capturing industrial controller access keys without making noise.', label: 'Action on Target' },
+      { num: '05', title: 'Adversary Simulation Debrief', desc: 'Documenting the exact timeline of actions so the Blue Team (defenders) can build detections for the gaps discovered.', label: 'Debriefing' }
     ],
-    toolsTitle: "Essential Red Team Toolkits (Top 5)",
-    toolsDesc: "Introduce yourself to the specialized enterprise tools used by Red Team operators for stealth and control.",
+    toolsTitle: "Essential Adversary Tools (Top 5)",
+    toolsDesc: "Master these elite tools and frameworks used by Red Team operators globally.",
     tools: [
-      { name: 'Cobalt Strike', cat: 'C2 Framework', desc: 'The industry-standard commercial platform used by elite red teams globally.' },
-      { name: 'Sliver / Mythic', cat: 'C2 Frameworks', desc: 'Powerful, open-source alternative C2 frameworks that are highly customizable.' },
-      { name: 'CrowdStrike Evasion', cat: 'EDR Bypassing', desc: 'Process Injection and API Unhooking to stay invisible.' },
-      { name: 'MITRE ATT&CK', cat: 'Framework', desc: 'A globally-accessible knowledge base of adversary tactics and techniques.' },
-      { name: 'Phishing Frameworks', cat: 'Initial Access', desc: 'Custom tailored social engineering campaigns for payload delivery.' }
+      { name: 'Cobalt Strike', cat: 'C2 Framework', desc: 'The gold-standard threat emulation software for post-exploitation.' },
+      { name: 'Mythic C2', cat: 'Command & Control', desc: 'A multi-platform, highly collaborative agent framework.' },
+      { name: 'Proxmark3', cat: 'RFID Cloning', desc: 'The diagnostic tool for RFID and badge cloning attacks.' },
+      { name: 'Flipper Zero', cat: 'Hardware Hacking', desc: 'Multi-tool device for researching wireless protocols and sub-GHz frequencies.' },
+      { name: 'Havoc C2', cat: 'Command & Control', desc: 'A modern, open-source adversary emulation framework.' }
     ],
     certs: [
-      { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'An excellent, highly practical exam focusing on Cobalt Strike and Active Directory evasion.', diff: 'Advanced' },
-      { name: 'CRTE / PACES', full: 'Altered Security', desc: 'Elite multi-forest Active Directory testing certifications designed to test deep network persistence.', diff: 'Expert' }
+      { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'In-depth simulation testing on enterprise Active Directory infrastructures.', diff: 'Advanced' },
+      { name: 'CRTE', full: 'Certified Red Team Expert', desc: 'Rigorous expert-level AD exploitation and evasion labs.', diff: 'Expert' }
     ],
     learnList: [
-      "Simulating Advanced Persistent Threats (APTs)",
-      "Setting up Command and Control (C2) infrastructure",
-      "Bypassing modern Antivirus and EDR solutions",
-      "Process Injection, API Unhooking, and memory obfuscation",
-      "Executing stealthy initial access campaigns",
-      "Testing an organization's physical, digital, and social defenses"
+      "Adversary simulation frameworks and threat intelligence",
+      "Stealth privilege escalation and domain takeovers",
+      "Designing and hiding Command & Control (C2) traffic",
+      "Physical facility entry tactics and hardware cloning",
+      "Evading modern EDR and SIEM detection systems",
+      "Designing collaborative Purple Team exercises"
     ],
     readyText: "Begin your Red Teaming journey and learn how to emulate the world's most sophisticated threat actors.",
     stats: {
       time: "40-50 Hours",
       diff: "Advanced to Expert",
-      prereq: "Post-Exploitation, Network Architecture",
-      next: "07. Physical Security Testing",
+      prereq: "Post-Exploitation, Network Defense, AD Security",
+      next: "07. Malware Development",
       nextNum: "07"
-    }
-  },
-  '07': {
-    num: '07',
-    title: 'Physical Security Testing',
-    subtitle: 'Breaching the Perimeter',
-    description: "We step away from the keyboard and enter the real world. Many students forget that cybersecurity is entirely dependent on physical security. If an attacker can walk up to an internal server or plug a device into a wall outlet, all digital firewalls become irrelevant.",
-    badges: ["Specialized", "High Risk", "Real World"],
-    metrics: [
-      { val: "4", lbl: "Lifecycle Stages" },
-      { val: "3", lbl: "Bypass Tools" },
-      { val: "100%", lbl: "Physical Scope" },
-      { val: "3", lbl: "Infiltration Methods" },
-      { val: "1", lbl: "Core Certification" }
-    ],
-    conceptTitle: "Breaking the Physical Barrier",
-    conceptText: "Physical Security Testing is the authorized simulation of a real-world intruder attempting to breach an organization's physical facilities. The objective is to evaluate the strength of locks, access control systems, cameras, fences, and security guards.",
-    conceptFlow: [],
-    blueprintDesc: "Physical testing is a highly specialized skill set usually performed by senior Red Team members due to the high legal and safety risks involved.",
-    blueprintCards: [
+    },
+    questions: [
       {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Physical Security Consultant", "Corporate Risk Auditor", "Red Team Specialist", "Operations Security Officer"]
+        taskNum: 1,
+        question: "Unlike standard pentesting, Red Teaming is characterized by what primary operating constraint?",
+        correctAnswer: "Stealth",
+        hint: "A red team operation must remain unannounced and hidden from detection."
       },
       {
-        icon: TrendingUp,
-        title: "Risk & Impact",
-        salary: "Critical Level",
-        salarySub: "High Legal & Safety Risks",
-        salaryRegion: "(Requires 'Get Out of Jail Free' card)"
+        taskNum: 2,
+        question: "What is the average starting salary range upper limit in USD for a Red Team Operator?",
+        correctAnswer: "$160,000",
+        hint: "Check the Average Entry Salary card under the Career Path section."
       },
       {
-        icon: FileText,
-        title: "What a Day Looks Like",
-        list: ["Scouting corporate buildings with binoculars", "Mapping camera angles", "Donning disguises (e.g., HVAC technician)", "Drafting emergency contact letters"]
+        taskNum: 3,
+        question: "Which stage of the lifecycle involves setting up active connections back to remote control nodes?",
+        correctAnswer: "Establish Command & Control",
+        hint: "Read the stage num 03 description."
       },
       {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "Niche & Elite",
-        desc: "Highly Specialized Field"
+        taskNum: 4,
+        question: "Which RFID hardware cloning tool is standard for physical facility breach assessments?",
+        correctAnswer: "Proxmark3",
+        hint: "Look at the tools list in Task 4."
+      },
+      {
+        taskNum: 5,
+        question: "What certification represents the expert tier (CRTE) of adversary simulation?",
+        correctAnswer: "Certified Red Team Expert",
+        hint: "Check the certs list under Task 5."
       }
-    ],
-    phasesTitle: "The Physical Pentester's Toolkit",
-    phasesDesc: "Pentesters carry a specialized physical tactical bag filled with mechanical and electronic bypass tools:",
-    phases: [
-      { num: '01', title: 'RFID and Badge Cloners', desc: 'Standing close to an employee to wirelessly read badge frequencies, cloning them to blank cards to walk through the front door.', label: 'Electronic Bypass' },
-      { num: '02', title: 'Lock Picking', desc: 'Using tension wrenches and picks for opening traditional padlocks or file cabinets when digital systems can\'t be tricked.', label: 'Mechanical Bypass' },
-      { num: '03', title: 'Under-Door Tools (UDT)', desc: 'A long, flexible rod designed to slide under a door, reach up, and pull down the inside lever handle.', label: 'Door Bypass' },
-      { num: '04', title: 'Rogue Hardware (Drop Boxes)', desc: 'Plugging covert devices like a Hak5 Pineapple into internal network ports for permanent remote access.', label: 'Network Access' }
-    ],
-    toolsTitle: "Essential Physical Tools (Top 5)",
-    toolsDesc: "Master these specialized tools used for physical entry and network persistence.",
-    tools: [
-      { name: 'Flipper Zero / Proxmark3', cat: 'RFID Cloning', desc: 'Used for reading, writing, and emulating RFID/NFC proximity badges.' },
-      { name: 'Under-Door Tool (UDT)', cat: 'Mechanical Bypass', desc: 'Slips under doors to actuate the inner lever handle.' },
-      { name: 'Shims & Raking Tools', cat: 'Lock Bypass', desc: 'Designed to slide into latches to slip the locking mechanism open in seconds.' },
-      { name: 'Hak5 Pineapple', cat: 'Rogue Hardware', desc: 'A wireless auditing platform that can be deployed as a rogue access point.' },
-      { name: 'Raspberry Pi Drop Box', cat: 'Network Pivot', desc: 'A custom mini-computer left behind to establish a hidden cellular connection.' }
-    ],
-    certs: [
-      { name: 'PSP', full: 'Physical Security Professional', desc: 'A globally recognized corporate standard focusing on threat assessments and physical protection.', diff: 'Advanced' },
-      { name: 'TOOOL', full: 'Lockpickers Org', desc: 'Join local groups to learn the core mechanical principles of security safely and legally.', diff: 'Beginner' }
-    ],
-    learnList: [
-      "Conducting physical reconnaissance and mapping blind spots",
-      "Cloning RFID/NFC corporate badges wirelessly",
-      "Picking standard pin-tumbler locks and padlocks",
-      "Bypassing doors using Under-Door Tools (UDT) and shims",
-      "Deploying rogue network devices (drop boxes) for remote access",
-      "Social engineering guards and personnel via physical disguises"
-    ],
-    readyText: "Step away from the keyboard and learn how to evaluate and breach physical security perimeters.",
-    stats: {
-      time: "25-35 Hours",
-      diff: "Advanced",
-      prereq: "Red Teaming, Social Engineering",
-      next: "08. Web App Testing",
-      nextNum: "08"
-    }
-  },
-  '08': {
-    num: '08',
-    title: 'Web App Testing',
-    subtitle: 'Securing the Digital Storefront',
-    description: "We pivot back to digital infrastructure, focusing on the single most exposed attack surface any modern organization possesses: its web applications. Because websites are designed to be publicly accessible, they are targeted by attackers 24/7.",
-    badges: ["High Demand", "Bug Bounty", "Core Skill"],
-    metrics: [
-      { val: "Top 10", lbl: "OWASP Standard" },
-      { val: "3", lbl: "Critical Vectors" },
-      { val: "100%", lbl: "Public Exposure" },
-      { val: "2", lbl: "Key Frameworks" },
-      { val: "2", lbl: "Certifications" }
-    ],
-    conceptTitle: "Beyond the Network Perimeter",
-    conceptText: "While network pentesting looks at the servers and ports hosting an application, Web Application Testing focuses entirely on the code, logic, and data processing of the website itself. Even if a company has a multi-million dollar firewall, a simple programming flaw in a login form or a search bar can allow an attacker to bypass all network defenses and steal entire underlying databases.",
-    conceptFlow: [],
-    blueprintDesc: "Web application security is one of the most practical entry points into a high-paying cyber career, especially through crowdsourced security.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Application Security (AppSec) Engineer", "Web Penetration Tester", "Product Security Auditor", "Bug Bounty Hunter"]
-      },
-      {
-        icon: TrendingUp,
-        title: "The Bug Bounty Ecosystem",
-        salary: "Highly Lucrative",
-        salarySub: "Pay-per-Vulnerability",
-        salaryRegion: "(HackerOne, Bugcrowd)"
-      },
-      {
-        icon: FileText,
-        title: "What a Day Looks Like",
-        list: ["Reviewing application source code", "Mapping API endpoints", "Manually testing authentication workflows", "Implementing secure coding practices"]
-      },
-      {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "Uncapped Potential",
-        desc: "King of Bug Bounties"
-      }
-    ],
-    phasesTitle: "Deep Dive into the Top Vulnerabilities",
-    phasesDesc: "Break down how these common vulnerabilities operate under the hood:",
-    phases: [
-      { num: '01', title: 'SQL Injection (SQLi)', desc: 'Occurs when untrusted user input is directly concatenated into a backend database query instead of using parameterized inputs.', label: 'Database Flaw' },
-      { num: '02', title: 'Insecure Direct Object References (IDOR)', desc: 'A type of access control flaw where an application uses user-supplied input to access objects directly without verifying permissions.', label: 'Access Control' },
-      { num: '03', title: 'Cross-Site Scripting (XSS)', desc: 'The web application includes malicious, unvalidated JavaScript input within the web page delivered to a victim\'s browser.', label: 'Client-Side Flaw' }
-    ],
-    toolsTitle: "The Web Pentester's Toolkit",
-    toolsDesc: "A web pentester relies on a localized interception suite rather than network scanners:",
-    tools: [
-      { name: 'Burp Suite', cat: 'Interception Proxy', desc: 'The absolute standard. Sits between the tester\'s browser and the target web server to manipulate HTTP requests.' },
-      { name: 'OWASP ZAP', cat: 'Interception Proxy', desc: 'A free, open-source alternative to Burp Suite maintained by OWASP.' },
-      { name: 'Sqlmap', cat: 'Exploitation Tool', desc: 'Automates the process of detecting and exploiting SQL injection flaws and taking over database servers.' }
-    ],
-    certs: [
-      { name: 'OSWE', full: 'OffSec Wireless and Web Exploitation', desc: 'An elite, hands-on certification focusing on web application analysis and white-box code auditing.', diff: 'Advanced' },
-      { name: 'GWAPT', full: 'GIAC Web Application Penetration Tester', desc: 'A highly respected corporate certification validating a tester\'s ability to thoroughly audit web environments.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Mastering the OWASP Top 10 web vulnerabilities",
-      "Intercepting and modifying HTTP traffic with Burp Suite",
-      "Exploiting SQL Injection (SQLi) to dump databases",
-      "Hunting for Insecure Direct Object References (IDOR)",
-      "Executing Stored and Reflected Cross-Site Scripting (XSS)",
-      "Participating in Bug Bounty programs (HackerOne, Bugcrowd)"
-    ],
-    readyText: "Pivot to the digital storefront and learn how to secure the most exposed attack surface.",
-    stats: {
-      time: "40-50 Hours",
-      diff: "Intermediate",
-      prereq: "Networking Basics, HTML/JS/SQL",
-      next: "09. Wireless Attacks",
-      nextNum: "09"
-    }
-  },
-  '09': {
-    num: '09',
-    title: 'Wireless Attacks',
-    subtitle: 'Cracking the Airwaves',
-    description: "We look at how data travels without wires. Because wireless radio waves cannot be contained within the physical walls of a building, they represent a uniquely vulnerable target. Anyone sitting in a corporate parking lot with a high-gain antenna can attempt to intercept or manipulate the network.",
-    badges: ["Hardware", "RF Signals", "On-site"],
-    metrics: [
-      { val: "3", lbl: "Core Attack Vectors" },
-      { val: "100%", lbl: "Airwave Vulnerability" },
-      { val: "2", lbl: "Key Toolkits" },
-      { val: "1", lbl: "Specialized Hardware" },
-      { val: "1", lbl: "Core Certification" }
-    ],
-    conceptTitle: "Sneaking Over the Invisible Spectrum",
-    conceptText: "Wireless Testing and Attacks involve auditing, intercepting, and exploiting radio frequency (RF) communication protocols—most commonly Wi-Fi (802.11), Bluetooth, and cellular signals. The objective is to determine if an attacker can break wireless encryption, sniff unencrypted corporate traffic from a distance, or bypass network access control (NAC) policies.",
-    conceptFlow: [],
-    blueprintDesc: "Wireless security skills are critical for operations engineers, red teamers, and corporate auditors alike.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Wireless Security Auditor", "Telecommunications Consultant", "Red Team Physical Operator", "IoT Security Researcher"]
-      },
-      {
-        icon: TrendingUp,
-        title: "Risk & Impact",
-        salary: "Proximity Based",
-        salarySub: "High RF Exposure",
-        salaryRegion: "(Parking lot attacks)"
-      },
-      {
-        icon: FileText,
-        title: "What a Day Looks Like",
-        list: ["Conducting wireless site surveys", "Hunting for unauthorized rogue APs", "Testing Bluetooth Low Energy (BLE)", "Evaluating cellular security policies"]
-      },
-      {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "Highly Specialized",
-        desc: "Essential for Red Teams"
-      }
-    ],
-    phasesTitle: "Deep Dive into the Techniques",
-    phasesDesc: "Break down how these common vulnerabilities operate under the hood:",
-    phases: [
-      { num: '01', title: 'WPA2/WPA3 Handshake Capture', desc: 'Forcefully disconnecting an active user to capture the encrypted cryptographic handshake packets when they reconnect, then cracking it offline.', label: 'Brute-force' },
-      { num: '02', title: 'The Evil Twin Attack', desc: 'Broadcasting a fake network with the same name as the corporate guest network to perform Man-in-the-Middle (MitM) attacks.', label: 'MitM Attack' },
-      { num: '03', title: 'WPS (Wi-Fi Protected Setup) Exploitation', desc: 'Exploiting a structural flaw in the 8-digit WPS PIN protocol using automated brute-force tools to reveal the main password instantly.', label: 'Protocol Flaw' }
-    ],
-    toolsTitle: "The Wireless Pentester's Toolkit",
-    toolsDesc: "Wireless testing requires a mix of specialized software and hardware:",
-    tools: [
-      { name: 'Aircrack-ng Suite', cat: 'Software Suite', desc: 'The legendary command-line toolkit used for monitoring, injecting packets, and cracking keys.' },
-      { name: 'Hashcat', cat: 'Cracking Utility', desc: 'The world\'s fastest utility for cracking passwords, optimized to use GPU power.' },
-      { name: 'WiFi Pineapple', cat: 'Hardware Rogue AP', desc: 'A specialized dual-band hardware platform designed to automate Evil Twin setups.' }
-    ],
-    certs: [
-      { name: 'OSWP', full: 'OffSec Wireless Professional', desc: 'The premier practical wireless certification that forces students to conduct live attacks against WPA-protected networks.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Auditing and exploiting 802.11 wireless protocols",
-      "Performing Deauthentication attacks to capture WPA handshakes",
-      "Using Hashcat to run dictionary attacks on captured handshakes",
-      "Deploying Evil Twin rogue access points for MitM attacks",
-      "Brute-forcing Wi-Fi Protected Setup (WPS) PINs",
-      "Hunting for rogue wireless devices inside corporate walls"
-    ],
-    readyText: "Grab your high-gain antenna and learn how to intercept and manipulate the invisible spectrum.",
-    stats: {
-      time: "20-30 Hours",
-      diff: "Intermediate",
-      prereq: "Networking Basics, Linux CLI",
-      next: "10. Malware Development",
-      nextNum: "10"
-    }
-  },
-  '10': {
-    num: '10',
-    title: 'Malware Theory & Analysis',
-    subtitle: 'Understanding the Adversary',
-    description: "Concluding your website's offensive roadmap, Topic 10 introduces the theoretical mechanics of how malicious software operates. Studying these concepts is not about creating damage—it is about understanding the structural anatomy of code to help defensive engineers build better detection systems.",
-    badges: ["Reverse Engineering", "Advanced", "Theory"],
-    metrics: [
-      { val: "3", lbl: "Pipeline Stages" },
-      { val: "2", lbl: "Analysis Disciplines" },
-      { val: "100%", lbl: "Defensive Value" },
-      { val: "2", lbl: "Key Frameworks" },
-      { val: "1", lbl: "Architecture" }
-    ],
-    conceptTitle: "Defensive Through Understanding",
-    conceptText: "To effectively defend a network, security professionals must understand how malicious code interacts with an operating system's low-level architecture. Malware Analysis and Architecture Theory is the study of how software components execute uninvited actions, maintain persistence, and evade detection mechanisms within an environment.",
-    conceptFlow: [],
-    blueprintDesc: "Mastering the theory of software execution and binary reverse engineering opens up some of the most specialized and critical roles in the entire cybersecurity ecosystem.",
-    blueprintCards: [
-      {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Malware Analyst", "Reverse Engineer", "Threat Hunter", "Incident Response Handler"]
-      },
-      {
-        icon: TrendingUp,
-        title: "Risk & Impact",
-        salary: "Extremely High",
-        salarySub: "Global Threat Scope",
-        salaryRegion: "(APT Defense)"
-      },
-      {
-        icon: FileText,
-        title: "What a Day Looks Like",
-        list: ["Dissecting unknown software variants", "Writing YARA detection rules", "Documenting threat actor capabilities", "Reverse engineering binaries"]
-      },
-      {
-        icon: Activity,
-        title: "Career Growth",
-        growthBadge: "Elite Tier",
-        desc: "Signature Engineering"
-      }
-    ],
-    phasesTitle: "The Pillars of Malware Analysis",
-    phasesDesc: "When preparing students and professionals for careers in this advanced tier, the focus is typically split into two investigative disciplines:",
-    phases: [
-      { num: '01', title: 'Static Analysis', desc: 'Inspecting a file without actually executing it. Calculating hashes, extracting text strings, and analyzing file headers.', label: 'Code at Rest' },
-      { num: '02', title: 'Dynamic Analysis', desc: 'Executing the software inside a heavily isolated, monitored environment called a Sandbox. Monitoring live processes and registry changes.', label: 'Code in Motion' }
-    ],
-    toolsTitle: "Recommended Educational Focus",
-    toolsDesc: "Advise your students to study x86/x64 assembly and operating system internals.",
-    tools: [
-      { name: 'Assembly Language', cat: 'Architecture', desc: 'Study x86/x64 assembly to truly understand how software interacts directly with computer hardware.' },
-      { name: 'OS Internals', cat: 'System', desc: 'Understand the Windows API or Linux kernel structures for deep analysis.' },
-      { name: 'MITRE ATT&CK', cat: 'Framework', desc: 'Categorizes real-world adversary behaviors and techniques for mapping software patterns structurally.' }
-    ],
-    certs: [
-      { name: 'GREM', full: 'GIAC Reverse Engineering Malware', desc: 'The industry standard for malware analysis and reverse engineering.', diff: 'Expert' }
-    ],
-    learnList: [
-      "Calculating file hashes (MD5/SHA256) for static analysis",
-      "Extracting readable text strings hidden inside binaries",
-      "Analyzing file headers for target OS libraries",
-      "Executing software in isolated sandbox environments",
-      "Monitoring live process creation and registry modifications",
-      "Writing custom YARA signatures to detect threats"
-    ],
-    readyText: "Congratulations on completing the Offensive Roadmap! You now understand the adversary's playbook from the outside in.",
-    stats: {
-      time: "40-60 Hours",
-      diff: "Expert",
-      prereq: "Assembly, OS Internals, C/C++",
-      next: "Roadmap Complete",
-      nextNum: null
-    }
+    ]
   }
 };
+
+// Interactive Question Component for HTB/THM feel
+function HTBQuestion({ questionText, correctAnswer, hint }) {
+  const [userInput, setUserInput] = React.useState('');
+  const [isCorrect, setIsCorrect] = React.useState(false);
+  const [showHint, setShowHint] = React.useState(false);
+
+  const handleSubmit = () => {
+    if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+      setIsCorrect(true);
+    } else {
+      alert("Incorrect answer! Try again.");
+    }
+  };
+
+  return (
+    <div className="htb-question-box">
+      <div className="htb-question-header">
+        <span className="htb-q-bullet">Q</span>
+        <span className="htb-q-text">{questionText}</span>
+      </div>
+      <div className="htb-question-input-row">
+        <input 
+          type="text" 
+          placeholder={isCorrect ? correctAnswer : "Answer..."} 
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          disabled={isCorrect}
+          className={`htb-input ${isCorrect ? 'correct' : ''}`}
+        />
+        {!isCorrect ? (
+          <button className="btn-htb-submit" onClick={handleSubmit}>Submit Answer</button>
+        ) : (
+          <span className="htb-correct-badge flex-center">
+            <CheckCircle size={14} style={{ marginRight: '4px' }} />
+            <span>Correct!</span>
+          </span>
+        )}
+      </div>
+      {hint && !isCorrect && (
+        <div className="htb-hint-row">
+          <span className="hint-toggle" onClick={() => setShowHint(!showHint)}>
+            {showHint ? "Hide Hint" : "Need Hint?"}
+          </span>
+          {showHint && <p className="hint-text">{hint}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Copy Terminal Command block
+function TerminalCommandBlock({ command }) {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(command);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="htb-terminal-box">
+      <div className="htb-terminal-header">
+        <div className="htb-terminal-dots">
+          <span className="dot dot-red"></span>
+          <span className="dot dot-yellow"></span>
+          <span className="dot dot-green"></span>
+        </div>
+        <span className="htb-terminal-title">Terminal Console</span>
+        <button className="btn-copy-command" onClick={handleCopy}>
+          {copied ? <Check size={12} style={{ color: '#4ade80' }} /> : <Copy size={12} />}
+          <span>{copied ? "Copied!" : "Copy"}</span>
+        </button>
+      </div>
+      <div className="htb-terminal-body">
+        <code>$ {command}</code>
+      </div>
+    </div>
+  );
+}
 
 export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
   // Use active state internally but fallback to prop
@@ -886,11 +846,16 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
     { num: '04', name: 'Exploitation Techniques' },
     { num: '05', name: 'Post-Exploitation' },
     { num: '06', name: 'Red Teaming' },
-    { num: '07', name: 'Physical Security Testing' },
+    { num: '07', name: 'Malware Development' },
     { num: '08', name: 'Web App Testing' },
     { num: '09', name: 'Wireless Attacks' },
-    { num: '10', name: 'Malware Theory & Analysis' }
+    { num: '10', name: 'Reporting & Documentation' }
   ];
+
+  // Map questions for active task num
+  const getQuestionForTask = (taskNum) => {
+    return activeTopic.questions?.find(q => q.taskNum === taskNum);
+  };
 
   return (
     <div className="offensive-dashboard-wrapper select-none">
@@ -953,13 +918,13 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                   <circle className="progress-dial-fill" cx="50" cy="50" r="40" style={{ strokeDashoffset: '180.96' }} />
                 </svg>
                 <div className="progress-dial-value">
-                  <span className="dial-percent">28%</span>
-                  <span className="dial-label">Overall Completion</span>
+                  <span className="dial-percent">38%</span>
+                  <span className="dial-label">Room Completion</span>
                 </div>
               </div>
             </div>
             <div className="progress-stats-mini">
-              <div>Completed: <strong>2 / 10</strong></div>
+              <div>Completed: <strong>3 / 10</strong></div>
               <div>Current Topic: <strong>{activeTopic.title}</strong></div>
             </div>
             <button className="btn-sidebar-progress btn-continue-learning" style={{ width: '100%', marginTop: '14px' }}>
@@ -1018,7 +983,6 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
 
           {/* Grid Layout (Re-structured to single wide layout for readability) */}
           <div className="topic-content-grid-single">
-            {/* Middle Main Content */}
             <div className="topic-left-column">
               {/* Hero Section */}
               <section className="topic-hero-banner">
@@ -1092,30 +1056,28 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                 </div>
               </div>
 
-              {/* What You'll Learn (Now structured as a clean top-level section) */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">What You'll Learn</h2>
+              {/* ── TASK 1: ESSENTIAL CONCEPT ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 1</span>
+                  <h2>{activeTopic.conceptTitle}</h2>
+                </div>
                 <div className="section-divider-red"></div>
-                <ul className="learn-checklist-grid">
-                  {activeTopic.learnList.map((item, idx) => (
-                    <li key={idx}>
-                      <CheckCircle size={16} className="check-icon" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-
-              {/* What is Concept block */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">{activeTopic.conceptTitle}</h2>
-                <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   {activeTopic.conceptText}
                 </p>
 
+                {/* Social Engineering specific image */}
+                {activeRoadmapTopic === '02' && (
+                  <div className="htb-task-media-wrap">
+                    <img src={socialEngineeringImg} alt="Human Exploitation Graphic" className="htb-task-img" />
+                    <span className="htb-task-caption">Figure 1.1: Cognitive vectors of human vulnerability exploitation.</span>
+                  </div>
+                )}
+
                 {/* Concept Process Flow */}
-                {activeTopic.num === '03' ? (
+                {activeRoadmapTopic === '03' ? (
                   <div className="osint-data-flow-container">
                     <div className="osint-node primary-node">
                       <div className="osint-node-icon"><Search size={18} /></div>
@@ -1159,8 +1121,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     </div>
 
                     <div className="osint-node correlation-node">
-                      <div className="osint-node-icon"><Settings size={18} className="spin-slow" /></div>
-                      <h4>OSINT RECON CORRELATION</h4>
+                       <div className="osint-node-icon"><Settings size={18} className="spin-slow" /></div>
+                       <h4>OSINT RECON CORRELATION</h4>
                     </div>
 
                     <div className="osint-funnel">
@@ -1178,153 +1140,6 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                         <li><span className="osint-bullet">•</span> <strong>Valid Corporate Email:</strong> j.doe@company.com</li>
                         <li><span className="osint-bullet">•</span> <strong>Technology Stack:</strong> Leaked Apache version 2.4.49</li>
                       </ul>
-                    </div>
-                  </div>
-                ) : activeTopic.num === '07' ? (
-                  <div className="physical-timeline-container">
-                    <div className="physical-timeline-header">
-                       <div className="physical-building-icon"><Target size={24} /></div>
-                       <h4>TARGET FACILITY</h4>
-                    </div>
-                    <div className="physical-timeline">
-                      <div className="physical-timeline-line"></div>
-                      
-                      <div className="physical-timeline-item">
-                        <div className="physical-timeline-dot"><Search size={14} /></div>
-                        <div className="physical-timeline-content">
-                          <div className="physical-timeline-title">1. Physical Reconnaissance</div>
-                          <div className="physical-timeline-desc">Mapping security guard schedules, cameras, and blind spots</div>
-                        </div>
-                      </div>
-                      
-                      <div className="physical-timeline-item">
-                        <div className="physical-timeline-dot"><Settings size={14} /></div>
-                        <div className="physical-timeline-content">
-                          <div className="physical-timeline-title">2. Bypass & Clone</div>
-                          <div className="physical-timeline-desc">Capturing badge frequencies or preparing lock-picking tools</div>
-                        </div>
-                      </div>
-
-                      <div className="physical-timeline-item active">
-                        <div className="physical-timeline-dot"><Users size={14} /></div>
-                        <div className="physical-timeline-content">
-                          <div className="physical-timeline-title">3. Infiltration (The Entry)</div>
-                          <div className="physical-timeline-desc">Tailgating an employee or bypassing a locked door</div>
-                        </div>
-                      </div>
-
-                      <div className="physical-timeline-item">
-                        <div className="physical-timeline-dot"><Activity size={14} /></div>
-                        <div className="physical-timeline-content">
-                          <div className="physical-timeline-title">4. Objective Execution</div>
-                          <div className="physical-timeline-desc">Dropping a rogue network device or finding sensitive papers</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ) : activeTopic.num === '08' ? (
-                  <div className="webapp-exploit-tree">
-                    <div className="webapp-tree-root">
-                      <div className="webapp-root-icon"><Globe size={20} /></div>
-                      <h4>CRITICAL WEB EXPLOIT VECTORS</h4>
-                    </div>
-
-                    <div className="webapp-tree-branches">
-                      <div className="webapp-tree-stem"></div>
-                      <div className="webapp-tree-horizontal"></div>
-                      <div className="webapp-tree-drops">
-                        <div className="webapp-drop"></div>
-                        <div className="webapp-drop"></div>
-                        <div className="webapp-drop"></div>
-                      </div>
-                    </div>
-                    
-                    <div className="webapp-tree-leaves">
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Database size={18} /></div>
-                        <div className="webapp-leaf-title">Injection Flaws (SQLi)</div>
-                        <div className="webapp-leaf-desc">Tricking a database into dumping data via user input fields.</div>
-                      </div>
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Key size={18} /></div>
-                        <div className="webapp-leaf-title">Broken Access Control (IDOR)</div>
-                        <div className="webapp-leaf-desc">Accessing data or admin pages belonging to other users.</div>
-                      </div>
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Code size={18} /></div>
-                        <div className="webapp-leaf-title">Cross-Site Scripting (XSS)</div>
-                        <div className="webapp-leaf-desc">Injecting malicious scripts into trusted sites to target users.</div>
-                      </div>
-                    </div>
-                  </div>
-                ) : activeTopic.num === '09' ? (
-                  <div className="webapp-exploit-tree">
-                    <div className="webapp-tree-root">
-                      <div className="webapp-root-icon"><Wifi size={20} /></div>
-                      <h4>WIRELESS ATTACK VECTORS</h4>
-                    </div>
-
-                    <div className="webapp-tree-branches">
-                      <div className="webapp-tree-stem"></div>
-                      <div className="webapp-tree-horizontal"></div>
-                      <div className="webapp-tree-drops">
-                        <div className="webapp-drop"></div>
-                        <div className="webapp-drop"></div>
-                        <div className="webapp-drop"></div>
-                      </div>
-                    </div>
-                    
-                    <div className="webapp-tree-leaves">
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Unlock size={18} /></div>
-                        <div className="webapp-leaf-title">WPA Handshake Cracking</div>
-                        <div className="webapp-leaf-desc">Intercepting the key exchange packets to crack offline.</div>
-                      </div>
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Wifi size={18} /></div>
-                        <div className="webapp-leaf-title">Evil Twin / Rogue AP</div>
-                        <div className="webapp-leaf-desc">Broadcasting a fake network with the same name to trick users.</div>
-                      </div>
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Router size={18} /></div>
-                        <div className="webapp-leaf-title">Rogue Access Points</div>
-                        <div className="webapp-leaf-desc">Plugging unauthorized Wi-Fi routers directly into internal walls.</div>
-                      </div>
-                    </div>
-                  </div>
-                ) : activeTopic.num === '10' ? (
-                  <div className="webapp-exploit-tree">
-                    <div className="webapp-tree-root">
-                      <div className="webapp-root-icon"><TerminalSquare size={20} /></div>
-                      <h4>THEORETICAL SOFTWARE PIPELINE</h4>
-                    </div>
-
-                    <div className="webapp-tree-branches">
-                      <div className="webapp-tree-stem"></div>
-                      <div className="webapp-tree-horizontal"></div>
-                      <div className="webapp-tree-drops">
-                        <div className="webapp-drop"></div>
-                        <div className="webapp-drop"></div>
-                        <div className="webapp-drop"></div>
-                      </div>
-                    </div>
-                    
-                    <div className="webapp-tree-leaves">
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Package size={18} /></div>
-                        <div className="webapp-leaf-title">Crypter / Packer</div>
-                        <div className="webapp-leaf-desc">Compresses or encrypts the main executable to mask the signature.</div>
-                      </div>
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Beaker size={18} /></div>
-                        <div className="webapp-leaf-title">Loader / Dropper</div>
-                        <div className="webapp-leaf-desc">Executes inside volatile memory (RAM) to set up the environment.</div>
-                      </div>
-                      <div className="webapp-leaf">
-                        <div className="webapp-leaf-icon"><Satellite size={18} /></div>
-                        <div className="webapp-leaf-title">Command & Control</div>
-                        <div className="webapp-leaf-desc">Establishes a hidden beacon to receive basic operational instructions.</div>
-                      </div>
                     </div>
                   </div>
                 ) : (
@@ -1346,15 +1161,29 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     })}
                   </div>
                 )}
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(1) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(1).question}
+                    correctAnswer={getQuestionForTask(1).correctAnswer}
+                    hint={getQuestionForTask(1).hint}
+                  />
+                )}
               </section>
 
-              {/* Career Path & Blueprint */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">Career Path & Blueprint</h2>
+              {/* ── TASK 2: CAREER PATH & BLUEPRINT ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 2</span>
+                  <h2>Career Path & Blueprint</h2>
+                </div>
                 <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   {activeTopic.blueprintDesc}
                 </p>
+
                 <div className="blueprint-grid">
                   {activeTopic.blueprintCards.map((card, i) => {
                     const CardIcon = card.icon;
@@ -1391,15 +1220,37 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     );
                   })}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(2) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(2).question}
+                    correctAnswer={getQuestionForTask(2).correctAnswer}
+                    hint={getQuestionForTask(2).hint}
+                  />
+                )}
               </section>
 
-              {/* The Core Phases / Vectors */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">{activeTopic.phasesTitle}</h2>
+              {/* ── TASK 3: ATTACK VECTORS & METHODOLOGIES ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 3</span>
+                  <h2>{activeTopic.phasesTitle}</h2>
+                </div>
                 <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   {activeTopic.phasesDesc}
                 </p>
+
+                {/* Penetration Testing specific network image */}
+                {activeRoadmapTopic === '01' && (
+                  <div className="htb-task-media-wrap">
+                    <img src={offensiveScannerImg} alt="Vulnerability Scan Node Grid" className="htb-task-img" />
+                    <span className="htb-task-caption">Figure 3.1: Live vulnerability scanner node mapping visualization.</span>
+                  </div>
+                )}
+
                 <div className="phases-flow-grid">
                   {activeTopic.phases.map((phase, idx) => (
                     <div key={idx} className="phase-node-card">
@@ -1412,15 +1263,47 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     </div>
                   ))}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(3) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(3).question}
+                    correctAnswer={getQuestionForTask(3).correctAnswer}
+                    hint={getQuestionForTask(3).hint}
+                  />
+                )}
               </section>
 
-              {/* Essential Testing Tools */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">{activeTopic.toolsTitle}</h2>
+              {/* ── TASK 4: PRACTICE LAB TOOLSETS ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 4</span>
+                  <h2>{activeTopic.toolsTitle}</h2>
+                </div>
                 <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   {activeTopic.toolsDesc}
                 </p>
+
+                {/* Terminal Commands Guide Box */}
+                {activeRoadmapTopic === '01' ? (
+                  <div style={{ marginBottom: '28px' }}>
+                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Scanning with Nmap</h4>
+                    <TerminalCommandBlock command="nmap -sV -sC -Pn -oN scan_results.txt 10.10.12.34" />
+                  </div>
+                ) : activeRoadmapTopic === '02' ? (
+                  <div style={{ marginBottom: '28px' }}>
+                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Launching SET Phishing</h4>
+                    <TerminalCommandBlock command="sudo setoolkit" />
+                  </div>
+                ) : (
+                  <div style={{ marginBottom: '28px' }}>
+                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Gathering DNS Records</h4>
+                    <TerminalCommandBlock command="subfinder -d target.com -o subdomains.txt" />
+                  </div>
+                )}
+
                 <div className="tools-grid-5">
                   {activeTopic.tools.map((tool, idx) => (
                     <div key={idx} className="tool-card-v2">
@@ -1437,12 +1320,25 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     </div>
                   ))}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(4) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(4).question}
+                    correctAnswer={getQuestionForTask(4).correctAnswer}
+                    hint={getQuestionForTask(4).hint}
+                  />
+                )}
               </section>
 
-              {/* Recommended Certifications */}
-              <section className="topic-section-block">
-                <h2 className="section-block-title">Recommended Certifications</h2>
+              {/* ── TASK 5: RECOMMENDED CERTIFICATIONS ── */}
+              <section className="topic-section-block htb-task-container">
+                <div className="htb-task-header">
+                  <span className="htb-task-badge">Task 5</span>
+                  <h2>Recommended Certifications</h2>
+                </div>
                 <div className="section-divider-red"></div>
+                
                 <p className="section-block-text">
                   Boost your career with industry-recognized certifications.
                 </p>
@@ -1464,6 +1360,15 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                     </div>
                   ))}
                 </div>
+
+                {/* HTB Question Check */}
+                {getQuestionForTask(5) && (
+                  <HTBQuestion 
+                    questionText={getQuestionForTask(5).question}
+                    correctAnswer={getQuestionForTask(5).correctAnswer}
+                    hint={getQuestionForTask(5).hint}
+                  />
+                )}
               </section>
             </div>
           </div>

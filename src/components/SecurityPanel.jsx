@@ -69,9 +69,11 @@ function PathCard({ panel, onNavigate }) {
         borderColor: hovered ? panel.color + '80' : panel.colorDim,
         boxShadow: hovered ? `0 8px 40px ${panel.color}30, inset 0 0 60px ${panel.color}08` : 'none',
         transition: 'background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease',
+        cursor: 'pointer',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => onNavigate(panel.view)}
     >
       {/* Glitter corner brackets */}
       <span className="glitter-corner tl" style={{ '--card-color': panel.color }} />
