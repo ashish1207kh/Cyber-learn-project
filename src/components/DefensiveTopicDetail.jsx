@@ -3,328 +3,233 @@ import {
   Swords, 
   Shield, 
   BookOpen, 
-  Trophy, 
   Award, 
-  Bookmark, 
   FileText, 
-  Activity, 
-  Settings, 
   ArrowRight, 
-  ArrowLeft, 
-  ArrowDown,
-  Search, 
-  Users, 
-  Target, 
-  ChevronDown, 
-  ChevronUp, 
   Clock, 
-  Beaker, 
-  FolderGit2,
-  CheckCircle,
   TrendingUp,
   Terminal,
-  Play,
   Laptop,
   Copy,
   Check,
-  Server,
+  Cpu,
+  Globe,
+  Settings,
+  Layers,
+  ChevronRight,
   Database,
-  ShieldAlert,
-  ScanSearch,
-  Lock,
-  Globe
+  Server,
+  Activity,
+  Play
 } from 'lucide-react';
 import Header from './Header';
-import hackerImg from '../assets/cyber-hacker-red.jpg';
 import analystImg from '../assets/cyber-analyst-blue.jpg';
-import defensiveSocImg from '../assets/defensive-soc-dashboard.jpg';
 
-// Content data for each defensive topic to keep layout identical and interactive
+// Content data for each defensive topic
 export const DEFENSIVE_TOPICS = {
   '01': {
     num: '01',
     title: 'SIEM Monitoring',
     subtitle: 'Security Information and Event Management',
-    description: "SIEM stands for Security Information and Event Management. Think of it as the central nervous system or the 24/7 security camera room of an organization's digital network.",
-    badges: ["Beginner to Intermediate", "Core Skill", "High Demand"],
-    metrics: [
-      { val: "4", lbl: "Roadmap Steps" },
-      { val: "3", lbl: "Core Platforms" },
-      { val: "24/7", lbl: "Monitoring" },
-      { val: "4", lbl: "Certifications" },
-      { val: "5", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is SIEM Monitoring?",
-    conceptText: "SIEM monitoring involves using specialized software tools (like Splunk, Microsoft Sentinel, or IBM QRadar) to automatically gather and aggregate log data, metrics, and security alerts from across an entire company—servers, firewalls, routers, and employee laptops. Analysts monitor this live data stream to detect unusual activity, flag potential cyberattacks in real time, and investigate security breaches before they cause severe damage.",
-    conceptFlow: [
-      { title: "Log Sources", sub: "(Raw Data)", icon: Server },
-      { title: "SIEM Engine", sub: "(Correlation)", icon: Database, active: true },
-      { title: "SOC Analysts", sub: "(Detection)", icon: ShieldAlert }
-    ],
-    blueprintDesc: "The scope of SIEM monitoring is massive and ever-growing. Since every modern company generates data and faces cyber threats, SIEM is a non-negotiable core component of any corporate Security Operations Center (SOC).",
-    blueprintCards: [
+    description: "Learn how modern Security Operations Centers (SOC) capture, analyze, and correlate telemetry data across an entire enterprise network to identify cyber threats before they escalate.",
+    badges: ["Core Skill", "High Demand", "Defensive Operations"],
+    stats: { time: "25 Hours", diff: "Beginner to Intermediate", prereq: "Networking Basics, Linux/Windows Logs" },
+    sections: [
       {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["SOC Analyst (Tier 1/L1, L2, L3)", "SIEM Administrator", "Detection Engineer", "Security Engineer", "SIEM Architect"]
+        id: "sec-logs",
+        title: "1. Log Generation & Parsing",
+        content: "Every system, application, and network device generates logs detailing its activities. Defense starts with capturing these footprints and converting raw text into standardized formats.",
+        bulletPoints: [
+          "Syslog Protocol: Standard protocol for forwarding system messages. Understand facilities (auth, cron, mail) and severity levels (0-Emergency to 7-Debug).",
+          "Windows Event Logs: XML-based log structure. Key event IDs to monitor: 4624 (Successful Logon), 4625 (Failed Logon), 4688 (Process Creation).",
+          "Log Normalization: Cleaning up logs from different systems (IIS, Apache, Windows, Cisco) into a standard format so they can be parsed together."
+        ],
+        command: "tail -f /var/log/auth.log | grep 'Failed password'",
+        commandExpl: [
+          { flag: "tail -f", desc: "Follow tail: Outputs log file lines in real-time as they are written." },
+          { flag: "/var/log/auth.log", desc: "The standard file path for authentication logs on Debian/Ubuntu systems." },
+          { flag: "grep 'Failed'", desc: "Filter logs to only show lines containing failed authentication attempts." }
+        ],
+        example: "An attacker attempts to brute-force a SSH port. The target Linux server generates multiple log entries reading 'Failed password for root from 192.168.10.45 port 54890 ssh2'. The SIEM parser extracts the source IP, target port, and username into a structured schema.",
+        subModules: [
+          { id: "windows-events", name: "Deep Dive: Windows Security Event IDs" },
+          { id: "syslog-rfc", name: "RFC 5424 Syslog Protocol Mechanics" }
+        ]
       },
       {
-        icon: TrendingUp,
-        title: "Average Entry Salary",
-        salary: "$65,000 - $85,000",
-        salarySub: "USD / year",
-        salaryRegion: "(varies by region)"
+        id: "sec-aggregation",
+        title: "2. Data Aggregation & Storage",
+        content: "A corporate network generates millions of logs daily. These must be collected securely and shipped to a central repository without losing data.",
+        bulletPoints: [
+          "Log Forwarders: Lightweight agents (like Splunk Universal Forwarder or Elastic Filebeat) installed on servers to collect logs and forward them to SIEM indexing hubs.",
+          "Secure Transport: Encrypting log data in transit using TLS to prevent malicious tampering or eavesdropping.",
+          "Indexing & Retention: Categorizing logs by timestamp and source host, and archiving old indices for legal compliance."
+        ],
+        example: "A company deploys Splunk Universal Forwarder on 50 web servers. The forwarder monitors Apache access logs and securely ships them over port 9997 to a central Splunk Indexer, where they are indexed and made searchable within seconds.",
+        subModules: [
+          { id: "logstash-pipelines", name: "Building Logstash Ingestion Pipelines" },
+          { id: "splunk-forwarding", name: "Configuring Splunk Universal Forwarders" }
+        ]
       },
       {
-        icon: Globe,
-        title: "Industries Hiring",
-        list: ["Banking & Finance", "Healthcare", "E-commerce", "Cloud Service Providers", "MSSPs"]
-      },
-      {
-        icon: Activity,
-        title: "Is It Worth It?",
-        growthBadge: "Absolutely Worth It",
-        desc: "Best entry point into the cybersecurity industry. Legally required compliance guarantees job security."
+        id: "sec-correlation",
+        title: "3. Alerting & Correlation Rules",
+        content: "Correlation rules are the logic blocks of SIEM. They link isolated log events together to identify complex, multi-stage cyberattacks.",
+        bulletPoints: [
+          "Single-Host Alerts: E.g., Trigger alert if 10 failed logins happen within 1 minute on a single machine.",
+          "Multi-Stage Correlation: E.g., Trigger critical alert if a server has 10 failed logins, followed by 1 successful login, followed by process creation of cmd.exe.",
+          "False Positives: Tuning correlation parameters to minimize false alert noise, letting analysts focus on genuine threat alerts."
+        ],
+        callout: "💡 ANALYST TIP: Well-written correlation rules look for behaviors (like lateral movement or privilege escalation) rather than static signatures (like specific IP addresses).",
+        example: "A correlation rule triggers a priority alert when it sees user 'john_doe' logging in from a local office IP in New York and, 5 minutes later, successfully logging in to a server from an IP address located in Germany (Impossible Travel Alert).",
+        subModules: [
+          { id: "yara-rules", name: "YARA Rule Writing for Malware Alerts" },
+          { id: "sentinel-kql", name: "KQL Rules for Microsoft Sentinel" }
+        ]
       }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To become a professional SIEM Monitoring Analyst, follow this clear pathway:",
-    phases: [
-      { num: '01', title: 'Core Fundamentals', desc: 'Master basic Networking concepts (OSI Model, TCP/IP, IP addressing). Learn Operating System basics (Linux commands and Windows Event Logs).', label: 'Foundation' },
-      { num: '02', title: 'Security & Log Basics', desc: 'Learn what common security devices do (Firewalls, IDS/IPS, EDR). Understand how to read common log files (Syslog, HTTP logs, Auth logs).', label: 'Log Analysis' },
-      { num: '03', title: 'Master SIEM Tooling', desc: 'Get hands-on experience with market-leading platforms. Create free lab environments for Splunk or Microsoft Sentinel. Practice writing basic log queries (SPL, KQL).', label: 'Hands-on Lab' },
-      { num: '04', title: 'Certifications to Stand Out', desc: 'Acquire industry certifications to boost your resume and prove your skills to employers.', label: 'Validation' }
-    ],
-    toolsTitle: "Essential SIEM Tools",
-    toolsDesc: "Master these essential platforms used by modern Security Operations Centers.",
-    tools: [
-      { name: 'Splunk', cat: 'SIEM Platform', desc: 'The industry-leading platform for searching, monitoring, and analyzing machine-generated big data.' },
-      { name: 'Microsoft Sentinel', cat: 'Cloud SIEM', desc: 'A scalable, cloud-native SIEM and SOAR solution from Microsoft.' },
-      { name: 'IBM QRadar', cat: 'Enterprise SIEM', desc: 'Provides comprehensive visibility into enterprise network activity and detects threats.' },
-      { name: 'Elastic Stack', cat: 'Log Management', desc: 'Open-source stack (ELK) for searching, analyzing, and visualizing log data in real-time.' }
     ],
     certs: [
-      { name: 'Security+', full: 'CompTIA Security+', desc: 'Global certification that validates the baseline skills necessary to perform core security functions.', diff: 'Beginner' },
-      { name: 'Splunk User', full: 'Splunk Core Certified Power User', desc: 'Validates foundational knowledge of Splunk search and reporting commands.', diff: 'Beginner' },
-      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst+', desc: 'Applies behavioral analytics to networks and devices to prevent, detect and combat threats.', diff: 'Intermediate' }
-    ],
-    learnList: [
-      "Mastering basic Networking concepts (OSI Model, TCP/IP)",
-      "Learning Operating System basics (Linux commands, Windows Logs)",
-      "Understanding common security devices (Firewalls, IDS/IPS, EDR)",
-      "Reading common log files (Syslog, HTTP, Authentication logs)",
-      "Creating lab environments for Splunk and Sentinel",
-      "Writing basic log queries (SPL for Splunk, KQL for Sentinel)"
-    ],
-    readyText: "Gaining practical lab experience or premium vendor certifications can boost entry-level offers significantly.",
-    stats: {
-      time: "20-30 Hours",
-      diff: "Beginner to Intermediate",
-      prereq: "Networking Basics, Linux Fundamentals",
-      next: "02. Incident Response",
-      nextNum: "02"
-    },
-    questions: [
-      {
-        taskNum: 1,
-        question: "What does the abbreviation SIEM stand for in cyber security?",
-        correctAnswer: "Security Information and Event Management",
-        hint: "Look at the first paragraph under the Task 1 header."
-      },
-      {
-        taskNum: 2,
-        question: "What SOC role represents the baseline Tier 1 security monitoring operations entry level?",
-        correctAnswer: "SOC Analyst",
-        hint: "Check the potential job roles listed in Task 2."
-      },
-      {
-        taskNum: 3,
-        question: "What is the second phase focused on under the SIEM analyst roadmap?",
-        correctAnswer: "Log Analysis",
-        hint: "Look at the step 02 label under the roadmap grid."
-      },
-      {
-        taskNum: 4,
-        question: "Which industry-leading enterprise SIEM platform uses Search Processing Language (SPL) for querying logs?",
-        correctAnswer: "Splunk",
-        hint: "Read the description of Splunk in the tools table."
-      },
-      {
-        taskNum: 5,
-        question: "Which Microsoft certification validates Sentinel cloud SIEM operations analyst skills?",
-        correctAnswer: "SC-200",
-        hint: "Usually Microsoft Sentinel security analyst cert code is SC-200."
-      }
+      { name: 'Splunk Core', full: 'Splunk Core Certified Power User', desc: 'Validates ability to navigate and create dashboards and alerts in Splunk.', diff: 'Beginner' },
+      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst', desc: 'Industry certification focused on incident response, security operations, and log analysis.', diff: 'Intermediate' }
     ]
   },
   '02': {
     num: '02',
     title: 'Incident Response',
     subtitle: 'The Elite SWAT Team of Cyber Security',
-    description: "If SIEM Monitoring is the security camera that spots a break-in, Incident Response (IR) is the elite SWAT team that rushes in to stop it. It is a structured process to manage the aftermath of a cyberattack, limit damage, and restore operations.",
-    badges: ["High Stakes", "Advanced Skill", "Elite Pay"],
-    metrics: [
-      { val: "6", lbl: "Phases (NIST)" },
-      { val: "24/7", lbl: "Operations" },
-      { val: "High", lbl: "Demand" },
-      { val: "4", lbl: "Certifications" },
-      { val: "5", lbl: "Job Roles" }
-    ],
-    conceptTitle: "What is Incident Response?",
-    conceptText: "Incident Response is a structured process that organizations use to handle and manage the aftermath of a cyberattack, data breach, or security incident. The main goal is to limit damage, contain the threat, erase the attacker's footprint, and restore normal business operations as quickly and securely as possible.",
-    conceptFlow: [
-      { title: "Identify", sub: "(Threat)", icon: ScanSearch },
-      { title: "Contain", sub: "(Isolate)", icon: Lock, active: true },
-      { title: "Eradicate", sub: "(Remove)", icon: ShieldAlert }
-    ],
-    blueprintDesc: "When a major ransomware attack or data breach hits a company, the Incident Response team takes full control. The scope spans a mix of technical panic-management and forensic deep-dives.",
-    blueprintCards: [
+    description: "Incident Response (IR) is the structured process of detecting, isolating, and eradicating cyber threats to minimize business disruption during a security breach.",
+    badges: ["Core Skill", "High Stakes", "Fast Paced"],
+    stats: { time: "30 Hours", diff: "Intermediate to Advanced", prereq: "SIEM Monitoring, Systems Internals" },
+    sections: [
       {
-        icon: Users,
-        title: "Potential Job Roles",
-        list: ["Incident Responder", "CSIRT Analyst", "Threat Hunter", "Incident Commander", "Cyber Forensic Investigator"]
+        id: "sec-ir-phases",
+        title: "1. NIST / SANS Incident Response Phases",
+        content: "A professional incident responder follows a strict, step-by-step framework to respond to attacks. This prevents panic and ensures evidence is preserved.",
+        bulletPoints: [
+          "Preparation: Hardening systems, training personnel, and creating response playbooks before an incident happens.",
+          "Identification: Detecting threat alerts and verifying if they are actual security incidents.",
+          "Containment: Isolating compromised hosts from the network (e.g., placing a machine in a sandbox VLAN) to stop lateral infection.",
+          "Eradication: Removing all threat files, killing active hacker shells, and patching the initial entry loophole.",
+          "Recovery: Safely restoring production systems and verifying that no malicious activities remain.",
+          "Lessons Learned: Documenting the incident to improve future defenses and update playbooks."
+        ],
+        example: "A SOC analyst detects Ransomware encrypting files on a server. Following the IR playbook, they immediately isolate the server (Containment) by disabling its network interface. They then scan the file system, delete the ransomware executable (Eradication), and restore files from an offline backup (Recovery).",
+        subModules: [
+          { id: "sans-incident-handling", name: "SANS 6-Step Incident Handling Guide" },
+          { id: "playbook-creation", name: "Writing Incident Response Playbooks" }
+        ]
       },
       {
-        icon: TrendingUp,
-        title: "Average Salary",
-        salary: "$80,000 - $115,000",
-        salarySub: "USD / year",
-        salaryRegion: "(Early Career)"
-      },
-      {
-        icon: Globe,
-        title: "Industries Hiring",
-        list: ["Large Enterprises", "Critical Infrastructure", "Government Agencies", "Defense Sectors", "IR Consulting Firms"]
-      },
-      {
-        icon: Activity,
-        title: "Is It Worth It?",
-        growthBadge: "Highly Worth It",
-        desc: "A high-stakes, fast-paced job. Working around the clock under intense pressure to save organizations from catastrophic failure."
+        id: "sec-forensics",
+        title: "2. RAM & File System Analysis",
+        content: "Attackers often hide malware inside running system memory. Responders must acquire and analyze memory dumps and disk images to find indicators of compromise.",
+        bulletPoints: [
+          "Memory Forensics: Analyzing active RAM to locate running malicious processes, active network connections, and unencrypted credentials.",
+          "Disk Forensics: Parsing file system metadata (like MFT or journal logs) to find deleted malware files and identify file creation dates.",
+          "EDR (Endpoint Detection & Response): Using agent software (like CrowdStrike, SentinelOne, or Wazuh) to query system memory and processes across thousands of endpoints."
+        ],
+        command: "vol.py -f memory_dump.raw windows.info",
+        commandExpl: [
+          { flag: "vol.py", desc: "Volatility Command: Invokes the Volatility memory forensics framework tool." },
+          { flag: "-f memory_dump.raw", desc: "File: Specifies the raw file system memory image to analyze." },
+          { flag: "windows.info", desc: "Plugin: Extracts operating system info, kernel versions, and architecture." }
+        ],
+        example: "An analyst performs memory forensics on a compromised workstation. Using Volatility, they list active network sockets and discover an unknown process 'svchost.exe' connected to an external malicious server. This reveals a fileless Trojan executing directly in memory.",
+        subModules: [
+          { id: "volatility-deep", name: "Volatility 3 Advanced Memory Plugins" },
+          { id: "timeline-forensics", name: "Timeline Analysis & Supertimeline Creation" }
+        ]
       }
-    ],
-    phasesTitle: "Step-by-Step Roadmap",
-    phasesDesc: "To transition into or start a career in Incident Response, focus on this path:",
-    phases: [
-      { num: '01', title: 'Deep Systems Architecture', desc: 'Learn Windows and Linux internals (processes, registry, file systems, and how malware hides in memory). Understand enterprise networking inside out.', label: 'Fundamentals' },
-      { num: '02', title: 'Learn Standard IR Frameworks', desc: 'Study the standard incident response lifecycles defined by NIST and SANS (Preparation, Identification, Containment, Eradication, Recovery, Lessons Learned).', label: 'Frameworks' },
-      { num: '03', title: 'Hands-on Containment', desc: 'Practice malware analysis basics. Learn how to use endpoint security and EDR tools like CrowdStrike Falcon, Carbon Black, or Wazuh.', label: 'Technical Skills' },
-      { num: '04', title: 'Certifications to Stand Out', desc: 'Acquire highly respected industry certifications like CySA+, GCIH, ECIH, or CHFI to validate your advanced skills.', label: 'Validation' }
-    ],
-    toolsTitle: "Essential Incident Response Tools",
-    toolsDesc: "Master these key forensic and containment platforms used by response teams.",
-    tools: [
-      { name: 'Volatility', cat: 'Memory Forensics', desc: 'An advanced open-source memory forensics framework used to analyze RAM images for malware.' },
-      { name: 'Autopsy', cat: 'Disk Analysis', desc: 'A digital forensics platform and graphical interface to analyze hard drives and smartphones.' },
-      { name: 'Wazuh', cat: 'EDR / HIDS', desc: 'Free open-source host security monitoring solution for endpoint detection.' },
-      { name: 'Wireshark', cat: 'Packet Analysis', desc: 'Intercepts and inspects live network packet captures to locate attacker lateral traffic.' }
     ],
     certs: [
-      { name: 'GCIH', full: 'GIAC Certified Incident Handler', desc: 'Validates a practitioner\'s ability to detect, respond, and resolve security incidents.', diff: 'Advanced' },
-      { name: 'ECIH', full: 'EC-Council Certified Incident Handler', desc: 'Covers structured systems security incident response and handling methodologies.', diff: 'Intermediate' },
-      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Focuses on digital forensic processes, evidence collection, and analysis.', diff: 'Advanced' }
-    ],
-    learnList: [
-      "Incident response methodologies (NIST and SANS standard phases)",
-      "Analyzing running system memory and hard drives for forensic evidence",
-      "Analyzing malware behaviors and tracking network footprints",
-      "Deploying and configuring EDR (Endpoint Detection) tools",
-      "Executing post-incident reviews and containment strategies"
-    ],
-    readyText: "Start learning forensics tools and frameworks to secure corporate enterprises.",
-    stats: {
-      time: "30-40 Hours",
-      diff: "Intermediate to Advanced",
-      prereq: "Networking, Linux/Windows Fundamentals",
-      next: "03. Threat Hunting",
-      nextNum: "03"
-    },
-    questions: [
-      {
-        taskNum: 1,
-        question: "What is the primary target objective during the Containment phase of incident response?",
-        correctAnswer: "Isolate",
-        hint: "Check the concept flow diagram in Task 1."
-      },
-      {
-        taskNum: 2,
-        question: "What is the average starting salary range lower limit in USD for an Incident Responder?",
-        correctAnswer: "$80,000",
-        hint: "Check the Average Salary card under the Career Path section."
-      },
-      {
-        taskNum: 3,
-        question: "Which standards organization defines the preparation, containment, and recovery lifecycle framework?",
-        correctAnswer: "NIST",
-        hint: "Read the phase 02 description under Task 3."
-      },
-      {
-        taskNum: 4,
-        question: "Which open source tool is widely used for conducting RAM image memory forensics investigations?",
-        correctAnswer: "Volatility",
-        hint: "Look at the tools list under Task 4."
-      },
-      {
-        taskNum: 5,
-        question: "Which highly-regarded GIAC certification validates advanced threat incident handling skills?",
-        correctAnswer: "GCIH",
-        hint: "Look at the certs list under Task 5."
-      }
+      { name: 'GCIH', full: 'GIAC Certified Incident Handler', desc: 'Validates incident handling, threat detection, and exploit analysis skills.', diff: 'Advanced' },
+      { name: 'CHFI', full: 'Computer Hacking Forensic Investigator', desc: 'Focuses on digital forensic processes, evidence gathering, and analysis.', diff: 'Advanced' }
     ]
   }
 };
 
-// Interactive Question Component for HTB/THM feel (Defensive cyan theme)
-function HTBQuestion({ questionText, correctAnswer, hint }) {
-  const [userInput, setUserInput] = React.useState('');
-  const [isCorrect, setIsCorrect] = React.useState(false);
-  const [showHint, setShowHint] = React.useState(false);
-
-  const handleSubmit = () => {
-    if (userInput.trim().toLowerCase() === correctAnswer.toLowerCase()) {
-      setIsCorrect(true);
-    } else {
-      alert("Incorrect answer! Try again.");
-    }
-  };
-
+// Log aggregation flow diagram component
+function LogFlowDiagram() {
   return (
-    <div className="htb-question-box">
-      <div className="htb-question-header">
-        <span className="htb-q-bullet">Q</span>
-        <span className="htb-q-text">{questionText}</span>
-      </div>
-      <div className="htb-question-input-row">
-        <input 
-          type="text" 
-          placeholder={isCorrect ? correctAnswer : "Answer..."} 
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          disabled={isCorrect}
-          className={`htb-input ${isCorrect ? 'correct' : ''}`}
-        />
-        {!isCorrect ? (
-          <button className="btn-htb-submit" onClick={handleSubmit}>Submit Answer</button>
-        ) : (
-          <span className="htb-correct-badge flex-center">
-            <CheckCircle size={14} style={{ marginRight: '4px' }} />
-            <span>Correct!</span>
-          </span>
-        )}
-      </div>
-      {hint && !isCorrect && (
-        <div className="htb-hint-row">
-          <span className="hint-toggle" onClick={() => setShowHint(!showHint)}>
-            {showHint ? "Hide Hint" : "Need Hint?"}
-          </span>
-          {showHint && <p className="hint-text">{hint}</p>}
+    <div className="flow-diagram-container">
+      <div className="flow-step">
+        <div className="flow-step-num">1</div>
+        <div className="flow-step-content">
+          <h4>Log Generation</h4>
+          <p>Firewalls, web servers, and Windows active directory servers generate raw security logs in real-time.</p>
         </div>
-      )}
+      </div>
+      <div className="flow-arrow">→</div>
+      <div className="flow-step">
+        <div className="flow-step-num">2</div>
+        <div className="flow-step-content">
+          <h4>Aggregation</h4>
+          <p>Log Forwarders (Filebeat, Splunk agents) encrypt logs and ship them to index repositories.</p>
+        </div>
+      </div>
+      <div className="flow-arrow">→</div>
+      <div className="flow-step">
+        <div className="flow-step-num">3</div>
+        <div className="flow-step-content">
+          <h4>Alerting Rules</h4>
+          <p>Correlation queries scan the logs and trigger instant alerts when attack patterns match.</p>
+        </div>
+      </div>
     </div>
   );
 }
 
-// Copy Terminal Command block
+// Incident Response lifecycle component
+function IncidentResponseDiagram() {
+  return (
+    <div className="handshake-diagram">
+      <div className="handshake-actor-labels">
+        <span>Incident Action Step</span>
+        <span>Target Outcome</span>
+      </div>
+      <div className="handshake-flow-lines">
+        <div className="handshake-line syn">
+          <div className="actor-dot"></div>
+          <div className="arrow-line"><span>1. Identification (Spot threat alerts)</span></div>
+          <div className="actor-dot"></div>
+        </div>
+        <div className="handshake-line syn-ack">
+          <div className="actor-dot"></div>
+          <div className="arrow-line-rev"><span>2. Containment (Isolate infected servers)</span></div>
+          <div className="actor-dot"></div>
+        </div>
+        <div className="handshake-line ack">
+          <div className="actor-dot"></div>
+          <div className="arrow-line"><span>3. Eradication (Remove threat files)</span></div>
+          <div className="actor-dot"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Memory Analysis Stack Component
+function MemoryStackDiagram() {
+  return (
+    <div className="buffer-overflow-diagram">
+      <h4>Host System Memory Structure</h4>
+      <div className="memory-stack">
+        <div className="stack-block buffer">OS Kernel Space (Protected)</div>
+        <div className="stack-block ebp">User Processes Space</div>
+        <div className="stack-block eip safe">Volatile RAM Dump Area</div>
+      </div>
+      
+      <h4>Malware Forensic Detection (RAM Dump)</h4>
+      <div className="memory-stack exploited">
+        <div className="stack-block buffer overflowed">Normal Processes (explorer.exe)</div>
+        <div className="stack-block ebp overflowed">Injected DLLs / API Hooking</div>
+        <div className="stack-block eip hijacked">Detected Malicious Socket (Volatility)</div>
+      </div>
+    </div>
+  );
+}
+
+// Copy Terminal Command block helper
 function TerminalCommandBlock({ command }) {
   const [copied, setCopied] = React.useState(false);
 
@@ -356,10 +261,9 @@ function TerminalCommandBlock({ command }) {
 }
 
 export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigate }) {
-  // Use active state internally but fallback to prop
   const [activeRoadmapTopic, setActiveRoadmapTopic] = React.useState(topicId);
+  const [expandedExampleId, setExpandedExampleId] = React.useState(null);
 
-  // Sync state if prop changes
   React.useEffect(() => {
     setActiveRoadmapTopic(topicId);
   }, [topicId]);
@@ -370,11 +274,10 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
   const sidebarPaths = [
     { name: 'Offensive Security', icon: Swords, active: false },
     { name: 'Defensive Security', icon: Shield, active: true },
-    { name: 'GNC (Governance, Risk & Compliance)', icon: Shield, active: false },
-    { name: 'Purple Team', icon: Target, active: false }
+    { name: 'GNC (Governance, Risk & Compliance)', icon: BookOpen, active: false }
   ];
 
-  // Defensive Roadmap Topics (01 to 06 available)
+  // Defensive Roadmap Topics
   const roadmapTopics = [
     { num: '01', name: 'SIEM Monitoring' },
     { num: '02', name: 'Incident Response' },
@@ -384,19 +287,13 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
     { num: '06', name: 'Security Operations' }
   ];
 
-  // Map questions for active task num
-  const getQuestionForTask = (taskNum) => {
-    return activeTopic.questions?.find(q => q.taskNum === taskNum);
-  };
-
   return (
-    <div className="offensive-dashboard-wrapper defensive-theme select-none">
+    <div className="defensive-dashboard-wrapper defensive-theme select-none">
       <Header view="defensive" onBack={onBack} />
 
       <div className="offensive-dashboard">
         {/* 1. Left Sidebar */}
         <aside className="dashboard-sidebar topic-sidebar">
-          {/* Learning Paths */}
           <div className="sidebar-section">
             <span className="sidebar-section-title">LEARNING PATHS</span>
             <div className="sidebar-paths-list flex-column-gap">
@@ -419,7 +316,6 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
             </div>
           </div>
 
-          {/* Defensive Roadmap */}
           <div className="sidebar-section" style={{ marginTop: '20px' }}>
             <span className="sidebar-section-title">DEFENSIVE ROADMAP</span>
             <div className="sidebar-menu-list">
@@ -440,65 +336,29 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
             </div>
           </div>
 
-          {/* Your Progress */}
-          <div className="sidebar-progress-card topic-sidebar-progress" style={{ marginTop: '20px' }}>
-            <span className="sidebar-section-title" style={{ paddingLeft: 0, marginBottom: '10px', display: 'block' }}>YOUR PROGRESS</span>
-            <div className="progress-dial-container">
-              <div className="progress-dial-outer">
-                <svg className="progress-dial-svg" viewBox="0 0 100 100">
-                  <circle className="progress-dial-bg" cx="50" cy="50" r="40" />
-                  <circle className="progress-dial-fill" cx="50" cy="50" r="40" style={{ strokeDashoffset: '201.06' }} />
-                </svg>
-                <div className="progress-dial-value">
-                  <span className="dial-percent">20%</span>
-                  <span className="dial-label">Room Completion</span>
-                </div>
-              </div>
+          {/* Syllabus Index attached directly under the menu header */}
+          <div className="sidebar-section" style={{ marginTop: '20px' }}>
+            <span className="sidebar-section-title">SYLLABUS INDEX</span>
+            <div className="sidebar-menu-list">
+              {activeTopic.sections.map((sec, idx) => (
+                <a 
+                  key={idx} 
+                  href={`#${sec.id}`}
+                  className="sidebar-menu-item outline-link"
+                  style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById(sec.id);
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                >
+                  <ChevronRight size={12} style={{ marginRight: '6px', flexShrink: 0 }} />
+                  <span style={{ fontSize: '13px' }}>{sec.title}</span>
+                </a>
+              ))}
             </div>
-            <div className="progress-stats-mini">
-              <div>Completed: <strong>1 / 6</strong></div>
-              <div>Current Topic: <strong>{activeTopic.title}</strong></div>
-            </div>
-            <button className="btn-sidebar-progress btn-continue-learning" style={{ width: '100%', marginTop: '14px' }}>
-              <span>Continue Learning</span>
-              <ArrowRight size={12} />
-            </button>
-          </div>
-
-          {/* Next Topic Preview */}
-          {activeRoadmapTopic === '01' ? (
-            <div className="next-topic-preview-card" style={{ marginTop: '16px' }} onClick={() => setActiveRoadmapTopic('02')}>
-              <div className="preview-label">NEXT TOPIC</div>
-              <h4>02. Incident Response</h4>
-              <p>Unlocks after completion</p>
-              <button className="btn-preview-view">
-                <span>View Preview</span>
-                <Play size={10} />
-              </button>
-            </div>
-          ) : (
-            <div className="next-topic-preview-card" style={{ marginTop: '16px' }}>
-              <div className="preview-label">NEXT TOPIC</div>
-              <h4>03. Threat Hunting</h4>
-              <p>Unlocks after completion</p>
-              <button className="btn-preview-view">
-                <span>View Preview</span>
-                <Play size={10} />
-              </button>
-            </div>
-          )}
-
-          {/* Quote Card */}
-          <div className="sidebar-quote-card" style={{ marginTop: '16px' }}>
-            <div className="quote-hacker-avatar" style={{ borderColor: 'rgba(6, 182, 212, 0.4)' }}>
-              <div className="quote-avatar-glow" style={{ background: 'rgba(6, 182, 212, 0.2)' }}></div>
-            </div>
-            <p className="quote-text">
-              {activeRoadmapTopic === '01' 
-                ? `"The best defense is a well-correlated offense of log events."`
-                : `"If you sweat in peace (preparing logs), you bleed less in war (breach)."`
-              }
-            </p>
           </div>
         </aside>
 
@@ -513,17 +373,17 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
             <span className="breadcrumb-active">{activeTopic.num}</span>
           </nav>
 
-          {/* Grid Layout (Re-structured to single wide layout for readability) */}
+          {/* GitBook Style Layout */}
           <div className="topic-content-grid-single">
             <div className="topic-left-column">
-              {/* Hero Section */}
-              <section className="topic-hero-banner" style={{ border: '1px solid rgba(6, 182, 212, 0.25)', background: 'radial-gradient(circle at 100% 50%, rgba(6, 182, 212, 0.12), transparent 60%), rgba(8, 12, 22, 0.95)' }}>
+              {/* Hero Banner */}
+              <section className="topic-hero-banner">
                 <div className="topic-hero-left">
                   <div className="topic-badge-header">
                     <span className="topic-badge-number">{activeTopic.num}</span>
                     <div>
                       <h1 className="topic-main-title">{activeTopic.title}</h1>
-                      <h3 className="topic-sub-title" style={{ color: '#06b6d4' }}>{activeTopic.subtitle}</h3>
+                      <h3 className="topic-sub-title">{activeTopic.subtitle}</h3>
                     </div>
                   </div>
                   <p className="topic-hero-description">
@@ -534,258 +394,142 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       <span key={i} className="hero-pill-badge">{b}</span>
                     ))}
                   </div>
-
-                  {/* Core Metrics Row */}
-                  <div className="topic-metrics-grid">
-                    {activeTopic.metrics.map((m, i) => (
-                      <div key={i} className="metric-box">
-                        <span className="metric-val">{m.val}</span>
-                        <span className="metric-lbl">{m.lbl}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
                 <div className="topic-hero-right-img">
-                  <div className="hacker-hero-img-container" style={{ borderColor: 'rgba(6, 182, 212, 0.4)', boxShadow: '0 0 15px rgba(6, 182, 212, 0.3)' }}>
-                    <img src={analystImg} alt="SOC Operations room" />
+                  <div className="hacker-hero-img-container">
+                    <img src={analystImg} alt="Analyst Hero illustration" />
                   </div>
                 </div>
               </section>
 
-              {/* ── TASK 1: ESSENTIAL CONCEPT ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 1</span>
-                  <h2>{activeTopic.conceptTitle}</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  {activeTopic.conceptText}
-                </p>
+              {/* Study syllabus section blocks - Outline sidebar removed to maximize reading space */}
+              <div className="gitbook-content-split-full">
+                {/* ── SYLLABUS CORE CONTENT ── */}
+                <div className="gitbook-main-document">
+                  {activeTopic.sections.map((sec, idx) => (
+                    <section 
+                      key={idx} 
+                      id={sec.id} 
+                      className="gitbook-section-card"
+                      style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.05)', paddingBottom: '24px', marginBottom: '16px' }}
+                    >
+                      <h2 style={{ margin: '0 0 14px 0', fontSize: '22px', color: '#ffffff' }}>{sec.title}</h2>
+                      
+                      <p className="gitbook-section-text">{sec.content}</p>
+                      
+                      {sec.bulletPoints && (
+                        <ul className="gitbook-bullet-list">
+                          {sec.bulletPoints.map((bp, i) => (
+                            <li key={i}>
+                              <span className="gitbook-bullet-icon">•</span>
+                              <span>{bp}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
-                {/* SIEM Specific image */}
-                {activeRoadmapTopic === '01' && (
-                  <div className="htb-task-media-wrap">
-                    <img src={defensiveSocImg} alt="SOC Dashboard Graphic" className="htb-task-img" />
-                    <span className="htb-task-caption">Figure 1.1: Security Operations Center live SIEM dashboard correlation flow.</span>
-                  </div>
-                )}
+                      {/* CONDITIONAL DIAGRAMS */}
+                      {sec.id === 'sec-logs' && <LogFlowDiagram />}
+                      {sec.id === 'sec-ir-phases' && <IncidentResponseDiagram />}
+                      {sec.id === 'sec-forensics' && <MemoryStackDiagram />}
 
-                {/* Concept Process Flow */}
-                <div className="pentest-flow-row">
-                  {activeTopic.conceptFlow.map((step, i) => {
-                    const StepIcon = step.icon;
-                    return (
-                      <React.Fragment key={i}>
-                        {i > 0 && <div className="flow-connector-line"></div>}
-                        <div className={`flow-step-card ${step.active ? 'active' : ''}`}>
-                          <div className="flow-step-icon-outer">
-                            <StepIcon size={18} style={{ color: '#06b6d4' }} />
-                          </div>
-                          <h4>{step.title}</h4>
-                          <p>{step.sub}</p>
+                      {sec.command && (
+                        <div style={{ margin: '24px 0' }}>
+                          <TerminalCommandBlock command={sec.command} />
                         </div>
-                      </React.Fragment>
-                    );
-                  })}
-                </div>
+                      )}
 
-                {/* HTB Question Check */}
-                {getQuestionForTask(1) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(1).question}
-                    correctAnswer={getQuestionForTask(1).correctAnswer}
-                    hint={getQuestionForTask(1).hint}
-                  />
-                )}
-              </section>
-
-              {/* ── TASK 2: CAREER PATH & BLUEPRINT ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 2</span>
-                  <h2>Career Path & Blueprint</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  {activeTopic.blueprintDesc}
-                </p>
-
-                <div className="blueprint-grid">
-                  {activeTopic.blueprintCards.map((card, i) => {
-                    const CardIcon = card.icon;
-                    return (
-                      <div key={i} className={`blueprint-card ${card.salary ? '' : 'flex-center-column'}`} style={{ borderColor: 'rgba(6, 182, 212, 0.15)' }}>
-                        <div className="blueprint-card-header">
-                          <CardIcon size={16} style={{ color: '#06b6d4' }} />
-                          <h4>{card.title}</h4>
-                        </div>
-                        {card.list && (
-                          <ul>
-                            {card.list.map((item, j) => (
-                              <li key={j}>{item}</li>
+                      {sec.commandExpl && (
+                        <div className="htb-command-expl-wrapper">
+                          <h4>Command Parameter Breakdown</h4>
+                          <div className="command-expl-grid">
+                            {sec.commandExpl.map((expl, i) => (
+                              <div key={i} className="command-expl-row">
+                                <span className="command-flag-badge">{expl.flag}</span>
+                                <span className="command-flag-desc">{expl.desc}</span>
+                              </div>
                             ))}
-                          </ul>
-                        )}
-                        {card.salary && (
-                          <>
-                            <div className="blueprint-salary-value" style={{ color: '#4ade80' }}>{card.salary}</div>
-                            <div className="blueprint-salary-sub">{card.salarySub}</div>
-                            <div className="blueprint-salary-region">{card.salaryRegion}</div>
-                          </>
-                        )}
-                        {card.growthBadge && (
-                          <>
-                            <div className="blueprint-growth-icon" style={{ borderColor: 'rgba(6, 182, 212, 0.3)', background: 'rgba(6, 182, 212, 0.1)' }}>
-                              <Activity size={24} style={{ color: '#06b6d4' }} />
-                            </div>
-                            <div className="growth-badge" style={{ color: '#4ade80', background: 'rgba(74, 222, 128, 0.08)', borderColor: 'rgba(74, 222, 128, 0.25)' }}>{card.growthBadge}</div>
-                            <p>{card.desc}</p>
-                          </>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* HTB Question Check */}
-                {getQuestionForTask(2) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(2).question}
-                    correctAnswer={getQuestionForTask(2).correctAnswer}
-                    hint={getQuestionForTask(2).hint}
-                  />
-                )}
-              </section>
-
-              {/* ── TASK 3: ATTACK VECTORS & METHODOLOGIES ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 3</span>
-                  <h2>{activeTopic.phasesTitle}</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  {activeTopic.phasesDesc}
-                </p>
-
-                <div className="phases-flow-grid">
-                  {activeTopic.phases.map((phase, idx) => (
-                    <div key={idx} className="phase-node-card" style={{ borderColor: 'rgba(6, 182, 212, 0.15)' }}>
-                      <div className="phase-node-header">
-                        <span className="phase-node-num" style={{ color: '#06b6d4', background: 'rgba(6, 182, 212, 0.1)', borderColor: 'rgba(6, 182, 212, 0.3)' }}>{phase.num}</span>
-                        <h4>{phase.title}</h4>
-                      </div>
-                      <p className="phase-node-desc">{phase.desc}</p>
-                      <div className="phase-badge-tag" style={{ color: '#06b6d4', background: 'rgba(6, 182, 212, 0.08)', borderColor: 'rgba(6, 182, 212, 0.25)' }}>{phase.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* HTB Question Check */}
-                {getQuestionForTask(3) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(3).question}
-                    correctAnswer={getQuestionForTask(3).correctAnswer}
-                    hint={getQuestionForTask(3).hint}
-                  />
-                )}
-              </section>
-
-              {/* ── TASK 4: PRACTICE LAB TOOLSETS ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 4</span>
-                  <h2>{activeTopic.toolsTitle}</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  {activeTopic.toolsDesc}
-                </p>
-
-                {/* Terminal Commands Guide Box */}
-                {activeRoadmapTopic === '01' ? (
-                  <div style={{ marginBottom: '28px' }}>
-                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Splunk Log Ingestion</h4>
-                    <TerminalCommandBlock command="sudo /opt/splunk/bin/splunk start --accept-license" />
-                  </div>
-                ) : (
-                  <div style={{ marginBottom: '28px' }}>
-                    <h4 style={{ color: '#ffffff', marginBottom: '10px', fontSize: '14.5px' }}>Command Line Practice: Wazuh Agent Activation</h4>
-                    <TerminalCommandBlock command="sudo systemctl restart wazuh-agent" />
-                  </div>
-                )}
-
-                <div className="tools-grid-5">
-                  {activeTopic.tools.map((tool, idx) => (
-                    <div key={idx} className="tool-card-v2">
-                      <div className="tool-card-icon-v2" style={{ color: '#06b6d4', borderColor: 'rgba(6, 182, 212, 0.25)' }}>
-                        <Terminal size={18} />
-                      </div>
-                      <h4>{tool.name}</h4>
-                      <span className="tool-card-cat">{tool.cat}</span>
-                      <p className="tool-card-desc-v2">{tool.desc}</p>
-                      <button className="tool-btn-learn" style={{ color: '#06b6d4', borderColor: 'rgba(6, 182, 212, 0.2)' }}>
-                        <span>Learn More</span>
-                        <ArrowRight size={10} />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-
-                {/* HTB Question Check */}
-                {getQuestionForTask(4) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(4).question}
-                    correctAnswer={getQuestionForTask(4).correctAnswer}
-                    hint={getQuestionForTask(4).hint}
-                  />
-                )}
-              </section>
-
-              {/* ── TASK 5: RECOMMENDED CERTIFICATIONS ── */}
-              <section className="topic-section-block htb-task-container">
-                <div className="htb-task-header">
-                  <span className="htb-task-badge">Task 5</span>
-                  <h2>Recommended Certifications</h2>
-                </div>
-                <div className="section-divider-red"></div>
-                
-                <p className="section-block-text">
-                  Boost your career with industry-recognized certifications.
-                </p>
-                <div className="recommended-certs-grid">
-                  {activeTopic.certs.map((cert, idx) => (
-                    <div key={idx} className="recommended-cert-card-v2">
-                      <div className="cert-badge-icon-v2" style={{ color: '#06b6d4', borderColor: 'rgba(6, 182, 212, 0.3)' }}>
-                        <Award size={18} />
-                      </div>
-                      <div className="recommended-cert-text">
-                        <h4>{cert.name}</h4>
-                        <span className="recommended-cert-fullname">{cert.full}</span>
-                        <p>{cert.desc}</p>
-                        <div className="recommended-cert-difficulty">
-                          <span>Difficulty: </span>
-                          <strong>{cert.diff}</strong>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                      )}
 
-                {/* HTB Question Check */}
-                {getQuestionForTask(5) && (
-                  <HTBQuestion 
-                    questionText={getQuestionForTask(5).question}
-                    correctAnswer={getQuestionForTask(5).correctAnswer}
-                    hint={getQuestionForTask(5).hint}
-                  />
-                )}
-              </section>
+                      {sec.callout && (
+                        <div className="htb-concept-callout" style={{ margin: '20px 0' }}>
+                          <span className="callout-icon">💡</span>
+                          <p>{sec.callout}</p>
+                        </div>
+                      )}
+
+                      {/* PRACTICAL EXAMPLE BOX */}
+                      {sec.example && (
+                        <div className="real-world-example-box">
+                          <div 
+                            className="example-box-header" 
+                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+                            onClick={() => setExpandedExampleId(expandedExampleId === sec.id ? null : sec.id)}
+                          >
+                            <h4 style={{ margin: 0 }}>Real-World Practical Example</h4>
+                            <span style={{ fontSize: '11px', color: '#ff5555', fontWeight: '800', letterSpacing: '0.5px' }}>
+                              {expandedExampleId === sec.id ? '[-] HIDE EXAMPLE' : '[+] SHOW EXAMPLE'}
+                            </span>
+                          </div>
+                          {expandedExampleId === sec.id && (
+                            <p style={{ marginTop: '12px', animation: 'fadeIn 0.25s ease', color: '#cbd5e1', fontSize: '13.5px', lineHeight: '1.6' }}>
+                              {sec.example}
+                            </p>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Klik panna vera page ku redirect aagura Deep Sub-modules */}
+                      {sec.subModules && (
+                        <div className="subtopic-redirect-wrapper" style={{ marginTop: '24px' }}>
+                          <h4 style={{ color: '#ffffff', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px' }}>
+                            🔗 Click to explore deep-dive modules:
+                          </h4>
+                          <div className="subtopic-links-grid">
+                            {sec.subModules.map((sub, sIdx) => (
+                              <button 
+                                key={sIdx}
+                                className="subtopic-redirect-card-btn"
+                                onClick={() => onNavigate('defensive-subtopic-detail', sub.id)}
+                              >
+                                <span>{sub.name}</span>
+                                <ArrowRight size={12} className="card-btn-arrow" />
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </section>
+                  ))}
+
+                  {/* Certifications Block */}
+                  <section className="gitbook-section-card" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '30px' }}>
+                    <h2>6. Recommended Professional Certifications</h2>
+                    <p className="gitbook-section-text">Recommended pathways for validating your security analyst skills in the industry:</p>
+                    <div className="recommended-certs-grid">
+                      {activeTopic.certs.map((cert, idx) => (
+                        <div key={idx} className="recommended-cert-card-v2">
+                          <div className="cert-badge-icon-v2">
+                            <Award size={18} />
+                          </div>
+                          <div className="recommended-cert-text">
+                            <h4>{cert.name}</h4>
+                            <span className="recommended-cert-fullname">{cert.full}</span>
+                            <p>{cert.desc}</p>
+                            <div className="recommended-cert-difficulty">
+                              <span>Difficulty: </span>
+                              <strong>{cert.diff}</strong>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
