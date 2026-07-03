@@ -513,6 +513,93 @@ export const DEFENSIVE_TOPICS = {
       next: "07. Endpoint Security",
       nextNum: "07"
     }
+  },
+  '07': {
+    num: '07',
+    title: 'Endpoint Security',
+    subtitle: 'The Device Defender',
+    description: "Endpoint Security is the practice of protecting individual devices that connect to an organization's network, such as employee laptops, smartphones, and servers. Since endpoints are the primary interface where employees interact with data, they are the number one target for hackers trying to drop malware or steal credentials.",
+    badges: ["Device Defense", "High Stability", "Core Skill"],
+    metrics: [
+      { val: "EDR", lbl: "Platform" },
+      { val: "High", lbl: "Demand" },
+      { val: "BYOD", lbl: "Focus" },
+      { val: "4", lbl: "Certifications" },
+      { val: "5", lbl: "Job Roles" }
+    ],
+    conceptTitle: "What is Endpoint Security?",
+    conceptText: "With the massive rise of remote work and Bring Your Own Device (BYOD) corporate policies, the corporate perimeter has shifted directly to the endpoint. Managing these decentralized devices has created a large, dedicated job market for deploying advanced software agents to block threats in real time.",
+    conceptFlow: [
+      { title: "Deploy", sub: "(Agents)", icon: Package },
+      { title: "Monitor", sub: "(EDR)", icon: Activity, active: true },
+      { title: "Isolate", sub: "(Block)", icon: Lock }
+    ],
+    blueprintDesc: "As long as employees use laptops and phones to do their jobs, companies will require endpoint protection experts. If you enjoy OS internals, system management, and practical, device-level defense, this is an excellent area to specialize in.",
+    blueprintCards: [
+      {
+        icon: TerminalSquare,
+        title: "Fresher (0–1 Yrs)",
+        salary: "₹3.5L - ₹6.0L",
+        role: "Associate Endpoint Engineer"
+      },
+      {
+        icon: Users,
+        title: "Early Career (1–3 Yrs)",
+        salary: "₹5.5L - ₹10.0L",
+        role: "Endpoint Security Engineer"
+      },
+      {
+        icon: TrendingUp,
+        title: "Mid-Level (3–5 Yrs)",
+        salary: "₹10.0L - ₹18.0L",
+        role: "Senior Endpoint / EDR Specialist",
+        highlight: true
+      },
+      {
+        icon: ShieldCheck,
+        title: "Senior (5+ Yrs)",
+        salary: "₹18.0L - ₹32.0L+",
+        role: "Lead Security Engineer"
+      }
+    ],
+    phasesTitle: "Step-by-Step Roadmap",
+    phasesDesc: "To become a professional Endpoint Security Engineer, build your expertise through these phases:",
+    phases: [
+      { num: '01', title: 'Focus on OS Internals', desc: 'Gain a deep understanding of Windows, Linux, and macOS administration. Learn how system processes run and how registries operate.', label: 'Internals' },
+      { num: '02', title: 'Learn Modern EDR', desc: 'Learn how modern EDR platforms use behavioral analysis to spot threats using suites like CrowdStrike Falcon or Microsoft Defender.', label: 'EDR' },
+      { num: '03', title: 'Device Management', desc: 'Learn Mobile Device Management (MDM) and unified endpoint management tools like Microsoft Intune or VMware Workspace ONE.', label: 'MDM' },
+      { num: '04', title: 'Device Hardening', desc: 'Learn to implement benchmark configurations (like CIS Benchmarks) to lock down operating systems against exploit techniques.', label: 'Hardening' }
+    ],
+    toolsTitle: "Essential Endpoint Platforms",
+    toolsDesc: "Master these industry-leading platforms used for protecting and managing devices.",
+    tools: [
+      { name: 'CrowdStrike', cat: 'EDR', desc: 'Industry-leading cloud-native endpoint protection platform.' },
+      { name: 'Microsoft Defender', cat: 'XDR', desc: 'Comprehensive enterprise defense for endpoints, identities, and applications.' },
+      { name: 'Intune', cat: 'MDM', desc: 'Microsoft\'s cloud-based endpoint management solution for mobile and desktop.' },
+      { name: 'SentinelOne', cat: 'EDR', desc: 'Autonomous AI-powered endpoint security platform.' }
+    ],
+    certs: [
+      { name: 'Security+', full: 'CompTIA Security+', desc: 'Provides the foundational knowledge required for any cybersecurity role.', diff: 'Beginner' },
+      { name: 'SC-900', full: 'Microsoft Security Fundamentals', desc: 'Validates basic knowledge of Microsoft security, compliance, and identity solutions.', diff: 'Beginner' },
+      { name: 'CrowdStrike', full: 'Certified Falcon Administrator', desc: 'Proves expertise in deploying and managing the CrowdStrike Falcon platform.', diff: 'Intermediate' },
+      { name: 'SC-200', full: 'Microsoft Security Operations Analyst', desc: 'Advanced certification for mitigating threats using Microsoft security solutions.', diff: 'Advanced' }
+    ],
+    learnList: [
+      "Mastering Windows, Linux, and macOS administration",
+      "Deploying and managing modern EDR agents",
+      "Applying behavioral analysis to spot advanced threats",
+      "Configuring Mobile Device Management (MDM) profiles",
+      "Implementing CIS Benchmarks for device hardening",
+      "Troubleshooting host-based firewall configurations"
+    ],
+    readyText: "If you enjoy OS internals, system management, and practical, device-level defense, this is an excellent area to specialize in.",
+    stats: {
+      time: "20-30 Hours",
+      diff: "Beginner to Intermediate",
+      prereq: "Operating Systems, IT Basics",
+      next: "08. Log Analysis",
+      nextNum: "08"
+    }
   }
 };
 
@@ -523,7 +610,7 @@ const placeholderNames = [
   "Patch Management", "User Awareness Training"
 ];
 
-for (let i = 7; i <= 10; i++) {
+for (let i = 8; i <= 10; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   DEFENSIVE_TOPICS[num] = {
     num: num,
