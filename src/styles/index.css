@@ -8493,6 +8493,7 @@ body {
     background: rgba(0, 0, 0, 0.4);
     border-radius: 8px;
     padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
   
   .tactic-details ul {
@@ -8502,9 +8503,10 @@ body {
   }
   
   .tactic-details li {
-    color: var(--color-text-muted);
-    font-size: 13px;
-    margin-bottom: 8px;
+    color: #e2e8f0;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -8516,4 +8518,5 @@ body {
   
   .tactic-details li strong {
     color: #fff;
+    font-weight: 600;
   }
