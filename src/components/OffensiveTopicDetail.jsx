@@ -39,8 +39,11 @@ import {
   HardDrive,
   Box,
   DoorOpen,
-  Ghost,
-  Target
+  Target,
+  Eye,
+  CreditCard,
+  Unlock,
+  Wifi
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -470,6 +473,90 @@ function RedTeamLifecycle() {
   );
 }
 
+function PhysicalAttackLifecycle() {
+  const steps = [
+    { title: "Physical Reconnaissance", icon: Eye, desc: "Mapping security guard schedules, cameras, and blind spots." },
+    { title: "Bypass & Clone", icon: Key, desc: "Capturing badge frequencies or preparing lock-picking tools." },
+    { title: "Infiltration (The Entry)", icon: DoorOpen, desc: "Tailgating an employee or bypassing a locked door." },
+    { title: "Objective Execution", icon: Server, desc: "Dropping a rogue network device or finding sensitive papers." }
+  ];
+
+  return (
+    <div className="physical-lifecycle-tracker">
+      <h4 style={{ color: '#fff', marginBottom: '20px' }}>🏢 TARGET FACILITY</h4>
+      {steps.map((step, i) => (
+        <div key={i} className="physical-step">
+          <div className="physical-icon-wrap">
+            <step.icon size={24} />
+          </div>
+          <div className="physical-content">
+            <h4>{i + 1}. {step.title}</h4>
+            <p>{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PhysicalPentesterToolkit() {
+  const tools = [
+    {
+      title: "1. RFID and Badge Cloners",
+      icon: CreditCard,
+      desc: "Most corporate offices use proximity badges (RFID/NFC) to unlock doors.",
+      details: [
+        { label: "The Tool:", val: "Flipper Zero or Proxmark3." },
+        { label: "The Attack:", val: "The tester stands close to an employee, reads the badge frequency wirelessly, clones it onto a blank card, and walks straight through the front door." }
+      ]
+    },
+    {
+      title: "2. Lock Picking & Bypass Tools",
+      icon: Unlock,
+      desc: "When digital systems can't be tricked, mechanical vulnerabilities are exploited.",
+      details: [
+        { label: "Lock Picks:", val: "For opening traditional padlocks or file cabinets." },
+        { label: "Under-Door Tools (UDT):", val: "A long, flexible rod designed to slide under a door, reach up, and pull down the inside lever handle." },
+        { label: "Shims & Raking Tools:", val: "Designed to slide into latches or padlocks to slip the mechanism open in seconds." }
+      ]
+    },
+    {
+      title: "3. Rogue Network Hardware",
+      icon: Wifi,
+      desc: "Once inside, the tester plugs a covert hardware device into an empty network port.",
+      details: [
+        { label: "The Tool:", val: "Hak5 Pineapple or a custom Raspberry Pi Drop Box." },
+        { label: "The Result:", val: "Establishes a hidden, encrypted cellular connection back to the tester's home base, granting permanent internal network access." }
+      ]
+    }
+  ];
+
+  return (
+    <div className="tactical-toolkit-grid">
+      {tools.map((tool, i) => (
+        <div key={i} className="toolkit-card">
+          <div className="toolkit-header">
+            <div className="toolkit-icon-wrap">
+              <tool.icon size={32} />
+            </div>
+            <h4>{tool.title}</h4>
+          </div>
+          <div className="toolkit-body">
+            <p>{tool.desc}</p>
+            <ul className="toolkit-list">
+              {tool.details.map((detail, idx) => (
+                <li key={idx}>
+                  <span><strong>{detail.label}</strong> {detail.val}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -711,16 +798,56 @@ export const TOPIC_DETAILS = {
       { name: 'CRTE / PACES', full: 'Altered Security Red Team Expert', desc: 'Elite multi-forest Active Directory testing certifications.', diff: 'Expert' }
     ]
   },
+  '07': {
+    num: '07',
+    title: 'Physical Security Testing',
+    subtitle: 'Breaching the Perimeter',
+    description: "Step away from the keyboard and enter the real world. Many students forget that cybersecurity is entirely dependent on physical security. If an attacker can walk up to an internal server or plug a device into a wall outlet, all digital firewalls become irrelevant.",
+    badges: ["Core Skill", "Tactical", "High Risk"],
+    stats: { time: "15 Hours", diff: "Intermediate", prereq: "None" },
+    sections: [
+      {
+        id: "sec-concept",
+        title: "1. The Essential Concept: Breaking the Physical Barrier",
+        content: "Physical Security Testing is the authorized simulation of a real-world intruder attempting to breach an organization's physical facilities. The objective is to evaluate the strength of locks, access control systems, cameras, fences, and security guards."
+      },
+      {
+        id: "sec-lifecycle",
+        title: "2. The Physical Attack Lifecycle",
+        content: "A physical pentest follows a tactical process designed to minimize exposure and ensure maximum stealth:",
+        customComponent: "PhysicalAttackLifecycle"
+      },
+      {
+        id: "sec-toolkit",
+        title: "3. The Physical Pentester's Toolkit",
+        content: "Pentesters carry a specialized physical 'tactical bag' filled with mechanical and electronic bypass tools:",
+        customComponent: "PhysicalPentesterToolkit"
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Your Career & Development Roadmap",
+        content: "Physical testing is a highly specialized skill set usually performed by senior Red Team members due to the high legal and safety risks involved.",
+        bulletPoints: [
+          "Specialized Job Roles: Physical Security Consultant, Corporate Risk Auditor, Red Team Specialist, Operations Security (OPSEC) Officer.",
+          "What a Day Looks Like: Scouting corporate buildings with binoculars, mapping camera angles, donning disguises (HVAC technician, delivery driver), and drafting emergency contact letters.",
+          "Practical Learning: Advise your students to join local lock-picking groups (such as TOOOL) to learn the core mechanical principles of security safely and legally."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'PSP', full: 'Physical Security Professional', desc: 'A globally recognized corporate standard focusing on threat assessments and integrated physical protection systems.', diff: 'Intermediate' }
+    ]
+  },
 };
 
 const placeholderNamesOffensive = [
-  "Web App Hacking", "Wireless Hacking",
+  "Wireless Hacking",
   "Cloud Security Testing", "Hardware Hacking", "Malware Analysis",
   "Exploit Development", "IoT Security", "Physical Security Breach",
   "Bug Bounty Hunting"
 ];
 
-for (let i = 7; i <= 15; i++) {
+for (let i = 8; i <= 15; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   TOPIC_DETAILS[num] = {
     num: num,
@@ -1036,6 +1163,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'PostExploitTactics' && <PostExploitTactics />}
                       {sec.customComponent === 'PentestVsRedTeamTable' && <PentestVsRedTeamTable />}
                       {sec.customComponent === 'RedTeamLifecycle' && <RedTeamLifecycle />}
+                      {sec.customComponent === 'PhysicalAttackLifecycle' && <PhysicalAttackLifecycle />}
+                      {sec.customComponent === 'PhysicalPentesterToolkit' && <PhysicalPentesterToolkit />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">
