@@ -9020,3 +9020,165 @@ body {
     color: #e2e8f0;
     font-family: monospace;
   }
+  
+  /* Custom UI Components for Offensive Topic 09 */
+  .wireless-vectors-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 40px 0;
+    position: relative;
+    gap: 20px;
+  }
+  
+  .wireless-vectors-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, #38bdf8, #38bdf8 10px, transparent 10px, transparent 20px);
+    z-index: 1;
+    opacity: 0.5;
+    animation: signalPulse 2s linear infinite;
+  }
+  
+  @keyframes signalPulse {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+  }
+  
+  .wireless-node {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 24px;
+    width: 32%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .wireless-node:hover {
+    border-color: #38bdf8;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+  }
+  
+  .wireless-icon-wrap {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    border: 2px solid rgba(56, 189, 248, 0.2);
+  }
+  
+  .wireless-node h4 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  
+  .wireless-node p {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .wireless-deepdive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 40px 0;
+  }
+  
+  .wireless-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 768px) {
+    .wireless-deepdive-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .wireless-card {
+      height: 100%;
+    }
+  }
+  
+  .wireless-card-header {
+    background: rgba(15, 23, 42, 0.6);
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .wireless-card-header .icon-wrap {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .wireless-card-header h4 {
+    color: #fff;
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .wireless-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+  
+  .wireless-mechanism {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    padding: 16px;
+    border-left: 3px solid #38bdf8;
+  }
+  
+  .wireless-threat {
+    background: rgba(239, 68, 68, 0.05);
+    border-radius: 6px;
+    padding: 16px;
+    border-left: 3px solid var(--color-offensive);
+  }
+  
+  .wireless-card-body h5 {
+    color: #fff;
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .wireless-threat h5 {
+    color: var(--color-offensive);
+  }
+  
+  .wireless-card-body p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }

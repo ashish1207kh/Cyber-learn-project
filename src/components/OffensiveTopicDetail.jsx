@@ -45,7 +45,9 @@ import {
   Unlock,
   Wifi,
   Syringe,
-  Code
+  Code,
+  Radio,
+  Router
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -631,6 +633,76 @@ function VulnerabilityDeepDive() {
   );
 }
 
+function WirelessAttackVectors() {
+  const vectors = [
+    { title: "WPA Handshake Cracking", icon: Wifi, desc: "Intercepting the key exchange packets to crack offline." },
+    { title: "Evil Twin / Rogue AP", icon: Radio, desc: "Broadcasting a fake network with the same name to trick users." },
+    { title: "Rogue Access Points", icon: Router, desc: "Plugging unauthorized Wi-Fi routers directly into internal walls." }
+  ];
+
+  return (
+    <div className="wireless-vectors-container">
+      {vectors.map((vec, i) => (
+        <div key={i} className="wireless-node">
+          <div className="wireless-icon-wrap">
+            <vec.icon size={28} />
+          </div>
+          <h4>{vec.title}</h4>
+          <p>{vec.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function WirelessDeepDive() {
+  const techniques = [
+    {
+      title: "1. WPA2/WPA3 Handshake Capture & Cracking",
+      icon: Wifi,
+      mechanism: "A tester forcefully disconnects a user (Deauthentication Attack). When they reconnect, the encrypted 4-way handshake is captured.",
+      threat: "The captured handshake file is taken offline and brute-forced using raw GPU power (via tools like Hashcat) to crack the Wi-Fi password."
+    },
+    {
+      title: "2. The Evil Twin Attack",
+      icon: Radio,
+      mechanism: "An attacker broadcasts a fake access point with the exact same name as the corporate network while jamming the real one.",
+      threat: "Connected victims have all their traffic routed through the attacker (Man-in-the-Middle), exposing cleartext passwords and allowing fake login pages."
+    },
+    {
+      title: "3. WPS (Wi-Fi Protected Setup) Exploitation",
+      icon: Router,
+      mechanism: "WPS allows easy connection using an 8-digit PIN. Due to a protocol flaw, routers check the first 4 digits separately from the last 4.",
+      threat: "Pentesters can exploit this using automated brute-force tools to guess the entire PIN in hours, revealing the main Wi-Fi password instantly."
+    }
+  ];
+
+  return (
+    <div className="wireless-deepdive-grid">
+      {techniques.map((tech, i) => (
+        <div key={i} className="wireless-card">
+          <div className="wireless-card-header">
+            <div className="icon-wrap">
+              <tech.icon size={24} />
+            </div>
+            <h4>{tech.title}</h4>
+          </div>
+          <div className="wireless-card-body">
+            <div className="wireless-mechanism">
+              <h5>The Attack / Mechanism</h5>
+              <p>{tech.mechanism}</p>
+            </div>
+            <div className="wireless-threat">
+              <h5>The Crack / Threat</h5>
+              <p>{tech.threat}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -961,15 +1033,64 @@ export const TOPIC_DETAILS = {
       { name: 'GWAPT', full: 'GIAC Web Application Penetration Tester', desc: 'A highly respected corporate certification validating a tester\'s ability to thoroughly audit web environments.', diff: 'Intermediate' }
     ]
   },
+  '09': {
+    num: '09',
+    title: 'Wireless Attacks',
+    subtitle: 'Cracking the Airwaves',
+    description: "Look at how data travels without wires. Because wireless radio waves cannot be contained within the physical walls of a building, they represent a uniquely vulnerable target.",
+    badges: ["Core Skill", "Hardware", "RF Signals"],
+    stats: { time: "20 Hours", diff: "Intermediate", prereq: "Networking, Linux CLI" },
+    sections: [
+      {
+        id: "sec-concept",
+        title: "1. The Essential Concept: Sneaking Over the Invisible Spectrum",
+        content: "Wireless Testing and Attacks involve auditing, intercepting, and exploiting radio frequency (RF) communication protocols to determine if an attacker can break encryption, sniff traffic, or bypass network access control."
+      },
+      {
+        id: "sec-vectors",
+        title: "2. The 3 Most Dangerous Wireless Attack Methods",
+        content: "Break down the core tactics modern attackers use to compromise wireless networks:",
+        customComponent: "WirelessAttackVectors"
+      },
+      {
+        id: "sec-deepdive",
+        title: "3. Deep Dive into the Techniques",
+        content: "Understanding the exact mechanism and threat profile of wireless attacks:",
+        customComponent: "WirelessDeepDive"
+      },
+      {
+        id: "sec-toolkit",
+        title: "4. The Wireless Pentester's Toolkit",
+        content: "Wireless testing requires a mix of specialized software and hardware:",
+        bulletPoints: [
+          "Aircrack-ng Suite: The legendary command-line toolkit used for monitoring, injecting packets, deauthenticating users, and cracking captured WPA/WPA2 keys.",
+          "Hashcat: The world's fastest utility for cracking passwords, optimized to use graphics card power to crack wireless handshakes.",
+          "WiFi Pineapple (Hak5): A specialized dual-band rogue access point hardware platform designed to completely automate Evil Twin setups."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "5. Your Career & Development Roadmap",
+        content: "Wireless security skills are critical for operations engineers, red teamers, and corporate auditors alike.",
+        bulletPoints: [
+          "Specialized Job Roles: Wireless Security Auditor, Telecommunications Security Consultant, Red Team Physical Operator, IoT Security Researcher.",
+          "What a Day Looks Like: Conducting wireless site surveys outside of a corporate building, hunting for rogue access points, testing BLE employee badges."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'OSWP', full: 'OffSec Wireless Professional', desc: 'The premier, 100% practical wireless certification conducting live, audited attacks against WPA-protected networks.', diff: 'Intermediate' }
+    ]
+  },
 };
 
 const placeholderNamesOffensive = [
-  "Cloud Security Testing", "Hardware Hacking", "Malware Analysis",
+  "Hardware Hacking", "Malware Analysis",
   "Exploit Development", "IoT Security", "Physical Security Breach",
   "Bug Bounty Hunting"
 ];
 
-for (let i = 9; i <= 15; i++) {
+for (let i = 10; i <= 15; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   TOPIC_DETAILS[num] = {
     num: num,
@@ -1289,6 +1410,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'PhysicalPentesterToolkit' && <PhysicalPentesterToolkit />}
                       {sec.customComponent === 'OwaspCoreVectors' && <OwaspCoreVectors />}
                       {sec.customComponent === 'VulnerabilityDeepDive' && <VulnerabilityDeepDive />}
+                      {sec.customComponent === 'WirelessAttackVectors' && <WirelessAttackVectors />}
+                      {sec.customComponent === 'WirelessDeepDive' && <WirelessDeepDive />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">
