@@ -1,4 +1,4 @@
-/* CyberLearn - Global Stylesheet (Custom Responsive HUD & Dashboard CSS) */
+﻿/* CyberLearn - Global Stylesheet (Custom Responsive HUD & Dashboard CSS) */
 
 :root {
   /* Color Tokens */
@@ -2754,7 +2754,7 @@ body {
 
 
 /* ==========================================================================
-   NEW LANDING PAGE — FULL REDESIGN
+   NEW LANDING PAGE â€” FULL REDESIGN
    ========================================================================== */
 
 /* Landing page wrapper */
@@ -2787,7 +2787,7 @@ body {
   padding: 6px 0;
 }
 
-/* ── HERO HEADLINE ── SCARY GRADIENT ── */
+/* â”€â”€ HERO HEADLINE â”€â”€ SCARY GRADIENT â”€â”€ */
 .hero-headline {
   text-align: center;
   padding: 8px 20px 14px;
@@ -2822,7 +2822,7 @@ body {
   text-transform: uppercase;
   line-height: 1.15;
   margin-bottom: 10px;
-  /* Blue → Red → Purple → Green gradient */
+  /* Blue â†’ Red â†’ Purple â†’ Green gradient */
   background: linear-gradient(
     90deg,
     #3b82f6 0%,
@@ -2847,7 +2847,7 @@ body {
 .hl-yellow { }
 .hl-red    { }
 
-/* ── SUBTITLE ── */
+/* â”€â”€ SUBTITLE â”€â”€ */
 .hero-headline p {
   font-size: 14.5px;
   font-weight: 600;
@@ -2859,7 +2859,7 @@ body {
   margin: 0;
 }
 
-/* ── PATH CARDS GRID ── */
+/* â”€â”€ PATH CARDS GRID â”€â”€ */
 .path-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3049,7 +3049,7 @@ body {
   filter: brightness(1.15);
 }
 
-/* ── GNC BANNER ── */
+/* â”€â”€ GNC BANNER â”€â”€ */
 .gnc-banner {
   display: flex;
   align-items: center;
@@ -3131,7 +3131,7 @@ body {
 
 .gnc-btn:hover { filter: brightness(1.15); }
 
-/* ── BOTTOM GRID ── */
+/* â”€â”€ BOTTOM GRID â”€â”€ */
 .bottom-grid-wrapper {
   display: grid;
   grid-template-columns: 160px repeat(4, 1fr) 200px;
@@ -3316,7 +3316,7 @@ body {
   white-space: nowrap;
 }
 
-/* ── RESPONSIVE ── */
+/* â”€â”€ RESPONSIVE â”€â”€ */
 @media (max-width: 1100px) {
   .path-cards-grid { grid-template-columns: 1fr; gap: 14px; }
   .path-card { flex-direction: column; }
@@ -3419,135 +3419,6 @@ body {
   }
   .nav-capsule::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
-  }
-  .cyber-table td {
-    padding: 16px 20px;
-    color: var(--color-text-secondary);
-    font-size: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  
-  .cyber-table tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .cyber-table tr:hover td {
-    background: rgba(255, 255, 255, 0.02);
-  }
-  
-  .cyber-table td strong {
-    color: var(--color-offensive);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  /* Custom UI Components for Offensive Topic 02 */
-  .cognitive-tree-container {
-    margin: 40px 0;
-    padding: 20px;
-    background: rgba(15, 23, 42, 0.5);
-    border: 1px solid var(--color-offensive-border);
-    border-radius: 16px;
-  }
-  
-  .cognitive-header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px dashed rgba(239, 68, 68, 0.3);
-  }
-  
-  .cognitive-header h4 {
-    color: #fff;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  
-  .cognitive-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  
-  .cognitive-node {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-  
-  .cognitive-node:hover {
-    border-color: var(--color-offensive);
-    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
-    transform: translateY(-5px);
-  }
-  
-  .cognitive-icon {
-    color: var(--color-offensive);
-    margin-bottom: 12px;
-  }
-  
-  .cognitive-node h5 {
-    color: #fff;
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-  
-  .cognitive-node p {
-    color: var(--color-text-secondary);
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  
-  .attack-vectors-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin: 30px 0;
-  }
-  
-  .attack-vector-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glass);
-    border-radius: 16px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-  }
-  
-  .attack-vector-card:hover {
-    border-color: var(--color-offensive);
-    background: rgba(239, 68, 68, 0.05);
-  }
-  
-  .attack-vector-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  
-  .attack-vector-icon-wrap {
-    background: rgba(239, 68, 68, 0.1);
-    padding: 10px;
-    border-radius: 10px;
-    color: var(--color-offensive);
-  }
-  
-  .attack-vector-card h4 {
-    color: #fff;
-    font-size: 18px;
-  }
-  
-  .attack-vector-card p {
-    color: var(--color-text-secondary);
-    font-size: 14px;
-    line-height: 1.6;
   }
   .nav-link {
     flex-shrink: 0;
@@ -3702,7 +3573,7 @@ body {
 }
 
 /* ==========================================================================
-   CYBER BACKGROUND IMAGE — LANDING PAGE
+   CYBER BACKGROUND IMAGE â€” LANDING PAGE
    ========================================================================== */
 
 .landing-page::before {
@@ -3741,9 +3612,9 @@ body {
    GLITTERY CORNER BRACKET DECORATIONS
    ========================================================================== */
 
-/* Corner decorator mixin — applied as a data-corner-element using pseudo-element layers */
+/* Corner decorator mixin â€” applied as a data-corner-element using pseudo-element layers */
 
-/* ─── PATH CARD corners ─── */
+/* â”€â”€â”€ PATH CARD corners â”€â”€â”€ */
 .path-card {
   position: relative;
 }
@@ -3822,7 +3693,7 @@ body {
   100% { transform: scale(0.8); opacity: 0.7; }
 }
 
-/* ─── GNC BANNER corners ─── */
+/* â”€â”€â”€ GNC BANNER corners â”€â”€â”€ */
 .gnc-banner {
   position: relative;
 }
@@ -3858,7 +3729,7 @@ body {
 .gnc-corner.bl::before { bottom: -2px; left: -2px; }
 .gnc-corner.br::before { bottom: -2px; right: -2px; }
 
-/* ─── BOTTOM TILES corners ─── */
+/* â”€â”€â”€ BOTTOM TILES corners â”€â”€â”€ */
 .bottom-tile {
   position: relative;
 }
@@ -3894,7 +3765,7 @@ body {
 .tile-corner.bl::before { bottom: -2px; left: -2px; }
 .tile-corner.br::before { bottom: -2px; right: -2px; }
 
-/* ─── Additional edge scan line animation on cards ─── */
+/* â”€â”€â”€ Additional edge scan line animation on cards â”€â”€â”€ */
 .path-card .card-scan-line {
   position: absolute;
   left: 0;
@@ -3983,7 +3854,7 @@ body {
   margin-bottom: 14px;
 }
 
-/* Each banner row — same structure as GNC banner */
+/* Each banner row â€” same structure as GNC banner */
 .path-banner {
   display: flex;
   align-items: center;
@@ -4624,7 +4495,7 @@ body {
 }
 
 .blueprint-card li::before {
-  content: "•";
+  content: "â€¢";
   color: #ff5555;
   position: absolute;
   left: 0;
@@ -5844,7 +5715,7 @@ body {
   position: relative;
 }
 .webapp-drop::after {
-  content: '▼';
+  content: 'â–¼';
   position: absolute;
   bottom: -10px;
   left: -5px;
@@ -7995,3 +7866,132 @@ body {
   gap: 10px;
 }
 
+  .cyber-table td {
+    padding: 16px 20px;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .cyber-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .cyber-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .cyber-table td strong {
+    color: var(--color-offensive);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Custom UI Components for Offensive Topic 02 */
+  .cognitive-tree-container {
+    margin: 40px 0;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid var(--color-offensive-border);
+    border-radius: 16px;
+  }
+  
+  .cognitive-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed rgba(239, 68, 68, 0.3);
+  }
+  
+  .cognitive-header h4 {
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .cognitive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .cognitive-node {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .cognitive-node:hover {
+    border-color: var(--color-offensive);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .cognitive-icon {
+    color: var(--color-offensive);
+    margin-bottom: 12px;
+  }
+  
+  .cognitive-node h5 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .cognitive-node p {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .attack-vectors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 30px 0;
+  }
+  
+  .attack-vector-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+  
+  .attack-vector-card:hover {
+    border-color: var(--color-offensive);
+    background: rgba(239, 68, 68, 0.05);
+  }
+  
+  .attack-vector-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .attack-vector-icon-wrap {
+    background: rgba(239, 68, 68, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--color-offensive);
+  }
+  
+  .attack-vector-card h4 {
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  .attack-vector-card p {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+  }
