@@ -703,6 +703,65 @@ function WirelessDeepDive() {
   );
 }
 
+function MalwarePipeline() {
+  const pipeline = [
+    { title: "Crypter / Packer", icon: Box, desc: "Compresses or encrypts the main executable to mask the signature." },
+    { title: "Loader / Dropper", icon: Activity, desc: "Executes inside volatile memory (RAM) to set up the environment." },
+    { title: "Command & Control", icon: Network, desc: "Establishes a hidden beacon to receive basic operational instructions." }
+  ];
+
+  return (
+    <div className="malware-pipeline-container">
+      {pipeline.map((step, i) => (
+        <div key={i} className="malware-pipeline-node">
+          <div className="malware-icon-wrap">
+            <step.icon size={24} />
+          </div>
+          <h4>{step.title}</h4>
+          <p>{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MalwareAnalysisPillars() {
+  const pillars = [
+    {
+      title: "Static Analysis",
+      icon: Search,
+      desc: "Static analysis involves inspecting a file without actually executing it. This is the safest initial step when analyzing suspicious software.",
+      techniques: "Techniques: Calculating file hashes (MD5/SHA256), extracting readable text strings hidden inside the binary, and analyzing the file header to determine what target operating system libraries it attempts to import."
+    },
+    {
+      title: "Dynamic Analysis",
+      icon: Activity,
+      desc: "Dynamic analysis involves executing the software inside a heavily isolated, monitored environment called a Sandbox.",
+      techniques: "Techniques: Monitoring live process creation, tracking modifications made to the system registry, watching network traffic calls, and observing memory allocation changes to understand the program's true intent."
+    }
+  ];
+
+  return (
+    <div className="malware-pillars-grid">
+      {pillars.map((pillar, i) => (
+        <div key={i} className="malware-pillar-card">
+          <div className="pillar-header">
+            <div className="pillar-icon-wrap">
+              <pillar.icon size={24} />
+            </div>
+            <h4>{pillar.title}</h4>
+          </div>
+          <p>{pillar.desc}</p>
+          <div className="pillar-techniques">
+            <h5>Techniques</h5>
+            <p>{pillar.techniques.replace('Techniques: ', '')}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -1082,15 +1141,54 @@ export const TOPIC_DETAILS = {
       { name: 'OSWP', full: 'OffSec Wireless Professional', desc: 'The premier, 100% practical wireless certification conducting live, audited attacks against WPA-protected networks.', diff: 'Intermediate' }
     ]
   },
+  '10': {
+    num: '10',
+    title: 'Malware Theory & Analysis',
+    subtitle: 'Understanding the Adversary',
+    description: "Concluding the offensive roadmap, this topic introduces the theoretical mechanics of how malicious software operates. Studying these concepts is not about creating damage—it is about understanding the structural anatomy of code to help defensive engineers build better detection systems.",
+    badges: ["Core Skill", "Reverse Engineering", "Theory"],
+    stats: { time: "40 Hours", diff: "Advanced", prereq: "Assembly, C/C++, OS Internals" },
+    sections: [
+      {
+        id: "sec-concept",
+        title: "1. The Essential Concept: Defensive Through Understanding",
+        content: "To effectively defend a network, security professionals must understand how malicious code interacts with an operating system's low-level architecture, executes uninvited actions, maintains persistence, and evades detection."
+      },
+      {
+        id: "sec-pipeline",
+        title: "2. Theoretical Software Anatomy",
+        content: "Sophisticated software vectors generally consist of distinct functional modules designed to perform specific tasks sequentially:",
+        customComponent: "MalwarePipeline"
+      },
+      {
+        id: "sec-pillars",
+        title: "3. The Pillars of Malware Analysis",
+        content: "When preparing students and professionals for careers in this advanced tier, the focus is typically split into two investigative disciplines:",
+        customComponent: "MalwareAnalysisPillars"
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Your Career & Development Roadmap",
+        content: "Mastering the theory of software execution and binary reverse engineering opens up some of the most specialized and critical roles in the entire cybersecurity ecosystem.",
+        bulletPoints: [
+          "Specialized Job Roles: Malware Analyst, Reverse Engineer, Threat Hunter, Incident Response Handler, Signature Engineer.",
+          "What a Day Looks Like: Dissecting unknown software variants discovered during network breaches, writing custom detection rules (such as YARA signatures) to protect global enterprises, and documenting threat actor capabilities for intelligence briefs."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'GREM', full: 'GIAC Reverse Engineering Malware', desc: 'The gold standard certification for analyzing malicious software.', diff: 'Advanced' }
+    ]
+  },
 };
 
 const placeholderNamesOffensive = [
-  "Hardware Hacking", "Malware Analysis",
+  "Malware Analysis",
   "Exploit Development", "IoT Security", "Physical Security Breach",
   "Bug Bounty Hunting"
 ];
 
-for (let i = 10; i <= 15; i++) {
+for (let i = 11; i <= 15; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   TOPIC_DETAILS[num] = {
     num: num,
@@ -1412,6 +1510,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'VulnerabilityDeepDive' && <VulnerabilityDeepDive />}
                       {sec.customComponent === 'WirelessAttackVectors' && <WirelessAttackVectors />}
                       {sec.customComponent === 'WirelessDeepDive' && <WirelessDeepDive />}
+                      {sec.customComponent === 'MalwarePipeline' && <MalwarePipeline />}
+                      {sec.customComponent === 'MalwareAnalysisPillars' && <MalwareAnalysisPillars />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">

@@ -9182,3 +9182,156 @@ body {
     font-size: 13px;
     line-height: 1.6;
   }
+  
+  /* Custom UI Components for Offensive Topic 10 */
+  .malware-pipeline-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    position: relative;
+    background: rgba(15, 23, 42, 0.5);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .malware-pipeline-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    right: 15%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    border-radius: 2px;
+  }
+  
+  .malware-pipeline-node {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: var(--transition-smooth);
+  }
+  
+  .malware-pipeline-node:hover {
+    border-color: #f59e0b;
+    transform: translateY(-5px);
+  }
+  
+  .malware-pipeline-node:hover .malware-icon-wrap {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+  
+  .malware-icon-wrap {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-smooth);
+  }
+  
+  .malware-pipeline-node h4 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  
+  .malware-pipeline-node p {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  
+  .malware-pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 40px 0;
+  }
+  
+  @media (min-width: 768px) {
+    .malware-pillars-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .malware-pillar-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: var(--transition-smooth);
+  }
+  
+  .malware-pillar-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  
+  .pillar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .pillar-icon-wrap {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+  }
+  
+  .pillar-header h4 {
+    color: #fff;
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .malware-pillar-card p {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .pillar-techniques {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: auto;
+  }
+  
+  .pillar-techniques h5 {
+    color: #fff;
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+  }
+  
+  .pillar-techniques p {
+    font-size: 13px;
+    color: #cbd5e1;
+  }
