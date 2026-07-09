@@ -335,6 +335,45 @@ export const TOPIC_DETAILS = {
       { name: 'SEPP', full: 'Certified Social Engineering Pentester', desc: 'Focuses on advanced manipulation, OSINT, and facility breach.', diff: 'Intermediate' }
     ]
   },
+  '03': {
+    num: '03',
+    title: 'OSINT Reconnaissance',
+    subtitle: 'Open Source Intelligence',
+    description: "In the real world, hackers and ethical pentesters spend up to 70% of their time here. You cannot attack a target effectively if you don't know what it owns, who works there, and what technologies they use.",
+    badges: ["Core Skill", "Recon Phase", "Passive Testing"],
+    stats: { time: "15 Hours", diff: "Beginner", prereq: "None" },
+    sections: [
+      {
+        id: "sec-concept",
+        title: "1. The Essential Concept: The Invisible Footprint",
+        content: "Open Source Intelligence (OSINT) is the practice of legally collecting, analyzing, and correlating publicly available data to build a comprehensive blueprint of a target. This phase is completely passive, meaning the tester never interacts directly with the client's servers or systems. They gather information left out in the open by the organization or its employees."
+      },
+      {
+        id: "sec-dataflow",
+        title: "2. Interactive Data Flow Mapping",
+        content: "To help your students visualize how raw public data converts into actionable weaponized intelligence, map out the data discovery pipeline:",
+        customComponent: "DataFlowMap"
+      },
+      {
+        id: "sec-quadrants",
+        title: "3. The 4 Quadrants of Professional OSINT",
+        content: "Break this topic down for your students into four distinct technological vectors:",
+        customComponent: "OsintQuadrants"
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Your Career & Development Roadmap",
+        content: "OSINT is one of the fastest-growing sub-disciplines in cybersecurity, expanding far beyond just penetration testing.",
+        bulletPoints: [
+          "Specialized Roles: Threat Intelligence Analyst, OSINT Investigator, Fraud Examiner, Geopolitical Risk Analyst, Red Team Infrastructure Engineer.",
+          "What a Day Looks Like: Tracking down stolen corporate assets, identifying leaked source code, analyzing corporate data leaks, or tracking malicious advanced persistent threat (APT) hacker groups based on infrastructure indicators."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'OSINT-C', full: 'Certified OSINT Specialist', desc: 'A highly practical certification focusing entirely on modern intelligence-gathering techniques.', diff: 'Beginner' }
+    ]
+  },
 };
 
 const placeholderNamesOffensive = [
