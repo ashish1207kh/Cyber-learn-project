@@ -1182,36 +1182,7 @@ export const TOPIC_DETAILS = {
   },
 };
 
-const placeholderNamesOffensive = [
-  "Malware Analysis",
-  "Exploit Development", "IoT Security", "Physical Security Breach",
-  "Bug Bounty Hunting"
-];
 
-for (let i = 11; i <= 15; i++) {
-  const num = i < 10 ? `0${i}` : `${i}`;
-  TOPIC_DETAILS[num] = {
-    num: num,
-    title: placeholderNamesOffensive[i - 4],
-    subtitle: 'Coming Soon',
-    description: `The complete learning path and curriculum for ${placeholderNamesOffensive[i - 4]} is currently under development. Please check back later when we add the full content and interactive diagrams.`,
-    badges: ["In Development", "Coming Soon"],
-    stats: { time: "TBD", diff: "TBD", prereq: "TBD" },
-    sections: [
-      {
-        id: "sec-coming-soon",
-        title: "Content Under Construction",
-        content: `We are currently building the comprehensive training module for ${placeholderNamesOffensive[i - 4]}. This section will feature step-by-step methodologies, interactive architecture diagrams, command snippets, and deep technical breakdowns.`,
-        bulletPoints: [
-          "Detailed methodology and frameworks",
-          "Interactive terminal commands",
-          "Advanced technical diagrams and use-cases"
-        ]
-      }
-    ],
-    certs: []
-  };
-}
 
 // Reconnaissance flow diagram component
 function ReconFlowDiagram() {
@@ -1353,12 +1324,7 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
     { num: '07', name: 'Physical Security Testing' },
     { num: '08', name: 'Web App Testing' },
     { num: '09', name: 'Wireless Attacks' },
-    { num: '10', name: 'Hardware Hacking' },
-    { num: '11', name: 'Malware Analysis' },
-    { num: '12', name: 'Exploit Development' },
-    { num: '13', name: 'IoT Security' },
-    { num: '14', name: 'Physical Security Breach' },
-    { num: '15', name: 'Bug Bounty Hunting' }
+    { num: '10', name: 'Malware Theory & Analysis' }
   ];
 
   return (
