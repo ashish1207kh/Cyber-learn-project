@@ -23,7 +23,11 @@ import {
   PhoneCall,
   MessageSquareWarning,
   UserX,
-  Mail
+  Mail,
+  Search,
+  Network,
+  FileSearch,
+  Database
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -189,6 +193,69 @@ function AttackVectorsGrid() {
   );
 }
 
+function DataFlowMap() {
+  return (
+    <div className="dataflow-container">
+      <div className="dataflow-sources">
+        <div className="dataflow-node">
+          <Globe size={28} className="dataflow-icon" />
+          <h5>Domain Records</h5>
+          <p>Reveals IP Ranges & Subdomains</p>
+        </div>
+        <div className="dataflow-node">
+          <Users size={28} className="dataflow-icon" />
+          <h5>Social Media</h5>
+          <p>Reveals Employee Roles & Emails</p>
+        </div>
+        <div className="dataflow-node">
+          <Database size={28} className="dataflow-icon" />
+          <h5>Code Repositories</h5>
+          <p>Reveals Leaked API Keys & Code</p>
+        </div>
+      </div>
+      
+      <div className="dataflow-correlation">
+        OSINT RECON CORRELATION
+      </div>
+      
+      <div className="dataflow-result">
+        <h4>🚀 ACTIONABLE ATTACK MAP</h4>
+        <ul>
+          <li><Check size={16} color="#4ade80" /> <span>Target Subdomain: staging.company.com (Unpatched)</span></li>
+          <li><Check size={16} color="#4ade80" /> <span>Valid Corporate Email: j.doe@company.com</span></li>
+          <li><Check size={16} color="#4ade80" /> <span>Technology Stack: Leaked Apache version 2.4.49</span></li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function OsintQuadrantsGrid() {
+  const quadrants = [
+    { title: "Advanced Google Dorking", icon: Search, desc: "Pentesters use specialized syntax within public search engines to uncover hidden files, indexing errors, and sensitive data that should not be public.", tool: "Google Search Operators" },
+    { title: "Infrastructure Mapping", icon: Network, desc: "Finding out every server, subdomain, and IP address registered to a company. Discovering exposed webcams, industrial control systems, or unencrypted databases.", tool: "Amass, Subfinder, Shodan" },
+    { title: "Corporate & Employee Profiling", icon: Users, desc: "Gathering intelligence on human elements to feed directly into Social Engineering. Scraping profiles to discover names of IT admins.", tool: "theHarvester, Hunter.io" },
+    { title: "Metadata Analysis", icon: FileSearch, desc: "Extracting hidden data (metadata) such as author names, software versions used, operating systems, and internal file paths from public documents.", tool: "ExifTool, FOCA" }
+  ];
+
+  return (
+    <div className="osint-quadrants-grid">
+      {quadrants.map((q, i) => (
+        <div key={i} className="osint-quadrant-card">
+          <div className="quadrant-number">0{i+1}</div>
+          <q.icon size={28} className="osint-quadrant-icon" />
+          <h4>{q.title}</h4>
+          <p>{q.desc}</p>
+          <div className="osint-tools-tag">
+            <Terminal size={14} />
+            {q.tool}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -271,27 +338,27 @@ export const TOPIC_DETAILS = {
 };
 
 const placeholderNamesOffensive = [
-  "OSINT Reconnaissance", "Exploitation Techniques", "Post-Exploitation",
+  "Exploitation Techniques", "Post-Exploitation",
   "Red Teaming", "Web App Hacking", "Wireless Hacking",
   "Cloud Security Testing", "Hardware Hacking", "Malware Analysis",
   "Exploit Development", "IoT Security", "Physical Security Breach",
   "Bug Bounty Hunting"
 ];
 
-for (let i = 3; i <= 15; i++) {
+for (let i = 4; i <= 15; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   TOPIC_DETAILS[num] = {
     num: num,
-    title: placeholderNamesOffensive[i - 3],
+    title: placeholderNamesOffensive[i - 4],
     subtitle: 'Coming Soon',
-    description: `The complete learning path and curriculum for ${placeholderNamesOffensive[i - 3]} is currently under development. Please check back later when we add the full content and interactive diagrams.`,
+    description: `The complete learning path and curriculum for ${placeholderNamesOffensive[i - 4]} is currently under development. Please check back later when we add the full content and interactive diagrams.`,
     badges: ["In Development", "Coming Soon"],
     stats: { time: "TBD", diff: "TBD", prereq: "TBD" },
     sections: [
       {
         id: "sec-coming-soon",
         title: "Content Under Construction",
-        content: `We are currently building the comprehensive training module for ${placeholderNamesOffensive[i - 3]}. This section will feature step-by-step methodologies, interactive architecture diagrams, command snippets, and deep technical breakdowns.`,
+        content: `We are currently building the comprehensive training module for ${placeholderNamesOffensive[i - 4]}. This section will feature step-by-step methodologies, interactive architecture diagrams, command snippets, and deep technical breakdowns.`,
         bulletPoints: [
           "Detailed methodology and frameworks",
           "Interactive terminal commands",
@@ -586,6 +653,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'Flowchart' && <BranchingFlowchart />}
                       {sec.customComponent === 'CognitiveTree' && <CognitiveTriggersTree />}
                       {sec.customComponent === 'AttackGrid' && <AttackVectorsGrid />}
+                      {sec.customComponent === 'DataFlowMap' && <DataFlowMap />}
+                      {sec.customComponent === 'OsintQuadrants' && <OsintQuadrantsGrid />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">

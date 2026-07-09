@@ -1,4 +1,4 @@
-﻿/* CyberLearn - Global Stylesheet (Custom Responsive HUD & Dashboard CSS) */
+/* CyberLearn - Global Stylesheet (Custom Responsive HUD & Dashboard CSS) */
 
 :root {
   /* Color Tokens */
@@ -7994,4 +7994,234 @@ body {
     color: var(--color-text-secondary);
     font-size: 14px;
     line-height: 1.6;
+  }
+  
+  /* Custom UI Components for Offensive Topic 03 */
+  .dataflow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+    padding: 30px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .dataflow-sources {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .dataflow-sources::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-offensive), transparent);
+    z-index: 1;
+  }
+  
+  .dataflow-node {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+  }
+  
+  .dataflow-node:hover {
+    border-color: var(--color-offensive);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(239, 68, 68, 0.15);
+  }
+  
+  .dataflow-node::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: var(--color-offensive);
+    transform: translateX(-50%);
+  }
+  
+  .dataflow-icon {
+    color: var(--color-offensive);
+    margin-bottom: 12px;
+  }
+  
+  .dataflow-node h5 {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .dataflow-node p {
+    color: var(--color-text-muted);
+    font-size: 12px;
+  }
+  
+  .dataflow-correlation {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--color-offensive);
+    padding: 15px 40px;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 700;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+  }
+  
+  .dataflow-correlation::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: var(--color-offensive);
+    transform: translateX(-50%);
+  }
+  
+  .dataflow-correlation::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: var(--color-offensive);
+    transform: translateX(-50%);
+  }
+  
+  .dataflow-result {
+    margin-top: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px dashed var(--color-offensive);
+    padding: 25px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .dataflow-result h4 {
+    color: var(--color-offensive);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  
+  .dataflow-result ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .dataflow-result li {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .osint-quadrants-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+  }
+  
+  .osint-quadrant-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .osint-quadrant-card:hover {
+    border-color: var(--color-offensive-border);
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.1);
+  }
+  
+  .osint-quadrant-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--color-offensive);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .osint-quadrant-card:hover::before {
+    opacity: 1;
+  }
+  
+  .quadrant-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 40px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+  }
+  
+  .osint-quadrant-icon {
+    color: var(--color-offensive);
+    margin-bottom: 16px;
+  }
+  
+  .osint-quadrant-card h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 12px;
+    z-index: 2;
+  }
+  
+  .osint-quadrant-card p {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    z-index: 2;
+  }
+  
+  .osint-tools-tag {
+    margin-top: auto;
+    font-size: 12px;
+    color: var(--color-offensive);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 6px 12px;
+    border-radius: 8px;
+    width: fit-content;
+    z-index: 2;
   }
