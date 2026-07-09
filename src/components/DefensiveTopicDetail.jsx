@@ -788,7 +788,7 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
 
                   {/* Certifications Block */}
                   <section className="gitbook-section-card" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '30px' }}>
-                    <h2>6. Recommended Professional Certifications</h2>
+                    <h2>{activeTopic.sections.length + 1}. Recommended Professional Certifications</h2>
                     <p className="gitbook-section-text">Recommended pathways for validating your security analyst skills in the industry:</p>
                     <div className="recommended-certs-grid">
                       {activeTopic.certs.map((cert, idx) => (
