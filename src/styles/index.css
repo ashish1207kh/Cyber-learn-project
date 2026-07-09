@@ -7619,3 +7619,250 @@ body {
     padding: 10px 15px !important;
   }
 }
+
+/* Custom UI Components for Offensive Topic 01 */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 40px 0;
+  padding-left: 20px;
+  border-left: 2px solid rgba(239, 68, 68, 0.3);
+}
+
+.timeline-node {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 30px;
+}
+
+.timeline-node::before {
+  content: '';
+  position: absolute;
+  left: -27px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-main);
+  border: 2px solid var(--color-offensive);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-offensive-glow);
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.timeline-node:hover::before {
+  background: var(--color-offensive);
+  box-shadow: 0 0 20px var(--color-offensive-glow);
+  transform: scale(1.2);
+}
+
+.timeline-node h4 {
+  color: var(--color-text-main);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.timeline-node p {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.timeline-tooltip {
+  position: absolute;
+  top: -10px;
+  left: 100%;
+  margin-left: 20px;
+  width: 280px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid var(--color-offensive-border);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.timeline-node:hover .timeline-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.flowchart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.flowchart-root {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--color-offensive);
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.flowchart-branches {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+}
+
+.flowchart-branches::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: rgba(239, 68, 68, 0.3);
+  z-index: 1;
+}
+
+.flowchart-branches::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: rgba(239, 68, 68, 0.3);
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.flowchart-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.flowchart-card::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: rgba(239, 68, 68, 0.3);
+  transform: translateX(-50%);
+}
+
+.flowchart-card:hover {
+  border-color: var(--color-offensive-border);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.15);
+  transform: translateY(-5px);
+}
+
+.flowchart-icon {
+  color: var(--color-offensive);
+  margin-bottom: 15px;
+}
+
+.flowchart-card h4 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.flowchart-card .role {
+  color: var(--color-offensive);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.flowchart-card p {
+  color: var(--color-text-secondary);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.flowchart-certs {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cyber-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.cyber-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 30px 0;
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.cyber-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.cyber-table th {
+  background: rgba(239, 68, 68, 0.1);
+  color: #fff;
+  font-weight: 600;
+  padding: 16px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--color-offensive-border);
+}
+
+.cyber-table td {
+  padding: 16px 20px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cyber-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cyber-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cyber-table td strong {
+  color: var(--color-offensive);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+

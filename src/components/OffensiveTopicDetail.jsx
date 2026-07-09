@@ -8,10 +8,123 @@ import {
   ArrowRight, 
   Copy,
   Check,
-  ChevronRight
+  ChevronRight,
+  Server,
+  Globe,
+  Crosshair,
+  Terminal,
+  Activity
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
+
+function HorizontalTimeline() {
+  const steps = [
+    { title: "01. Pre-Engagement & Rules", desc: "Define scope, establish legal boundaries (NDA, RoE), and set communication channels. No testing occurs here." },
+    { title: "02. Reconnaissance & OSINT", desc: "Passive Data Gathering: Scraping open source intelligence (OSINT). Testers search WHOIS, public code repos for leaked keys, and social media." },
+    { title: "03. Scanning & Enumeration", desc: "Active Interaction: Sending packets to the target. Use tools like Nmap to map open ports, live systems, and OS versions." },
+    { title: "04. Vulnerability Assessment", desc: "Analyzing the scan data against known vulnerability databases (CVEs). Use automated tools (Nessus) to find potential unpatched flaws." },
+    { title: "05. Exploitation", desc: "Weaponization & Gaining Access: Launching targeted attacks (e.g., using Metasploit) to bypass defenses and execute code on the target." },
+    { title: "06. Post-Exploitation", desc: "Maintaining Access & Privilege Escalation: Attempting to elevate local user access to root/domain admin and moving laterally." },
+    { title: "07. Reporting & Remediation", desc: "The final, vital document detailing exactly what was found, how it was executed, and remediation steps for the Blue Team." }
+  ];
+
+  return (
+    <div className="timeline-container">
+      {steps.map((step, idx) => (
+        <div key={idx} className="timeline-node">
+          <h4>{step.title}</h4>
+          <div className="timeline-tooltip">
+            <strong>{step.title}</strong>
+            <p style={{ marginTop: '8px', fontSize: '13px', color: '#cbd5e1' }}>{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function BranchingFlowchart() {
+  return (
+    <div className="flowchart-container">
+      <div className="flowchart-root">
+        01. Penetration Testing
+      </div>
+      <div className="flowchart-branches">
+        <div className="flowchart-card">
+          <Server size={32} className="flowchart-icon" />
+          <h4>Network & Infrastructure</h4>
+          <span className="role">Junior Net Tester</span>
+          <p>Finding an unsecured server or misconfigured router.</p>
+          <div className="flowchart-certs">
+            <span className="cyber-badge">eJPT</span>
+            <span className="cyber-badge">CompTIA PenTest+</span>
+          </div>
+        </div>
+        
+        <div className="flowchart-card">
+          <Globe size={32} className="flowchart-icon" />
+          <h4>Web Application Security</h4>
+          <span className="role">App Security Analyst</span>
+          <p>Exploiting an input form to dump a customer database (SQLi).</p>
+          <div className="flowchart-certs">
+            <span className="cyber-badge">GWAPT</span>
+            <span className="cyber-badge">OSWE</span>
+          </div>
+        </div>
+
+        <div className="flowchart-card">
+          <Crosshair size={32} className="flowchart-icon" />
+          <h4>Adversary Simulation</h4>
+          <span className="role">Red Teamer</span>
+          <p>Simulating an APT while trying to bypass all Blue Team detection mechanisms.</p>
+          <div className="flowchart-certs">
+            <span className="cyber-badge">OSCP</span>
+            <span className="cyber-badge">CRTO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ToolsTable() {
+  const tools = [
+    { name: "Nmap", icon: Activity, focus: "Network Scanning", desc: "Maps the battlefield. Shows open ports and services." },
+    { name: "Burp Suite", icon: Globe, focus: "Web Application", desc: "Proxies web traffic. Manual analysis of SQLi, XSS, and logic flaws." },
+    { name: "Metasploit", icon: Crosshair, focus: "Exploitation Framework", desc: "Launches weaponized exploits (like EternalBlue) against known flaws." },
+    { name: "Wireshark", icon: Activity, focus: "Network Traffic", desc: "Analyzes live PCAPs to sniff passwords in cleartext (e.g., FTP, Telnet)." },
+    { name: "John the Ripper", icon: Terminal, focus: "Password Cracking", desc: "Performs brute-force, dictionary, and rainbow table attacks on hashes." }
+  ];
+
+  return (
+    <div className="cyber-table-container">
+      <table className="cyber-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Focus Area</th>
+            <th>Visual Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tools.map((t, i) => (
+            <tr key={i}>
+              <td>
+                <strong>
+                  <t.icon size={16} />
+                  {t.name}
+                </strong>
+              </td>
+              <td>{t.focus}</td>
+              <td>{t.desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
@@ -24,105 +137,27 @@ export const TOPIC_DETAILS = {
     stats: { time: "30 Hours", diff: "Intermediate", prereq: "Networking Basics, Linux CLI" },
     sections: [
       {
-        id: "sec-recon",
-        title: "1. Reconnaissance & OSINT Methodology",
-        content: "Reconnaissance is the foundational phase of any security audit. It is divided into passive gathering (gathering data without interacting directly with the target) and active profiling. Pentesters must map out the entire external attack surface before attempting exploitation.",
-        bulletPoints: [
-          "Passive OSINT: Harvesting public domain records, DNS servers, WHOIS databases, and corporate subdomains. Use tools like `whois`, `dig`, and `nslookup` to analyze MX, TXT, A, and AAAA records.",
-          "DNS Zone Transfers: Testing for misconfigured DNS servers allowing AXFR queries which reveal all DNS mappings. Command: `dig axfr @ns1.target.com target.com`.",
-          "Subdomain discovery: Automating search queries using subdomain enumeration tools (like Subfinder, Amass, and Assetfinder) combined with wordlists for brute-forcing (Gobuster DNS mode).",
-          "Employee Profiling: Locating corporate email naming conventions, leaked passwords on breach databases, and employee profiles on public professional portals like LinkedIn.",
-          "Target Asset Mapping: Searching public asset indexes like Shodan, Censys, and Zoomeye to find exposed services, outdated operating systems, and unprotected AWS S3 buckets."
-        ],
-        callout: "💡 SECURITY INSIGHT: Pentesters spend up to 70% of their assessment time in this stage. A thorough reconnaissance phase significantly increases the success rate of subsequent phases by mapping all potential entry points.",
-        example: "A security analyst is auditing 'acmecorp.com'. By querying public Certificate Transparency logs, they discover a subdomain 'staging-api.acmecorp.com'. Visiting it reveals an open directory index containing backup zip files (.zip) with active SQL credentials and API keys.",
-        subModules: [
-          { id: "dns-recon", name: "DNS Reconnaissance & Whois Enumeration" },
-          { id: "subdomain-discovery", name: "Subdomain Discovery & Virtual Host Hunting" },
-          { id: "google-dorking", name: "Advanced Google Dorking Database (GHDB)" }
-        ]
+        id: "sec-concept",
+        title: "1. The Essential Concept",
+        content: "The core objective of penetration testing is authorized, simulated warfare. While an automated scanner might find an unpatched window, it takes a human attacker (the pentester) to realize that the window can be combined with a ladder found elsewhere to breach the main entrance."
       },
       {
-        id: "sec-scanning",
-        title: "2. Port Discovery & Service Enumeration",
-        content: "Active scanning involves interacting directly with the target's open ports to determine what operating systems and services are listening. Port states are classified as Open, Closed, or Filtered based on TCP response behavior.",
-        bulletPoints: [
-          "TCP Connect Scanning (-sT): Performs a full 3-way handshake (SYN -> SYN-ACK -> ACK) to verify if a port is open. Extremely accurate but easily logged by firewalls.",
-          "SYN Stealth Scanning (-sS): Sends only the initial SYN packet. If it receives a SYN-ACK, it responds with a RST packet instead of ACK, closing the connection before it is logged by application firewalls.",
-          "UDP Scanning (-sU): Identifies stateless UDP services (e.g., DNS, SNMP, TFTP) which do not use handshakes and require custom packet replies to determine if they are alive.",
-          "Service Version Detection (-sV) & Default Scripts (-sC): Probes open ports to identify application names and runs Lua scripts from the Nmap Scripting Engine (NSE) to check for common vulnerabilities."
-        ],
-        command: "nmap -sV -sC -Pn -p- -T4 -oN scan_results.txt 10.10.224.18",
-        commandExpl: [
-          { flag: "-sV", desc: "Service and Version detection: Probes open ports to identify application names." },
-          { flag: "-sC", desc: "Script Scan: Runs default Lua scripts to test ports for common vulnerabilities." },
-          { flag: "-Pn", desc: "No Ping: Skip ICMP ping checks, assuming target is online to bypass firewalls." },
-          { flag: "-p-", desc: "Scan all 65,535 ports instead of only the top 1,000 most common ports." },
-          { flag: "-T4", desc: "Timing Template: Speeds up execution by using aggressive timeouts and parallel probes." }
-        ],
-        example: "Running Nmap on 10.10.224.18 reveals that port 21 (FTP) is open and allows anonymous logins, port 80 (HTTP) runs an outdated Apache server, and port 445 (SMB) runs Samba version 3.0.20, which is known to be vulnerable to exploit CVE-2007-2447.",
-        subModules: [
-          { id: "nmap-nse", name: "Nmap Advanced Script Engine (NSE) Usage" },
-          { id: "banner-grabbing", name: "SMTP & SMB Banner Grabbing Techniques" },
-          { id: "udp-scanning", name: "UDP Protocol Port Scanning Mechanics" }
-        ]
+        id: "sec-methodology",
+        title: "2. Visualization of Methodology",
+        content: "To succeed as a student or professional, you must master the standardized lifecycle. This prevents chaotic, illegal testing and ensures reproducibility.",
+        customComponent: "Timeline"
       },
       {
-        id: "sec-exploit",
-        title: "3. Exploitation & Gaining Access",
-        content: "Exploitation is the weaponization phase. Testers identify design flaws, unpatched software, or misconfigurations to execute code on the target system. Standard exploitation involves finding CVEs, choosing a matching payload, and launching the attack.",
-        bulletPoints: [
-          "Buffer Overflow Vulnerability: Overwriting CPU registers (specifically the EIP - Extended Instruction Pointer) to redirect program execution flow to malicious shellcode.",
-          "Staged Payloads: A tiny loader is sent first, which establishes a stable network socket and downloads the larger exploit payload. Useful when buffer space is small.",
-          "Non-Staged Payloads: The entire exploit code and shell payload are sent in a single network transmission (e.g., `linux/x64/shell_reverse_tcp`).",
-          "Reverse Shell vs Bind Shell: A Bind shell listens on a port on the victim machine (frequently blocked by ingress firewalls). A Reverse shell forces the victim machine to connect back out to the attacker's machine (bypassing egress controls)."
-        ],
-        callout: "🛡️ EXPLOIT WORKFLOW: Identify service version -> Search Exploit-DB (`searchsploit`) -> Configure exploit parameters (LHOST, RHOST, LPORT) -> Fire exploit -> Upgrade shell using python pty.",
-        example: "The Samba 3.0.20 service identified earlier is vulnerable to command injection. An attacker uses the Metasploit module 'exploit/multi/samba/usermap_script', sets LHOST to their system IP, and fires the exploit. The vulnerable server executes the shellcode and opens a reverse shell connection back to the attacker, giving command-line access as the user daemon.",
-        subModules: [
-          { id: "buffer-overflow", name: "Buffer Overflow Vulnerability Exploits" },
-          { id: "metasploit-handlers", name: "Metasploit Exploit Multi-Handlers Config" },
-          { id: "exploit-payloads", name: "Manually Modifying Exploit Payloads" }
-        ]
+        id: "sec-tools",
+        title: "3. Essential Testing Lab Tools (Top 5)",
+        content: "Every professional pentester carries a specialized toolkit. Here are the must-know applications:",
+        customComponent: "ToolsTable"
       },
       {
-        id: "sec-priv",
-        title: "4. Privilege Escalation Techniques",
-        content: "Initial footholds usually grant restricted system privileges (like 'www-data' or 'apache'). Privilege Escalation is the process of elevating access to root/administrator level.",
-        bulletPoints: [
-          "Linux SUID Exploitation: Running system binaries that have the Set Owner User ID permission bit set. If an SUID file is owned by root, it runs with root privileges. We abuse tools on GTFOBins (e.g., misconfigured find, vim, or nano) to spawn root shells.",
-          "Windows Service Hijacking: Exploiting Unquoted Service Paths (where spaces in service paths are resolved recursively) or weak permissions on service executables to run custom admin payloads.",
-          "Kernel Exploits: Triggering memory corruption vulnerabilities (e.g., Dirty COW, CVE-2021-3156) in the operating system's kernel to bypass normal access control lists and obtain root access."
-        ],
-        command: "find / -perm -u=s -type f 2>/dev/null",
-        commandExpl: [
-          { flag: "/", desc: "Search starting from the root directory of the filesystem." },
-          { flag: "-perm -u=s", desc: "Look specifically for files with the SUID (Setuid) permission bit set." },
-          { flag: "-type f", desc: "Filter results to only return files, excluding directories." },
-          { flag: "2>/dev/null", desc: "Redirect error messages (like Permission Denied) to null device to keep output clean." }
-        ],
-        callout: "⚠️ WARNING: Elevating privileges changes the target system's security context. Document SUID settings and service paths before attempting modifications. Always try local enumeration tools like LinPEAS or WinPEAS first.",
-        example: "On a Linux machine, running 'find / -perm -u=s -type f' returns '/usr/bin/find'. Since find has SUID root privileges, the attacker executes: 'find . -exec /bin/sh -p \\; -quit'. This immediately runs shell spawn code under the root context, upgrading the attacker to full root administrator.",
-        subModules: [
-          { id: "suid-escalation", name: "Abusing SUID Executable Permissions" },
-          { id: "unquoted-service-paths", name: "Windows Unquoted Service Paths Attacks" },
-          { id: "kernel-exploitation", name: "Kernel Exploitation & Kernel Auditing" }
-        ]
-      },
-      {
-        id: "sec-reporting",
-        title: "5. Reporting, Risk Scoring & Remediation",
-        content: "A successful pentest must provide actionable remediation guides for software developers to fix security flaws. The final report is the actual product delivered to clients.",
-        bulletPoints: [
-          "Risk Prioritization: Using Common Vulnerability Scoring System (CVSS v3.0) parameters (Attack Vector, Attack Complexity, Privileges Required, User Interaction) to rank flaws from Low to Critical.",
-          "Evidence Compilation: Providing proof-of-concept scripts, step-by-step reproduction instructions, and censored screenshot logs for verification.",
-          "Remediation Steps: Recommending software patches, software updates, port closures, firewall rule adjustments, and secure host configurations."
-        ],
-        example: "The pentester documents the findings, scoring the Samba vulnerability as Critical (CVSS 10.0) and the SUID vulnerability as High (CVSS 7.8). In the remediation report, they instruct developers to patch Samba immediately, disable anonymous FTP logins, and remove SUID flags from user-executable binaries (chmod -s /usr/bin/find).",
-        subModules: [
-          { id: "audit-reporting", name: "Writing Executive Summaries for Audits" },
-          { id: "cvss-scoring", name: "CVSS Vector Calculation and Scoring" }
-        ]
+        id: "sec-roadmap",
+        title: "4. Your Career & Development Roadmap",
+        content: "This section directly helps you pick your path. Pentesting is not just an entry-level skill; it leads to highly specialized and lucrative careers.",
+        customComponent: "Flowchart"
       }
     ],
     certs: [
@@ -479,6 +514,10 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       
                       <p className="gitbook-section-text">{sec.content}</p>
                       
+                      {sec.customComponent === 'Timeline' && <HorizontalTimeline />}
+                      {sec.customComponent === 'ToolsTable' && <ToolsTable />}
+                      {sec.customComponent === 'Flowchart' && <BranchingFlowchart />}
+
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">
                           {sec.bulletPoints.map((bp, i) => (
