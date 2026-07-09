@@ -36,7 +36,11 @@ import {
   RefreshCw,
   Key,
   Map,
-  HardDrive
+  HardDrive,
+  Box,
+  DoorOpen,
+  Ghost,
+  Target
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -409,6 +413,63 @@ function PostExploitTactics() {
   );
 }
 
+function PentestVsRedTeamTable() {
+  const features = [
+    { name: "Primary Goal", pt: "Identify and document as many vulnerabilities as possible.", rt: "Simulate a specific real-world threat actor to test detection/response." },
+    { name: "Visibility", pt: <strong>Loud & Announced.</strong>, ptDesc: " The internal IT team knows the test is happening.", rt: <strong>Stealthy & Unannounced.</strong>, rtDesc: " The internal defense team has no idea it's a simulation." },
+    { name: "Scope", pt: "Restricted to specific IP addresses, networks, or applications.", rt: "Wide-open. Includes technical, social, physical, and digital vectors." },
+    { name: "Metric of Success", pt: "A long list of found patches and flaws.", rt: "Reaching a specific goal (e.g., accessing the CEO's inbox) without being detected." }
+  ];
+
+  return (
+    <div className="comparison-table-wrapper">
+      <div className="comparison-header">
+        <div className="comparison-header-cell">Feature</div>
+        <div className="comparison-header-cell pt">Penetration Testing (Topic 01)</div>
+        <div className="comparison-header-cell rt">Red Teaming (Topic 06)</div>
+      </div>
+      {features.map((f, i) => (
+        <div key={i} className="comparison-row">
+          <div className="comparison-cell feature-name">{f.name}</div>
+          <div className="comparison-cell pt-cell">
+            {f.pt}{f.ptDesc}
+          </div>
+          <div className="comparison-cell rt-cell">
+            {f.rt}{f.rtDesc}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function RedTeamLifecycle() {
+  const steps = [
+    { title: "Target Intelligence (OSINT)", icon: Search, desc: "Building profiles without touching target infrastructure." },
+    { title: "Weaponization & Infrastructure", icon: Box, desc: "Buying fake domains, setting up C2 (Command & Control)." },
+    { title: "Initial Access (The Breach)", icon: DoorOpen, desc: "Using custom phishing or physical tailgating to get inside." },
+    { title: "Evasion & Stealth", icon: Ghost, desc: "Bypassing EDR (Antivirus) and blending into normal traffic." },
+    { title: "Objective Completion", icon: Target, desc: "Exfiltrating \"mock\" sensitive data to prove impact." }
+  ];
+
+  return (
+    <div className="lifecycle-tracker">
+      <h4 style={{ color: '#fff', marginBottom: '20px' }}>🚀 TARGET EMBARKATION</h4>
+      {steps.map((step, i) => (
+        <div key={i} className="lifecycle-step">
+          <div className="lifecycle-icon-wrap">
+            <step.icon size={16} />
+          </div>
+          <div className="lifecycle-content">
+            <h4><span className="lifecycle-num">{i + 1}.</span> {step.title}</h4>
+            <p>{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -606,16 +667,60 @@ export const TOPIC_DETAILS = {
       { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'Provides rigorous testing on internal domain post-exploitation environments.', diff: 'Advanced' }
     ]
   },
+  '06': {
+    num: '06',
+    title: 'Red Teaming',
+    subtitle: 'Adversary Simulation',
+    description: "Step into the highest tier of offensive security operations. While a standard penetration tester focuses on finding bugs, a Red Teamer focuses on testing an organization's entire defensive posture—people, processes, and technology—stealthily.",
+    badges: ["Advanced Skill", "Stealth", "Full Scope"],
+    stats: { time: "40 Hours", diff: "Expert", prereq: "Post-Exploitation, OSINT, Exploitation" },
+    sections: [
+      {
+        id: "sec-concept",
+        title: "1. The Essential Concept: Pentesting vs. Red Teaming",
+        content: "It is incredibly common for students to confuse these two concepts. Use this comparison table to make the distinction crystal clear:",
+        customComponent: "PentestVsRedTeamTable"
+      },
+      {
+        id: "sec-lifecycle",
+        title: "2. The Red Team Lifecycle",
+        content: "Red Team operations can last anywhere from weeks to months. They simulate an Advanced Persistent Threat (APT) using a highly structured cadence:",
+        customComponent: "RedTeamLifecycle"
+      },
+      {
+        id: "sec-toolkits",
+        title: "3. Essential Red Team Toolkits",
+        content: "To make this highly practical for professionals, introduce them to the specialized enterprise tools used by Red Team operators.",
+        bulletPoints: [
+          "Command and Control (C2) Frameworks: A system of servers and agents (beacons) to control compromised machines stealthily. (e.g., Cobalt Strike, Sliver, Mythic)",
+          "Antivirus & EDR Evasion: Red Teamers must study internal memory structures to bypass modern endpoint protection via Process Injection, API Unhooking, and memory obfuscation."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Your Career & Development Roadmap",
+        content: "This path is intended for advanced students and professionals who already have a baseline understanding of networking, systems administration, and basic exploitation.",
+        bulletPoints: [
+          "Specialized Job Roles: Red Team Operator, Adversary Emulation Engineer, Purple Team Lead, Threat Simulation Expert.",
+          "What a Day Looks Like: Researching state-sponsored hacker playbooks (MITRE ATT&CK), writing specialized stealth tools, setting up complex relay infrastructures."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'An excellent, highly practical exam focusing on Cobalt Strike and Active Directory evasion.', diff: 'Advanced' },
+      { name: 'CRTE / PACES', full: 'Altered Security Red Team Expert', desc: 'Elite multi-forest Active Directory testing certifications.', diff: 'Expert' }
+    ]
+  },
 };
 
 const placeholderNamesOffensive = [
-  "Red Teaming", "Web App Hacking", "Wireless Hacking",
+  "Web App Hacking", "Wireless Hacking",
   "Cloud Security Testing", "Hardware Hacking", "Malware Analysis",
   "Exploit Development", "IoT Security", "Physical Security Breach",
   "Bug Bounty Hunting"
 ];
 
-for (let i = 6; i <= 15; i++) {
+for (let i = 7; i <= 15; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   TOPIC_DETAILS[num] = {
     num: num,
@@ -929,6 +1034,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'ExploitationMechanisms' && <ExploitationMechanisms />}
                       {sec.customComponent === 'StrategicObjectives' && <StrategicObjectives />}
                       {sec.customComponent === 'PostExploitTactics' && <PostExploitTactics />}
+                      {sec.customComponent === 'PentestVsRedTeamTable' && <PentestVsRedTeamTable />}
+                      {sec.customComponent === 'RedTeamLifecycle' && <RedTeamLifecycle />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">

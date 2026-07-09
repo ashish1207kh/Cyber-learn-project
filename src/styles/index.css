@@ -8520,3 +8520,159 @@ body {
     color: #fff;
     font-weight: 600;
   }
+  
+  /* Custom UI Components for Offensive Topic 06 */
+  .comparison-table-wrapper {
+    margin: 40px 0;
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+  }
+  
+  .comparison-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .comparison-header-cell {
+    padding: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+  }
+  
+  .comparison-header-cell.pt {
+    color: #3b82f6; /* Blue for Pentest */
+    background: rgba(59, 130, 246, 0.05);
+  }
+  
+  .comparison-header-cell.rt {
+    color: var(--color-offensive); /* Red for Red Team */
+    background: rgba(239, 68, 68, 0.05);
+  }
+  
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-smooth);
+  }
+  
+  .comparison-row:last-child {
+    border-bottom: none;
+  }
+  
+  .comparison-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .comparison-cell {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+  
+  .comparison-cell.feature-name {
+    color: #fff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  
+  .comparison-cell.pt-cell {
+    background: rgba(59, 130, 246, 0.02);
+  }
+  
+  .comparison-cell.rt-cell {
+    background: rgba(239, 68, 68, 0.02);
+  }
+  
+  .comparison-cell strong {
+    color: #fff;
+  }
+  
+  .lifecycle-tracker {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0;
+    position: relative;
+    padding-left: 30px;
+  }
+  
+  .lifecycle-tracker::before {
+    content: '';
+    position: absolute;
+    left: 45px;
+    top: 30px;
+    bottom: 30px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-offensive) 0%, rgba(239,68,68,0.1) 100%);
+    z-index: 1;
+  }
+  
+  .lifecycle-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .lifecycle-step:last-child {
+    margin-bottom: 0;
+  }
+  
+  .lifecycle-icon-wrap {
+    background: #0f172a;
+    border: 2px solid var(--color-offensive);
+    color: var(--color-offensive);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+    flex-shrink: 0;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+  }
+  
+  .lifecycle-content {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    flex: 1;
+    transition: var(--transition-smooth);
+  }
+  
+  .lifecycle-content:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(5px);
+  }
+  
+  .lifecycle-content h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .lifecycle-num {
+    color: var(--color-offensive);
+    font-family: monospace;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  .lifecycle-content p {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    margin: 0;
+  }
