@@ -43,7 +43,9 @@ import {
   Eye,
   CreditCard,
   Unlock,
-  Wifi
+  Wifi,
+  Syringe,
+  Code
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -557,6 +559,78 @@ function PhysicalPentesterToolkit() {
   );
 }
 
+function OwaspCoreVectors() {
+  const vectors = [
+    { title: "Injection Flaws (e.g., SQLi)", icon: Syringe, desc: "Tricking a database into dumping data via user input fields." },
+    { title: "Broken Access Control (IDOR)", icon: Unlock, desc: "Accessing data or admin pages belonging to other users." },
+    { title: "Cross-Site Scripting (XSS)", icon: Code, desc: "Injecting malicious scripts into trusted sites to target users." }
+  ];
+
+  return (
+    <div className="owasp-tree-container">
+      <div className="owasp-root">
+        CRITICAL WEB EXPLOIT VECTORS
+      </div>
+      <div className="owasp-branches">
+        {vectors.map((vec, i) => (
+          <div className="owasp-node" key={i}>
+            <div className="owasp-icon-wrap">
+              <vec.icon size={28} />
+            </div>
+            <h4>{vec.title}</h4>
+            <p>{vec.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function VulnerabilityDeepDive() {
+  const vulnerabilities = [
+    {
+      title: "1. SQL Injection (SQLi)",
+      icon: Syringe,
+      mechanism: "Occurs when untrusted user input is directly concatenated into a backend database query instead of using parameterized inputs.",
+      threat: "An attacker can input malicious SQL characters (like ' OR 1=1 --) into a username field, changing the logical flow of the query to bypass login pages or dump all user records."
+    },
+    {
+      title: "2. Insecure Direct Object References (IDOR)",
+      icon: Unlock,
+      mechanism: "A type of access control flaw where an application uses user-supplied input to access objects directly without verifying if the user has permission.",
+      threat: "A logged-in student looks at their profile URL: https://yoursite.com/profile?id=1001. They change the id parameters to 1002. If they can see another student's private data, an IDOR flaw exists."
+    },
+    {
+      title: "3. Cross-Site Scripting (XSS)",
+      icon: Code,
+      mechanism: "The web application includes malicious, unvalidated JavaScript input within the web page delivered to a victim's browser.",
+      threat: "Stored XSS allows an attacker to leave a malicious script in a comment section. Every time an innocent user views that page, the script executes, stealing their active session cookies or login tokens."
+    }
+  ];
+
+  return (
+    <div className="vuln-deepdive-stack">
+      {vulnerabilities.map((v, i) => (
+        <div key={i} className="vuln-card">
+          <div className="vuln-header">
+            <h4><v.icon size={20} color="#8b5cf6" /> {v.title}</h4>
+          </div>
+          <div className="vuln-body">
+            <div className="vuln-section">
+              <h5>The Mechanism</h5>
+              <p>{v.mechanism}</p>
+            </div>
+            <div className="vuln-section threat">
+              <h5>The Threat</h5>
+              <p>{v.threat}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -838,16 +912,64 @@ export const TOPIC_DETAILS = {
       { name: 'PSP', full: 'Physical Security Professional', desc: 'A globally recognized corporate standard focusing on threat assessments and integrated physical protection systems.', diff: 'Intermediate' }
     ]
   },
+  '08': {
+    num: '08',
+    title: 'Web App Testing',
+    subtitle: 'Securing the Digital Storefront',
+    description: "Pivot back to digital infrastructure, focusing on the single most exposed attack surface any modern organization possesses: its web applications. Because websites are publicly accessible, they are targeted by attackers 24/7.",
+    badges: ["Core Skill", "Bug Bounty", "High Demand"],
+    stats: { time: "35 Hours", diff: "Intermediate", prereq: "Basic HTML/JS, Networking" },
+    sections: [
+      {
+        id: "sec-concept",
+        title: "1. The Essential Concept: Beyond the Network Perimeter",
+        content: "While network pentesting looks at servers and ports, Web Application Testing focuses entirely on the code, logic, and data processing of the website itself. A simple programming flaw can bypass all network defenses."
+      },
+      {
+        id: "sec-owasp",
+        title: "2. The Core Standard (OWASP Top 10)",
+        content: "The Open Web Application Security Project (OWASP) Top 10 is the globally recognized framework detailing the most critical web vulnerabilities. Here are the three heavy hitters:",
+        customComponent: "OwaspCoreVectors"
+      },
+      {
+        id: "sec-deepdive",
+        title: "3. Deep Dive into the Top Vulnerabilities",
+        content: "Break down how these common vulnerabilities operate under the hood:",
+        customComponent: "VulnerabilityDeepDive"
+      },
+      {
+        id: "sec-toolkit",
+        title: "4. The Web Pentester's Toolkit",
+        content: "A web pentester relies on a localized interception suite rather than network scanners:",
+        bulletPoints: [
+          "Burp Suite / OWASP ZAP: The absolute standard. These tools act as a local proxy to capture, analyze, manipulate, and replay raw HTTP requests and responses on the fly.",
+          "Sqlmap: An open-source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws."
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "5. Your Career & Development Roadmap",
+        content: "Web application security is one of the most practical entry points into a high-paying cyber career, especially through crowdsourced security.",
+        bulletPoints: [
+          "The Bug Bounty Ecosystem: Platforms like HackerOne and Bugcrowd allow independent researchers to legally test massive web applications (like Google, Meta) and get paid cash rewards for responsibly disclosing vulnerabilities.",
+          "Specialized Job Roles: Application Security (AppSec) Engineer, Web Penetration Tester, Product Security Auditor, Bug Bounty Hunter."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'OSWE', full: 'OffSec Wireless and Web Exploitation', desc: 'An elite, hands-on certification focusing on web application analysis and white-box code auditing.', diff: 'Advanced' },
+      { name: 'GWAPT', full: 'GIAC Web Application Penetration Tester', desc: 'A highly respected corporate certification validating a tester\'s ability to thoroughly audit web environments.', diff: 'Intermediate' }
+    ]
+  },
 };
 
 const placeholderNamesOffensive = [
-  "Wireless Hacking",
   "Cloud Security Testing", "Hardware Hacking", "Malware Analysis",
   "Exploit Development", "IoT Security", "Physical Security Breach",
   "Bug Bounty Hunting"
 ];
 
-for (let i = 8; i <= 15; i++) {
+for (let i = 9; i <= 15; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   TOPIC_DETAILS[num] = {
     num: num,
@@ -1165,6 +1287,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'RedTeamLifecycle' && <RedTeamLifecycle />}
                       {sec.customComponent === 'PhysicalAttackLifecycle' && <PhysicalAttackLifecycle />}
                       {sec.customComponent === 'PhysicalPentesterToolkit' && <PhysicalPentesterToolkit />}
+                      {sec.customComponent === 'OwaspCoreVectors' && <OwaspCoreVectors />}
+                      {sec.customComponent === 'VulnerabilityDeepDive' && <VulnerabilityDeepDive />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">

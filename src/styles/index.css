@@ -8838,3 +8838,185 @@ body {
   .toolkit-list li strong {
     color: #fff;
   }
+  
+  /* Custom UI Components for Offensive Topic 08 */
+  .owasp-tree-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+    position: relative;
+  }
+  
+  .owasp-root {
+    background: rgba(15, 23, 42, 0.9);
+    border: 2px solid #8b5cf6;
+    padding: 16px 32px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .owasp-branches {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 40px;
+    position: relative;
+    gap: 20px;
+  }
+  
+  .owasp-branches::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: #8b5cf6;
+    z-index: 1;
+  }
+  
+  .owasp-branches::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #8b5cf6;
+    z-index: 1;
+  }
+  
+  .owasp-node {
+    background: var(--bg-card);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 12px;
+    padding: 24px;
+    width: 32%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+  }
+  
+  .owasp-node::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: #8b5cf6;
+    z-index: 1;
+  }
+  
+  .owasp-node:hover {
+    border-color: #8b5cf6;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
+  }
+  
+  .owasp-icon-wrap {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+  
+  .owasp-node h4 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  
+  .owasp-node p {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .vuln-deepdive-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 40px 0;
+  }
+  
+  .vuln-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .vuln-header {
+    background: rgba(15, 23, 42, 0.5);
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .vuln-header h4 {
+    color: #fff;
+    margin: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .vuln-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .vuln-section {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid #8b5cf6;
+    padding: 16px;
+    border-radius: 4px;
+  }
+  
+  .vuln-section.threat {
+    border-left-color: var(--color-offensive);
+  }
+  
+  .vuln-section h5 {
+    color: #fff;
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .vuln-section.threat h5 {
+    color: var(--color-offensive);
+  }
+  
+  .vuln-section p {
+    color: var(--color-text-secondary);
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .vuln-section code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #e2e8f0;
+    font-family: monospace;
+  }
