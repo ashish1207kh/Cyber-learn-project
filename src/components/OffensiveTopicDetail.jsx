@@ -32,7 +32,11 @@ import {
   Rocket,
   Package,
   Laptop,
-  TerminalSquare
+  TerminalSquare,
+  RefreshCw,
+  Key,
+  Map,
+  HardDrive
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -325,6 +329,86 @@ function ExploitationMechanisms() {
   );
 }
 
+function StrategicObjectives() {
+  const objectives = [
+    { title: "Persistence", icon: RefreshCw, desc: "Setting up backdoors to ensure access survives reboots." },
+    { title: "Privilege Escalation", icon: Key, desc: "Moving from a standard user account to a root or Domain Admin account." },
+    { title: "Lateral Movement", icon: Map, desc: "Pivoting from the initial system to scan/compromise others." }
+  ];
+
+  return (
+    <div className="strategic-objectives-container">
+      {objectives.map((obj, i) => (
+        <div key={i} className="objective-node">
+          <div className="objective-icon-wrap">
+            <obj.icon size={28} />
+          </div>
+          <h4>{obj.title}</h4>
+          <p>{obj.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PostExploitTactics() {
+  const tactics = [
+    {
+      title: "1. Privilege Escalation (Vertical Movement)",
+      icon: Key,
+      desc: "When a tester first exploits a machine, they usually inherit the permissions of the vulnerable service (often a low-privilege service account).",
+      details: [
+        { label: "Windows Systems:", val: "Hunt for misconfigured services, vulnerable kernel drivers, or cleartext passwords to elevate to NT AUTHORITY\\SYSTEM." },
+        { label: "Linux Systems:", val: "Check for weak sudo permissions (sudo -l), misconfigured SUID binaries, or old unpatched kernels to gain a root shell." }
+      ]
+    },
+    {
+      title: "2. Pillaging (Data Gathering)",
+      icon: HardDrive,
+      desc: "Once administrative control is achieved, the tester begins gathering internal data to demonstrate the business impact of a breach.",
+      details: [
+        { label: "What to look for:", val: "Database connection strings, browser-saved passwords, sensitive customer files, and internal network architecture." },
+        { label: "Credential Dumping:", val: "Using tools like Mimikatz to extract password hashes or cleartext passwords straight from volatile memory (RAM)." }
+      ]
+    },
+    {
+      title: "3. Lateral Movement & Pivoting (Horizontal Movement)",
+      icon: Map,
+      desc: "Corporate environments put up strong perimeters but often have weak internal segmentations. Pentesters use the compromised machine as a \"jump box\" or proxy.",
+      details: [
+        { label: "How it works:", val: "The tester routes their tools through the compromised machine to scan and attack hidden internal networks (like HR or financial networks) that are completely invisible from the public internet." }
+      ]
+    }
+  ];
+
+  return (
+    <div className="tactics-stack">
+      {tactics.map((tactic, i) => (
+        <div key={i} className="tactic-card">
+          <div className="tactic-sidebar">
+            <tactic.icon size={32} />
+            <span>Tactic 0{i + 1}</span>
+          </div>
+          <div className="tactic-content">
+            <h4>{tactic.title}</h4>
+            <p>{tactic.desc}</p>
+            <div className="tactic-details">
+              <ul>
+                {tactic.details.map((detail, idx) => (
+                  <li key={idx}>
+                    <span style={{ color: 'var(--color-offensive)' }}>❯</span>
+                    <span><strong>{detail.label}</strong> {detail.val}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -482,17 +566,56 @@ export const TOPIC_DETAILS = {
       { name: 'OSCP', full: 'OffSec Certified Professional', desc: 'The gold standard hands-on certification that forces students to manually find, modify, and execute exploits.', diff: 'Advanced' }
     ]
   },
+  '05': {
+    num: '05',
+    title: 'Post-Exploitation',
+    subtitle: 'Deepening the Breach',
+    description: "This phase answers the ultimate question after an exploit succeeds: \"I have an initial foothold on a single low-level account... now what?\" It is the transition from a single compromised machine to an entire compromised corporate infrastructure.",
+    badges: ["Core Skill", "AD Focused", "Stealth"],
+    stats: { time: "30 Hours", diff: "Advanced", prereq: "Exploitation Techniques, AD Basics" },
+    sections: [
+      {
+        id: "sec-concept",
+        title: "1. The Essential Concept: The Art of Survival and Expansion",
+        content: "Post-Exploitation is the phase where an authorized tester evaluates what assets can be controlled, what sensitive data can be accessed, and how well they can navigate the internal network without being caught."
+      },
+      {
+        id: "sec-objectives",
+        title: "2. The Three Strategic Objectives",
+        content: "To help your students understand this phase structurally, break it down into these three operational pillars:",
+        customComponent: "StrategicObjectives"
+      },
+      {
+        id: "sec-tactics",
+        title: "3. Core Post-Exploitation Tactics",
+        content: "Detail these exact technical maneuvers that professional pentesters practice daily:",
+        customComponent: "PostExploitTactics"
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Your Career & Development Roadmap",
+        content: "Post-exploitation skills separate basic script-kiddies from high-tier enterprise security consultants.",
+        bulletPoints: [
+          "Specialized Job Roles: Senior Penetration Tester, Active Directory Security Expert, Red Team Consultant, Incident Responder.",
+          "What a Day Looks Like: Analyzing Active Directory domain trusts, creating stealthy persistence mechanisms, bypassing EDR agents, and simulating APT playbooks.",
+          "Active Directory (AD) Mastery: 90% of corporate enterprises run on AD. Post-exploitation heavily relies on learning Kerberos attacks and GPO manipulations."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'CRTO', full: 'Certified Red Team Operator', desc: 'Provides rigorous testing on internal domain post-exploitation environments.', diff: 'Advanced' }
+    ]
+  },
 };
 
 const placeholderNamesOffensive = [
-  "Post-Exploitation",
   "Red Teaming", "Web App Hacking", "Wireless Hacking",
   "Cloud Security Testing", "Hardware Hacking", "Malware Analysis",
   "Exploit Development", "IoT Security", "Physical Security Breach",
   "Bug Bounty Hunting"
 ];
 
-for (let i = 5; i <= 15; i++) {
+for (let i = 6; i <= 15; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   TOPIC_DETAILS[num] = {
     num: num,
@@ -804,6 +927,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'OsintQuadrants' && <OsintQuadrantsGrid />}
                       {sec.customComponent === 'WeaponizationPipeline' && <WeaponizationPipeline />}
                       {sec.customComponent === 'ExploitationMechanisms' && <ExploitationMechanisms />}
+                      {sec.customComponent === 'StrategicObjectives' && <StrategicObjectives />}
+                      {sec.customComponent === 'PostExploitTactics' && <PostExploitTactics />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">
