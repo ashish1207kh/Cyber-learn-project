@@ -8225,3 +8225,140 @@ body {
     width: fit-content;
     z-index: 2;
   }
+  
+  /* Custom UI Components for Offensive Topic 04 */
+  .weaponization-pipeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+    padding: 30px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .pipeline-node {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 20px 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition-smooth);
+  }
+  
+  .pipeline-node:hover {
+    border-color: var(--color-offensive);
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(239, 68, 68, 0.15);
+  }
+  
+  .pipeline-node-icon {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-offensive);
+    padding: 15px;
+    border-radius: 12px;
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+  
+  .pipeline-node-content h4 {
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+  
+  .pipeline-node-content p {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .pipeline-connector {
+    height: 40px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-offensive), transparent, var(--color-offensive));
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pipeline-connector::after {
+    content: '▼';
+    color: var(--color-offensive);
+    background: #0f172a;
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  .mechanisms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 40px 0;
+  }
+  
+  .mechanism-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+  }
+  
+  .mechanism-card:hover {
+    border-color: var(--color-offensive);
+    transform: translateY(-5px);
+    background: rgba(239, 68, 68, 0.05);
+  }
+  
+  .mechanism-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .mechanism-icon-wrap {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-offensive);
+    padding: 12px;
+    border-radius: 10px;
+  }
+  
+  .mechanism-card h4 {
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  .mechanism-card p {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .mechanism-example {
+    margin-top: auto;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+  
+  .mechanism-example strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 4px;
+  }

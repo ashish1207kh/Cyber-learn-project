@@ -27,7 +27,12 @@ import {
   Search,
   Network,
   FileSearch,
-  Database
+  Database,
+  Bug,
+  Rocket,
+  Package,
+  Laptop,
+  TerminalSquare
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -256,6 +261,70 @@ function OsintQuadrantsGrid() {
   );
 }
 
+function WeaponizationPipeline() {
+  return (
+    <div className="weaponization-pipeline-container">
+      <div className="pipeline-node">
+        <div className="pipeline-node-icon">
+          <Bug size={32} />
+        </div>
+        <div className="pipeline-node-content">
+          <h4>🔍 THE VULNERABILITY</h4>
+          <p>A flaw or weakness in code (e.g., a buffer overflow or unvalidated text input field).</p>
+        </div>
+      </div>
+      <div className="pipeline-connector"></div>
+      <div className="pipeline-node">
+        <div className="pipeline-node-icon">
+          <Rocket size={32} />
+        </div>
+        <div className="pipeline-node-content">
+          <h4>🚀 THE EXPLOIT (The Delivery Vehicle)</h4>
+          <p>The specific piece of code engineered to take advantage of that vulnerability.</p>
+        </div>
+      </div>
+      <div className="pipeline-connector"></div>
+      <div className="pipeline-node" style={{ borderColor: 'var(--color-offensive)' }}>
+        <div className="pipeline-node-icon">
+          <Package size={32} />
+        </div>
+        <div className="pipeline-node-content">
+          <h4>📦 THE PAYLOAD (The Cargo)</h4>
+          <p>The malicious code executed <em>after</em> the exploit succeeds (e.g., opening a shell).</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExploitationMechanisms() {
+  const mechanisms = [
+    { title: "Remote Code Execution (RCE)", icon: Server, desc: "Allows an attacker to execute arbitrary commands over a network connection without any physical access or valid credentials.", example: "EternalBlue (MS17-010)" },
+    { title: "Client-Side Exploitation", icon: Laptop, desc: "Targets users inside guarded networks. Malicious payloads are embedded inside files (PDFs, Word docs) and trigger when interacted with.", example: "Malicious Macro Documents" },
+    { title: "Shells: Bind vs. Reverse", icon: TerminalSquare, desc: "Bind Shell: Exploit opens a port on the target machine. Reverse Shell: Exploit forces the target machine to connect outward to the attacker.", example: "Netcat Reverse Shell" }
+  ];
+
+  return (
+    <div className="mechanisms-grid">
+      {mechanisms.map((mech, i) => (
+        <div key={i} className="mechanism-card">
+          <div className="mechanism-header">
+            <div className="mechanism-icon-wrap">
+              <mech.icon size={24} />
+            </div>
+            <h4>{mech.title}</h4>
+          </div>
+          <p>{mech.desc}</p>
+          <div className="mechanism-example">
+            <strong>Real-World Example:</strong>
+            {mech.example}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -374,17 +443,56 @@ export const TOPIC_DETAILS = {
       { name: 'OSINT-C', full: 'Certified OSINT Specialist', desc: 'A highly practical certification focusing entirely on modern intelligence-gathering techniques.', diff: 'Beginner' }
     ]
   },
+  '04': {
+    num: '04',
+    title: 'Exploitation Techniques',
+    subtitle: 'Taking Control',
+    description: "This is the milestone where students learn how vulnerabilities are actually weaponized to breach systems. You will learn the mechanics behind the final act of compromising a target.",
+    badges: ["Core Skill", "Weaponization", "Execution Phase"],
+    stats: { time: "25 Hours", diff: "Intermediate to Advanced", prereq: "Penetration Testing, Scripting Basics" },
+    sections: [
+      {
+        id: "sec-concept",
+        title: "1. The Essential Concept: Crossing the Perimeter",
+        content: "Exploitation is the definitive act of taking advantage of a software bug, design flaw, or configuration mistake to force a computer system to behave in an unintended way. Usually, the goal is Arbitrary Code Execution (ACE)—forcing the target machine to run commands or scripts provided by the hacker, effectively handing over control."
+      },
+      {
+        id: "sec-pipeline",
+        title: "2. Anatomy of an Exploit",
+        content: "To prevent students from viewing exploitation as \"magic,\" break down a successful attack into its three precise technical components:",
+        customComponent: "WeaponizationPipeline"
+      },
+      {
+        id: "sec-mechanisms",
+        title: "3. The Big Three Exploitation Mechanisms",
+        content: "Provide your students with a granular look at how modern professionals categorize exploitation techniques:",
+        customComponent: "ExploitationMechanisms"
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Your Career & Development Roadmap",
+        content: "Exploitation requires deep technical mastery of architecture, networking protocols, and code.",
+        bulletPoints: [
+          "Specialized Job Roles: Exploit Developer, Vulnerability Researcher, Red Team Infrastructure Engineer, Penetration Tester.",
+          "What a Day Looks Like: Analyzing software code via reverse engineering, studying zero-day patches, writing custom scripts in Python, C, or Assembly, and building bypass mechanisms for security defenses."
+        ]
+      }
+    ],
+    certs: [
+      { name: 'OSCP', full: 'OffSec Certified Professional', desc: 'The gold standard hands-on certification that forces students to manually find, modify, and execute exploits.', diff: 'Advanced' }
+    ]
+  },
 };
 
 const placeholderNamesOffensive = [
-  "Exploitation Techniques", "Post-Exploitation",
+  "Post-Exploitation",
   "Red Teaming", "Web App Hacking", "Wireless Hacking",
   "Cloud Security Testing", "Hardware Hacking", "Malware Analysis",
   "Exploit Development", "IoT Security", "Physical Security Breach",
   "Bug Bounty Hunting"
 ];
 
-for (let i = 4; i <= 15; i++) {
+for (let i = 5; i <= 15; i++) {
   const num = i < 10 ? `0${i}` : `${i}`;
   TOPIC_DETAILS[num] = {
     num: num,
@@ -694,6 +802,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'AttackGrid' && <AttackVectorsGrid />}
                       {sec.customComponent === 'DataFlowMap' && <DataFlowMap />}
                       {sec.customComponent === 'OsintQuadrants' && <OsintQuadrantsGrid />}
+                      {sec.customComponent === 'WeaponizationPipeline' && <WeaponizationPipeline />}
+                      {sec.customComponent === 'ExploitationMechanisms' && <ExploitationMechanisms />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">
