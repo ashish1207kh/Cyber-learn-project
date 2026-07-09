@@ -3420,6 +3420,135 @@ body {
   .nav-capsule::-webkit-scrollbar {
     display: none; /* Chrome/Safari */
   }
+  .cyber-table td {
+    padding: 16px 20px;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .cyber-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .cyber-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .cyber-table td strong {
+    color: var(--color-offensive);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Custom UI Components for Offensive Topic 02 */
+  .cognitive-tree-container {
+    margin: 40px 0;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid var(--color-offensive-border);
+    border-radius: 16px;
+  }
+  
+  .cognitive-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed rgba(239, 68, 68, 0.3);
+  }
+  
+  .cognitive-header h4 {
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .cognitive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .cognitive-node {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .cognitive-node:hover {
+    border-color: var(--color-offensive);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .cognitive-icon {
+    color: var(--color-offensive);
+    margin-bottom: 12px;
+  }
+  
+  .cognitive-node h5 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .cognitive-node p {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .attack-vectors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 30px 0;
+  }
+  
+  .attack-vector-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+  
+  .attack-vector-card:hover {
+    border-color: var(--color-offensive);
+    background: rgba(239, 68, 68, 0.05);
+  }
+  
+  .attack-vector-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .attack-vector-icon-wrap {
+    background: rgba(239, 68, 68, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--color-offensive);
+  }
+  
+  .attack-vector-card h4 {
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  .attack-vector-card p {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+  }
   .nav-link {
     flex-shrink: 0;
     padding: 8px 14px;

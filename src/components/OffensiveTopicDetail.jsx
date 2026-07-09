@@ -13,7 +13,17 @@ import {
   Globe,
   Crosshair,
   Terminal,
-  Activity
+  Activity,
+  ShieldAlert,
+  Clock,
+  ThumbsUp,
+  Repeat,
+  Star,
+  Users,
+  PhoneCall,
+  MessageSquareWarning,
+  UserX,
+  Mail
 } from 'lucide-react';
 import Header from './Header';
 import hackerImg from '../assets/cyber-hacker-red.jpg';
@@ -126,6 +136,59 @@ function ToolsTable() {
   );
 }
 
+function CognitiveTriggersTree() {
+  const triggers = [
+    { title: "Authority", icon: ShieldAlert, desc: `"I am the CEO, do this right now."` },
+    { title: "Urgency", icon: Clock, desc: `"Change your password in 5 minutes or lock."` },
+    { title: "Liking", icon: ThumbsUp, desc: `"We met at the tech conference last week."` },
+    { title: "Reciprocity", icon: Repeat, desc: `"I helped you fix a ticket, do me a favor."` },
+    { title: "Scarcity", icon: Star, desc: `"Only 2 VIP corporate accounts left."` },
+    { title: "Consensus", icon: Users, desc: `"Everyone else in HR has signed this."` }
+  ];
+
+  return (
+    <div className="cognitive-tree-container">
+      <div className="cognitive-header">
+        <h4>Human Psychology Exploit Vectors</h4>
+      </div>
+      <div className="cognitive-grid">
+        {triggers.map((trig, i) => (
+          <div key={i} className="cognitive-node">
+            <trig.icon size={28} className="cognitive-icon" />
+            <h5>{trig.title}</h5>
+            <p>{trig.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AttackVectorsGrid() {
+  const vectors = [
+    { title: "Phishing (Email)", icon: Mail, desc: "The most common corporate attack vector. Pentesters craft highly convincing fake emails to test if employees click malicious links or input corporate credentials." },
+    { title: "Vishing (Voice Phishing)", icon: PhoneCall, desc: "Phone-based deception. Spoofing caller ID to look like internal IT support or a bank executive to extract sensitive multi-factor authentication (MFA) codes verbally." },
+    { title: "Smishing (SMS Phishing)", icon: MessageSquareWarning, desc: "Text message attacks targeting corporate mobile devices using panic-inducing alerts to steal session tokens via mobile browsers." },
+    { title: "Tailgating (Physical)", icon: UserX, desc: "An attacker closely follows an authorized employee through a secure badge-access door, often carrying a box to exploit the employee's natural politeness." }
+  ];
+
+  return (
+    <div className="attack-vectors-grid">
+      {vectors.map((vec, i) => (
+        <div key={i} className="attack-vector-card">
+          <div className="attack-vector-header">
+            <div className="attack-vector-icon-wrap">
+              <vec.icon size={24} />
+            </div>
+            <h4>{vec.title}</h4>
+          </div>
+          <p>{vec.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each topic - deep syllabus, simplified with examples and interactive flows
 export const TOPIC_DETAILS = {
   '01': {
@@ -175,32 +238,36 @@ export const TOPIC_DETAILS = {
     sections: [
       {
         id: "sec-concept",
-        title: "1. Core Cognitive Triggers",
-        content: "Social engineers exploit human psychology triggers rather than software flaws. Master the 6 core cognitive triggers:",
-        bulletPoints: [
-          "Authority: Spoofing executives, IT admins, or police officials to force immediate obedience. People are naturally inclined to obey commands from recognized figures.",
-          "Urgency: Creating false deadlines (e.g., account suspension warnings, financial penalties) to bypass logical thinking and force immediate action.",
-          "Scarcity: Offering limited-time access or resources to manipulate target actions based on fear of missing out.",
-          "Social Proof: Creating peer-pressure scenarios where target complies because they believe 'everyone else is doing it'."
-        ],
-        example: "An attacker calls a customer service representative claiming to be the Chief Technology Officer (CTO). They state that they are locked out of an active client project and demand a password reset immediately due to an upcoming board meeting deadline (combining Authority and Urgency)."
+        title: "1. The Essential Concept: Hacking the Human Operating System",
+        content: "No matter how advanced an organization’s firewall or encryption is, security always fails if a human is tricked into opening the front door. Social Engineering is the art of manipulating, influencing, or deceiving people into giving up confidential information, bypassing physical security controls, or executing malicious software."
+      },
+      {
+        id: "sec-cognitive",
+        title: "2. Core Cognitive Triggers (Why it Works)",
+        content: "Social engineers exploit deep-rooted human behaviors. When designing this section for your students, highlight these 6 Core Triggers:",
+        customComponent: "CognitiveTree"
       },
       {
         id: "sec-vectors",
-        title: "2. Threat Attack Vectors",
-        content: "Study the tactical delivery mechanisms of professional social engineering campaigns:",
+        title: "3. The 4 Most Common Attack Vectors",
+        content: "To help your students understand real-world roles, break down the tactical methods used in professional social engineering assessments:",
+        customComponent: "AttackGrid"
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Your Career & Development Roadmap",
+        content: "For professionals and students looking to specialize in this niche, it requires a unique blend of technical expertise and behavioral psychology.",
         bulletPoints: [
-          "Phishing (Email): Sending customized fraudulent emails containing malicious links, attachments, or macro documents designed to harvest credentials or install malware.",
-          "Vishing (Voice): Phone support scams spoofing corporate helpdesks or financial institutions to verbally extract passwords, multi-factor codes, or personal data.",
-          "Tailgating (Physical): Exploiting social courtesy (e.g., holding a door open for someone with a box) to follow authorized workers into secure office buildings without badge authorization."
-        ],
-        example: "An attacker dresses as a UPS delivery courier holding a heavy box. As an employee badges into the corporate entrance, the attacker smiles and asks them to hold the door. The employee politely holds the door, letting the unauthorized attacker bypass physical security badges."
+          "Specialized Roles: Social Engineering Consultant, Red Team Operator, Human Risk Analyst, Security Awareness Training Director.",
+          "What a Day Looks Like: Researching targets online (OSINT), scripting customized phishing campaigns, setting up tracking servers, or attempting to physically breach corporate office buildings in disguise."
+        ]
       }
     ],
     certs: [
+      { name: 'CAPS', full: 'Certified Anti-Phishing Specialist', desc: 'Great for learning how to design and analyze organizational phishing metrics.', diff: 'Beginner' },
       { name: 'SEPP', full: 'Certified Social Engineering Pentester', desc: 'Focuses on advanced manipulation, OSINT, and facility breach.', diff: 'Intermediate' }
     ]
-  }
+  },
 };
 
 const placeholderNamesOffensive = [
@@ -517,6 +584,8 @@ export default function OffensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.customComponent === 'Timeline' && <HorizontalTimeline />}
                       {sec.customComponent === 'ToolsTable' && <ToolsTable />}
                       {sec.customComponent === 'Flowchart' && <BranchingFlowchart />}
+                      {sec.customComponent === 'CognitiveTree' && <CognitiveTriggersTree />}
+                      {sec.customComponent === 'AttackGrid' && <AttackVectorsGrid />}
 
                       {sec.bulletPoints && (
                         <ul className="gitbook-bullet-list">
