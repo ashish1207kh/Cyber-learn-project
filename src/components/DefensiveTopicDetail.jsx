@@ -13,72 +13,130 @@ import {
 import Header from './Header';
 import analystImg from '../assets/cyber-analyst-blue.jpg';
 
+function SalaryTable() {
+  const tiers = [
+    { level: "Fresher (0–1 Year)", role: "SOC Analyst L1 / Trainee", range: "₹3.5 LPA – ₹6.5 LPA" },
+    { level: "Early Career (1–3 Years)", role: "Security Monitoring Analyst", range: "₹5.0 LPA – ₹9.0 LPA" },
+    { level: "Mid-Level (3–5 Years)", role: "SOC Analyst L2 / Senior Analyst", range: "₹8.0 LPA – ₹15.0 LPA" },
+    { level: "Senior (5+ Years)", role: "SOC L3 / SIEM Architect / Lead", range: "₹15.0 LPA – ₹25.0+ LPA" }
+  ];
+
+  return (
+    <div className="salary-table-container">
+      <table className="salary-table">
+        <thead>
+          <tr>
+            <th>Experience Level</th>
+            <th>Typical Job Role</th>
+            <th>Expected Salary Range (INR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tiers.map((tier, idx) => (
+            <tr key={idx}>
+              <td className="salary-tier">{tier.level}</td>
+              <td>{tier.role}</td>
+              <td className="salary-amount">{tier.range}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function SiemRoadmapSteps() {
+  const steps = [
+    {
+      title: "Step 1: Core Fundamentals",
+      points: [
+        "Master basic Networking concepts (OSI Model, TCP/IP, IP addressing).",
+        "Learn Operating System basics (Linux commands and Windows Event Logs)."
+      ]
+    },
+    {
+      title: "Step 2: Security & Log Basics",
+      points: [
+        "Learn what common security devices do (Firewalls, IDS/IPS, Endpoint Detection & Response).",
+        "Understand how to read common log files (Syslog, HTTP logs, Authentication logs)."
+      ]
+    },
+    {
+      title: "Step 3: Master SIEM Tooling",
+      points: [
+        "Get hands-on experience with market-leading platforms. You can create free lab environments for Splunk (Splunk BHT) or learn Microsoft Sentinel via Azure free trials.",
+        "Practice writing basic log queries (SPL for Splunk, KQL for Microsoft Sentinel)."
+      ]
+    },
+    {
+      title: "Step 4: Certifications to Stand Out",
+      points: [
+        "Entry Level: CompTIA Security+ or Splunk Core Certified Power User.",
+        "Advanced Level: CompTIA CySA+ (Cybersecurity Analyst) or Microsoft SC-200."
+      ]
+    }
+  ];
+
+  return (
+    <div className="siem-roadmap-container">
+      {steps.map((step, idx) => (
+        <div key={idx} className="siem-step-card">
+          <div className="siem-step-number">{idx + 1}</div>
+          <h4>{step.title}</h4>
+          <ul>
+            {step.points.map((pt, i) => (
+              <li key={i}>{pt}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Content data for each defensive topic
 export const DEFENSIVE_TOPICS = {
   '01': {
     num: '01',
     title: 'SIEM Monitoring',
     subtitle: 'Security Information and Event Management',
-    description: "Learn how modern Security Operations Centers (SOC) capture, analyze, and correlate telemetry data across an entire enterprise network to identify cyber threats before they escalate.",
+    description: "SIEM involves using specialized software tools to automatically gather and aggregate log data, metrics, and security alerts from across an entire company. Analysts monitor this live data stream to detect unusual activity and flag potential cyberattacks in real time.",
     badges: ["Core Skill", "High Demand", "Defensive Operations"],
-    stats: { time: "25 Hours", diff: "Beginner to Intermediate", prereq: "Networking Basics, Linux/Windows Logs" },
+    stats: { time: "25 Hours", diff: "Beginner", prereq: "Networking Basics, Linux/Windows Logs" },
     sections: [
       {
-        id: "sec-logs",
-        title: "1. Log Generation & Parsing",
-        content: "Every system, application, and network device generates logs detailing its activities. Defense starts with capturing these footprints and converting raw text into standardized formats.",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
+        content: "SIEM is the central nervous system or the 24/7 security camera room of an organization's digital network. Since every modern company generates data and faces cyber threats, SIEM is a non-negotiable core component of any corporate Security Operations Center (SOC).",
         bulletPoints: [
-          "Syslog Protocol: Standard protocol for forwarding system messages. Understand facilities (auth, cron, mail) and severity levels (0-Emergency to 7-Debug).",
-          "Windows Event Logs: XML-based log structure. Key event IDs to monitor: 4624 (Successful Logon), 4625 (Failed Logon), 4688 (Process Creation).",
-          "Log Normalization: Cleaning up logs from different systems (IIS, Apache, Windows, Cisco) into a standard format so they can be parsed together."
-        ],
-        command: "tail -f /var/log/auth.log | grep 'Failed password'",
-        commandExpl: [
-          { flag: "tail -f", desc: "Follow tail: Outputs log file lines in real-time as they are written." },
-          { flag: "/var/log/auth.log", desc: "The standard file path for authentication logs on Debian/Ubuntu systems." },
-          { flag: "grep 'Failed'", desc: "Filter logs to only show lines containing failed authentication attempts." }
-        ],
-        example: "An attacker attempts to brute-force a SSH port. The target Linux server generates multiple log entries reading 'Failed password for root from 192.168.10.45 port 54890 ssh2'. The SIEM parser extracts the source IP, target port, and username into a structured schema.",
-        subModules: [
-          { id: "windows-events", name: "Deep Dive: Windows Security Event IDs" },
-          { id: "syslog-rfc", name: "RFC 5424 Syslog Protocol Mechanics" }
+          "Roles Available: SOC Analyst (Tier 1/L1, L2, L3), SIEM Administrator, Detection Engineer, Security Engineer, and SIEM Architect.",
+          "Industries Hiring: Banking & Finance, Healthcare, E-commerce, Cloud Service Providers, and Managed Security Service Providers (MSSPs).",
+          "Evolution: Modern SIEM is rapidly integrating AI and Machine Learning to automate threat hunting and log correlation."
         ]
       },
       {
-        id: "sec-aggregation",
-        title: "2. Data Aggregation & Storage",
-        content: "A corporate network generates millions of logs daily. These must be collected securely and shipped to a central repository without losing data.",
-        bulletPoints: [
-          "Log Forwarders: Lightweight agents (like Splunk Universal Forwarder or Elastic Filebeat) installed on servers to collect logs and forward them to SIEM indexing hubs.",
-          "Secure Transport: Encrypting log data in transit using TLS to prevent malicious tampering or eavesdropping.",
-          "Indexing & Retention: Categorizing logs by timestamp and source host, and archiving old indices for legal compliance."
-        ],
-        example: "A company deploys Splunk Universal Forwarder on 50 web servers. The forwarder monitors Apache access logs and securely ships them over port 9997 to a central Splunk Indexer, where they are indexed and made searchable within seconds.",
-        subModules: [
-          { id: "logstash-pipelines", name: "Building Logstash Ingestion Pipelines" },
-          { id: "splunk-forwarding", name: "Configuring Splunk Universal Forwarders" }
-        ]
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Absolutely Worth It. SIEM Monitoring is arguably the best and most reliable entry point into the cybersecurity industry. Organizations are legally required to maintain security compliance and logs, guaranteeing long-term job security. It teaches you how networks operate, what a real cyberattack looks like in data logs, and builds a rock-solid foundation."
       },
       {
-        id: "sec-correlation",
-        title: "3. Alerting & Correlation Rules",
-        content: "Correlation rules are the logic blocks of SIEM. They link isolated log events together to identify complex, multi-stage cyberattacks.",
-        bulletPoints: [
-          "Single-Host Alerts: E.g., Trigger alert if 10 failed logins happen within 1 minute on a single machine.",
-          "Multi-Stage Correlation: E.g., Trigger critical alert if a server has 10 failed logins, followed by 1 successful login, followed by process creation of cmd.exe.",
-          "False Positives: Tuning correlation parameters to minimize false alert noise, letting analysts focus on genuine threat alerts."
-        ],
-        callout: "💡 ANALYST TIP: Well-written correlation rules look for behaviors (like lateral movement or privilege escalation) rather than static signatures (like specific IP addresses).",
-        example: "A correlation rule triggers a priority alert when it sees user 'john_doe' logging in from a local office IP in New York and, 5 minutes later, successfully logging in to a server from an IP address located in Germany (Impossible Travel Alert).",
-        subModules: [
-          { id: "yara-rules", name: "YARA Rule Writing for Malware Alerts" },
-          { id: "sentinel-kql", name: "KQL Rules for Microsoft Sentinel" }
-        ]
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Salaries vary depending on skills, certifications, and company types. Here is a breakdown of what professionals can expect in India:",
+        customComponent: "SalaryTable",
+        callout: "💡 Tip for your users: Gaining practical lab experience or premium vendor certifications can boost entry-level offers significantly."
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Step-by-Step Roadmap",
+        content: "To become a professional SIEM Monitoring Analyst, follow this clear pathway:",
+        customComponent: "SiemRoadmapSteps"
       }
     ],
     certs: [
       { name: 'Splunk Core', full: 'Splunk Core Certified Power User', desc: 'Validates ability to navigate and create dashboards and alerts in Splunk.', diff: 'Beginner' },
-      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst', desc: 'Industry certification focused on incident response, security operations, and log analysis.', diff: 'Intermediate' }
+      { name: 'CySA+', full: 'CompTIA Cybersecurity Analyst', desc: 'Industry certification focused on incident response, security operations, and log analysis.', diff: 'Intermediate' },
+      { name: 'SC-200', full: 'Microsoft Security Operations Analyst', desc: 'Validates skills in investigating, responding to, and hunting for threats using Microsoft Sentinel.', diff: 'Intermediate' }
     ]
   },
   '02': {
@@ -714,6 +772,8 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.id === 'sec-logs' && <LogFlowDiagram />}
                       {sec.id === 'sec-ir-phases' && <IncidentResponseDiagram />}
                       {sec.id === 'sec-forensics' && <MemoryStackDiagram />}
+                      {sec.customComponent === 'SalaryTable' && <SalaryTable />}
+                      {sec.customComponent === 'SiemRoadmapSteps' && <SiemRoadmapSteps />}
 
                       {sec.command && (
                         <div style={{ margin: '24px 0' }}>
