@@ -1,4 +1,5 @@
 /* CyberLearn - Global Stylesheet (Custom Responsive HUD & Dashboard CSS) */
+@import './grc-theme.css';
 
 :root {
   /* Color Tokens */

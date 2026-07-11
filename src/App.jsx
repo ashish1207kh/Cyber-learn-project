@@ -11,6 +11,8 @@ import DefensiveRoadmap from './components/DefensiveRoadmap';
 import LoaderCurtain from './components/LoaderCurtain';
 import OffensiveTopicDetail from './components/OffensiveTopicDetail';
 import DefensiveTopicDetail from './components/DefensiveTopicDetail';
+import GRCDetail from './components/GRCDetail';
+import GRCTopicDetail from './components/GRCTopicDetail';
 
 function App() {
   const [currentView, setCurrentView] = useState('landing');
@@ -22,6 +24,7 @@ function App() {
   const detailRoadmapRef = useRef(null);
   const detailDefensiveRoadmapRef = useRef(null);
   const detailTopicRef = useRef(null);
+  const detailGRCRef = useRef(null);
   const loaderRef = useRef(null);
 
   // Set default data-theme to dark globally
@@ -62,6 +65,8 @@ function App() {
         transitionTo('offensive-roadmap');
       } else if (hash === '#defensive-roadmap') {
         transitionTo('defensive-roadmap');
+      } else if (hash === '#grc') {
+        transitionTo('grc-detail');
       } else if (hash.startsWith('#offensive-topic/')) {
         const topicId = hash.replace('#offensive-topic/', '');
         transitionTo('offensive-topic-detail', topicId);
@@ -71,6 +76,9 @@ function App() {
       } else if (hash.startsWith('#defensive-topic/')) {
         const topicId = hash.replace('#defensive-topic/', '');
         transitionTo('defensive-topic-detail', topicId);
+      } else if (hash.startsWith('#grc-topic/')) {
+        const topicId = hash.replace('#grc-topic/', '');
+        transitionTo('grc-topic-detail', topicId);
       } else {
         transitionTo('landing');
       }
@@ -95,12 +103,16 @@ function App() {
       window.location.hash = '#offensive-roadmap';
     } else if (view === 'defensive-roadmap') {
       window.location.hash = '#defensive-roadmap';
+    } else if (view === 'grc-detail') {
+      window.location.hash = '#grc';
     } else if (view === 'offensive-topic-detail') {
       window.location.hash = `#offensive-topic/${topicId || selectedTopicId}`;
     } else if (view === 'offensive-subtopic-detail') {
       window.location.hash = `#offensive-subtopic/${topicId}`;
     } else if (view === 'defensive-topic-detail') {
       window.location.hash = `#defensive-topic/${topicId || selectedTopicId}`;
+    } else if (view === 'grc-topic-detail') {
+      window.location.hash = `#grc-topic/${topicId || selectedTopicId}`;
     }
   };
 
@@ -123,6 +135,10 @@ function App() {
     } else if (currentView === 'offensive-topic-detail' && detailTopicRef.current) {
       gsap.fromTo(detailTopicRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
     } else if (currentView === 'defensive-topic-detail' && detailTopicRef.current) {
+      gsap.fromTo(detailTopicRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    } else if (currentView === 'grc-detail' && detailGRCRef.current) {
+      gsap.fromTo(detailGRCRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    } else if (currentView === 'grc-topic-detail' && detailTopicRef.current) {
       gsap.fromTo(detailTopicRef.current, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
     }
   }, [currentView]);
@@ -219,6 +235,20 @@ function App() {
       {currentView === 'defensive-topic-detail' && (
         <div ref={detailTopicRef} className="dashboard-container">
           <DefensiveTopicDetail topicId={selectedTopicId} onBack={() => handleNavigate('defensive-detail')} onNavigate={handleNavigate} />
+        </div>
+      )}
+
+      {/* ── GRC DETAIL ── */}
+      {currentView === 'grc-detail' && (
+        <div ref={detailGRCRef} className="dashboard-container">
+          <GRCDetail onBack={() => handleNavigate('landing')} onNavigate={handleNavigate} />
+        </div>
+      )}
+
+      {/* ── GRC TOPIC DETAIL ── */}
+      {currentView === 'grc-topic-detail' && (
+        <div ref={detailTopicRef} className="dashboard-container">
+          <GRCTopicDetail topicId={selectedTopicId} onBack={() => handleNavigate('grc-detail')} onNavigate={handleNavigate} />
         </div>
       )}
 

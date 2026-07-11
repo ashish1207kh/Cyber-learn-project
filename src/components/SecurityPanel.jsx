@@ -48,7 +48,7 @@ const PANELS = [
     learn: ['Governance & Leadership', 'Risk Assessment & Mgmt', 'Compliance & Regulations', 'Policies & Frameworks', 'Security Auditing', 'Risk Mitigation'],
     btnText: 'Explore GNC Roadmap',
     img: gncImg,
-    view: 'defensive-detail',
+    view: 'grc-detail',
   },
 ];
 

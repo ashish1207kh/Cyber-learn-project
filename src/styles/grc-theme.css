@@ -1,0 +1,169 @@
+/* Green GRC theme overrides */
+.topic-card-green:hover {
+  border-color: #22c55e80;
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.25);
+  background: var(--bg-card-hover);
+}
+.topic-num-green {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #22c55e;
+  opacity: 0.85;
+}
+.topic-card-icon-circle-green {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #22c55e;
+  margin-bottom: 16px;
+  align-self: flex-end;
+  transition: var(--transition-smooth);
+}
+.topic-card-green:hover .topic-card-icon-circle-green {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.25);
+  transform: scale(1.05);
+}
+.btn-topic-card-green {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  color: #22c55e;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.btn-topic-card-green:hover {
+  background: rgba(34, 197, 94, 0.05);
+  border-color: #22c55e;
+}
+.btn-topic-card-green svg {
+  transition: var(--transition-smooth);
+}
+.btn-topic-card-green:hover svg {
+  transform: translateX(3px);
+}
+.dashboard-footer-banner-green {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.06), rgba(0, 0, 0, 0.4));
+  border: 1px solid rgba(34, 197, 94, 0.12);
+  border-radius: 18px;
+  padding: 20px 30px;
+  margin-top: 40px;
+}
+.banner-icon-circle-green {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-banner-action-green {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.btn-banner-action-green:hover {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+}
+.sidebar-menu-item-green:hover {
+  background: rgba(34, 197, 94, 0.05);
+  color: #22c55e;
+  border-left: 3px solid #22c55e;
+}
+.sidebar-progress-card-green {
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.05) 0%, rgba(0,0,0,0.3) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: auto;
+  text-align: center;
+}
+.progress-icon-circle-green {
+  width: 40px;
+  height: 40px;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+.btn-sidebar-progress-green {
+  background: #22c55e;
+  color: #000;
+  border: none;
+  width: 100%;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  margin-top: 15px;
+}
+.btn-sidebar-progress-green:hover {
+  background: #16a34a;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+.breadcrumb-active-green {
+  color: #22c55e;
+  font-weight: 600;
+}
+.dashboard-hero-green {
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.08) 0%, rgba(8, 14, 28, 0.2) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+.hero-dashboard-title-green {
+  font-size: 38px;
+  font-weight: 800;
+  color: #22c55e;
+  margin: 0 0 16px 0;
+  letter-spacing: -1px;
+}
+.hacker-image-glowing-border-green {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 20px;
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.4), rgba(34, 197, 94, 0.05));
+  box-shadow: 0 0 40px rgba(34, 197, 94, 0.2), inset 0 0 20px rgba(34, 197, 94, 0.1);
+  overflow: hidden;
+  animation: float 6s ease-in-out infinite;
+}
