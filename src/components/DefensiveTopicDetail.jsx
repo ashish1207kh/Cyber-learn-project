@@ -691,28 +691,71 @@ export const DEFENSIVE_TOPICS = {
     num: '09',
     title: 'Patch Management',
     subtitle: 'Sealing the Cracks',
-    description: "Patch Management ensures software fixes are systematically tested, deployed, and verified on hundreds or thousands of corporate devices without breaking production.",
+    description: "Patch Management is the process of distributing and applying updates (known as \"patches\") to software, operating systems, and firmware across an organization's entire IT infrastructure.",
     badges: ["High Stability", "Automation", "Compliance"],
     stats: { time: "20 Hours", diff: "Beginner to Intermediate", prereq: "System Administration" },
     sections: [
       {
-        id: "sec-scope",
-        title: "1. The Scope of Patch Management",
-        content: "Over 80% of successful corporate data breaches occur because a known patch was left uninstalled. This domain offers incredible job stability.",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
+        content: "Think of code as a building. Over time, cracks (vulnerabilities and bugs) are discovered in the walls. Software vendors issue a patch to seal that crack. Patch Management ensures these fixes are systematically tested, deployed, and verified on hundreds or thousands of corporate devices without breaking existing systems or interrupting day-to-day business operations.",
         bulletPoints: [
-          "Core Responsibilities: Scheduling automated patch cycles, testing updates, handling failed installations, and generating compliance reports.",
-          "Industries Hiring: MSPs, large IT service providers (Wipro, TCS), and financial institutions.",
-          "Roles Available: Patch Management Specialist, Systems Administrator, Infrastructure Engineer."
+          "Roles Available: Patch Management Specialist, Systems Administrator, Endpoint Operations Engineer, IT Infrastructure Engineer, and Systems Management Lead.",
+          "Core Responsibilities: Scheduling automated patch cycles, testing updates in isolated environments, handling failed patch installations, and generating compliance verification reports.",
+          "Industries Hiring: Managed Service Providers (MSPs), large-scale IT service providers (like Wipro, TCS, and Infosys), financial institutions with strict security compliances, and large corporate data centers."
+        ]
+      },
+      {
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Highly Worth It for a Stable, High-Demand Career. While it might lack the \"flashiness\" of ethical hacking, Patch Management is one of the most critical security practices in the real world. Over 80% of successful corporate data breaches occur because a known patch was left uninstalled. Because keeping software updated is a continuous, never-ending cycle, this domain offers incredible job stability. It is perfect for individuals who excel at systems automation, structured schedules, and building flawless IT infrastructure pipelines."
+      },
+      {
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Salaries reflect the vast responsibilities of keeping large corporate networks stable and secure, with experienced automation professionals commanding excellent packages:",
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Fresher (0–2 Years)", role: "Junior Systems / Patch Administrator", range: "₹3.5 LPA – ₹6.0 LPA" },
+          { level: "Early Career (2–4 Years)", role: "Patch Management Specialist", range: "₹5.5 LPA – ₹9.5 LPA" },
+          { level: "Mid-Level (4–7 Years)", role: "Infrastructure & Automation Engineer", range: "₹9.5 LPA – ₹16.0 LPA" },
+          { level: "Senior (7+ Years)", role: "Patching Manager / Infrastructure Lead", range: "₹16.0 LPA – ₹27.0+ LPA" }
         ]
       },
       {
         id: "sec-roadmap",
-        title: "2. Patch Management Roadmap",
-        content: "Build your path across these areas:",
-        bulletPoints: [
-          "Step 1: Master OS Deployment. Learn Active Directory, GPOs, and Linux package managers (apt, yum).",
-          "Step 2: Learn Enterprise Tools. Master SCCM / MECM, Microsoft Intune, or Ivanti.",
-          "Step 3: Master Automation. Learn PowerShell or Bash scripting, and Ansible for configuration management."
+        title: "4. Step-by-Step Roadmap",
+        content: "To become an elite Patch Management and Infrastructure professional, build your path across these areas:",
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Master Operating System Deployment & Architecture",
+            points: [
+              "Learn enterprise Windows Server features (Active Directory, Group Policy Objects - GPOs).",
+              "Understand how Linux distributions package and deploy software updates (using package managers like apt, yum, or dnf)."
+            ]
+          },
+          {
+            title: "Step 2: Learn Enterprise Deployment Tools",
+            points: [
+              "Master central software deployment tools. The corporate gold standard for Windows infrastructure is Microsoft SCCM / MECM (Microsoft Endpoint Configuration Manager).",
+              "Gain hands-on experience with modern cloud-based patching systems like Microsoft Intune, Ivanti, or ManageEngine Patch Manager Plus."
+            ]
+          },
+          {
+            title: "Step 3: Master Automation and Scripting",
+            points: [
+              "Learn PowerShell (for Windows) or Bash scripting (for Linux) to automate patch tracking, reboots, and remote software delivery.",
+              "Explore configuration management tools like Ansible to push updates to multiple servers simultaneously."
+            ]
+          },
+          {
+            title: "Step 4: Top Certifications",
+            points: [
+              "Foundational: CompTIA Security+ or Linux Foundation Certified System Administrator (LFCS).",
+              "Platform Specific: Microsoft Certified: Endpoint Administrator Associate (MD-102)."
+            ]
+          }
         ]
       }
     ],
