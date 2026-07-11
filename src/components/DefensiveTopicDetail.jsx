@@ -228,29 +228,65 @@ export const DEFENSIVE_TOPICS = {
     stats: { time: "25 Hours", diff: "Intermediate to Advanced", prereq: "Cyber Landscape, Networking" },
     sections: [
       {
-        id: "sec-scope",
-        title: "1. The Scope of Threat Intelligence",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
         content: "Threat Intelligence bridges the gap between technical data and high-level corporate strategy. Its scope is divided into distinct layers that cater to different audiences within an organization.",
         bulletPoints: [
-          "Tactical/Operational: Tracking specific malware hashes, bad IP addresses, and domain names (Indicators of Compromise - IoCs) to block them automatically.",
+          "Tactical/Operational: Tracking specific malware hashes, bad IP addresses, and domain names (Indicators of Compromise) to block them automatically.",
           "Strategic: Analyzing high-level cyber threat trends, geopolitical events, and hacker group motives for company executives (CISO/CEO) to guide security budgets.",
           "Roles Available: Threat Intelligence Analyst, Cyber Threat Intelligence (CTI) Specialist, Threat Hunter, and Geopolitical Risk Analyst."
-        ],
-        callout: "💡 PROACTIVE SECURITY: As cyberattacks become more sophisticated and state-sponsored, organizations can no longer survive on reactive security alone. TI enables organizations to predict and prepare.",
-        example: "A Strategic TI analyst notices a rise in ransomware groups targeting the healthcare sector using a new phishing technique. They prepare a briefing for the hospital board to increase the budget for email security and staff training."
+        ]
+      },
+      {
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Highly Worth It, especially for analytical minds. As cyberattacks become more sophisticated and state-sponsored, organizations can no longer survive on reactive security alone. Proactive defense is the future, making Threat Intelligence professionals highly valuable. If you love deep research, connecting dots across the dark web, investigating attacker psychology, and writing analytical reports, this is an incredibly rewarding and elite specialization."
+      },
+      {
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Threat Intelligence is typically considered a mid-to-senior specialization, requiring a strong conceptual understanding of the cyber landscape, which commands premium compensation:",
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Early Career (1–2 Years)", role: "Junior CTI Analyst / Associate", range: "₹5.5 LPA – ₹9.5 LPA" },
+          { level: "Mid-Level (2–5 Years)", role: "Cyber Threat Intelligence Analyst", range: "₹9.0 LPA – ₹16.0 LPA" },
+          { level: "Senior (5+ Years)", role: "Senior CTI Consultant / Tier 3 Threat Hunter", range: "₹16.0 LPA – ₹28.0+ LPA" }
+        ]
       },
       {
         id: "sec-roadmap",
-        title: "2. Threat Intelligence Roadmap",
-        content: "To break into a Threat Intelligence role, follow this structured learning path to build your analytical and technical skills.",
-        bulletPoints: [
-          "Step 1: Understand Attacker Frameworks. Master the MITRE ATT&CK Framework and the Cyber Kill Chain.",
-          "Step 2: Learn Intelligence Gathering & OSINT. Perform Open Source Intelligence (OSINT) to track threat actors safely on dark web forums and threat feeds.",
-          "Step 3: Get Familiar with TI Platforms. Learn how threat data is shared using STIX/TAXII formats and practice with platforms like MISP, AlienVault OTX, or VirusTotal."
-        ],
-        subModules: [
-          { id: "mitre-attack", name: "MITRE ATT&CK Framework Mapping" },
-          { id: "stix-taxii", name: "Threat Sharing with STIX/TAXII" }
+        title: "4. Step-by-Step Roadmap",
+        content: "To break into a Threat Intelligence role, follow this structured path:",
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Understand Attacker Frameworks",
+            points: [
+              "Master the MITRE ATT&CK Framework (the global encyclopedia of hacker tactics).",
+              "Study the Cyber Kill Chain to understand the exact lifecycle of an attack."
+            ]
+          },
+          {
+            title: "Step 2: Learn Intelligence Gathering & OSINT",
+            points: [
+              "Learn how to perform Open Source Intelligence (OSINT) to track threat actors.",
+              "Understand how to safely navigate dark web forums, paste sites, and threat feeds."
+            ]
+          },
+          {
+            title: "Step 3: Get Familiar with TI Platforms & Standards",
+            points: [
+              "Learn how threat data is shared globally using formats like STIX/TAXII.",
+              "Practice using Threat Intelligence Platforms (TIPs) like MISP (Malware Information Sharing Platform), AlienVault OTX, or VirusTotal."
+            ]
+          },
+          {
+            title: "Step 4: Top Certifications",
+            points: [
+              "Foundational/Mid-Level: CompTIA CySA+ or EC-Council Certified Threat Intelligence Analyst (CTIA).",
+              "Advanced: GCTI (GIAC Cyber Threat Intelligence — the gold standard for high-tier TI)."
+            ]
+          }
         ]
       }
     ],
