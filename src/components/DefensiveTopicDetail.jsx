@@ -300,7 +300,7 @@ export const DEFENSIVE_TOPICS = {
     num: '04',
     title: 'Digital Forensics',
     subtitle: 'The CSI of the Digital World',
-    description: "Digital Forensics is the CSI of the digital world. When a cybercrime occurs, digital forensics specialists step in to investigate. Using highly specialized tools, analysts collect, preserve, and analyze digital evidence to legally prove what happened.",
+    description: "Digital Forensics is the CSI of the digital world. When a cybercrime occurs—whether it is a data breach, ransomware attack, or internal data theft—digital forensics specialists step in to investigate. Using highly specialized tools, analysts collect, preserve, and analyze digital evidence to legally prove what happened.",
     badges: ["Analytical", "Incident Root-Cause", "Investigation"],
     stats: { time: "30 Hours", diff: "Intermediate", prereq: "System Internals, Networking" },
     sections: [
@@ -309,30 +309,61 @@ export const DEFENSIVE_TOPICS = {
         title: "1. The Scope of Digital Forensics",
         content: "Digital Forensics bridges the gap between deep computer science and the legal system. Its scope spans corporate internal investigations, corporate espionage, cybersecurity incident root-cause analysis, and law enforcement.",
         bulletPoints: [
+          "Roles Available: Digital Forensics Analyst, Computer Forensic Investigator, Mobile Forensics Specialist, Forensic Consultant, and DFIR Engineer.",
           "Core Responsibilities: Creating bit-stream disk images of compromised drives, recovering deleted files, examining registry keys, and constructing clear timelines of hacker activity.",
-          "Industries Hiring: Big 4 consulting firms (Deloitte, EY, PwC, KPMG), private cybersecurity consulting companies, corporate internal investigation units, banks, and law enforcement labs.",
-          "Roles Available: Digital Forensics Analyst, Computer Forensic Investigator, Mobile Forensics Specialist, Forensic Consultant, and DFIR Engineer."
-        ],
-        callout: "EXTREMELY WORTH IT: Companies face massive liabilities during breaches and need certified experts to accurately prove what was stolen. If you love deep analytical work, this is highly prestigious."
+          "Industries Hiring: Big 4 consulting firms (Deloitte, EY, PwC, KPMG), private cybersecurity consulting companies, corporate internal investigation units, banks, and law enforcement/government defense labs."
+        ]
+      },
+      {
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Extremely Worth It, especially if you love deep analytical work. Digital Forensics is a prestigious and highly specialized field. Since companies face massive liabilities during data breaches, they need certified experts to accurately prove what was stolen and what wasn't. The job requires meticulous attention to detail and patience, as you may spend days digging through hexadecimal data or system RAM. If you enjoy solving complex mysteries and technical deep-dives, it is an incredibly fulfilling career."
       },
       {
         id: "sec-salary",
-        title: "2. Expected Salary (2026 Trends)",
+        title: "3. Expected Salary (2026 Trends)",
         content: "Digital Forensics requires a steep learning curve and precise procedural knowledge, leading to excellent salary potential:",
-        bulletPoints: [
-          "Early Career (1–3 Years): Junior Digital Forensics Analyst / Associate | ₹5.5 LPA – ₹8.5 LPA",
-          "Mid-Level (3–5 Years): Digital Forensics Specialist / DFIR Consultant | ₹9.0 LPA – ₹16.0 LPA",
-          "Senior (5+ Years): Lead Forensic Investigator / Subject Matter Expert | ₹16.0 LPA – ₹30.0+ LPA"
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Early Career (1–3 Years)", role: "Junior Digital Forensics Analyst / Associate", range: "₹5.5 LPA – ₹8.5 LPA" },
+          { level: "Mid-Level (3–5 Years)", role: "Digital Forensics Specialist / DFIR Consultant", range: "₹9.0 LPA – ₹16.0 LPA" },
+          { level: "Senior (5+ Years)", role: "Lead Forensic Investigator / Subject Matter Expert", range: "₹16.0 LPA – ₹30.0+ LPA" }
         ]
       },
       {
         id: "sec-roadmap",
-        title: "3. Step-by-Step Roadmap",
+        title: "4. Step-by-Step Roadmap",
         content: "To become a skilled Digital Forensics professional, follow this pathway:",
-        bulletPoints: [
-          "Step 1: Learn Core System Internals. Master file systems (NTFS, FAT32, ext4) and how they store data on a hard drive. Understand Windows and Linux registry structures, system artifacts, and memory management.",
-          "Step 2: Understand the Chain of Custody. Learn the strict legal rules for preserving evidence. If you compromise a file's integrity during collection, it cannot be used in court.",
-          "Step 3: Master Industry Tools. Get hands-on experience with popular open-source and commercial forensic suites like Autopsy, FTK Imager, EnCase, Volatility (for memory forensics), and Cellebrite (for mobile forensics)."
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Learn Core System Internals",
+            points: [
+              "Master file systems (NTFS, FAT32, ext4) and how they store data on a hard drive.",
+              "Understand Windows and Linux registry structures, system artifacts, and memory management."
+            ]
+          },
+          {
+            title: "Step 2: Understand the Chain of Custody",
+            points: [
+              "Learn the strict legal rules for preserving evidence.",
+              "If you compromise a file's integrity during collection, it cannot be used in court."
+            ]
+          },
+          {
+            title: "Step 3: Master Industry Tools",
+            points: [
+              "Get hands-on experience with popular open-source and commercial forensic suites.",
+              "Learn tools like Autopsy, FTK Imager, EnCase, Volatility (for memory forensics), and Cellebrite (for mobile forensics)."
+            ]
+          },
+          {
+            title: "Step 4: Top Certifications",
+            points: [
+              "Foundational/Mid-Level: CHFI (Computer Hacking Forensic Investigator) or MCFE (Magnet Certified Forensic Examiner).",
+              "Advanced/Gold Standard: GCFA (GIAC Certified Forensic Analyst) or GCFE (GIAC Certified Forensic Examiner)."
+            ]
+          }
         ]
       }
     ],
