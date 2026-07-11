@@ -531,28 +531,71 @@ export const DEFENSIVE_TOPICS = {
     num: '07',
     title: 'Endpoint Security',
     subtitle: 'Defending the Perimeter',
-    description: "Endpoint Security protects individual devices (laptops, phones, servers) that connect to an organization's network, detecting and blocking threats in real time.",
+    description: "Endpoint Security is the practice of protecting individual devices that connect to an organization's network. These devices—referred to as \"endpoints\"—include employee laptops, smartphones, desktop computers, tablets, and even network servers.",
     badges: ["EDR Mastery", "System Internals", "Highly Valued"],
     stats: { time: "25 Hours", diff: "Intermediate", prereq: "OS Administration" },
     sections: [
       {
-        id: "sec-scope",
-        title: "1. The Scope of Endpoint Security",
-        content: "With remote work and BYOD policies, the corporate perimeter has shifted directly to the endpoint.",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
+        content: "With the massive rise of remote work and Bring Your Own Device (BYOD) corporate policies, the corporate perimeter has shifted directly to the endpoint. Managing these decentralized devices has created a large, dedicated job market.",
         bulletPoints: [
-          "Core Responsibilities: Deploying EDR agents, managing MDM profiles, application whitelisting, and host-based firewalls.",
-          "Industries Hiring: Global enterprises, remote-first companies, and MSSPs.",
-          "Roles Available: Endpoint Security Engineer, EDR Specialist, System Security Administrator."
+          "Roles Available: Endpoint Security Engineer, EDR Specialist, System Security Administrator, Workplace Security Engineer, and Endpoint Management Specialist.",
+          "Core Responsibilities: Deploying and maintaining Endpoint Detection and Response (EDR) agents, configuring mobile device management (MDM) profiles, managing application whitelisting, and troubleshooting host-based firewall configurations.",
+          "Industries Hiring: Global corporate enterprises, tech corporations, remote-first companies, and Managed Security Service Providers (MSSPs)."
+        ]
+      },
+      {
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Highly Worth It. Endpoint Security is an incredibly stable and vital sub-field. As long as employees use laptops and phones to do their jobs, companies will require endpoint protection experts. It is less abstract than network or SIEM security because you are working directly with operating systems (Windows, macOS, Linux) and real-world user devices. If you enjoy OS internals, system management, and practical, device-level defense, this is an excellent area to specialize in."
+      },
+      {
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Endpoint security skills, especially around modern EDR and XDR (Extended Detection and Response) platforms, are commanding top-tier market rates:",
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Fresher (0–1 Year)", role: "Associate Endpoint Engineer / IT Security Trainee", range: "₹3.5 LPA – ₹6.0 LPA" },
+          { level: "Early Career (1–3 Years)", role: "Endpoint Security Engineer / Security Ops Engineer", range: "₹5.5 LPA – ₹10.0 LPA" },
+          { level: "Mid-Level (3–5 Years)", role: "Senior Endpoint / EDR Specialist", range: "₹10.0 LPA – ₹18.0 LPA" },
+          { level: "Senior (5+ Years)", role: "Lead Security Engineer / Infrastructure Architect", range: "₹18.0 LPA – ₹32.0+ LPA" }
         ]
       },
       {
         id: "sec-roadmap",
-        title: "2. Endpoint Security Roadmap",
-        content: "Build your expertise through these phases:",
-        bulletPoints: [
-          "Step 1: Focus on OS Internals. Understand Windows/Linux/macOS processes, registries, and local access controls.",
-          "Step 2: Learn Modern Tooling. Move past basic AV. Learn behavioral EDR platforms (CrowdStrike, SentinelOne) and MDM tools (Intune).",
-          "Step 3: Master Device Hardening. Implement CIS Benchmarks to lock down operating systems."
+        title: "4. Step-by-Step Roadmap",
+        content: "To become a professional Endpoint Security Engineer, build your expertise through these phases:",
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Focus on Operating System Internals",
+            points: [
+              "Gain a deep understanding of Windows, Linux, and macOS administration.",
+              "Learn how system processes run, how registries operate, and how local user access controls function."
+            ]
+          },
+          {
+            title: "Step 2: Learn Modern Endpoint Tooling (EDR & MDM)",
+            points: [
+              "Move past basic, traditional antivirus concepts. Learn how modern EDR (Endpoint Detection and Response) platforms use behavioral analysis.",
+              "Get familiar with enterprise suites like CrowdStrike Falcon, Microsoft Defender for Endpoint, SentinelOne, or Trend Micro.",
+              "Learn Mobile Device Management (MDM) tools like Microsoft Intune or VMware Workspace ONE."
+            ]
+          },
+          {
+            title: "Step 3: Master Device Hardening Principles",
+            points: [
+              "Learn how to implement benchmark configurations (like CIS Benchmarks) to lock down operating systems against standard exploit techniques."
+            ]
+          },
+          {
+            title: "Step 4: Top Certifications",
+            points: [
+              "Foundational/Mid-Level: CompTIA Security+, Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900).",
+              "Advanced: CrowdStrike Certified Falcon Administrator or Microsoft SC-200."
+            ]
+          }
         ]
       }
     ],
