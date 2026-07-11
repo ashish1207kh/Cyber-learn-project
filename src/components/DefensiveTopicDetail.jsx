@@ -768,28 +768,71 @@ export const DEFENSIVE_TOPICS = {
     num: '10',
     title: 'User Awareness Training',
     subtitle: 'Building the Human Firewall',
-    description: "Educating employees about cyber threats, organizational security policies, and standard cyber hygiene to prevent social engineering attacks.",
+    description: "User Awareness Training (also known as Security Awareness Training) is the process of educating employees and general users about cyber threats, organizational security policies, and standard cyber hygiene practices.",
     badges: ["Low Stress", "Psychology", "Program Management"],
     stats: { time: "15 Hours", diff: "Beginner", prereq: "Communication Skills, Basic Cyber Concepts" },
     sections: [
       {
-        id: "sec-scope",
-        title: "1. The Scope of User Awareness",
-        content: "Over 80% of security incidents involve human error. User Awareness Training uses interactive modules and simulated phishing to strengthen the human perimeter.",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
+        content: "Because technological defenses like firewalls and anti-malware software cannot stop an employee from willingly handing over credentials on a highly realistic fake page, hackers frequently target human psychology through social engineering. As generative AI lowers the barrier for attackers to create hyper-personalized phishing emails, deepfake voice clones, and synthetic identity fraud, the human element has become a massive corporate priority.",
         bulletPoints: [
-          "Core Responsibilities: Launching fake phishing simulations, designing role-specific modules, and tracking behavioral change metrics.",
-          "Industries Hiring: MNCs, global consultancies, banks, and dedicated training platforms (KnowBe4).",
-          "Roles Available: Security Awareness Program Manager, GRC Analyst, Cyber Security Culture Specialist."
+          "Roles Available: Security Awareness Program Manager, Cyber Security Awareness Trainer, GRC Analyst, and Cyber Security Culture Specialist.",
+          "Core Responsibilities: Launching fake phishing emails (simulations) to track click rates, designing role-specific modules, and tracking behavioral change metrics across the workforce.",
+          "Industries Hiring: Major multinational corporations (MNCs), global consultancies, banks, e-commerce giants, and dedicated security training platforms (like KnowBe4 or Infosec Institute)."
+        ]
+      },
+      {
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Highly Worth It, especially if you have a balance of IT and communication skills. Over 80% of security incidents involve some form of human error or social engineering tactic, meaning companies cannot ignore user education. If you enjoy a mix of cybersecurity concepts, teaching, psychology, and strategic program planning, this is an excellent and low-stress career path. It offers steady business hours and doesn't involve the late-night emergency fire-fighting found in offensive or infrastructure operations."
+      },
+      {
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Security Awareness specialists are typically aligned with the GRC or security operations divisions, drawing highly competitive compensation as the program scale increases:",
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Fresher (0–2 Years)", role: "Cybersecurity Associate / Corporate Trainer", range: "₹4.0 LPA – ₹6.5 LPA" },
+          { level: "Early Career (2–4 Years)", role: "Security Awareness Analyst / Coordinator", range: "₹6.0 LPA – ₹10.5 LPA" },
+          { level: "Mid-Level (4–7 Years)", role: "Security Awareness Program Manager / Lead", range: "₹10.5 LPA – ₹18.0 LPA" },
+          { level: "Senior (7+ Years)", role: "GRC Manager / Director of Security Culture", range: "₹18.0 LPA – ₹32.0+ LPA" }
         ]
       },
       {
         id: "sec-roadmap",
-        title: "2. User Awareness Roadmap",
-        content: "Build a career running enterprise-grade training programs:",
-        bulletPoints: [
-          "Step 1: Understand Social Engineering. Study Phishing, Smishing, Vishing, Quishing, and psychological triggers (urgency, fear).",
-          "Step 2: Learn Platform Management. Gain experience with KnowBe4, PhishMe, or Defender for Office 365.",
-          "Step 3: Analytics & Content Creation. Convert dry compliance text into engaging lessons and analyze risk metrics."
+        title: "4. Step-by-Step Roadmap",
+        content: "To build a career running enterprise-grade Security Awareness programs, follow this path:",
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Understand Social Engineering & Psychology",
+            points: [
+              "Study the classic vectors used by attackers: Phishing (email), Smishing (SMS), Vishing (voice), Quishing (QR codes), and AI deepfakes.",
+              "Learn the common triggers hackers exploit, such as fake executive authority, extreme urgency, curiosity, or fear."
+            ]
+          },
+          {
+            title: "Step 2: Learn Platform Management",
+            points: [
+              "Gain experience with automated enterprise training ecosystems.",
+              "Learn how platforms like KnowBe4, PhishMe, or Microsoft Defender for Office 365 track click metrics, report speeds, and automatically deliver just-in-time micro-learning."
+            ]
+          },
+          {
+            title: "Step 3: Combine Analytics with Content Creation",
+            points: [
+              "Develop strong presentation and storytelling skills to convert dry compliance text into short, engaging lessons.",
+              "Learn how to analyze data to prove to management that security risks are decreasing over time."
+            ]
+          },
+          {
+            title: "Step 4: Top Certifications",
+            points: [
+              "Foundational: CompTIA Security+ or Certified Ethical Hacker (CEH) to fully understand attack methodologies.",
+              "Management Track: SSAP (SANS Security Awareness Professional) or certifications focusing on Governance, Risk, and Compliance (like CISA or CRISC)."
+            ]
+          }
         ]
       }
     ],
