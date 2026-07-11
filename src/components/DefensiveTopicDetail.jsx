@@ -459,23 +459,66 @@ export const DEFENSIVE_TOPICS = {
     stats: { time: "20 Hours", diff: "Intermediate", prereq: "System Administration" },
     sections: [
       {
-        id: "sec-scope",
-        title: "1. The Scope of Vulnerability Management",
-        content: "Think of it like a healthcare check-up for a corporate network. Use automated scanning tools to continuously audit servers and applications.",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
+        content: "Think of it like a healthcare check-up for a corporate network. Use automated scanning tools to continuously audit servers, applications, and operating systems for known flaws, misconfigurations, or missing security updates.",
         bulletPoints: [
-          "Core Responsibilities: Configuring security scans, filtering false positives, scoring risks using CVSS, and tracking patch progress.",
-          "Industries Hiring: Global Tech Hubs, Banking, Healthcare, and Major IT Consultancies.",
-          "Roles Available: Vulnerability Management Analyst, Threat & Vulnerability Engineer, Vulnerability Program Lead."
+          "Roles Available: Vulnerability Management Analyst, Vulnerability Assessment Specialist, Threat & Vulnerability Engineer, and Vulnerability Management Program Lead.",
+          "Core Responsibilities: Configuring and scheduling enterprise-wide security scans, filtering out false positives, scoring risks using global systems (like CVSS), and tracking patch remediation progress.",
+          "Industries Hiring: Global Tech Hubs, Banking & Financial Institutions (BFSI), Healthcare providers, and Major IT Consultancies (like Infosys, TCS, and LTIMindtree)."
+        ]
+      },
+      {
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Highly Worth It. Vulnerability Management is a crucial and highly sustainable career track. Because software code is never perfect, fresh vulnerabilities will always exist, meaning companies need permanent teams to handle them. Unlike traditional SOC roles, it rarely requires graveyard shifts since scanning and patch coordination usually follow steady business hours. If you like structured problem-solving, risk calculation, and working closely with different IT engineering teams, this domain is an excellent choice."
+      },
+      {
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Vulnerability Management specialists command highly competitive compensation due to the direct impact their risk assessments have on corporate security posture:",
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Fresher (0–2 Years)", role: "Junior Vulnerability Analyst", range: "₹4.0 LPA – ₹6.5 LPA" },
+          { level: "Early Career (2–4 Years)", role: "Threat & Vulnerability Analyst", range: "₹6.0 LPA – ₹11.0 LPA" },
+          { level: "Mid-Level (4–7 Years)", role: "Senior Vulnerability Engineer", range: "₹11.0 LPA – ₹18.0 LPA" },
+          { level: "Senior (7+ Years)", role: "Vulnerability Program Lead / Architect", range: "₹18.0 LPA – ₹32.0+ LPA" }
         ]
       },
       {
         id: "sec-roadmap",
-        title: "2. Vulnerability Management Roadmap",
-        content: "To kickstart a career, map out this progression:",
-        bulletPoints: [
-          "Step 1: Understand Risk Frameworks. Master CVE naming and the CVSS scoring system.",
-          "Step 2: Master Scanning Tools. Operate Nessus, Qualys, or Rapid7 InsightVM safely in production.",
-          "Step 3: Learn Remediation Pipelines. Understand how patches are rolled out in enterprise networks."
+        title: "4. Step-by-Step Roadmap",
+        content: "To kickstart a career in Vulnerability Management, map out this progression:",
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Understand Risk Frameworks & Standards",
+            points: [
+              "Learn how vulnerabilities are named and tracked globally via the CVE (Common Vulnerabilities and Exposures) database.",
+              "Master the CVSS (Common Vulnerability Scoring System) to understand how severity scores (Low, Medium, High, Critical) are calculated."
+            ]
+          },
+          {
+            title: "Step 2: Master Enterprise Scanning Tools",
+            points: [
+              "Learn how to operate market-leading vulnerability scanners like Tenable Nessus, Qualys Guard, or Rapid7 InsightVM.",
+              "Understand how to safely scan without disrupting live production environments."
+            ]
+          },
+          {
+            title: "Step 3: Learn Patching & Remediation Pipelines",
+            points: [
+              "Get comfortable with how software updates are rolled out in enterprise networks.",
+              "Learn systems like Windows Server Update Services (WSUS) or cloud-native patch management systems."
+            ]
+          },
+          {
+            title: "Step 4: Top Certifications",
+            points: [
+              "Foundational/Mid-Level: CompTIA Security+, CompTIA CySA+ (Cybersecurity Analyst).",
+              "Tool-Specific: Qualys Certified Specialist or Tenable Certified Network Auditor."
+            ]
+          }
         ]
       }
     ],
