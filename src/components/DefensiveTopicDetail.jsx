@@ -13,13 +13,15 @@ import {
 import Header from './Header';
 import analystImg from '../assets/cyber-analyst-blue.jpg';
 
-function SalaryTable() {
-  const tiers = [
-    { level: "Fresher (0–1 Year)", role: "SOC Analyst L1 / Trainee", range: "₹3.5 LPA – ₹6.5 LPA" },
-    { level: "Early Career (1–3 Years)", role: "Security Monitoring Analyst", range: "₹5.0 LPA – ₹9.0 LPA" },
-    { level: "Mid-Level (3–5 Years)", role: "SOC Analyst L2 / Senior Analyst", range: "₹8.0 LPA – ₹15.0 LPA" },
-    { level: "Senior (5+ Years)", role: "SOC L3 / SIEM Architect / Lead", range: "₹15.0 LPA – ₹25.0+ LPA" }
-  ];
+function SalaryTable({ tiers }) {
+  if (!tiers) {
+    tiers = [
+      { level: "Fresher (0–1 Year)", role: "SOC Analyst L1 / Trainee", range: "₹3.5 LPA – ₹6.5 LPA" },
+      { level: "Early Career (1–3 Years)", role: "Security Monitoring Analyst", range: "₹5.0 LPA – ₹9.0 LPA" },
+      { level: "Mid-Level (3–5 Years)", role: "SOC Analyst L2 / Senior Analyst", range: "₹8.0 LPA – ₹15.0 LPA" },
+      { level: "Senior (5+ Years)", role: "SOC L3 / SIEM Architect / Lead", range: "₹15.0 LPA – ₹25.0+ LPA" }
+    ];
+  }
 
   return (
     <div className="salary-table-container">
@@ -45,37 +47,39 @@ function SalaryTable() {
   );
 }
 
-function SiemRoadmapSteps() {
-  const steps = [
-    {
-      title: "Step 1: Core Fundamentals",
-      points: [
-        "Master basic Networking concepts (OSI Model, TCP/IP, IP addressing).",
-        "Learn Operating System basics (Linux commands and Windows Event Logs)."
-      ]
-    },
-    {
-      title: "Step 2: Security & Log Basics",
-      points: [
-        "Learn what common security devices do (Firewalls, IDS/IPS, Endpoint Detection & Response).",
-        "Understand how to read common log files (Syslog, HTTP logs, Authentication logs)."
-      ]
-    },
-    {
-      title: "Step 3: Master SIEM Tooling",
-      points: [
-        "Get hands-on experience with market-leading platforms. You can create free lab environments for Splunk (Splunk BHT) or learn Microsoft Sentinel via Azure free trials.",
-        "Practice writing basic log queries (SPL for Splunk, KQL for Microsoft Sentinel)."
-      ]
-    },
-    {
-      title: "Step 4: Certifications to Stand Out",
-      points: [
-        "Entry Level: CompTIA Security+ or Splunk Core Certified Power User.",
-        "Advanced Level: CompTIA CySA+ (Cybersecurity Analyst) or Microsoft SC-200."
-      ]
-    }
-  ];
+function SiemRoadmapSteps({ steps }) {
+  if (!steps) {
+    steps = [
+      {
+        title: "Step 1: Core Fundamentals",
+        points: [
+          "Master basic Networking concepts (OSI Model, TCP/IP, IP addressing).",
+          "Learn Operating System basics (Linux commands and Windows Event Logs)."
+        ]
+      },
+      {
+        title: "Step 2: Security & Log Basics",
+        points: [
+          "Learn what common security devices do (Firewalls, IDS/IPS, Endpoint Detection & Response).",
+          "Understand how to read common log files (Syslog, HTTP logs, Authentication logs)."
+        ]
+      },
+      {
+        title: "Step 3: Master SIEM Tooling",
+        points: [
+          "Get hands-on experience with market-leading platforms. You can create free lab environments for Splunk (Splunk BHT) or learn Microsoft Sentinel via Azure free trials.",
+          "Practice writing basic log queries (SPL for Splunk, KQL for Microsoft Sentinel)."
+        ]
+      },
+      {
+        title: "Step 4: Certifications to Stand Out",
+        points: [
+          "Entry Level: CompTIA Security+ or Splunk Core Certified Power User.",
+          "Advanced Level: CompTIA CySA+ (Cybersecurity Analyst) or Microsoft SC-200."
+        ]
+      }
+    ];
+  }
 
   return (
     <div className="siem-roadmap-container">
@@ -143,47 +147,70 @@ export const DEFENSIVE_TOPICS = {
     num: '02',
     title: 'Incident Response',
     subtitle: 'The Elite SWAT Team of Cyber Security',
-    description: "Incident Response (IR) is the structured process of detecting, isolating, and eradicating cyber threats to minimize business disruption during a security breach.",
+    description: "Incident Response is a structured process that organizations use to handle and manage the aftermath of a cyberattack, data breach, or security incident. The main goal is to limit damage, contain the threat, erase the attacker's footprint, and restore normal business operations as quickly and securely as possible.",
     badges: ["Core Skill", "High Stakes", "Fast Paced"],
     stats: { time: "30 Hours", diff: "Intermediate to Advanced", prereq: "SIEM Monitoring, Systems Internals" },
     sections: [
       {
-        id: "sec-ir-phases",
-        title: "1. NIST / SANS Incident Response Phases",
-        content: "A professional incident responder follows a strict, step-by-step framework to respond to attacks. This prevents panic and ensures evidence is preserved.",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
+        content: "When a major ransomware attack or data breach hits a company, the Incident Response team takes full control. The scope spans a mix of technical panic-management and forensic deep-dives.",
         bulletPoints: [
-          "Preparation: Hardening systems, training personnel, and creating response playbooks before an incident happens.",
-          "Identification: Detecting threat alerts and verifying if they are actual security incidents.",
-          "Containment: Isolating compromised hosts from the network (e.g., placing a machine in a sandbox VLAN) to stop lateral infection.",
-          "Eradication: Removing all threat files, killing active hacker shells, and patching the initial entry loophole.",
-          "Recovery: Safely restoring production systems and verifying that no malicious activities remain.",
-          "Lessons Learned: Documenting the incident to improve future defenses and update playbooks."
-        ],
-        example: "A SOC analyst detects Ransomware encrypting files on a server. Following the IR playbook, they immediately isolate the server (Containment) by disabling its network interface. They then scan the file system, delete the ransomware executable (Eradication), and restore files from an offline backup (Recovery).",
-        subModules: [
-          { id: "sans-incident-handling", name: "SANS 6-Step Incident Handling Guide" },
-          { id: "playbook-creation", name: "Writing Incident Response Playbooks" }
+          "Roles Available: Incident Responder, CSIRT (Computer Security Incident Response Team) Analyst, Threat Hunter, Incident Commander, and Cyber Forensic Investigator.",
+          "Core Responsibilities: Monitoring live malware behavior, containing compromised networks, isolating infected servers, and patching the initial point of entry.",
+          "Industries Hiring: Large enterprises, critical infrastructure, government agencies, defense sectors, and specialized IR consulting firms (like Mandiant, CrowdStrike, or Palo Alto Unit 42)."
         ]
       },
       {
-        id: "sec-forensics",
-        title: "2. RAM & File System Analysis",
-        content: "Attackers often hide malware inside running system memory. Responders must acquire and analyze memory dumps and disk images to find indicators of compromise.",
-        bulletPoints: [
-          "Memory Forensics: Analyzing active RAM to locate running malicious processes, active network connections, and unencrypted credentials.",
-          "Disk Forensics: Parsing file system metadata (like MFT or journal logs) to find deleted malware files and identify file creation dates.",
-          "EDR (Endpoint Detection & Response): Using agent software (like CrowdStrike, SentinelOne, or Wazuh) to query system memory and processes across thousands of endpoints."
-        ],
-        command: "vol.py -f memory_dump.raw windows.info",
-        commandExpl: [
-          { flag: "vol.py", desc: "Volatility Command: Invokes the Volatility memory forensics framework tool." },
-          { flag: "-f memory_dump.raw", desc: "File: Specifies the raw file system memory image to analyze." },
-          { flag: "windows.info", desc: "Plugin: Extracts operating system info, kernel versions, and architecture." }
-        ],
-        example: "An analyst performs memory forensics on a compromised workstation. Using Volatility, they list active network sockets and discover an unknown process 'svchost.exe' connected to an external malicious server. This reveals a fileless Trojan executing directly in memory.",
-        subModules: [
-          { id: "volatility-deep", name: "Volatility 3 Advanced Memory Plugins" },
-          { id: "timeline-forensics", name: "Timeline Analysis & Supertimeline Creation" }
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Highly Worth It, but Demanding. Incident Response is one of the highest-paying and most critical sub-fields in cybersecurity. However, it is a high-stakes, fast-paced job. When an incident occurs, teams often work around the clock under intense pressure. If you love solving complex puzzles under adrenaline-pumping, real-world conditions, it is incredibly rewarding."
+      },
+      {
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Because IR requires a deeper level of technical expertise than basic monitoring, the salary curve is steeper:",
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Early Career (1–3 Years)", role: "Incident Responder / L2 Analyst", range: "₹6.0 LPA – ₹10.0 LPA" },
+          { level: "Mid-Level (3–5 Years)", role: "Senior IR Specialist / Consultant", range: "₹10.0 LPA – ₹18.0 LPA" },
+          { level: "Senior (5+ Years)", role: "IR Consultant / Incident Commander", range: "₹18.0 LPA – ₹32.0+ LPA" }
+        ]
+      },
+      {
+        id: "sec-roadmap",
+        title: "4. Step-by-Step Roadmap",
+        content: "To transition into or start a career in Incident Response, focus on this path:",
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Deep Systems Architecture Knowledge",
+            points: [
+              "Learn Windows and Linux internals (processes, registry, file systems, and how malware hides in memory).",
+              "Understand enterprise networking models and protocols inside out."
+            ]
+          },
+          {
+            title: "Step 2: Learn the Standard IR Frameworks",
+            points: [
+              "Study the standard incident response lifecycles defined by NIST and SANS:",
+              "1. Preparation, 2. Identification, 3. Containment, 4. Eradication, 5. Recovery, 6. Lessons Learned."
+            ]
+          },
+          {
+            title: "Step 3: Hands-on Containment & Analysis",
+            points: [
+              "Practice malware analysis basics (understanding how ransomware or trojans execute).",
+              "Learn how to use endpoint security and EDR (Endpoint Detection and Response) tools like CrowdStrike Falcon, Carbon Black, or open-source alternatives like Wazuh."
+            ]
+          },
+          {
+            title: "Step 4: Certifications to Stand Out",
+            points: [
+              "Mid-Level: CompTIA CySA+ or GCIH (GIAC Certified Incident Handler — highly respected in the industry).",
+              "Advanced: ECIH (EC-Council Certified Incident Handler) or CHFI (Computer Hacking Forensic Investigator)."
+            ]
+          }
         ]
       }
     ],
@@ -772,8 +799,8 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.id === 'sec-logs' && <LogFlowDiagram />}
                       {sec.id === 'sec-ir-phases' && <IncidentResponseDiagram />}
                       {sec.id === 'sec-forensics' && <MemoryStackDiagram />}
-                      {sec.customComponent === 'SalaryTable' && <SalaryTable />}
-                      {sec.customComponent === 'SiemRoadmapSteps' && <SiemRoadmapSteps />}
+                      {sec.customComponent === 'SalaryTable' && <SalaryTable tiers={sec.salaryTiers} />}
+                      {sec.customComponent === 'SiemRoadmapSteps' && <SiemRoadmapSteps steps={sec.roadmapSteps} />}
 
                       {sec.command && (
                         <div style={{ margin: '24px 0' }}>
