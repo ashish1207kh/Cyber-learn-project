@@ -376,34 +376,78 @@ export const DEFENSIVE_TOPICS = {
     num: '05',
     title: 'Network Security',
     subtitle: 'The Enterprise Defense Shield',
-    description: "Network Security is the practice of protecting a company's entire digital transport system - local networks, routers, switches, and cloud pipelines - from unauthorized access.",
+    description: "Network Security is the practice of protecting a company's entire digital transport system—its local networks, wireless connections, routers, switches, and cloud pipelines—from unauthorized access, misuse, or cyberattacks.",
     badges: ["Core Infrastructure", "Stable Career", "Architecture"],
     stats: { time: "25 Hours", diff: "Beginner to Intermediate", prereq: "TCP/IP, Routing" },
     sections: [
       {
-        id: "sec-scope",
-        title: "1. The Scope of Network Security",
-        content: "As organizations shift to hybrid work environments and massive cloud networks, the demand for robust network security has never been higher. It covers managing perimeter defenses, secure remote access, and secure data transit.",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
+        content: "If data is the cargo moving through a corporate infrastructure, Network Security ensures that only authorized traffic can pass. The scope covers managing perimeter defenses, secure remote access, and secure data transit.",
         bulletPoints: [
-          "Core Responsibilities: Designing secure network zones, managing Enterprise Firewalls, setting up VPNs, implementing Zero Trust architectures, and monitoring traffic.",
-          "Industries Hiring: Telecoms, ISPs, financial institutions, and cloud providers (AWS, Azure, GCP).",
-          "Roles Available: Network Security Engineer, Network Security Administrator, Infrastructure Security Engineer."
+          "Roles Available: Network Security Engineer, Network Security Administrator, Network Security Analyst, Infrastructure Security Engineer, and Network Architect.",
+          "Core Responsibilities: Designing and configuring secure network zones, managing Enterprise Firewalls, setting up Virtual Private Networks (VPNs), implementing Zero Trust architectures, and monitoring network traffic for anomalies.",
+          "Industries Hiring: Telecommunications companies, ISPs, financial institutions, cloud service providers (AWS, Azure, Google Cloud), and IT infrastructure giants."
+        ]
+      },
+      {
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "Highly Worth It. Network Security is a cornerstone of the cybersecurity ecosystem. Almost every organization requires a team to maintain and secure its physical or cloud network architecture. It provides an exceptionally stable career path because the foundational principles of networking rarely change drastically—they just adapt to new technologies like the cloud. If you like configuring systems, understanding how data travels across the globe, and building secure infrastructures from scratch, this field is perfect for you."
+      },
+      {
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Network Security specialists are highly valued because a single network misconfiguration can shut down an entire multi-million-dollar business:",
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Fresher (0–1 Year)", role: "Network Security Associate / Trainee", range: "₹3.5 LPA – ₹6.0 LPA" },
+          { level: "Early Career (1–3 Years)", role: "Network Security Engineer", range: "₹5.5 LPA – ₹9.0 LPA" },
+          { level: "Mid-Level (3–5 Years)", role: "Senior Network Security Engineer", range: "₹9.0 LPA – ₹16.0 LPA" },
+          { level: "Senior (5+ Years)", role: "Network Security Architect / Lead", range: "₹16.0 LPA – ₹28.0+ LPA" }
         ]
       },
       {
         id: "sec-roadmap",
-        title: "2. Network Security Roadmap",
-        content: "Build a successful career by following this structured blueprint:",
-        bulletPoints: [
-          "Step 1: Master Networking Fundamentals. Learn OSI, TCP/IP, subnetting, DNS, and use Wireshark to intercept packets.",
-          "Step 2: Learn Enterprise Devices. Understand Next-Gen Firewalls (NGFWs), IDS/IPS, Proxy servers, and ACLs.",
-          "Step 3: Dive into Cloud & Modern Concepts. Study Cloud Networking (VPCs) and Zero Trust Network Access (ZTNA)."
+        title: "4. Step-by-Step Roadmap",
+        content: "To build a successful career in Network Security, follow this structured blueprint:",
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Master Networking Fundamentals First",
+            points: [
+              "Learn the OSI Model, TCP/IP protocols, subnetting, DNS, DHCP, and routing protocols (OSPF, BGP).",
+              "Get comfortable using Wireshark to intercept, read, and analyze live network packets."
+            ]
+          },
+          {
+            title: "Step 2: Learn Enterprise Network Security Devices",
+            points: [
+              "Understand how Next-Generation Firewalls (NGFWs), Intrusion Detection/Prevention Systems (IDS/IPS), and Proxy servers operate.",
+              "Learn how to implement Access Control Lists (ACLs) and network segmentation."
+            ]
+          },
+          {
+            title: "Step 3: Dive into Cloud & Modern Concepts",
+            points: [
+              "Study Cloud Networking (VPCs, Security Groups) on platforms like AWS or Azure.",
+              "Understand modern paradigms like Zero Trust Network Access (ZTNA) and Secure Access Service Edge (SASE)."
+            ]
+          },
+          {
+            title: "Step 4: Top Certifications",
+            points: [
+              "Foundational/Mid-Level: CompTIA Security+, Cisco CCNA (Cisco Certified Network Associate), or Palo Alto Networks Certified Network Security Administrator (PCNSA).",
+              "Advanced: Cisco CCNP Security (Cisco Certified Network Professional Security)."
+            ]
+          }
         ]
       }
     ],
     certs: [
       { name: 'CCNA', full: 'Cisco Certified Network Associate', desc: 'Foundational networking knowledge.', diff: 'Beginner' },
-      { name: 'PCNSA', full: 'Palo Alto Networks Certified Network Security Administrator', desc: 'Validates firewall administration skills.', diff: 'Intermediate' }
+      { name: 'PCNSA', full: 'Palo Alto Networks Certified Network Security Administrator', desc: 'Validates firewall administration skills.', diff: 'Intermediate' },
+      { name: 'CCNP', full: 'Cisco Certified Network Professional Security', desc: 'Advanced network security concepts.', diff: 'Advanced' }
     ]
   },
   '06': {
