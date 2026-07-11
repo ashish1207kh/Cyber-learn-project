@@ -613,24 +613,73 @@ export const DEFENSIVE_TOPICS = {
     stats: { time: "20 Hours", diff: "Beginner", prereq: "Linux CLI basics" },
     sections: [
       {
-        id: "sec-scope",
-        title: "1. The Scope of Log Analysis",
-        content: "Log Analysis is a fundamental skill that underpins almost every single role in defensive security operations.",
+        id: "sec-means",
+        title: "1. What It Means & The Scope",
+        content: "Every time a user logs in, a file is modified, or a firewall blocks a connection, a line of data is recorded. Log Analysis is the art of digging through millions of these raw text lines to map out normal behavior and spot the exact second an anomaly or cyberattack occurs. It is not limited to just one job; instead, it is a daily requirement for multiple teams.",
         bulletPoints: [
-          "Core Responsibilities: Parsing unstructured text, building custom search queries, and writing rules to trigger alerts on suspicious patterns.",
-          "Industries Hiring: MSSPs, tech conglomerates, and corporate IT operations teams.",
-          "Roles Available: SOC Analyst (L1/L2), Threat Hunter, Security Automation Engineer."
+          "Roles Available: SOC Analyst (L1/L2), Threat Hunter, Security Automation Engineer, and Log Management Administrator.",
+          "Core Responsibilities: Parsing unstructured text files into clean formats (like JSON), building custom search queries to isolate specific hacker actions, and writing rules to trigger alerts when suspicious patterns are matched.",
+          "Industries Hiring: Managed Security Service Providers (MSSPs), e-commerce platforms tracking massive web transaction logs, tech conglomerates, and corporate IT operations teams."
+        ]
+      },
+      {
+        id: "sec-worth-it",
+        title: "2. Is It Worth It or Not?",
+        content: "100% Worth It—It is a mandatory foundation. You cannot have a career in cybersecurity defense without mastering log analysis. It is the ultimate differentiator between an analyst who simply clicks buttons on a dashboard and a true security expert who understands *how* an exploit happened. While looking at raw data text can feel dry at first, learning to read logs gives you deep, technical visibility into system architectures that makes you highly employable."
+      },
+      {
+        id: "sec-salary",
+        title: "3. Expected Salary (2026 Trends)",
+        content: "Log analysis is standard for entry-level SOC roles, offering rapid salary jumps as you learn to automate the process:",
+        customComponent: "SalaryTable",
+        salaryTiers: [
+          { level: "Fresher (0–1 Year)", role: "Junior Security Analyst / SOC L1", range: "₹3.5 LPA – ₹6.5 LPA" },
+          { level: "Early Career (1–3 Years)", role: "Cyber Security Analyst", range: "₹5.5 LPA – ₹8.5 LPA" },
+          { level: "Mid-Level (3–5 Years)", role: "SOC Senior Analyst / Detection Specialist", range: "₹8.5 LPA – ₹15.0 LPA" },
+          { level: "Senior (5+ Years)", role: "SOC L3 / Detection Engineer", range: "₹15.0 LPA – ₹26.0+ LPA" }
         ]
       },
       {
         id: "sec-roadmap",
-        title: "2. Log Analysis Roadmap",
-        content: "To become a master at reading logs, focus on this path:",
-        bulletPoints: [
-          "Step 1: Learn Core Formats. Study Windows Event Logs (IDs 4624, 4625) and Linux Logs (syslog, auth.log).",
-          "Step 2: Master Text Filters. Use Linux CLI tools like grep, awk, and sed, alongside Regular Expressions (Regex).",
-          "Step 3: Dive into Query Languages. Learn SPL (Splunk) or KQL (Microsoft Sentinel)."
+        title: "4. Step-by-Step Roadmap",
+        content: "To become a master at reading and analyzing logs, focus on this technical path:",
+        customComponent: "SiemRoadmapSteps",
+        roadmapSteps: [
+          {
+            title: "Step 1: Learn Core System Event Formats",
+            points: [
+              "Study Windows Event Logs (specifically critical security event IDs like 4624 for successful logins and 4625 for failures).",
+              "Learn Linux Logs (understanding /var/log/auth.log, syslog, and how to use journalctl)."
+            ]
+          },
+          {
+            title: "Step 2: Master Basic Text Filters",
+            points: [
+              "Learn basic Linux command-line tools to filter text rapidly using grep, awk, sed, and cut.",
+              "Learn Regular Expressions (Regex) to help you extract patterns like IP addresses or email formats out of raw text."
+            ]
+          },
+          {
+            title: "Step 3: Dive into Query Languages",
+            points: [
+              "Learn SPL (Search Processing Language) for Splunk.",
+              "Learn KQL (Kusto Query Language) used in Microsoft Sentinel."
+            ]
+          },
+          {
+            title: "Step 4: Top Certifications & Training",
+            points: [
+              "Foundational: CompTIA Security+ or Blue Team Level 1 (BTL1).",
+              "Tool Specific: Splunk Core Certified Power User."
+            ]
+          }
         ]
+      },
+      {
+        id: "sec-video",
+        title: "Cybersecurity Monitoring Tool Overview",
+        content: "This video provides a practical, real-world walkthrough of the precise tools—such as Splunk and the ELK stack—used by modern security analysts to centralize and conduct live log analysis.",
+        videoUrl: "https://www.youtube.com/embed/VStekc4I0kg"
       }
     ],
     certs: [
@@ -998,6 +1047,20 @@ export default function DefensiveTopicDetail({ topicId = '01', onBack, onNavigat
                       {sec.id === 'sec-forensics' && <MemoryStackDiagram />}
                       {sec.customComponent === 'SalaryTable' && <SalaryTable tiers={sec.salaryTiers} />}
                       {sec.customComponent === 'SiemRoadmapSteps' && <SiemRoadmapSteps steps={sec.roadmapSteps} />}
+
+                      {sec.videoUrl && (
+                        <div style={{ margin: '24px 0', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+                          <iframe 
+                            width="100%" 
+                            height="350" 
+                            src={sec.videoUrl} 
+                            title="YouTube video player" 
+                            frameBorder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowFullScreen
+                          ></iframe>
+                        </div>
+                      )}
 
                       {sec.command && (
                         <div style={{ margin: '24px 0' }}>
